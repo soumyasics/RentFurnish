@@ -1,0 +1,21 @@
+.sechome{
+    margin: 30px;
+}
+.sechome-left img{
+    margin-top: 40px;
+}
+.sechome-right{
+    margin-top: 40px;
+}
+.sechome-right h3{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: crimson;
+}
+.sechome-right p{
+    margin-top: 20px;
+    padding: 5px;
+    text-align:start;
+    font-size: 22px;
+    color: rgb(179, 139, 37);
+}

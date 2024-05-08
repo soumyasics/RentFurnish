@@ -1,0 +1,40 @@
+.hometop-main-left{
+    padding-top: 40px;
+}
+.hometop-main-left h4{
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    
+}
+.hometop-main-left p{
+    text-align:left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 30px;
+    
+}
+.hometop-main-left h5{
+    font-weight: 600;
+    font-size: 30px;
+    color: rgb(40, 96, 131);
+}
+.hometop-main-left h6{
+    color: rgb(53, 12, 91);
+}
+#here{
+    font-weight: 800;
+    font-size: 20px;
+}
+.rowhomeleft{
+    margin-left: 80px;
+    margin-top: 40px;
+}
+.rowhomeleft button{
+    width: 180px;
+    height: 40px;
+    border: none;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+}
