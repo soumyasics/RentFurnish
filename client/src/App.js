@@ -18,6 +18,8 @@ import Deliveryagentsignup from './Components/Deliveryagent/Deliveryagentsignup'
 import Deliverylogin from './Components/Deliveryagent/Deliverylogin';
 import Deliveryforgetpswd from './Components/Deliveryagent/Deliveryforgetpswd';
 import Adminlogin from './Components/Admin/Adminlogin';
+import Admindashbboard from './Components/Admin/Admindashbboard';
+import 'remixicon/fonts/remixicon.css'
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
 
           {/* Admin */}
           <Route path='/adminlogin' element={<Adminlogin/>}/>
+          <Route path='/admindashboard' element={<Admindashbboard/>}/>
+
       </Routes>
     </div>
     </BrowserRouter>

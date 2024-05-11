@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import img from "../../Assets/admin.jpg"
 import "../Admin/Adminlogin.css"
+import { toast } from 'react-toastify'
 
 function Adminlogin() {
     const[admin,setadmin]=useState({email:"",password:""})
 
-    let email="admin"
-    let password="admin123"
+    let email="Admin"
+    let password="Admin@123"
 
     const changefn=((e)=>{
         setadmin({
@@ -18,14 +19,14 @@ function Adminlogin() {
         a.preventDefault()
         if(email==admin.email){
             if(password==admin.password){
-                alert("succesfully logined")
+                toast.success("succesfully logined")
             }
             else{
-                alert("please check password")
+                toast.error("please check password")
             }
         }
         else{
-            alert("Invalid username")
+            toast.warn("Invalid username")
         }
     })
 
