@@ -10,7 +10,7 @@ function Hometop() {
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-6 hometop-main-left ">
-            <h4>Welcome to Rental property Management System</h4>
+            <h4>Welcome to Rental  Management System</h4>
             <p>
               <span>
                 <span id="here">Here ,</span>we believe that building a strong

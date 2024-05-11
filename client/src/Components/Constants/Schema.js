@@ -10,6 +10,7 @@ export const shopRegSchema  = yup.object().shape({
     shopname: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     email:yup.string().email("Please enter a valid email").required("Required"),
     password:  yup.string().min(5).max(16).matches(passwordRule, "1 uppercase, 1 number, 1 symbol").required("Required"),
+    confirmpassword: yup.string().oneOf([yup.ref("password"), null], "Password mismatch").required("Required"),
     buildingname: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     city: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     street: yup.string().min(2,"Enter minimum 2 characters").required("Required"),

@@ -54,6 +54,10 @@ const schema=mongoose.Schema({
         type:Object,
         required: true
     },
+    isactive:{
+        type:Boolean,
+        default:false
+    }
 
    
 });

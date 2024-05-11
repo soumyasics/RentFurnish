@@ -62,6 +62,7 @@ const registershop = (req, res) => {
 
 //Shop registration finished
 
+
 function verifyToken(req, res, next) {
   let authHeader = req.headers.authorization;
 
@@ -84,22 +85,34 @@ function verifyToken(req, res, next) {
     }
   });
 }
+
 const shopLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await shopschema.findOne({ email: email });
 
     if (user) {
-      if (user.password === password) {
+      if (user.isactive === false) {
+        return res.json({
+          status: 403,
+          msg: "User is not active. Please contact administrator."
+        });
+      } else if (user.password === password) {
         const token = jwt.sign(
           { email: user.email, password: user.password },
           "secret_key",
           { expiresIn: 86400 }
         );
-        return res
-          .status(200)
-          .json({ message: "Login successful", token, id: user._id });
-      } else {
+        return res.json({
+          status:200,
+          msg:"Login Successfully", token, id: user._id 
+        })
+      }
+      //   return res
+      //     .status(200)
+      //     .json({ message: "Login successful", token, id: user._id });
+      // } 
+      else {
         return res.status(401).json({ message: "Password is incorrect" });
       }
     } else {
@@ -132,6 +145,27 @@ const viewshopbyid = (req, res) => {
 };
 //viewshopbyid completed
 
+const viewallshops = (req, res) => {
+  shopschema
+    .findById({})
+    .exec()
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: "Shop not found" });
+      }
+      res.json({
+        status: 200,
+        data: data,
+      });
+    })
+    .catch((err) => {
+      console.error("Error finding shop by ID:", err);
+      res.status(500).json({ error: "Internal server error" });
+    });
+};
+//view all shops completed
+
+
 const forgotPwdshop = (req, res) => {
   shopschema
     .findOneAndUpdate(
@@ -160,9 +194,101 @@ const forgotPwdshop = (req, res) => {
       });
     });
 };
+//forget pswd completed
+
+const updateshopprofile=(req,res)=>{
+  shopschema.findByIdAndUpdate({_id:req.params.id},{
+    shopname: req.body.shopname,
+    phone: req.body.phone,
+    email: req.body.email,
+    regno: req.body.regno,
+    buildingname: req.body.buildingname,
+    street: req.body.street,
+    city: req.body.city,
+    state: req.body.state,
+    pincode: req.body.pincode,
+    image: req.file,
+  })
+  .exec()
+  .then((response)=>{
+    res.json({
+      status:200,
+      msg:"updated successfully",response
+    })
+  })
+  .catch((err)=>{
+    res.json({
+      status:500,
+      msg:"error",err
+    })
+    console.log(err);
+  })
+
+}
+//update profile completed
+const viewallshopsforadmin = (req, res) => {
+  shopschema.find({ isactive: false }).populate('contributorid').exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              msg: result
+          })
+      })
+      .catch((err) => {
+          res.json({
+              status: 500,
+              msg: err
+          })
+          console.log(err);
+      })
+}
+//Admin view shop request completed
+const acceptshopById = (req, res) => {
+  shopschema.findByIdAndUpdate({ _id: req.params.id }, { isactive: true }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data obtained'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
+
+}
+//shop accept completed
+
+const deleteshopById =async (req, res) => {
+  await shopschema.findByIdAndDelete({ _id: req.params.id }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data deleted'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
+
+    }
 
 module.exports = { registershop, upload, 
                     shopLogin, verifyToken, 
                     viewshopbyid,
-                    forgotPwdshop
+                    forgotPwdshop,
+                    viewallshops,
+                    updateshopprofile,
+                    acceptshopById,
+                    deleteshopById,
+                    viewallshopsforadmin
                  };
