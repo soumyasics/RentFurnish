@@ -1,0 +1,80 @@
+.profileviewmain {
+    margin-top: 40px;
+    background-color: #f2f3ff;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .profileviewmain h3 {
+    color: #0084e4;
+    text-shadow: 0px 1.146px 1.146px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .profilevieuser1 img {
+    border-radius: 20px;
+  }
+  .profilevieusernames{
+    padding-left: 160px;
+  }
+  
+  .profilevieusernames td {
+    color: #0084e4;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .button11 {
+    background-color: #ff9900;
+    width: 125px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 2.71px;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .button12 {
+    border-radius: 10px;
+    border: 1px solid #f00;
+    background: #fff;
+    width: 125px;
+    height: 40px;
+  }
+  
+  .viewmorebtn {
+    margin-top: 20px;
+  }
+  
+  .viewmorebtn button {
+    color: #0084e4;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: 2px solid #0084e4;
+    border-radius: 20px;
+  }
+  .profile-view-box {
+    background-color: #fff;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .profilemainbuttons{
+    padding-top: 30px;
+    padding-left: 200px;
+    text-align: center;
+  }

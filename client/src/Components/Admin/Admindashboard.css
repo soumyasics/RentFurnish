@@ -1,3 +1,39 @@
+@media (max-width: 767px) {
+    .buttonmain {
+      padding: 20px;
+      margin-left: 0px;
+    }
+    .boxmain {
+      flex-direction: column;
+    }
+    .boxmain1,
+    .boxmain2,
+    .boxmain3 {
+      margin-left: 0px;
+      margin-bottom: 20px;
+    }
+    .profileviewmain {
+      margin-top: 20px;
+      padding: 20px;
+    }
+    .profilevieuser,
+    .profileviewmain {
+      flex-direction: column;
+    }
+    .profilevieuser1 img {
+      margin-left: 0px;
+    }
+    .profilevieusernames,
+    .profilemainbuttons {
+      margin-top: 10px;
+    }
+    .viewmorebtn {
+      text-align: center;
+    }
+  }
+  
+
+
 .buttonmain{
     padding: 50px;
     margin-left: 50px;
@@ -38,5 +74,178 @@
     border-radius: 25px;
 }
 .boxcontent{
-    /* padding-left: 100px; */
+    padding-left: 20px;
 }
+.boxcontent h5{
+    color: #0084E4;
+
+text-align: center;
+text-shadow: 0px 0.731px 0.731px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.boxcontent p{
+    color: #000;
+
+text-align: center;
+text-shadow: 0px 0.731px 0.731px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+/* .profileviewmain{
+    margin-top: 40px;
+    background-color: #F2F3FF;
+    border-radius: 20px;
+    max-height: max-content;
+}
+.profileviewmain h3{
+    color: #0084E4;
+    padding-left: 40px;
+text-shadow: 0px 1.146px 1.146px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 35px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.profilevieuser{
+    margin: 30px;
+    background-color: #FFF;
+    border-radius: 20px;
+    max-height: fit-content;
+    max-width: 1200px;
+}
+.profilevieuser1 img{
+    border-radius: 20px;
+    margin-left: 20px;
+}
+.profilevieusernames td{
+    color: #0084E4;
+
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.button11{
+    margin-top: 30px;
+background-color: #FF9900;
+width: 112px;
+height: 50px;
+justify-content: center;
+align-items: center;
+gap: 2.71px;
+border: none;
+border-radius: 10px;
+}
+.button12{
+    margin-left: 10px;
+    border-radius: 10px;
+border: 1px solid #F00;
+background: #FFF;
+width: 112px;
+height: 50px;
+}
+.viewmorebtn{
+    text-align: end; 
+}
+.viewmorebtn button{
+    margin-right: 40px;
+
+    color: #0084E4;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;   
+    border: 2px solid #0084E4;
+    border-radius: 20px;   
+} */
+.profileviewmain {
+    margin-top: 40px;
+    background-color: #f2f3ff;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .profileviewmain h3 {
+    color: #0084e4;
+    text-shadow: 0px 1.146px 1.146px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .profilevieuser1 img {
+    border-radius: 20px;
+  }
+  .profilevieusernames{
+    padding-left: 30px;
+  }
+  
+  .profilevieusernames td {
+    color: #0084e4;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .button11 {
+    background-color: #ff9900;
+    width: 125px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 2.71px;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .button12 {
+    border-radius: 10px;
+    border: 1px solid #f00;
+    background: #fff;
+    width: 125px;
+    height: 40px;
+  }
+  
+  .viewmorebtn {
+    margin-top: 20px;
+  }
+  
+  .viewmorebtn button {
+    color: #0084e4;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: 2px solid #0084e4;
+    border-radius: 20px;
+  }
+  .profile-view-box {
+    background-color: #fff;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .profilemainbuttons{
+    padding-top: 30px;
+    padding-left: 200px;
+    text-align: center;
+  }

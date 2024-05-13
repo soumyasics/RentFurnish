@@ -1,0 +1,71 @@
+.adminloginnavmain{
+    background: linear-gradient(0deg, rgba(202, 202, 202, 0.20) 0%, #D0D0D0 100%) !important;
+}
+.adminloginnavlogout{
+    align-items: end;
+}
+.adminloginnavlogout button{
+    margin-top: -100px;
+    display: flex;
+    width: 150px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 23.141px;
+    flex-shrink: 0;
+    border-radius: 25px;
+border: 2px solid #757575;
+}
+.adminloginnavtext h5{
+    color: #0084E4;
+
+text-align: center;
+font-family: "IM FELL French Canon SC";
+font-size: 27.656px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 239.737px;
+}
+.adminloginnavtext p{
+    color: #757575;
+
+text-align: center;
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-transform: capitalize;
+}
+
+/* .adminloginnavmain {
+    background: linear-gradient(0deg, rgba(202, 202, 202, 0.20) 0%, #D0D0D0 100%) !important;
+  }
+  
+  .adminloginnavtext h5 {
+    color: #0084E4;
+    font-family: "IM FELL French Canon SC";
+    font-size: 27.656px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .adminloginnavtext p {
+    color: #757575;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .adminloginnavlogout button {
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    border: 2px solid #757575;
+  }
+   */

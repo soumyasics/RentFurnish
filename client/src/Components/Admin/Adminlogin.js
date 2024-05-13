@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import img from "../../Assets/admin.jpg"
 import "../Admin/Adminlogin.css"
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 function Adminlogin() {
     const[admin,setadmin]=useState({email:"",password:""})
+    const navigate=useNavigate()
 
     let email="Admin"
     let password="Admin@123"
@@ -20,6 +22,8 @@ function Adminlogin() {
         if(email==admin.email){
             if(password==admin.password){
                 toast.success("succesfully logined")
+                localStorage.setItem("adminid",1)
+                navigate("/admindashboard")
             }
             else{
                 toast.error("please check password")
