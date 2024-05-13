@@ -20,12 +20,17 @@ import Deliveryforgetpswd from './Components/Deliveryagent/Deliveryforgetpswd';
 import Adminlogin from './Components/Admin/Adminlogin';
 import Admindashbboard from './Components/Admin/Admindashbboard';
 import 'remixicon/fonts/remixicon.css'
+import Shopreq from './Components/Admin/Shopreq';
+import Adminnav from './Components/Navbar/Adminnav';
+import Shopdashboard from './Components/Shops/Shopdashboard';
+import Shophomenav from './Components/Navbar/Shophomenav';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter   basename="/rentfurnish">
     <div>
-      <Routes>
+      <Routes 
+          >
           <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>]}/>
 
         {/* // User // */}
@@ -37,6 +42,9 @@ function App() {
           <Route path='/shopsignin' element={[<Navbar/>,<Shopsignin/>]}/>
           <Route path='/shoplogin' element={<Shoplogin/>}/>
           <Route path='/shopforgetpswd' element={<Shopforgetpswd/>}/>
+          <Route path='/shopdashboard' element={<Shopdashboard/>}/>
+          <Route path='/shopnav' element={<Shophomenav/>}/>
+
 
           {/* Delivery Agent */}
           <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
@@ -47,6 +55,7 @@ function App() {
           {/* Admin */}
           <Route path='/adminlogin' element={<Adminlogin/>}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
+          <Route path='/shopreq' element={<Shopreq/>}/>
 
       </Routes>
     </div>

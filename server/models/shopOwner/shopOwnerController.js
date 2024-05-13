@@ -147,7 +147,7 @@ const viewshopbyid = (req, res) => {
 
 const viewallshops = (req, res) => {
   shopschema
-    .findById({})
+    .find({})
     .exec()
     .then((data) => {
       if (!data) {
@@ -227,7 +227,8 @@ const updateshopprofile=(req,res)=>{
 }
 //update profile completed
 const viewallshopsforadmin = (req, res) => {
-  shopschema.find({ isactive: false }).populate('contributorid').exec()
+  shopschema.find({ isactive:false})
+  .exec()
       .then((result) => {
           res.json({
               status: 200,

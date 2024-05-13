@@ -1,11 +1,14 @@
 import React from "react";
 import "../Shops/Shopsignin.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axiosInstance from "../Constants/Baseurl";
 import { shopRegSchema } from "../Constants/Schema";
 
 function Shopsignin() {
+
+  const navigate=useNavigate()
+
   const onSubmit = (e) => {
     // e.preventDefault()
     const passwordRule =
@@ -35,6 +38,7 @@ function Shopsignin() {
         console.log(res);
         if (res.data.status === 200) {
           alert("Registration Successful");
+          navigate("/shoplogin")
           // localStorage.setItem("userid",res.data.data._id)
           // console.log(res.data.data._id);
         } else {
