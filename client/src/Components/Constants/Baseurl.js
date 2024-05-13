@@ -3,7 +3,8 @@ import axios from "axios"
 const axiosInstance = axios.create({
 
     //server api
-  
+    // baseURL: 'http://hybrid.srishticampus.in:4027/rentfurnish_api', 
+
     // baseURL: '', 
   
   //local api 
@@ -13,6 +14,12 @@ const axiosInstance = axios.create({
     headers: {
       'Content-Type': 'application/json',
     },
+
+     url :"http://localhost:4010",
+    // const url= "http://hybrid.srishticampus.in:4006/"
+    
+
+
   });
    
   export default axiosInstance
