@@ -24,8 +24,9 @@ function Shoplogin() {
           toast.warn(result.data.msg);
         }
         else if(result.data.status==200){
+          localStorage.setItem("shopid", result.data.id)
           toast.success("Login Successfully")
-          navigate("/")
+           navigate("/shopdashboard")
         }
          else if (result.data.status == 500) {
           // alert(result.data.msg);
@@ -77,7 +78,7 @@ function Shoplogin() {
           </div>
                
           </form>
-          <div className='col-6 pb-3"'>
+          <div className='col-8 pb-3"'>
             <h6 className='idd1'>OR</h6>
             <Link to="/shopsignin" style={{textDecoration:"none", color:"black"}}><h6 className='idd2' >Create One ?</h6></Link>
           </div>

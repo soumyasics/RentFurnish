@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Adminloginnav.css"
-import admin from "../../Assets/logo.jpg";
+import admin from "../../Assets/logo1.png";
 import { useNavigate } from 'react-router-dom';
 
 

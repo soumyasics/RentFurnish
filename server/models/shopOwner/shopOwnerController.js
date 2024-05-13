@@ -213,7 +213,8 @@ const updateshopprofile=(req,res)=>{
   .then((response)=>{
     res.json({
       status:200,
-      msg:"updated successfully",response
+      msg:"updated successfully",
+      data:response
     })
   })
   .catch((err)=>{

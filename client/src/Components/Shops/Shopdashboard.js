@@ -1,12 +1,23 @@
 import React from 'react'
 import "./Shopdashboard.css"
-import customer from "../../Assets/carbon_customer.png";
-import delivery from "../../Assets/deliveryicon.png";
+import customer from "../../Assets/deliveryicon.png";
+import delivery from "../../Assets/orders.png";
 import "../Admin/Admindashboard.css"
+import Shophomenav from '../Navbar/Shophomenav';
+import { useNavigate } from 'react-router-dom';
 
 function Shopdashboard() {
+  const navigate=useNavigate()
+  const shopid=localStorage.getItem("shopid")
+  console.log(shopid);
+
+  if(shopid===null){
+    navigate("/shoplogin")
+  }
+
   return (
     <>
+    <Shophomenav/>
           <div className="container mainclass">
         <div className="row">
           <div className="col-12 d-flex justify-content-center buttonmain">
@@ -35,7 +46,7 @@ function Shopdashboard() {
             <div className="col-sm-4 col-md-4 col-lg-4 d-flex pb-4 boxmain1 ">
               <div className="boxinside1 ">
                 <div
-                  className="ri-store-2-line"
+                  className="ri-user-line"
                   style={{
                     padding: "5px",
                     color: "blue",

@@ -23,7 +23,8 @@ import 'remixicon/fonts/remixicon.css'
 import Shopreq from './Components/Admin/Shopreq';
 import Adminnav from './Components/Navbar/Adminnav';
 import Shopdashboard from './Components/Shops/Shopdashboard';
-import Shophomenav from './Components/Navbar/Shophomenav';
+import Shopeditprofile from './Components/Shops/Shopeditprofile';
+import Adminviewshops from './Components/Admin/Adminviewshops';
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
           <Route path='/shoplogin' element={<Shoplogin/>}/>
           <Route path='/shopforgetpswd' element={<Shopforgetpswd/>}/>
           <Route path='/shopdashboard' element={<Shopdashboard/>}/>
-          <Route path='/shopnav' element={<Shophomenav/>}/>
+          <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
 
 
           {/* Delivery Agent */}
@@ -56,6 +57,7 @@ function App() {
           <Route path='/adminlogin' element={<Adminlogin/>}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
+          <Route path='/Viewshops' element={<Adminviewshops/>}/>
 
       </Routes>
     </div>
