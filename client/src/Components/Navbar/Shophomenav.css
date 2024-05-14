@@ -1,0 +1,79 @@
+.shopnavpro{
+    font-size: larger;
+    font-weight: bold;
+}
+.userprofilehead h3 {
+    color: #0084e4;
+    text-shadow: 0px 1.146px 1.146px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .userprofileimg img {
+    border-radius: 20px;
+    align-items: center;
+  }
+  
+  .userprofileimg {
+    margin: auto;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .userprofileimg h4 {
+    text-align: center;
+    color: #0084e4;
+    text-shadow: 0px 0.731px 0.731px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .userprofiletable table {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    
+  }
+  
+  .userprofiletable td {
+    padding: 10px;
+
+  }
+  #td1{
+    color: #0084E4;
+
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-align: left;
+  }
+  #td2{
+    color: #000;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-align: left;
+  }
+  .userprofiletable button{
+    border-radius: 10px;
+background: #F90;
+width: 250px;
+height: 50px;
+justify-content: center;
+align-items: center;
+gap: 25.707px;
+flex-shrink: 0;
+  }
+  
+
+  

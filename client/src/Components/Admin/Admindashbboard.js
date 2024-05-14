@@ -116,6 +116,7 @@ function Admindashbboard() {
             </div>
           </div>
           <div className="col-12 d-flex boxmain">
+        <Link to="/Viewshops" style={{textDecoration:"none"}}>
             <div className="col-sm-4 col-md-4 col-lg-4 d-flex pb-4 boxmain1 ">
               <div className="boxinside1 ">
                 <div
@@ -133,6 +134,7 @@ function Admindashbboard() {
                 <p>Total Shop Owners</p>
               </div>
             </div>
+            </Link>
             <div className="col-sm-4 col-md-4 col-lg-4 pb-4  d-flex boxmain2">
               <div className="col-2 boxinside1">
                 <img
