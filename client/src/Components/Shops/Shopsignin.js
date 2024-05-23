@@ -84,9 +84,9 @@ function Shopsignin() {
   return (
     <div className="usersignin-main">
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box1">
+            <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box1 border">
               <h4>General Information</h4>
               <div className="row usersignin-input">
                 <div className="col-12 pb-3">
@@ -148,6 +148,9 @@ function Shopsignin() {
                 >
                   Register Now !
                 </button>
+              </div>
+              <div>
+                <input type="checkbox" required /><span style={{color:"#0084E4"}}>Agree to terms and conditions</span>
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box2">

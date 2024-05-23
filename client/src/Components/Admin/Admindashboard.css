@@ -187,7 +187,7 @@ height: 50px;
   }
   
   .profilevieuser1 img {
-    border-radius: 20px;
+    /* border-radius: 12px; */
   }
   .profilevieusernames{
     padding-left: 30px;
@@ -211,6 +211,7 @@ height: 50px;
     gap: 2.71px;
     border: none;
     border-radius: 10px;
+    margin: 20px;
   }
   
   .button12 {
@@ -219,6 +220,8 @@ height: 50px;
     background: #fff;
     width: 125px;
     height: 40px;
+    margin: 20px;
+
   }
   
   .viewmorebtn {

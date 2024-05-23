@@ -5,6 +5,7 @@ import delivery from "../../Assets/orders.png";
 import "../Admin/Admindashboard.css"
 import Shophomenav from '../Navbar/Shophomenav';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 
 function Shopdashboard() {
   const navigate=useNavigate()
@@ -91,8 +92,13 @@ function Shopdashboard() {
               </div>
             </div>
           </div>
+          {/* margin for gap between footer and inputbox */}
+          <div className='col-12' style={{margin:"100px"}}>
+                
+          </div>
         </div>
 </div>
+<Footer/>
     </>
   )
 }
