@@ -39,7 +39,6 @@ function Shopeditprofile() {
 console.log(updatedShop);
 
 
-
   useEffect(()=>{
     axiosInstance.post(`/viewshopbyid/${shopid}`)
     .then((res)=>{
@@ -57,6 +56,16 @@ console.log(updatedShop);
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm(updatedShop);
+
+    const hasChanges = JSON.stringify(updatedShop) !== JSON.stringify(shop);
+
+  if (!hasChanges) {
+    
+    toast.info("No changes made to the profile.");
+    
+    return;
+  }
+
     if (Object.keys(validationErrors).length === 0) {
     axiosInstance
       .post(`/updateprofileshop/${shopid}`, updatedShop, {
@@ -82,16 +91,16 @@ console.log(updatedShop);
 const validateForm = (formData) => {
   let errors = {};
 
-  if (!formData.phone || formData.phone.length !== 10) {
-    errors.phone = "Phone number must be 10 digits";
+  if (!formData.phone || formData.phone.length !== 10 || parseInt(formData.phone) < 0) {
+    errors.phone = "Phone number must be 10 digits and must not be a negative number";
   }
 
-  if (!formData.regno || formData.regno.length < 6) {
-    errors.regno = "Registration number must be at least 6 characters";
+  if (!formData.regno || formData.regno.length < 6 || parseInt(formData.regno) < 0) {
+    errors.regno = "Registration number must be at least 6 characters and must not be a negative number";
   }
 
-  if (!formData.pincode || formData.pincode.length !== 6) {
-    errors.pincode = "Pincode  must be at least 6 characters";
+  if (!formData.pincode || formData.pincode.length !== 6 || parseInt(formData.pincode) < 0) {
+    errors.pincode = "Pincode  must be at least 6 characters and must not be a negative number";
   }
 
   if (!formData.shopname || formData.shopname.length < 2) {

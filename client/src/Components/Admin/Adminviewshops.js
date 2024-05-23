@@ -3,6 +3,7 @@ import "./Adminviewshops.css";
 import admin from "../../Assets/admin.jpg";
 import axiosInstance from "../Constants/Baseurl";
 import { Link } from "react-router-dom";
+import Adminnav from "../Navbar/Adminnav";
 
 function Adminviewshops() {
   const [shops, setShops] = useState([]);
@@ -23,6 +24,7 @@ function Adminviewshops() {
 
   return (
     <>
+    <Adminnav/>
       <div className="container viewshopsmain">
         <div className="row viewshopsmainhead">
         <Link to="/admindashboard" style={{textDecoration:"none"}}> <p className="ri-arrow-left-line">All Shop Owners</p></Link> 
