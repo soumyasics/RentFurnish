@@ -50,7 +50,7 @@ const addDeliveryAgent =async (req, res) => {
         }else{
 
     const shops = new deliveryagents({
-    name: req.body.name,
+        name: req.body.name,
         phone: req.body.phone,
         email: req.body.email,
         password: req.body.password,
