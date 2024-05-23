@@ -25,6 +25,7 @@ import Adminnav from './Components/Navbar/Adminnav';
 import Shopdashboard from './Components/Shops/Shopdashboard';
 import Shopeditprofile from './Components/Shops/Shopeditprofile';
 import Adminviewshops from './Components/Admin/Adminviewshops';
+import Adddeliveryagent from './Components/Deliveryagent/Adddeliveryagent';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
           <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
           <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
+          <Route path='/adddeliveryagent' element={<Adddeliveryagent/>}/>
 
 
           {/* Admin */}
