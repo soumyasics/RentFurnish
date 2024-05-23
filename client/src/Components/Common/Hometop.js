@@ -13,7 +13,7 @@ function Hometop() {
             <h4>Welcome to Rental  Management System</h4>
             <p>
               <span>
-                <span id="here">Here ,</span>we believe that building a strong
+                <span >Here ,</span>we believe that building a strong
                 professional network begins with your participation
               </span>
               <span id="">

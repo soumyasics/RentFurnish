@@ -1,0 +1,112 @@
+
+
+.footermain {
+    background: #1d2c61;
+    padding: 30px 15px;
+    overflow-x: hidden; 
+    /* width: 1416px; */
+  }
+  
+  .footermain img {
+    max-width: 100%;
+  }
+  
+  .footerhead1,
+  .footerhead12,
+  .footerhead13 {
+    color: #fff;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .footerhead1 h6 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .footerhead12 h5,
+  .footerhead13 h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  @media (min-width: 768px) {
+    .footermain {
+      padding: 50px;
+    }
+  
+    .footerhead1 {
+      font-size: 24px;
+    }
+  
+    .footerhead12,
+    .footerhead13 {
+      padding-top: 0;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .footerhead1 {
+      font-size: 28px;
+    }
+  
+    .footerhead12,
+    .footerhead13 {
+      padding-top: 20px;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+/* .footermain{
+    background: #1D2C61;
+    display: flex;
+    width: 1440px;
+    height: 262px;
+    padding: 75px 114px 51px 115px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 22px;
+    flex-shrink: 0;
+
+}
+.footerhead1{
+    color: #FFF;
+
+text-align: center;
+font-family: "IM FELL French Canon SC";
+font-size: 27.656px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.footerhead12 {
+    text-align: center;
+
+    color: #FFF;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-top: 20px;
+}
+.footerhead13{
+    color: #FFF;
+    text-align: center;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-top: 20px;
+} */

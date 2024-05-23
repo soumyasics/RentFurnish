@@ -1,7 +1,8 @@
 const shopschema = require("./shopOwnerSchema");
 const multer = require("multer");
 const jwt = require("jsonwebtoken");
-
+// const secret = process.env.JWT_SECRET || 'Secret-key';
+const secret="secret_key"
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, "./upload");
@@ -63,28 +64,48 @@ const registershop = (req, res) => {
 //Shop registration finished
 
 
-function verifyToken(req, res, next) {
-  let authHeader = req.headers.authorization;
+// function verifyToken(req, res, next) {
+//   let authHeader = req.headers.authorization;
 
-  console.log("Auth Header:", authHeader);
+//   console.log("Auth Header:", authHeader);
 
-  if (authHeader === undefined) {
-    next();
+//   if (!authHeader) {
+//     return next();
+//   }
+//   let token = authHeader.split(" ")[1]; 
+//   console.log("Token:", token);
+//   jwt.verify(token, "secret_key", function (err, decoded) {
+//     if (err) {
+//       console.log("Token Verification Error:", err);
+//       return res.status(500).send({ error: "Authorization failed" });
+//     } else {
+//       next(); 
+//     }
+//   });
+// }
+
+
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization.split(' ')[1];
+
+  console.log("t1",token);
+  console.log("secret",secret);
+  if (!token) {
+    return res.json({status:401,msg: 'Unauthorized' });
   }
-
-  let token = authHeader.split(" ")[1];
-
-  console.log("Token:", token);
-
-  jwt.verify(token, "secret_key", function (err, decoded) {
+  jwt.verify(token, secret, (err, decodedToken) => {
+    console.log(decodedToken);
     if (err) {
-      console.log("Token Verification Error:", err);
-      return res.status(500).send({ error: "Authorization failed" });
-    } else {
-      next();
+      return res.json({status:401, messagge: 'Unauthorized' ,err:err});
     }
+
+    req.user = decodedToken.userId;
+    next();
+    return res.json({ status:200,msg: 'ok' ,user:decodedToken.userId});
   });
-}
+  console.log(req.user);
+};
+
 
 const shopLogin = async (req, res) => {
   try {

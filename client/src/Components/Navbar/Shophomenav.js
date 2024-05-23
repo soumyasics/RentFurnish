@@ -5,6 +5,8 @@ import admin1 from "../../Assets/admin.jpg";
 import "../Navbar/Adminloginnav.css"
 import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../Constants/Baseurl';
+import Modal from './Confirmmodal';
+
 
 function Shophomenav() {
   const navigate=useNavigate()
@@ -37,10 +39,20 @@ function Shophomenav() {
   },[])
 
   const[readerid,setReaderid]=useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const handleLogout = () => {
+    setShowModal(true);
+  };
+
+  const confirmLogout = () => {
     localStorage.removeItem("shopid");
     setReaderid(null);
-    navigate("/shoplogin")
+    setShowModal(false);
+    navigate("/shoplogin");
+  };
+  const closeModal = () => {
+    setShowModal(false);
   };
 
 
@@ -58,8 +70,9 @@ function Shophomenav() {
           <p >Rent A Furniture Online Today</p>
         </div>
       </div>
-      <div class="adminloginnavlogout row justify-content-end  w-100 ">
-        <button type="submit" onClick={handleLogout}>Logout</button>
+      <div class="adminloginnavlogout row justify-content-end  w-100 " style={{marginTop:"-70px"}}>
+        <button type="submit" onClick={handleLogout} >Logout</button>
+        <Modal show={showModal} onClose={closeModal} onConfirm={confirmLogout} />
       </div>
     </div>
   </nav>

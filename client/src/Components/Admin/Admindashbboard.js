@@ -179,8 +179,8 @@ function Admindashbboard() {
           <div className="profile-view-box " >
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12 mb-4 d-flex profilevieuser">
-                <div className="col-4 col-sm-3 col-md-2 profilevieuser1">
-                  <img src={`${url}/${a?.image?.filename}`} alt="admin" className="img-fluid" />
+                <div className="col-6 col-sm-4 col-md-4 profilevieuser1">
+                  <img src={`${url}/${a?.image?.filename}`} alt="admin" className="img-fluid" width="300px" height="200px"/>
                 </div>
                 <div className="col-8 col-sm-9 col-md-10 profilevieusernames">
                   <table>

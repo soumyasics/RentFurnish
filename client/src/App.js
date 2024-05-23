@@ -25,6 +25,8 @@ import Adminnav from './Components/Navbar/Adminnav';
 import Shopdashboard from './Components/Shops/Shopdashboard';
 import Shopeditprofile from './Components/Shops/Shopeditprofile';
 import Adminviewshops from './Components/Admin/Adminviewshops';
+import Footer from './Components/Footer/Footer';
+import Shopnav from './Components/Navbar/Shopnav';
 
 function App() {
   return (
@@ -32,20 +34,20 @@ function App() {
     <div>
       <Routes 
           >
-          <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>]}/>
+          <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>,<Footer/>]}/>
 
         {/* // User // */}
           <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={<Userforgetpswd/>}/>
-          
+         
         {/* Shops */}
-          <Route path='/shopsignin' element={[<Navbar/>,<Shopsignin/>]}/>
-          <Route path='/shoplogin' element={<Shoplogin/>}/>
-          <Route path='/shopforgetpswd' element={<Shopforgetpswd/>}/>
+          <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
+          <Route path='/shoplogin' element={[<Shopnav/>,<Shoplogin/>,<Footer/>]}/>
+          <Route path='/shopforgetpswd' element={[<Shopnav/>,<Shopforgetpswd/>,<Footer/>]}/>
           <Route path='/shopdashboard' element={<Shopdashboard/>}/>
           <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
-
+          
 
           {/* Delivery Agent */}
           <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
@@ -58,6 +60,7 @@ function App() {
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
+
 
       </Routes>
     </div>

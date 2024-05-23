@@ -3,6 +3,8 @@ import img from "../../Assets/admin.jpg"
 import "../Admin/Adminlogin.css"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import Adminnav from '../Navbar/Adminnav'
+import Footer from '../Footer/Footer'
 
 function Adminlogin() {
     const[admin,setadmin]=useState({email:"",password:""})
@@ -41,6 +43,8 @@ function Adminlogin() {
 
 
   return (
+    <>
+    {/* <Adminnav/> */}
     <div className='main-admin'>
         <div className='container'>
             <form onSubmit={submitfn}>
@@ -49,9 +53,11 @@ function Adminlogin() {
                     <h4>Welcome Admin</h4>
                     <h3>Login</h3>
                     <div className='col-12 pb-3 main-input'>
+                    <p style={{marginLeft:"150px"}} className='adminloginuser'>UserName:</p>
                     <input type='text' placeholder='Enter email' name='email' value={admin.email} onChange={changefn}/>
                     </div>
                     <div className='col-12 pb-3'>
+                    <p style={{marginLeft:"150px"}} className='adminloginuser'>Password:</p>
                     <input type='password' placeholder='Enter password' name='password' value={admin.password} onChange={changefn}/>
                     </div>
                     <div className='col-12 pb-3'>
@@ -66,6 +72,8 @@ function Adminlogin() {
         </div>
 
     </div>
+    {/* <Footer/> */}
+    </>
   )
 }
 

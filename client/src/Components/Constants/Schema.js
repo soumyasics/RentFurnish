@@ -15,9 +15,9 @@ export const shopRegSchema  = yup.object().shape({
     city: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     street: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     state: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
-    pincode:  yup.number().min(100000,pincodeErrorMessage).max(999999,"Pincode must be a 6 digit number").required("Required"),
-    regno:  yup.number().min(100000,regnoErrorMessage).max(999999,"register number must be a 6 digit number").required("Required"),
-    phone:  yup.number().min(1000000000,"Contact must be a 10 digit number").max(9999999999,"Contact must be a 10 digit number").required("Required"),
+    pincode:  yup.number().min(100000,pincodeErrorMessage).max(999999,"Pincode must be a 6 digit number") .positive("Pincode must be a positive number").required("Required"),
+    regno:  yup.number().min(100000,regnoErrorMessage).max(999999,"register number must be a 6 digit number").positive("regno must be a positive number").required("Required"),
+    phone:  yup.number().min(1000000000,"Contact must be a 10 digit number").max(9999999999,"Contact must be a 10 digit number").positive("Contact must be a positive number").required("Required"),
     district: yup.string().min(2,"Enter minimum 2 characters").required("Required"),
     image: yup.object().required("Required"),     
 })
