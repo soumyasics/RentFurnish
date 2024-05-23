@@ -27,6 +27,7 @@ import Shopeditprofile from './Components/Shops/Shopeditprofile';
 import Adminviewshops from './Components/Admin/Adminviewshops';
 import Footer from './Components/Footer/Footer';
 import Shopnav from './Components/Navbar/Shopnav';
+import Adddeliveryagent from './Components/Deliveryagent/Adddeliveryagent';
 
 function App() {
   return (
