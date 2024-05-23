@@ -28,6 +28,7 @@ import Adminviewshops from './Components/Admin/Adminviewshops';
 import Footer from './Components/Footer/Footer';
 import Shopnav from './Components/Navbar/Shopnav';
 import Adddeliveryagent from './Components/Deliveryagent/Adddeliveryagent';
+import AgentNav from './Components/Navbar/AgentNav';
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
           <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
           <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
           <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
-          <Route path='/adddeliveryagent' element={<Adddeliveryagent/>}/>
+          <Route path='/adddeliveryagent' element={[<AgentNav/>,<Adddeliveryagent/>]}/>
 
 
           {/* Admin */}
@@ -62,7 +63,6 @@ function App() {
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
-
 
       </Routes>
     </div>
