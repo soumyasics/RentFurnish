@@ -49,13 +49,12 @@ function App() {
           <Route path='/shopforgetpswd' element={[<Shopnav/>,<Shopforgetpswd/>,<Footer/>]}/>
           <Route path='/shopdashboard' element={<Shopdashboard/>}/>
           <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
-          
 
           {/* Delivery Agent */}
           <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
           <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
           <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
-          <Route path='/adddeliveryagent' element={[<AgentNav/>,<Adddeliveryagent/>]}/>
+          <Route path='/adddeliveryagent' element={[<Shopnav/>,<Adddeliveryagent/>]}/>
 
 
           {/* Admin */}

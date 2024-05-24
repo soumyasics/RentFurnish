@@ -59,8 +59,7 @@ const addDeliveryAgent =async (req, res) => {
         vehicleNumber: req.body.vehicleNumber,
         deliveryArea: req.body.deliveryArea,
         deliveryDistrict: req.body.deliveryDistrict,
-        licenceNumber: req.body.licenceNumber,
-    
+        licenceNumber: req.body.licenceNumber
     });
    await shops
         .save()
@@ -89,9 +88,6 @@ const addDeliveryAgent =async (req, res) => {
         });
     }
 };
-
-
-
 
 const verifyToken = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
@@ -197,7 +193,7 @@ const viewallDeliveryAgents = (req, res) => {
 
 const viewallDeliveryAgentsByDistrict = (req, res) => {
     deliveryagents
-        .find({district:req.params.district})
+        .find({deliveryDistrict:req.params.district})
         .exec()
         .then((data) => {
             if (!data) {

@@ -9,9 +9,19 @@
 }
 
 .section-title {
-    font-size: 1.25rem;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 25px;
+    font-weight: 500;
     text-align: center;
     color: #007bff;
+}
+
+.address{
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.255); 
+    width: 511px;
+    padding: 21px 38px 21px 38px;
+    font-size: 20px;
 }
 
 .header{
@@ -26,25 +36,52 @@
     color: #007bff;
 }
  
+.add{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+}
 .form-label {
-    font-family: 'Calibri';
-    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 20px;
+    font-weight: 500;
     color: #007bff;
 }
 
+.form-control{
+    color: #999;
+}
+
+.form-control::placeholder{
+    color: #999;
+}
+
 .controls {
-    border-radius: 0.25rem;
-    height: 50px
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.255); 
+    width: 511px;
+    padding: 21px 38px 21px 38px;
+    height: 66px;
+    font-size: 20px;
+}
+
+.option-district {
+    color: #999; 
 }
 
 .btn-warning {
-    background-color: #ffcc00;
-    border-color: #ffcc00;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1.5rem;
+    width: 200px;
+    height: 50px;
+    gap: 25.71px;
+    background: #FF9900;
+    border-radius: 10px;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30.48px;
+    text-align: center; 
 }
+
 
 .span-required{
     color: red;
@@ -52,4 +89,25 @@
 
 .option-district{
     color: #999;
+}
+
+.row{
+    width: 1122;
+    height: 757;
+    gap: 100;
+}
+
+.first-div{
+    width: Hug (511px)px;
+    height: Hug (757px)px;
+    gap: 35px;
+    opacity: 0px;
+
+}
+.secont-div{
+    width: Hug (511px)px;
+    height: Hug (635px)px;
+    gap: 35px;
+    opacity: 0px;
+
 }
