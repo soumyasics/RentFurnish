@@ -1,72 +1,36 @@
-.back-arrow {
-    font-size: 2rem;
-    cursor: pointer;
-    color: #007bff;
-}
-
-.title {
-    color: #007bff;
-}
-
 .section-title {
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     font-weight: 500;
     text-align: center;
     color: #007bff;
 }
 
-.address{
+.address, .controls {
     border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.255); 
-    width: 511px;
-    padding: 21px 38px 21px 38px;
+    border: 1px solid rgba(0, 0, 0, 0.255);
+    padding: 21px 38px;
     font-size: 20px;
 }
 
-.header{
-    height: 100px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-color: rgba(128, 128, 128, 0.119);
-}
-.h1-header{
-    font-family: 'Times New Roman', Times, serif;
-    color: #007bff;
-}
- 
-.add{
-    font-family: 'Montserrat',sans-serif;
-    font-weight: 500;
-    font-size: 35px;
-}
 .form-label {
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 500;
     color: #007bff;
+
 }
 
-.form-control{
+.form-control {
     color: #999;
 }
 
-.form-control::placeholder{
+.form-control::placeholder {
     color: #999;
-}
-
-.controls {
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.255); 
-    width: 511px;
-    padding: 21px 38px 21px 38px;
-    height: 66px;
-    font-size: 20px;
 }
 
 .option-district {
-    color: #999; 
+    color: #999;
 }
 
 .btn-warning {
@@ -75,39 +39,18 @@
     gap: 25.71px;
     background: #FF9900;
     border-radius: 10px;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     font-weight: 500;
     line-height: 30.48px;
-    text-align: center; 
+    text-align: center;
 }
 
+.btn-warning:hover{
+    background-color: #1d2c61dd;
+    color: white;
+}
 
-.span-required{
+.span-required {
     color: red;
-}
-
-.option-district{
-    color: #999;
-}
-
-.row{
-    width: 1122;
-    height: 757;
-    gap: 100;
-}
-
-.first-div{
-    width: Hug (511px)px;
-    height: Hug (757px)px;
-    gap: 35px;
-    opacity: 0px;
-
-}
-.secont-div{
-    width: Hug (511px)px;
-    height: Hug (635px)px;
-    gap: 35px;
-    opacity: 0px;
-
 }

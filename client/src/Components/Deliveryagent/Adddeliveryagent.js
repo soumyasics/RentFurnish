@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Adddeliveryagent.css';
 import axios from 'axios';
+import Shopnav from '../Navbar/Shopnav';
+import Showdropdown from '../Shops/Shopdropdown';
 
 const Adddeliveryagent = () => {
     const [Data, setData] = useState({
@@ -34,7 +36,7 @@ const Adddeliveryagent = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         let newValue;
-    
+        
         if (name === "phone") {
             newValue = handlePhoneNumberChange(value);
         } else if (name === "name" || name === "vehicleType") {
@@ -42,14 +44,15 @@ const Adddeliveryagent = () => {
         } else {
             newValue = value;
         }
-    
+        
         setData({ ...Data, [name]: newValue });
-    
+        
         setErrors((prevErrors) => ({
             ...prevErrors,
             [name]: newValue.trim() === "" ? `${name.charAt(0).toUpperCase() + name.slice(1)} required` : null
         }));
     };
+    
     
 
     const validateForm = () => {
@@ -82,41 +85,50 @@ const Adddeliveryagent = () => {
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    setErrors(formErrors);
-
-    if (Object.keys(formErrors).length === 0) {
-        try {
-            const result = await axios.post('http://localhost:4027/rentfurnish_api/addDeliveryAgent', Data);
-            if (result.data.status === 200) {
-                alert("Registration Successful");
-            } else if (result.data.status === 409) {
-                const msg = result.data.msg;
-                setErrors({ email: msg, phone: msg, licenceNumber: msg, vehicleNumber: msg });
-            } else {
-                setErrors({ form: "Data not inserted. Please try again later." });
-            }
-        } catch (err) {
-            console.error("Error", err);
-            setErrors({ form: "An unexpected error occurred. Please try again later." });
-        }
-    }
-};
-
+        e.preventDefault();
+        const formErrors = validateForm();
+        setErrors(formErrors);
     
+        if (Object.keys(formErrors).length === 0) {
+            try {
+                const result = await axios.post('http://localhost:4027/rentfurnish_api/addDeliveryAgent', Data);
+                if (result.data.status === 200) {
+                    alert("Registration Successful");
+                } else if (result.data.status === 409) {
+                    const msg = result.data.msg;
+                    let specificErrors = {};
+    
+                    if (msg.includes("Licence Number")) {
+                        specificErrors.licenceNumber = msg;
+                    } else if (msg.includes("Vehicle Number")) {
+                        specificErrors.vehicleNumber = msg;
+                    } else if (msg.includes("Phone Number")) {
+                        specificErrors.phone = msg;
+                    } else if (msg.includes("E-Mail Id")) {
+                        specificErrors.email = msg;
+                    } else {
+                        specificErrors.form = msg;
+                    }
+                    setErrors(specificErrors);
+                } else {
+                    setErrors({ form: "Data not inserted. Please try again later." });
+                }
+            } catch (err) {
+                console.error("Error", err);
+                setErrors({ form: "An unexpected error occurred. Please try again later." });
+            }
+        }
+    };
+    
+
     return (
-        <div>
-            <div className="container mt-5">
-                {/* <div className="d-flex add mb-4">
-                    <h2 className="back-arrow">
-                        <i className="ri-arrow-left-line"></i> Add delivery agent
-                    </h2>
-                </div> */}
-                <form onSubmit={handleSubmit}>
+        <div><Shopnav/><Showdropdown/>
+            <div className="container mt-3 col-10">
+                <div className='form-style'>
+                <form onSubmit={handleSubmit} >
                     <div className="row">
-                        <div className="col-md-6 first-div">
-                            <h3 className="section-title">Personal information</h3>
+                        <div className="col-md-6 first-div container-fluid">
+                            <h3 className="section-title">Personal information</h3><br/>
                             <div className="mb-3">
                                 <label className="form-label">Full name</label><span className="text-danger">*</span>
                                 <input type="text" 
@@ -158,19 +170,6 @@ const Adddeliveryagent = () => {
                                 {errors.phone && <span className='span-required'>{errors.phone}</span>}
                             </div>
                             <div className="mb-3">
-                                <label className="form-label">Address</label><span className="text-danger">*</span>
-                                <textarea className="form-control address" 
-                                name="address" 
-                                rows={3} 
-                                value={Data.address} 
-                                onChange={handleChange} 
-                                placeholder="Address"></textarea>
-                                {errors.address && <span className='span-required'>{errors.address}</span>}
-                            </div>
-                        </div>
-                        <div className="col-md-6 second-div">
-                            <h3 className="section-title">Vehicle information</h3>
-                            <div className="mb-3">
                                 <label className="form-label">License Number</label><span className="text-danger">*</span>
                                 <input type="text" 
                                 className="form-control controls" 
@@ -180,6 +179,20 @@ const Adddeliveryagent = () => {
                                 placeholder="Licence Number" />
                                 {errors.licenceNumber && <span className='span-required'>{errors.licenceNumber}</span>}
                             </div>
+                            <div className="mb-3">
+                                <label className="form-label">Address</label><span className="text-danger">*</span>
+                                <textarea className="form-control address" 
+                                name="address" 
+                                rows={2} 
+                                value={Data.address} 
+                                onChange={handleChange} 
+                                placeholder="Address"></textarea>
+                                {errors.address && <span className='span-required'>{errors.address}</span>}
+                            </div>
+                        </div>
+                        <div className="col-md-6 second-div container-fluid">
+                            <h3 className="section-title">Vehicle information</h3><br/>
+                            
                             <div className="mb-3">
                                 <label className="form-label">Vehicle type</label><span className="text-danger">*</span>
                                 <input type="text" 
@@ -199,8 +212,8 @@ const Adddeliveryagent = () => {
                                 onChange={handleChange} 
                                 placeholder="Vehicle Number" />
                                 {errors.vehicleNumber && <span className='span-required'>{errors.vehicleNumber}</span>}
-                            </div>
-                            <h3 className="section-title mt-4">Delivery area section</h3>
+                            </div><br/><br/><br/>
+                            <h3 className="section-title mt-4">Delivery area section</h3><br/>
                             <div className="mb-3">
                                 <label className="form-label">Area name / Landmark</label><span className="text-danger">*</span>
                                 <input type="text" 
@@ -233,6 +246,7 @@ const Adddeliveryagent = () => {
                         </button>
                     </div>
                 </form>
+                </div>
             </div><br />
         </div>
     );

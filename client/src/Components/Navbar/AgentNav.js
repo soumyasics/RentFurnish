@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../Assets/logo1.png'
+import '../Navbar/AgentNav.css'
 
 function AgentNav() {
   return (
@@ -13,5 +14,4 @@ function AgentNav() {
     </div>
   )
 }
-
 export default AgentNav
