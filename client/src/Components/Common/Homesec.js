@@ -22,7 +22,7 @@ function Homesec() {
                     <span style={{paddingLeft:"23px"}}>property setup to attract more guests</span></p>
                     <p className='ri-checkbox-circle-line'>Get discovered quickly with our  Quality rating system</p>
                     <p className='ri-checkbox-circle-line'>Sell up to 30% more nights with the Smart Flex<br/>
-                    <span style={{paddingLeft:"23px"}}>Reservations programme, which adds flexibility to some</span> <span style={{paddingLeft:"23px"}}>of your existing cancellation policies to attract more </span><span style={{paddingLeft:"23px"}}>guests.</span></p>
+                    <span style={{paddingLeft:"23px"}}>Reservations programme, which adds flexibility to some</span> of your <br/><span style={{paddingLeft:"23px"}}>existing cancellation policies to attract moreguests.</span></p>
 
                 </div>
             </div>
