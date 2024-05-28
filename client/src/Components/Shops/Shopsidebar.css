@@ -1,0 +1,89 @@
+.sidebar {
+  background-color: #1d2c61;
+  height: 1000px;
+  color: #ffffff;
+  padding-top: 20px;
+}
+
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile-email {
+  margin: 0;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-item {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ffffff;
+  width: 90%;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15.45px;
+  font-weight: 500;
+  line-height: 18.84px;
+  text-align: center;
+  box-shadow: 0px 2.31px 2.31px 0px #00000040;
+  box-sizing: border-box;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: #4f65b1;
+  color: #f3f3f5;
+}
+
+.logout-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logout-button {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  width: 60%;
+  padding: 10px 40px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+}
+
+.logout-button:hover {
+  background-color: #4f65b1;
+  color: #0A1F54;
+}
+
+.button-style {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
