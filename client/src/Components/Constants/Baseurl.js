@@ -18,8 +18,6 @@ const axiosInstance = axios.create({
      url :"http://localhost:4027",
     //  url:  "http://hybrid.srishticampus.in:4027/"
     
-
-
   });
    
   export default axiosInstance

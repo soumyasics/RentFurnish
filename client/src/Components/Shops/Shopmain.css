@@ -1,0 +1,14 @@
+.shopsmain-container {
+    display: flex;
+  }
+  
+  .shopsmain-sidebar {
+    flex: 1;
+    max-width: 300px; 
+  }
+  
+  .shopsmain-content {
+    flex: 3;
+    padding: 0px;
+  }
+  

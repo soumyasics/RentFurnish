@@ -23,7 +23,8 @@ function Userforgetpswd() {
         <div className='col-sm-12 col-md-4 col-lg-4 userlogin-main-two'>
           <h4>Recover Password</h4>
           <div className='col-6 pb-3"'>
-            <input type='text' placeholder='Enter Your Email'/>
+            <input type='text' placeholder='Enter You
+            r Email'/>
           </div>
           <div className='col-6 pb-3"'>
             <input type='password' placeholder='Enter Password'/>

@@ -6,6 +6,8 @@ import "../Admin/Admindashboard.css"
 import Shophomenav from '../Navbar/Shophomenav';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import Shopnav from '../Navbar/Shopnav';
+import Showdropdown from './Shopdropdown';
 
 function Shopdashboard() {
   const navigate=useNavigate()
@@ -21,21 +23,21 @@ function Shopdashboard() {
   },[])
   return (
     <>
-    <Shophomenav/>
+    <div><Shopnav/><Showdropdown/>
           <div className="container mainclass">
         <div className="row">
-          <div className="col-12 d-flex justify-content-center buttonmain">
-            <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
+          <div className="col-10 d-flex justify-content-center buttonmain">
+            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">
                 Delivery Agent
               </button>
-            </div>
-            <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
+            </div> */}
+            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">
                 View Return Requests
               </button>
-            </div>
-            <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
+            </div> */}
+            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">
                 Fine Calculation
               </button>
@@ -44,7 +46,7 @@ function Shopdashboard() {
               <button type="submit" className="btn btn-primary btn-block">
                 View Complaints
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="col-12 d-flex boxmain">
             <div className="col-sm-4 col-md-4 col-lg-4 d-flex pb-4 boxmain1 ">
@@ -100,8 +102,8 @@ function Shopdashboard() {
                 
           </div>
         </div>
+        </div>
 </div>
-<Footer/>
     </>
   )
 }

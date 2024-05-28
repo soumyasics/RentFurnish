@@ -84,7 +84,7 @@ function Shopsignin() {
   return (
     <div className="usersignin-main">
       <div className="container">
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box1 border">
               <h4>General Information</h4>
