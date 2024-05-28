@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Shopdashboard.css"
 import customer from "../../Assets/deliveryicon.png";
 import delivery from "../../Assets/orders.png";
@@ -12,10 +12,13 @@ function Shopdashboard() {
   const shopid=localStorage.getItem("shopid")
   console.log(shopid);
 
-  if(shopid===null){
-    navigate("/shoplogin")
-  }
-
+  useEffect(()=>{
+    if(shopid===null){
+      navigate("/shoplogin")
+    }
+  
+  
+  },[])
   return (
     <>
     <Shophomenav/>

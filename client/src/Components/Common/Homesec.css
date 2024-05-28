@@ -15,7 +15,16 @@
 .sechome-right p{
     margin-top: 20px;
     padding: 5px;
-    text-align:start;
+    /* text-align:start; */
     font-size: 22px;
     color: rgb(179, 139, 37);
+    text-align: justify;
+}
+.sechome-right span{
+    margin-top: 20px;
+    padding: 5px;
+    /* text-align:start; */
+    font-size: 22px;
+    color: rgb(179, 139, 37);
+    justify-content:baseline;
 }

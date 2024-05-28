@@ -134,7 +134,7 @@ function Shophomenav() {
       <React.Fragment>
         <div className='container'>
           <div className='userprofilehead'>
-          <Link to="/shopdashboard"  style={{textDecoration:"none"}}> <h3 className='ri-arrow-left-line' onClick={toggleProfileModal}>Profile</h3></Link> 
+          <Link to="/shopdashboard"  style={{textDecoration:"none"}}> <h3 className='ri-arrow-left-line' onClick={toggleProfileModal} style={{textAlign:"left"}}>Profile</h3></Link> 
           </div>
           <div className='row'>
             <div className='col-12 text-center'>

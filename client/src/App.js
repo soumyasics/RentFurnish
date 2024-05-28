@@ -56,7 +56,7 @@ function App() {
 
 
           {/* Admin */}
-          <Route path='/adminlogin' element={<Adminlogin/>}/>
+          <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>

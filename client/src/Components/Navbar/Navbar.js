@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import "./Navbar.css"
-import { useNavigate} from "react-router-dom"
+import { Link, useNavigate} from "react-router-dom"
+import admin from "../../Assets/logo1.png";
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -25,9 +27,20 @@ function Navbar() {
   return (
     <div>
         
-    <nav className='navmain'>
-        <a href="/">Home</a>
-        <a href="#">
+    <nav className='navmain d-flex'>
+      <div className='col-3' style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+      <img src={admin} alt='imag' width="30px" height="30px"/>
+          <h5>Rental Furniture</h5>
+          <p >Rent A Furniture Online Today</p>
+
+      </div>
+      <div
+      className='col-9'
+       style={{paddingTop:"20px"}}
+      >
+
+        <Link to="/">Home</Link>
+        <Link to="#">
             <select style={{backgroundColor:"#8e3333"}}>
                 <option>Properties</option>
                 <option>House</option>
@@ -36,19 +49,21 @@ function Navbar() {
                 {/* <option>HomeApplinces</option> */}
                 <option>Home decors</option>
             </select>
-        </a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        </Link>
+        <Link to="#">About</Link>
+        <Link to="#">Contact</Link>
         {/* <a href="#"> */}
             <select style={{width:"70px",backgroundColor:"#8e3333"}}  value={selectedOption} onChange={handleOptionChange}>
-                <option >Login</option>
+              <option hidden>Login</option>
+            <option value="adminlogin"  >Admin</option>
+            <option value="shoplogin">Shops</option>     
                 <option value="userlogin">User</option>
-                <option value="shoplogin">Shops</option>
                 <option value="agentlogin">Delivery Agent</option>
                 {/* <option>HomeApplinces</option> */}
-                <option value="adminlogin">Admin</option>
             </select>
         {/* </a> */}
+        </div>
+
     </nav>
 
     </div>
