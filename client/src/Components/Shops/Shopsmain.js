@@ -1,6 +1,5 @@
 import React from 'react';
 import Shopsidebar from './Shopsidebar';
-import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 import '../Shops/Shopmain.css'; 
 import Shopdashboard from './Shopdashboard';
 import Shoplogin from './Shopdashboard';

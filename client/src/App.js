@@ -56,13 +56,10 @@ function App() {
           <Route path='/shopsidebar' element={<Shopsidebar/>}/>
           <Route path='/shopdropdown' element={<Shopdropdown/>}/>
 
-
           <Route path='/shop-dashboard' element={[<Shopsmain data="shopownerdashboard"/>]}/>
           <Route path='/shop-adddeliveryagent' element={[<Shopsmain data="adddeliveryagent"/>]}/>
           <Route path='/shop-returnrequest' element={[<Shopsmain data="returnrequest"/>]}/>
           <Route path='/shop-inspection' element={[<Shopsmain data="shop-inspections"/>]}/>
-
-
 
 
           {/* Delivery Agent */}
