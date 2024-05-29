@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   
   //local api 
   
-    baseURL: 'http://localhost:4010/rentfurnish_api', 
+    baseURL: 'http://localhost:4027/rentfurnish_api', 
   
     headers: {
       'Content-Type': 'application/json',
@@ -18,8 +18,6 @@ const axiosInstance = axios.create({
      url :"http://localhost:4010",
     //  url:  "http://hybrid.srishticampus.in:4027/"
     
-
-
   });
    
   export default axiosInstance
