@@ -5,7 +5,11 @@ name: {
     type: String,
     required: true,
   },
-  
+  shopId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'shops',
+    required:true
+  },
  
   phone: {
     type: Number,
