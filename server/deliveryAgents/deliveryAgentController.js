@@ -51,6 +51,7 @@ const addDeliveryAgent =async (req, res) => {
 
     const shops = new deliveryagents({
     name: req.body.name,
+    shopId:req.body.shopId,
         phone: req.body.phone,
         email: req.body.email,
         password: req.body.password,
