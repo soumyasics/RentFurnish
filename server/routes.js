@@ -25,6 +25,7 @@ router.post("/updateDeliveryAgentprofile/:id",DeliveryAgent.updateDeliveryAgentp
 router.post("/deleteDeliveryAgentById/:id",DeliveryAgent.deleteDeliveryAgentById)
 router.post("/forgotPwdDeliveryAgent",DeliveryAgent.forgotPwdDeliveryAgent)
 router.post("/viewallDeliveryAgentsByDistrict/:district",DeliveryAgent.viewallDeliveryAgentsByDistrict)
+router.post("/viewDeliveryAgentbyShopid/:id",DeliveryAgent.viewDeliveryAgentbyShopid)
 
 
 module.exports=router
