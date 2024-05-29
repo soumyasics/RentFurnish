@@ -173,7 +173,7 @@ const viewDeliveryAgentbyid = (req, res) => {
 
 const viewallDeliveryAgents = (req, res) => {
     deliveryagents
-        .find({})
+        .find({isActive:true})
         .exec()
         .then((data) => {
             if (!data) {
@@ -190,6 +190,27 @@ const viewallDeliveryAgents = (req, res) => {
         });
 };
 //view all  completed
+
+// view Delivery agents By Shop Id
+const viewDeliveryAgentbyShopid = (req, res) => {
+    deliveryagents
+        .find({shopId: req.params.id })
+        .exec()
+        .then((data) => {
+            if (!data) {
+                return res.status(404).json({ error: "Shop not found" });
+            }
+            res.json({
+                status: 200,
+                data: data,
+            });
+        })
+        .catch((err) => {
+            console.error("Error finding shop by ID:", err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+};
+//viewDeliveryAgentbyid completed
 
 
 const viewallDeliveryAgentsByDistrict = (req, res) => {
@@ -301,5 +322,6 @@ module.exports = {
     viewallDeliveryAgents,
     updateDeliveryAgentprofile,
     deleteDeliveryAgentById,
-    viewallDeliveryAgentsByDistrict
+    viewallDeliveryAgentsByDistrict,
+    viewDeliveryAgentbyShopid
 };
