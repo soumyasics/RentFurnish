@@ -60,6 +60,7 @@ const addDeliveryAgent =async (req, res) => {
         deliveryArea: req.body.deliveryArea,
         deliveryDistrict: req.body.deliveryDistrict,
         licenceNumber: req.body.licenceNumber
+        
     });
    await shops
         .save()

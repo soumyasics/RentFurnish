@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Adddeliveryagent.css';
-import axios from 'axios';
+// import axios from 'axios';
 import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from '../Shops/Shopdropdown';
+import axiosInstance from '../Constants/Baseurl';
 
 const Adddeliveryagent = () => {
     const [Data, setData] = useState({
@@ -32,7 +33,7 @@ const Adddeliveryagent = () => {
         }
         return newValue;
     };
-
+console.log(Data);
     const handleChange = (e) => {
         const { name, value } = e.target;
         let newValue;
@@ -91,7 +92,7 @@ const Adddeliveryagent = () => {
     
         if (Object.keys(formErrors).length === 0) {
             try {
-                const result = await axios.post('http://localhost:4027/rentfurnish_api/addDeliveryAgent', Data);
+                const result = await axiosInstance.post('addDeliveryAgent', Data);
                 if (result.data.status === 200) {
                     alert("Registration Successful");
                 } else if (result.data.status === 409) {

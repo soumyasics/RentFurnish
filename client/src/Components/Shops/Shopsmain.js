@@ -9,8 +9,7 @@ import Inspections from './Inspections';
 
 function Shopsmain({ data }) {
   return (
-    <div>
-    <div className="shopsmain-container">
+    <div className="shopsmain-container"  >
       <div className="shopsmain-sidebar">
         <Shopsidebar />
       </div>
@@ -18,9 +17,9 @@ function Shopsmain({ data }) {
         {data === "shopownerdashboard" ?( <Shopdashboard/>
         ):data==="returnrequest"?(<ReturnRequest/>
         ):data==="shop-inspections"?(<Inspections/>
-        ):<Shoplogin/> }
+        ):data==="add-deliveryagent"?(<Adddeliveryagent/>)
+        :<Shoplogin/> }
       </div>
-    </div>
     </div>
   );
 }
