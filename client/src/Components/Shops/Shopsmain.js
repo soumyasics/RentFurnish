@@ -6,6 +6,7 @@ import Shopdashboard from './Shopdashboard';
 import Shoplogin from './Shopdashboard';
 import ReturnRequest from './ReturnRequest';
 import Inspections from './Inspections';
+import Viewalldeliverybyshop from './Viewalldeliverybyshop';
 
 function Shopsmain({ data }) {
   return (
@@ -18,7 +19,8 @@ function Shopsmain({ data }) {
         ):data==="returnrequest"?(<ReturnRequest/>
         ):data==="shop-inspections"?(<Inspections/>
         ):data==="add-deliveryagent"?(<Adddeliveryagent/>)
-        :<Shoplogin/> }
+        :data==="view-deliveryagentbyshop"?(<Viewalldeliverybyshop/>):
+        <Shoplogin/> }
       </div>
     </div>
   );

@@ -5,8 +5,13 @@ import './Adddeliveryagent.css';
 import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from '../Shops/Shopdropdown';
 import axiosInstance from '../Constants/Baseurl';
+import { toast } from 'react-toastify';
 
 const Adddeliveryagent = () => {
+
+    const shopid=localStorage.getItem("shopid")
+    console.log(shopid);
+  
     const [Data, setData] = useState({
         name: '',
         email: '',
@@ -17,7 +22,8 @@ const Adddeliveryagent = () => {
         vehicleType: '',
         vehicleNumber: '',
         deliveryArea: '',
-        deliveryDistrict: ''
+        deliveryDistrict: '',
+        shopId:shopid
     });
 
     const districts = [
@@ -65,17 +71,25 @@ console.log(Data);
             formErrors.email = 'Email required';
         if (!Data.password) 
             formErrors.password = 'Password required';
+        else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(Data.password))
+            formErrors.password = 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character';
         if (!Data.phone) 
             formErrors.phone = 'Phone number required';
+        else if (!/^\d{10}$/.test(Data.phone)) 
+            formErrors.phone = 'Phone number must be exactly 10 digits';
         if (!Data.address) 
             formErrors.address = 'Address required';
         if (!Data.licenceNumber) 
             formErrors.licenceNumber = 'License number required';
+        else if (!/^[A-Za-z0-9]{15}$/.test(Data.licenceNumber))
+            formErrors.licenceNumber = 'License number must be exactly 15 characters, including both letters and numbers';
         if (!Data.vehicleType) 
             formErrors.vehicleType = 'Vehicle type required';
         if (!Data.vehicleNumber) 
             formErrors.vehicleNumber = 'Vehicle number required';
-        if (!Data.deliveryArea) 
+        else if (!/^[A-Z0-9]{6,10}$/.test(Data.vehicleNumber))
+            formErrors.vehicleNumber = 'Vehicle number must be 6 to 10 characters long and consist of uppercase letters and digits';     
+           if (!Data.deliveryArea) 
             formErrors.deliveryArea = 'Area name/Landmark required';
         if (!Data.deliveryDistrict) 
             formErrors.deliveryDistrict = 'District required';
@@ -94,7 +108,8 @@ console.log(Data);
             try {
                 const result = await axiosInstance.post('addDeliveryAgent', Data);
                 if (result.data.status === 200) {
-                    alert("Registration Successful");
+                    toast.success("Registration Successful");
+                    window.location.reload()
                 } else if (result.data.status === 409) {
                     const msg = result.data.msg;
                     let specificErrors = {};
