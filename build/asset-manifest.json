@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rentfurnish/static/css/main.6e7502f3.css",
-    "main.js": "/rentfurnish/static/js/main.c2fb0b1f.js",
+    "main.css": "/rentfurnish/static/css/main.35de6112.css",
+    "main.js": "/rentfurnish/static/js/main.82bb41b0.js",
     "static/js/787.12ea7f4a.chunk.js": "/rentfurnish/static/js/787.12ea7f4a.chunk.js",
     "static/media/sechomegrl.jpg": "/rentfurnish/static/media/sechomegrl.e04fec4192977c476b76.jpg",
     "static/media/livingroom.jpg": "/rentfurnish/static/media/livingroom.9a1d9ab1f39f4b95432c.jpg",
@@ -18,13 +18,14 @@
     "static/media/remixicon.woff2?t=1708865856766": "/rentfurnish/static/media/remixicon.39f4def56d0e8712909a.woff2",
     "static/media/forgetpswd.jpg": "/rentfurnish/static/media/forgetpswd.11c32896c615c23cd8dc.jpg",
     "static/media/Rectangle 24.png": "/rentfurnish/static/media/Rectangle 24.ff7f0e410062d70d8f96.png",
+    "static/media/image 27.jpg": "/rentfurnish/static/media/image 27.c5c2f0ff30dc20f1f618.jpg",
     "index.html": "/rentfurnish/index.html",
-    "main.6e7502f3.css.map": "/rentfurnish/static/css/main.6e7502f3.css.map",
-    "main.c2fb0b1f.js.map": "/rentfurnish/static/js/main.c2fb0b1f.js.map",
+    "main.35de6112.css.map": "/rentfurnish/static/css/main.35de6112.css.map",
+    "main.82bb41b0.js.map": "/rentfurnish/static/js/main.82bb41b0.js.map",
     "787.12ea7f4a.chunk.js.map": "/rentfurnish/static/js/787.12ea7f4a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e7502f3.css",
-    "static/js/main.c2fb0b1f.js"
+    "static/css/main.35de6112.css",
+    "static/js/main.82bb41b0.js"
   ]
 }
