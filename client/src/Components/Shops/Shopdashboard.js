@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Shopdashboard.css"
 import customer from "../../Assets/deliveryicon.png";
 import delivery from "../../Assets/orders.png";
@@ -14,38 +14,21 @@ function Shopdashboard() {
   const shopid=localStorage.getItem("shopid")
   console.log(shopid);
 
-  if(shopid===null){
-    navigate("/shoplogin")
-  }
-
+  useEffect(()=>{
+    if(shopid===null){
+      navigate("/shoplogin")
+    }
+  
+  
+  },[])
   return (
     <>
-    <div><Shopnav/><Showdropdown/>
-          <div className="container mainclass">
+    <div className='col-12'><Shopnav/><Showdropdown/>
+          <div className="container mainclass " >
         <div className="row">
-          <div className="col-10 d-flex justify-content-center buttonmain">
-            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
-                Delivery Agent
-              </button>
-            </div> */}
-            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
-                View Return Requests
-              </button>
-            </div> */}
-            {/* <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
-                Fine Calculation
-              </button>
-            </div>
-            <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
-                View Complaints
-              </button>
-            </div> */}
-          </div>
-          <div className="col-12 d-flex boxmain">
+          {/* <div className="col-10 d-flex justify-content-center buttonmain">
+          </div> */}
+          <div className="col-10 d-flex boxmain" style={{marginLeft:"-90px"}}>
             <div className="col-sm-4 col-md-4 col-lg-4 d-flex pb-4 boxmain1 ">
               <div className="boxinside1 ">
                 <div

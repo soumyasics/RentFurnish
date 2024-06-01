@@ -76,7 +76,7 @@ console.log(updatedShop);
         console.log(res);
         if(res.data.status==200){
           toast.success("Updated Successfully")
-          navigate("/shopdashboard")
+          navigate("/shop-dashboard")
         }
       })
       .catch((err) => {
@@ -135,7 +135,7 @@ const validateForm = (formData) => {
       <div className="container">
         <div className="row">
           <div className="col-12 shopeditprofilemain">
-          <Link to="/shopdashboard" style={{textDecoration:"none"}}>  <p className="ri-arrow-left-line">Edit Profile</p></Link>
+          <Link to="/shop-dashboard" style={{textDecoration:"none"}}>  <p className="ri-arrow-left-line">Edit Profile</p></Link>
           </div>
           <div className="col-sm-12 col-lg-12 col-md-12">
           <form onSubmit={handleSubmit}>

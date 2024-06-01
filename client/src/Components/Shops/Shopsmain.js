@@ -6,11 +6,11 @@ import Shopdashboard from './Shopdashboard';
 import Shoplogin from './Shopdashboard';
 import ReturnRequest from './ReturnRequest';
 import Inspections from './Inspections';
+import Viewalldeliverybyshop from './Viewalldeliverybyshop';
 
 function Shopsmain({ data }) {
   return (
-    <div>
-    <div className="shopsmain-container">
+    <div className="shopsmain-container"  >
       <div className="shopsmain-sidebar">
         <Shopsidebar />
       </div>
@@ -18,9 +18,10 @@ function Shopsmain({ data }) {
         {data === "shopownerdashboard" ?( <Shopdashboard/>
         ):data==="returnrequest"?(<ReturnRequest/>
         ):data==="shop-inspections"?(<Inspections/>
-        ):<Shoplogin/> }
+        ):data==="add-deliveryagent"?(<Adddeliveryagent/>)
+        :data==="view-deliveryagentbyshop"?(<Viewalldeliverybyshop/>):
+        <Shoplogin/> }
       </div>
-    </div>
     </div>
   );
 }

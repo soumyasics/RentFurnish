@@ -54,6 +54,6 @@ name: {
     type: String,
     required: true,
   }
-
+  
 });
 module.exports = mongoose.model("deliveryagents", deliveryAgentSchema);
