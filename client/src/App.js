@@ -36,6 +36,7 @@ import Shopprofile from './Components/Shops/Shopprofile';
 import DeliveryDashboard from './Components/Deliveryagent/DeliveryDashboard';
 import Deliverysidebar from './Components/Deliveryagent/Deliverysidebar';
 import Deliverymain from './Components/Deliveryagent/Deliverymain';
+import Deliveryagenteditpage from './Components/Deliveryagent/Deliveryagenteditpage';
 
 function App() {
   return (
@@ -69,7 +70,7 @@ function App() {
           <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
           <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
           <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/>
-
+          <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/deliverysidebar' element={[<Deliverysidebar/>]}/>
 
