@@ -11,8 +11,8 @@ function Hometop() {
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-6 hometop-main-left ">
             <h4>Welcome to Rental  Management System</h4>
-            <p>
-              <span>
+            <p className="hometop-main-spn">
+              <span >
                 <span >Here ,</span>we believe that building a strong
                 professional network begins with your participation
               </span>
@@ -23,29 +23,32 @@ function Hometop() {
             </p>
             <h5 className="ri-service-fill">Our Rental Service Includes</h5>
             <h6 className="ri-arrow-right-double-fill">
-              Search Assistance: Our team searches for available local
-              properties and suggests options for your consideration.
+              Search Assistance: Our team searches for available local<br/>
+              <span style={{paddingLeft:"23px"}}>properties and suggests options for your consideration.</span>
             </h6>
-            <h6 className="ri-arrow-right-double-fill">
+            {/* <h6 className="ri-arrow-right-double-fill">
               Application Support: We assist in preparing your application
               package and family profile for a strong submission to landlords.
+            </h6> */}
+            <h6 className="ri-arrow-right-double-fill">
+              Rental Offer Submission: Our team takes care of<br/>
+              <span style={{paddingLeft:"23px"}}>submitting your
+              rental offer, increasing your chances of</span><br/><span style={{paddingLeft:"23px"}}>securing your desired
+              property.</span>
             </h6>
             <h6 className="ri-arrow-right-double-fill">
-              Rental Offer Submission: Our team takes care of submitting your
-              rental offer, increasing your chances of securing your desired
-              property.
+              Lease Review: We thoroughly review the lease agreement<br/>
+              <span style={{paddingLeft:"23px"}}>to protect
+              your interests and ensure clarity.</span>
             </h6>
             <h6 className="ri-arrow-right-double-fill">
-              Lease Review: We thoroughly review the lease agreement to protect
-              your interests and ensure clarity.
+              Incheck Inspection: We’re present for the check-in <br/><span style={{paddingLeft:"23px"}}>inspection,
+              ensuring the property meets your expectations.</span>
             </h6>
             <h6 className="ri-arrow-right-double-fill">
-              Incheck Inspection: We’re present for the check-in inspection,
-              ensuring the property meets your expectations.
-            </h6>
-            <h6 className="ri-arrow-right-double-fill">
-              Exit Inspection Support: When it’s time to move out, we facilitate
-              the exit inspection to ensure a smooth process.
+              Exit Inspection Support: When it’s time to move out, we<br/>
+              <span style={{paddingLeft:"23px"}}>facilitate
+              the exit inspection to ensure a smooth process.</span> 
             </h6>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 hometop-main-left ">
@@ -59,9 +62,9 @@ function Hometop() {
                   <div class="carousel-item active" data-bs-interval="10000">
                     <img src={img} class="d-block w-100" alt="..." />
                   </div>
-                  <div class="carousel-item" data-bs-interval="2000">
+                  {/* <div class="carousel-item" data-bs-interval="2000">
                     <img src={img2} class="d-block w-100" alt="..." />
-                  </div>
+                  </div> */}
                   <div class="carousel-item">
                     <img src={img3} class="d-block w-100" alt="..." />
                   </div>

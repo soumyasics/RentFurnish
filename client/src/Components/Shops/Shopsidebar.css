@@ -1,7 +1,8 @@
 .sidebar {
   background-color: #1d2c61;
-  height: 1000px;
-  color: #ffffff;
+/* height: 100vh;
+overflow: auto; */
+color: #ffffff;
   padding-top: 20px;
 }
 

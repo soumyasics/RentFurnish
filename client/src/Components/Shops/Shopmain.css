@@ -1,4 +1,4 @@
-.shopsmain-container {
+/* .shopsmain-container {
     display: flex;
   }
   
@@ -11,4 +11,32 @@
     flex: 3;
     padding: 0px;
   }
+   */
+
+   /* Shopmain.css */
+.shopsmain-container {
+  display: flex;
+  min-height: 100vh;
   
+}
+
+.shopsmain-sidebar {
+  flex: 0 0 auto; /* Sidebar takes its natural width */
+  background-color: #1d2c61;
+}
+
+.shopsmain-content {
+  flex: 1 1 auto; /* Content takes remaining space */
+  overflow: hidden;
+}
+
+/* Shopsidebar.css */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1d2c61;
+  color: #ffffff;
+  padding-top: 20px;
+  width: 300px;
+}
