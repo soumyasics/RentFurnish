@@ -119,7 +119,7 @@ const loginDeliveryAgent = async (req, res) => {
         const user = await deliveryagents.findOne({ email: email });
 
         if (user) {
-            if (user.isactive === false) {
+            if (user.isActive === false) {
                 return res.json({
                     status: 403,
                     msg: "User is not active. Please contact administrator."
