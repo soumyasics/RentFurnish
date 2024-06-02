@@ -154,7 +154,7 @@ function Viewalldeliverybyshop() {
             </div>
             <div className="col-12 d-flex">
               <div className="col-6 viewdelshopbtnone">
-                <button type="submit" className="viewdelshopbtnoneedit">
+                <button type="submit" className="viewdelshopbtnoneedit" >
                   Edit
                 </button>
               </div>

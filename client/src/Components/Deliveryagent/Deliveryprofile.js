@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Deliveryprofile({data}) {
+  
   return (
     <div className="modal-container">
     <div className="modal-content">
