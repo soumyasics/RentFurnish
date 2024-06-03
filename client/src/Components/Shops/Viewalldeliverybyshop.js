@@ -3,7 +3,7 @@ import Shopnav from "../Navbar/Shopnav";
 import Shopdashboard from "./Shopdashboard";
 import Showdropdown from "./Shopdropdown";
 import "./Viewalldeliverybyshop.css";
-import adminimg from "../../Assets/admin.jpg";
+import adminimg from "../../Assets/3699591.jpg";
 import tick from "../../Assets/tickgreen.png";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../Constants/Baseurl";
@@ -70,8 +70,6 @@ function Viewalldeliverybyshop() {
       <div className="container">
         <div className="row ">
 
-
-
         {delivery && delivery.length ? (
           delivery.map((a) => {
             return (
@@ -80,8 +78,8 @@ function Viewalldeliverybyshop() {
             <div className="col text-center">
               <div className="">
                 <img
-                  src={`${url}/${a?.image?.filename}`}
-                  // src={admin1}
+                  // src={`${url}/${a?.image?.filename}`}
+                  src={adminimg}
                   alt="Profile image"
                   width="150px"
                   height="150px"
@@ -154,9 +152,9 @@ function Viewalldeliverybyshop() {
             </div>
             <div className="col-12 d-flex">
               <div className="col-6 viewdelshopbtnone">
-                <button type="submit" className="viewdelshopbtnoneedit" >
+              <Link to={`/edit-deliveryagentbyshop/${a?._id}`} style={{textDecoration:"none"}}>  <button type="submit" className="viewdelshopbtnoneedit" >
                   Edit
-                </button>
+                </button></Link>
               </div>
               <div className="col-6">
                 {/* <button className=" active-btnrf">

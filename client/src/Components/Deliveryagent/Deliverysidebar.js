@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap';
 import Deliveryprofile from './Deliveryprofile';
 import Confirmmodal from '../Navbar/Confirmmodal';
 import axiosInstance from '../Constants/Baseurl';
+import adminimg from "../../Assets/3699591.jpg";
 
 
 
@@ -68,7 +69,7 @@ useEffect(()=>{
       <div className='sidebar'>
         <div className="profile-section">
           <img
-          src={profile} 
+          src={adminimg} 
           // src={`${url}/${delivery?.image?.filename}`}
            width="200px" height="200px" alt="Profile" className="profile-image" onClick={handleProfileImageClick}/>
           <h2 className="profile-name">{delivery?.name}</h2>
