@@ -28,7 +28,7 @@ function Shopdashboard() {
         <div className="row">
           {/* <div className="col-10 d-flex justify-content-center buttonmain">
           </div> */}
-          <div className="col-10 d-flex boxmain" style={{marginLeft:"-90px"}}>
+          <div className="col-10 d-flex boxmain" style={{marginLeft:"-40px"}}>
             <div className="col-sm-4 col-md-4 col-lg-4 d-flex pb-4 boxmain1 ">
               <div className="boxinside1 ">
                 <div
