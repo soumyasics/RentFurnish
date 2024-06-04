@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/rentfurnish/static/css/main.50502428.css",
+    "main.js": "/rentfurnish/static/js/main.3ed3b698.js",
+    "static/js/787.12ea7f4a.chunk.js": "/rentfurnish/static/js/787.12ea7f4a.chunk.js",
+    "static/media/sechomegrl.jpg": "/rentfurnish/static/media/sechomegrl.e04fec4192977c476b76.jpg",
+    "static/media/livingroom.jpg": "/rentfurnish/static/media/livingroom.9a1d9ab1f39f4b95432c.jpg",
+    "static/media/admin.jpg": "/rentfurnish/static/media/admin.816be0d54c3b88625e42.jpg",
+    "static/media/remixicon.svg?t=1708865856766": "/rentfurnish/static/media/remixicon.7735fab8dbf8ff78afe9.svg",
+    "static/media/Rectangle 4.png": "/rentfurnish/static/media/Rectangle 4.8d3b5a266e0dac08b2a9.png",
+    "static/media/Homeimg1.png": "/rentfurnish/static/media/Homeimg1.87d7b73e145d4368e29c.png",
+    "static/media/Rectangle.png": "/rentfurnish/static/media/Rectangle.6997f2fae09395f96cac.png",
+    "static/media/renthome.jpg": "/rentfurnish/static/media/renthome.064373c791cc5ca2a19f.jpg",
+    "static/media/Rectangle 6.png": "/rentfurnish/static/media/Rectangle 6.f838a799df19580ff284.png",
+    "static/media/remixicon.eot?t=1708865856766": "/rentfurnish/static/media/remixicon.8542c1bb279bcd77063a.eot",
+    "static/media/remixicon.ttf?t=1708865856766": "/rentfurnish/static/media/remixicon.4c942de19d980993f612.ttf",
+    "static/media/3699591.jpg": "/rentfurnish/static/media/3699591.5e08ee56c75cc60118d4.jpg",
+    "static/media/remixicon.woff?t=1708865856766": "/rentfurnish/static/media/remixicon.28ceff39ee3e17dc99db.woff",
+    "static/media/remixicon.woff2?t=1708865856766": "/rentfurnish/static/media/remixicon.39f4def56d0e8712909a.woff2",
+    "static/media/forgetpswd.jpg": "/rentfurnish/static/media/forgetpswd.11c32896c615c23cd8dc.jpg",
+    "static/media/Rectangle 24.png": "/rentfurnish/static/media/Rectangle 24.ff7f0e410062d70d8f96.png",
+    "static/media/image 27.jpg": "/rentfurnish/static/media/image 27.c5c2f0ff30dc20f1f618.jpg",
+    "index.html": "/rentfurnish/index.html",
+    "main.50502428.css.map": "/rentfurnish/static/css/main.50502428.css.map",
+    "main.3ed3b698.js.map": "/rentfurnish/static/js/main.3ed3b698.js.map",
+    "787.12ea7f4a.chunk.js.map": "/rentfurnish/static/js/787.12ea7f4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50502428.css",
+    "static/js/main.3ed3b698.js"
+  ]
+}
