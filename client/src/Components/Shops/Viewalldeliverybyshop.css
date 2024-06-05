@@ -102,4 +102,11 @@ border:#F90;
       right: 0;
     }
   }
+
+  .viewalldelbyshop-lottie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+   }
   

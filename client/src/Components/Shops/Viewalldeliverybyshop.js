@@ -7,6 +7,9 @@ import adminimg from "../../Assets/3699591.jpg";
 import tick from "../../Assets/tickgreen.png";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../Constants/Baseurl";
+import datalottie from "../../Assets/nodatalottie.json"
+import Lottie from "lottie-react"
+
 
 function Viewalldeliverybyshop() {
 
@@ -187,7 +190,9 @@ function Viewalldeliverybyshop() {
 );
 })
 ) : (
-<div style={{color:"red",fontSize:"20px"}}>No Shops Available</div>
+<div className="viewalldelbyshop-lottie">
+  <Lottie animationData={datalottie} />
+  </div>
 )}
 
 

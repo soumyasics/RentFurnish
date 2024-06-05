@@ -1,5 +1,7 @@
 import React from 'react'
 import "./Modal.css"
+import logout from "../../Assets/logouticon.json"
+import Lottie from 'lottie-react'
 
  const Confirmmodal = ({ show, onClose, onConfirm }) => {
     if (!show) {
@@ -8,6 +10,7 @@ import "./Modal.css"
   return (
     <div className="modal-overlay">
       <div className="modal-content modalhead" style={{color:"black"}}>
+       {/* <div className='modalhead-lottie'> <Lottie animationData={logout}/></div> */}
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to logout?</p>
         <div className="modal-actions modalbutton">
