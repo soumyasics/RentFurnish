@@ -314,6 +314,24 @@ const deleteDeliveryAgentById = async (req, res) => {
 
 }
 
+const activateDeliveryAgentById = async (req, res) => {
+    await deliveryagents.findByIdAndUpdate({ _id: req.params.id }, { isActive: true }).exec()
+        .then((result) => {
+            res.json({
+                status: 200,
+                data: result,
+                msg: 'data deleted'
+            })
+        })
+        .catch(err => {
+            res.json({
+                status: 500,
+                msg: 'Error in API',
+                err: err
+            })
+        })
+
+}
 module.exports = {
     addDeliveryAgent, 
     loginDeliveryAgent,
@@ -324,5 +342,6 @@ module.exports = {
     updateDeliveryAgentprofile,
     deleteDeliveryAgentById,
     viewallDeliveryAgentsByDistrict,
-    viewDeliveryAgentbyShopid
+    viewDeliveryAgentbyShopid,
+    activateDeliveryAgentById
 };
