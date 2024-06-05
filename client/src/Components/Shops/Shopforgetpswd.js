@@ -64,7 +64,7 @@ function Shopforgetpswd() {
   return (
     <div className='userlogin-main'>
     <div className='container'>
-    <Link to="/shoplogin"><img src={img2} alt="right" width="50px" height="40px"/></Link>
+    <Link to="/shoplogin"><img src={img2} alt="right" width="30px" height="30px"/></Link>
 
       <div className='row'>
         <div className='col-sm-12 col-md-8 col-lg-8 userlogin-main-one' style={{paddingTop:"10px"}}>

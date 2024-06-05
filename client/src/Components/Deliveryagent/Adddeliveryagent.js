@@ -229,7 +229,7 @@ console.log(Data);
                                 placeholder="Vehicle Number" />
                                 {errors.vehicleNumber && <span className='span-required'>{errors.vehicleNumber}</span>}
                             </div><br/><br/><br/>
-                            <h3 className="section-title mt-4">Delivery area section</h3><br/>
+                            <h3 className="section-title mb-3">Delivery area section</h3>
                             <div className="mb-3">
                                 <label className="form-label">Area name / Landmark</label><span className="text-danger">*</span>
                                 <input type="text" 

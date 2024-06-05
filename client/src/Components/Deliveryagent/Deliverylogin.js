@@ -34,7 +34,7 @@ const loginfn=((a)=>{
       navigate("/delivery-dashboard")
     }
     else if(res.data.status==403){
-      toast.warn("User is not active. Please contact administrator.")
+      toast.warn("User is not active. Please contact Shopowner.")
     }
   })
   .catch((err)=>{
@@ -56,7 +56,7 @@ const loginfn=((a)=>{
          <img src={img} alt='image' width="600px" height="400px"/>
         </div>
         <div className='col-sm-12 col-md-4 col-lg-4 userlogin-main-two'>
-          <h4>Deliveryagent Sign in</h4>
+          <h4>Delivery Agent Sign in</h4>
           <form onSubmit={loginfn}>
           <div className='col-6 pb-3"'>
             <input type='text' placeholder='Enter Your Email' name='email' value={login.email} onChange={changefn} required/>
@@ -68,7 +68,7 @@ const loginfn=((a)=>{
            <Link to="/agentrecoverpswd" style={{textDecoration:"none", color:"black"}}><p>Recover Password ?</p></Link>
           </div>
           <div className='col-6 pb-3"'>
-            <button type='submit' className='btn btn-primary'>Sign in</button>
+            <button type='submit' className='btn btn-primary' style={{textAlign:"center",padding:"0"}}>Sign in</button>
           </div>
           </form>
             {/* <div className='col-6 pb-3"'>
