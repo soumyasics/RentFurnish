@@ -14,8 +14,8 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage }).single("image");
 
-  const customerregister = (req, res) => {
-    const customer = new customerschema({
+  const userregister = (req, res) => {
+    const shops = new customerschema({
       firstname: req.body.firstname,
       lastname:req.body.lastname,
       gender:req.body.gender,  
@@ -64,4 +64,4 @@ const storage = multer.diskStorage({
   };
   
 
-  module.exports={}
+  module.exports={userregister,upload}

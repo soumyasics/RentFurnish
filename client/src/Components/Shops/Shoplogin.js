@@ -26,7 +26,7 @@ function Shoplogin() {
         else if(result.data.status==200){
           localStorage.setItem("shopid", result.data.id)
           toast.success("Login Successfully")
-           navigate("/shopdashboard")
+           navigate("/shop-dashboard")
         }
          else if (result.data.status == 500) {
           // alert(result.data.msg);

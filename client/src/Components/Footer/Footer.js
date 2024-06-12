@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Footer.css"
-import admin from "../../Assets/logo1.png";
+import admin from "../../Assets/logowhite.png";
 
 
 function Footer() {
@@ -8,7 +8,7 @@ function Footer() {
     <div className='footermain row '>
         <div className='row d-flex'>
         <div className='col-4 sm-4 md-4 footerhead1'>
-        <img src={admin} alt='logo'/>
+        <img src={admin} alt='logo' width="40px" height="40px"/>
         <p>Rental Furniture</p>
         <h6>Rent a furniture online today!</h6>
         </div>
@@ -23,6 +23,7 @@ function Footer() {
         <p style={{fontSize:"15px"}}>8778877887</p>
         <p style={{fontSize:"15px"}}>srishticampus@gmail.com</p>
         </div>
+        <hr style={{color:"white"}}/>
         </div>
     </div>
   )

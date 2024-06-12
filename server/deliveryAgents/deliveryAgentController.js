@@ -50,7 +50,8 @@ const addDeliveryAgent =async (req, res) => {
         }else{
 
     const shops = new deliveryagents({
-        name: req.body.name,
+    name: req.body.name,
+    shopId:req.body.shopId,
         phone: req.body.phone,
         email: req.body.email,
         password: req.body.password,
@@ -60,6 +61,7 @@ const addDeliveryAgent =async (req, res) => {
         deliveryArea: req.body.deliveryArea,
         deliveryDistrict: req.body.deliveryDistrict,
         licenceNumber: req.body.licenceNumber
+        
     });
    await shops
         .save()
@@ -117,7 +119,7 @@ const loginDeliveryAgent = async (req, res) => {
         const user = await deliveryagents.findOne({ email: email });
 
         if (user) {
-            if (user.isactive === false) {
+            if (user.isActive === false) {
                 return res.json({
                     status: 403,
                     msg: "User is not active. Please contact administrator."
@@ -172,7 +174,7 @@ const viewDeliveryAgentbyid = (req, res) => {
 
 const viewallDeliveryAgents = (req, res) => {
     deliveryagents
-        .find({})
+        .find({isActive:true})
         .exec()
         .then((data) => {
             if (!data) {
@@ -189,6 +191,27 @@ const viewallDeliveryAgents = (req, res) => {
         });
 };
 //view all  completed
+
+// view Delivery agents By Shop Id
+const viewDeliveryAgentbyShopid = (req, res) => {
+    deliveryagents
+        .find({shopId: req.params.id })
+        .exec()
+        .then((data) => {
+            if (!data) {
+                return res.status(404).json({ error: "Shop not found" });
+            }
+            res.json({
+                status: 200,
+                data: data,
+            });
+        })
+        .catch((err) => {
+            console.error("Error finding shop by ID:", err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+};
+//viewDeliveryAgentbyid completed
 
 
 const viewallDeliveryAgentsByDistrict = (req, res) => {
@@ -300,5 +323,6 @@ module.exports = {
     viewallDeliveryAgents,
     updateDeliveryAgentprofile,
     deleteDeliveryAgentById,
-    viewallDeliveryAgentsByDistrict
+    viewallDeliveryAgentsByDistrict,
+    viewDeliveryAgentbyShopid
 };

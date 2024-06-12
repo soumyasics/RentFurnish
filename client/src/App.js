@@ -32,6 +32,10 @@ import AgentNav from './Components/Navbar/AgentNav';
 import Shopsidebar from './Components/Shops/Shopsidebar';
 import Shopsmain from './Components/Shops/Shopsmain';
 import Shopdropdown from './Components/Shops/Shopdropdown';
+import Shopprofile from './Components/Shops/Shopprofile';
+import DeliveryDashboard from './Components/Deliveryagent/DeliveryDashboard';
+import Deliverysidebar from './Components/Deliveryagent/Deliverysidebar';
+import Deliverymain from './Components/Deliveryagent/Deliverymain';
 
 function App() {
   return (
@@ -50,16 +54,14 @@ function App() {
           <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
           <Route path='/shoplogin' element={[<Shopnav/>,<Shoplogin/>,<Footer/>]}/>
           <Route path='/shopforgetpswd' element={[<Shopnav/>,<Shopforgetpswd/>,<Footer/>]}/>
-          <Route path='/shopdashboard' element={<Shopdashboard/>}/>
           <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
-          
-          <Route path='/shopsidebar' element={<Shopsidebar/>}/>
-          <Route path='/shopdropdown' element={<Shopdropdown/>}/>
 
           <Route path='/shop-dashboard' element={[<Shopsmain data="shopownerdashboard"/>]}/>
-          <Route path='/shop-adddeliveryagent' element={[<Shopsmain data="adddeliveryagent"/>]}/>
           <Route path='/shop-returnrequest' element={[<Shopsmain data="returnrequest"/>]}/>
           <Route path='/shop-inspection' element={[<Shopsmain data="shop-inspections"/>]}/>
+          <Route path='/add-deliveryagent' element={[<Shopsmain data="add-deliveryagent"/>]}/>
+          <Route path='/view-deliveryagentbyshop' element={[<Shopsmain data="view-deliveryagentbyshop"/>]}/>
+
 
 
           {/* Delivery Agent */}
@@ -68,9 +70,11 @@ function App() {
           <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
           <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/>
 
+          <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
+          <Route path='/deliverysidebar' element={[<Deliverysidebar/>]}/>
 
           {/* Admin */}
-          <Route path='/adminlogin' element={<Adminlogin/>}/>
+          <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>

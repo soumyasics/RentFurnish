@@ -7,12 +7,12 @@ import "./Modal.css"
       }
   return (
     <div className="modal-overlay">
-      <div className="modal-content modalhead">
+      <div className="modal-content modalhead" style={{color:"black"}}>
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to logout?</p>
         <div className="modal-actions modalbutton">
-          <button className="btn" onClick={onConfirm}>Yes</button>
-          <button className="btn" onClick={onClose}>No</button>
+          <button className="btn btn-primary" onClick={onConfirm} style={{width:"100px"}}>Yes</button>
+          <button className="btn btn-success" onClick={onClose} style={{width:"100px"}}>No</button>
         </div>
       </div>
     </div>
