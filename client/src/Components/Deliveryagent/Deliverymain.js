@@ -3,6 +3,7 @@ import '../Shops/Shopmain.css';
 import Deliverysidebar from './Deliverysidebar';
 import DeliveryDashboard from './DeliveryDashboard';
 import Deliverylogin from './Deliverylogin';
+import Deliveryagenteditpage from './Deliveryagenteditpage';
 
 
 function Deliverymain({data}) {
@@ -14,6 +15,7 @@ function Deliverymain({data}) {
     <div className="shopsmain-content">
         {
             data==="delivery-dashboard"?(<DeliveryDashboard/>):
+            data==="edit-deliveryprofile"?(<Deliveryagenteditpage/>):
             <Deliverylogin/>
         }
       {/* {data === "shopownerdashboard" ?( <Shopdashboard/>

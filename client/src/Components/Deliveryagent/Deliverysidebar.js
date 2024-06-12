@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import profile from '../../Assets/image 27.jpg';
 import { Modal } from 'react-bootstrap';
 import Deliveryprofile from './Deliveryprofile';
+import Confirmmodal from '../Navbar/Confirmmodal';
+import axiosInstance from '../Constants/Baseurl';
+import adminimg from "../../Assets/3699591.jpg";
 
 
 
@@ -10,7 +13,11 @@ function Deliverysidebar() {
     const location = useLocation();
     const [activeButton, setActiveButton] = useState('');
     const [showProfileModal, setShowProfileModal] = useState(false);
+    const [delivery, setDelivery]=useState({})
+    const url = axiosInstance.defaults.url;
+    const deliveryid=localStorage.getItem("deliveryid")
 
+    const navigate=useNavigate()
 
     useEffect(() => {
         const path = location.pathname.split('/')[1];
@@ -27,16 +34,46 @@ function Deliverysidebar() {
       };
     
       //logout functionality
+
+const[readerid,setShopid]=useState(null);
+const [showModal, setShowModal] = useState(false);
+
+const handleLogout = () => {
+  setShowModal(true);
+};
+
+const confirmLogout = () => {
+  localStorage.removeItem("deliveryid");
+  setShopid(null);
+  setShowModal(false);
+  navigate("/agentlogin");
+};
+const closeModal = () => {
+  setShowModal(false);
+}
+
+useEffect(()=>{
+    axiosInstance.post(`viewDeliveryAgentbyid/${deliveryid}`)
+    .then((res)=>{
+      console.log(res);
+      setDelivery(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+},[])
+
+
   return (
     <div className='row-4' >
       <div className='sidebar'>
         <div className="profile-section">
           <img
-          src={profile} 
-        //   src={`${url}/${shop?.image?.filename}`}
+          src={adminimg} 
+          // src={`${url}/${delivery?.image?.filename}`}
            width="200px" height="200px" alt="Profile" className="profile-image" onClick={handleProfileImageClick}/>
-          <h2 className="profile-name">Name</h2>
-          <p className="profile-email">kjscnkjbd@gmail.com</p>
+          <h2 className="profile-name">{delivery?.name}</h2>
+          <p className="profile-email">{delivery?.email}</p>
         </div>
         <div className="menu">
           <Link className='menu-item' to="/delivery-dashboard">
@@ -76,8 +113,8 @@ function Deliverysidebar() {
           </Link> */}
           <br /><br />
           <div className="logout-section">
-            <button className="logout-button" >Logout</button>
-            {/* <Confirmmodal show={showModal} onClose={closeModal} onConfirm={confirmLogout} /> */}
+            <button className="logout-button" onClick={handleLogout} >Logout</button>
+            <Confirmmodal show={showModal} onClose={closeModal} onConfirm={confirmLogout} />
 
           </div>
         </div>

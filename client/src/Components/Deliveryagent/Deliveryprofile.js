@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import adminimg from "../../Assets/3699591.jpg";
+import axiosInstance from '../Constants/Baseurl';
+
 
 function Deliveryprofile({data}) {
+  const deliveryid=localStorage.getItem("deliveryid")
+  console.log(deliveryid);
+  const[del,setDel]=useState({})
+
+  useEffect(()=>{
+    axiosInstance.post(`viewDeliveryAgentbyid/${deliveryid}`)
+    .then((res)=>{
+      console.log(res);
+      setDel(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  },[])
+
   return (
     <div className="modal-container">
     <div className="modal-content">
@@ -10,16 +28,16 @@ function Deliveryprofile({data}) {
           <div className='userprofilehead'>
           <Link 
           onClick={data} 
-           style={{textDecoration:"none"}}> <h3 className='ri-arrow-left-line'  style={{textAlign:"left"}}></h3></Link> 
+           style={{textDecoration:"none"}}> <h3 className='ri-arrow-left-line'  style={{textAlign:"left"}}>Profile</h3></Link> 
           </div>
           <div className='row'>
             <div className='col-12 text-center'>
               <div className='userprofileimg'>
                 <img 
                 //  src={`${url}/${shop?.image?.filename}`} 
-                // src={admin1}
+                 src={adminimg}
                 alt='Profile image' width="250px" height="250px" style={{borderRadius:"50%"}}/>
-                <h4>Name</h4>
+                <h4>{del?.name}</h4>
               </div>
             </div>
             <div className='col-12 text-center'>
@@ -27,32 +45,32 @@ function Deliveryprofile({data}) {
                 <table>
                   <tbody>
                     <tr>
-                      <td id='td1'>Shop Name</td>
-                      <td id='td2'>Name</td>
+                      <td id='td1'> Phone number</td>
+                      <td id='td2'>:{del?.phone}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Building Name</td>
-                      <td id='td2'>jwkncdcd</td>
+                      <td id='td1'>Liccence</td>
+                      <td id='td2'>:{del.licenceNumber}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Email</td>
-                      <td id='td2'>wekcjndcjdc</td>
+                      <td id='td1'>Vehicle Number</td>
+                      <td id='td2'>:{del?.vehicleNumber}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Phone</td>
-                      <td id='td2'>ecn dcdcdcdc</td>
+                      <td id='td1'>Area name/Land mark</td>
+                      <td id='td2'>:{del?.address}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Address:</td>
-                      <td id='td2'>ecjndecjndwcdcdwcdcdcd ds c</td>
+                      <td id='td1'>District</td>
+                      <td id='td2'>:{del?.deliveryDistrict}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Shop License</td>
-                      <td id='td2'> cjndcndc</td>
+                      <td id='td1'>Vehichel Type</td>
+                      <td id='td2'>:{del?.vehicleType}</td>
                     </tr>
                   </tbody>
                 </table>
-              <Link to=""> <button type='submit' style={{margin:"30px"}}>Edit Profile</button></Link> 
+              <Link to={`/edit-deliveryprofile/${del?._id}`} onClick={data}> <button type='submit' style={{margin:"30px"}}>Edit Profile</button></Link> 
               </div>
             </div>
           </div>
