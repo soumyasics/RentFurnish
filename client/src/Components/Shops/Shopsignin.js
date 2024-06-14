@@ -141,6 +141,9 @@ function Shopsignin() {
                     <p>Already Registered ? Login</p>
                   </Link>
                 </div>
+                <div>
+                <input type="checkbox" required /><span style={{color:"#0084E4"}}>Agree to terms and conditions</span>
+              </div>
                 <button
                   type="submit"
                   className="usersignup-regbtn"
@@ -149,9 +152,7 @@ function Shopsignin() {
                   Register Now !
                 </button>
               </div>
-              <div>
-                <input type="checkbox" required /><span style={{color:"#0084E4"}}>Agree to terms and conditions</span>
-              </div>
+              
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box2">
               <h4>Contact Details</h4>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Shopsidebar from './Shopsidebar';
-import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 import '../Shops/Shopmain.css'; 
 import Shopdashboard from './Shopdashboard';
 import Shoplogin from './Shopdashboard';
@@ -8,6 +7,7 @@ import ReturnRequest from './ReturnRequest';
 import Inspections from './Inspections';
 import Viewalldeliverybyshop from './Viewalldeliverybyshop';
 import Deliveryagenteditpage from '../Deliveryagent/Deliveryagenteditpage';
+import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 
 function Shopsmain({ data }) {
   return (

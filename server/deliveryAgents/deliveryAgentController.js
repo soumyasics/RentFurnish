@@ -1,10 +1,22 @@
 const deliveryagents = require("./deliveryAgentSchema");
 const customerSchema = require("../customer/customerSchema");
 const shopOwnerSchema = require("../shopOwner/shopOwnerSchema");
+const multer = require("multer");
 
 const jwt = require("jsonwebtoken");
 // const secret = process.env.JWT_SECRET || 'Secret-key';
 const secret = "secret_key"
+
+const storage = multer.diskStorage({
+    destination: function (req, res, cb) {
+      cb(null, "./upload");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  });
+  
+  const upload = multer({ storage: storage }).single("image");
 
 
 const addDeliveryAgent =async (req, res) => {
@@ -50,8 +62,8 @@ const addDeliveryAgent =async (req, res) => {
         }else{
 
     const shops = new deliveryagents({
-    name: req.body.name,
-    shopId:req.body.shopId,
+        name: req.body.name,
+        shopId:req.body.shopId,
         phone: req.body.phone,
         email: req.body.email,
         password: req.body.password,
@@ -60,7 +72,8 @@ const addDeliveryAgent =async (req, res) => {
         vehicleNumber: req.body.vehicleNumber,
         deliveryArea: req.body.deliveryArea,
         deliveryDistrict: req.body.deliveryDistrict,
-        licenceNumber: req.body.licenceNumber
+        licenceNumber: req.body.licenceNumber,
+        image:req.file
         
     });
    await shops
@@ -274,7 +287,7 @@ const updateDeliveryAgentprofile = (req, res) => {
         deliveryArea: req.body.deliveryArea,
         deliveryDistrict: req.body.deliveryDistrict,
         licenceNumber: req.body.licenceNumber,
-    
+        image:req.file
     })
         .exec()
         .then((response) => {
@@ -343,5 +356,6 @@ module.exports = {
     deleteDeliveryAgentById,
     viewallDeliveryAgentsByDistrict,
     viewDeliveryAgentbyShopid,
-    activateDeliveryAgentById
+    activateDeliveryAgentById,
+    upload
 };
