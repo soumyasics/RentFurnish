@@ -7,6 +7,7 @@ import ReturnRequest from './ReturnRequest';
 import Inspections from './Inspections';
 import Viewalldeliverybyshop from './Viewalldeliverybyshop';
 import Deliveryagenteditpage from '../Deliveryagent/Deliveryagenteditpage';
+import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 
 function Shopsmain({ data }) {
   return (

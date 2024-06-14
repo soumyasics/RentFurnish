@@ -77,8 +77,8 @@ function Viewalldeliverybyshop() {
             <div className="col text-center">
               <div className="">
                 <img
-                  // src={`${url}/${a?.image?.filename}`}
-                  src={adminimg}
+                  src={`${url}/${a?.image?.filename}`}
+                  // src={adminimg}
                   alt="Profile image"
                   width="150px"
                   height="150px"

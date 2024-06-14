@@ -53,6 +53,10 @@ name: {
   licenceNumber:{
     type: String,
     required: true,
+  },
+  image:{
+    type:Object,
+    required: true
   }
   
 });
