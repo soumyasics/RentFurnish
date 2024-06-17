@@ -16,7 +16,7 @@ router.post("/acceptshop/:id",Shops.acceptshopById)
 router.post("/deleteshop/:id",Shops.deleteshopById)
 router.post("/viewrequestsforadmin",Shops.viewallshopsforadmin)
 
-router.post("/addDeliveryAgent",DeliveryAgent.addDeliveryAgent)
+router.post("/addDeliveryAgent",DeliveryAgent.upload,DeliveryAgent.addDeliveryAgent)
 router.post("/loginDeliveryAgent",DeliveryAgent.loginDeliveryAgent)
 router.post("/verifyToken",DeliveryAgent.verifyToken)
 router.post("/viewDeliveryAgentbyid/:id",DeliveryAgent.viewDeliveryAgentbyid)// to be used in view del agent by id

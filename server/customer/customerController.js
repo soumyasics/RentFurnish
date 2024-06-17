@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
       pincode: req.body.pincode,
       image: req.file,
     });
-    shops
+    customer
       .save()
       .then((data) => {
         res.json({

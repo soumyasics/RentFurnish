@@ -7,6 +7,13 @@
     padding-top: 10px;
 }
 
+.profile-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17.86px;
+    color: #007bff;
+    font-weight: 500;
+}
+
 .address, .controls {
     border-radius: 3px;
     border: 1px solid rgba(0, 0, 0, 0.255);
@@ -54,4 +61,7 @@
 
 .span-required {
     color: red;
+}
+.delivery-profile{
+    text-align: center;
 }
