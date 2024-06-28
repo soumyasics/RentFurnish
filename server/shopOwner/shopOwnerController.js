@@ -247,6 +247,7 @@ const updateshopprofile=(req,res)=>{
   })
 
 }
+
 //update profile completed
 const viewallshopsforadmin = (req, res) => {
   shopschema.find({ isactive:false})
