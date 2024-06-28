@@ -46,7 +46,6 @@ function Deliveryforgetpswd() {
           if (result.data.status == 200) {
             toast.success("updated sucessfully")
             navigate("/agentlogin")
-
           }
           else if (result.data.status == 500) {
             toast.error("usernot found")
