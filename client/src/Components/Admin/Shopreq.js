@@ -81,7 +81,7 @@ function Admindashbboard() {
         </h3>
 
         {request && request.length ? (
-          request.map((a) => {
+          request.slice().reverse().map((a) => {
             return (
               <div className="profile-view-box">
                 <div className="row">

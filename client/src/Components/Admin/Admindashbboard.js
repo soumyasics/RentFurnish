@@ -173,7 +173,7 @@ function Admindashbboard() {
 
 
           {request && request.length ? (
-          request.slice(0, 2).map((a) => {
+          request.slice().reverse().slice(0, 2).map((a) => {
             return (
 
           <div className="profile-view-box " >

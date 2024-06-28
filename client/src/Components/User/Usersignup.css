@@ -1,5 +1,5 @@
-.usersignin-main{
-    /* background-image: url("../../Assets/background.jpg"); */
+.usersignin-mainsignup{
+    background-image: url("../../Assets/loginbackground.png");
     background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
@@ -113,8 +113,143 @@
     border-radius: 20px;
 }
 
- 
+.usersignin-mainsignupsignup{
+    text-align: center;
+    color: #0084E4;
+text-align: center;
+text-shadow: 0px 0.889px 0.889px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-top: 70px;
+}
+ .usersignin-mainsignupinputs input{
+    align-items: end;
+    display: flex;
+width: 386.3px;
+padding: 15.875px 28.727px;
+align-items: center;
+gap: 7.56px;
+border-radius: 2.268px;
+border: 0.756px solid #C6C6C6;
+background: var(--icon-color, #FFF);
+ }
+ .usersignin-mainsignupinputs{
+    padding-left: 200px;
+ }
+
+ .usersignin-mainsignupinputs2nd input{
+    align-items: end;
+    display: flex;
+width: 386.3px;
+padding: 15.875px 28.727px;
+align-items: center;
+gap: 7.56px;
+border-radius: 2.268px;
+border: 0.756px solid #C6C6C6;
+background: var(--icon-color, #FFF);
+
+ }
+ .usersignin-formmain{
+    padding-top: 40px;
+ }
+ .usersignin-mainsignupinputs p{
+    color: #0084E4;
+text-shadow: 0px 0.553px 0.553px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 18.119px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+ }
+ .usersignin-mainsignupinputs2nd p{
+    color: #0084E4;
+text-shadow: 0px 0.553px 0.553px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 18.119px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+ }
+.usersignin-mainsignupinputsradio{
+    padding-left: 200px;
+    height: 40px;
 
 
+}
+.usersignin-mainsignupinputsradio label{
+    color: #0084E4;
+text-shadow: 0px 0.553px 0.553px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 18.119px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-top: 20px;
+}
+.usersignin-mainsignupinputs textarea{
+    width: 386.3px;
+    height: 70px;
+}
+.usersignin-mainsignupinputspara{
+    color: #0084E4;
+    text-shadow: 0px 0.553px 0.553px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 18.119px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    
+}
+.usersignin-buttons{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usersignin-buttons button{
+    display: flex;
+width: 275px;
+height: 60px;
+justify-content: center;
+align-items: center;
+gap: 19.931px;
+flex-shrink: 0;
+border-radius: 20px;
+background: #F90;
+color: var(--icon-color, #FFF);
+text-align: center;
+text-shadow: 0px 2.572px 2.572px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 25px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.usersignin-accounts p{
+text-align: center;
+color: #0084E4;
+text-align: center;
+text-shadow: 0px 0.567px 0.567px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 23px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding-top: 20px;
+}
+.usersignin-accounts span{
+    color: #0084E4;
+font-family: Montserrat;
+font-size: 23px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-decoration-line: underline;
+}
 
 
+/* .error{
+    color: red;
+} */
