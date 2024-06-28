@@ -1,14 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import img from "../../Assets/forgetpswd.jpg"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import img2 from "../../Assets/rightarrow.png"
+import axiosInstance from '../Constants/Baseurl'
+import { toast } from 'react-toastify'
 
 
 function Deliveryforgetpswd() {
+  const navigate=useNavigate()
+
+  const [password, setPassword] = useState({
+    email: "",
+    password: "",
+    confirmpassword: ""
+  })
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+  const changehandleSubmit = (e) => {
+    setPassword({ ...password, [e.target.name]: e.target.value });
+  };
+  console.log(password);
+  const validatePassword = (password) => {
+
+    if (password.length < 8) {
+      return 'Password must be at least 8 characters long';
+    }
+    return '';
+  };
+
+  const handlesubmit = (e) => {
+    e.preventDefault()
+    const passwordError = validatePassword(password.password);
+    const confirmPasswordError = password.password !== password.confirmpassword ? 'Passwords do not match' : '';
+
+    setPasswordError(passwordError);
+    setConfirmPasswordError(confirmPasswordError);
+
+    if (!passwordError && !confirmPasswordError) {
+
+      axiosInstance.post(`/forgotPwdDeliveryAgent`, password)
+        .then((result) => {
+          console.log(result);
+
+          if (result.data.status == 200) {
+            toast.success("updated sucessfully")
+            navigate("/agentlogin")
+          }
+          else if (result.data.status == 500) {
+            toast.error("usernot found")
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        })
+    }
+  }
+
   return (
     <div className='userlogin-main'>
     <div className='container'>
-    <Link to="/agentlogin"><img src={img2} alt="right" width="50px" height="40px"/></Link>
+    <Link to="/agentlogin"><img src={img2} alt="right" width="30px" height="30px"/></Link>
 
       <div className='row'>
         <div className='col-sm-12 col-md-8 col-lg-8 userlogin-main-one' style={{paddingTop:"10px"}}>
@@ -21,22 +73,27 @@ function Deliveryforgetpswd() {
          <img src={img} alt='image' width="600px" height="500px"/>
         </div>
         <div className='col-sm-12 col-md-4 col-lg-4 userlogin-main-two'>
+          <form onSubmit={handlesubmit}>
           <h4>Recover Password</h4>
           <div className='col-6 pb-3"'>
-            <input type='text' placeholder='Enter Your Email'/>
+          <input type='text' placeholder='Enter Your Email' name='email' value={password.email} onChange={changehandleSubmit}/>
           </div>
           <div className='col-6 pb-3"'>
-            <input type='password' placeholder='Enter Password'/>
+          <input type='password' placeholder='Enter Password'
+             name='password' value={password.password} onChange={changehandleSubmit} 
+            />
+                            {passwordError && <p className='error-message'>{passwordError}</p>}
           </div>
           <div className='col-6 pb-3"'>
-            <input type='password' placeholder='ReEnter Password'/>
+          <input type='password' placeholder='ReEnter Password' name='confirmpassword' value={password.confirmpassword} onChange={changehandleSubmit} />
+            {confirmPasswordError && <p className='error-message'>{confirmPasswordError}</p>}
           </div>
           
           <div className='col-6 pb-3 ' style={{paddingTop:"60px"}}>
             <button type='submit' className='btn btn-primary'>Confirm Update</button>
           </div>
           
-          
+          </form>
         </div>
 
       </div>

@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000; 
   }
   .modalhead h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,7 +24,7 @@
     border-radius: 5px;
     text-align: center;
     box-sizing: border-box;
-
+    z-index: 1001; 
   }
   
   .modal-actions {

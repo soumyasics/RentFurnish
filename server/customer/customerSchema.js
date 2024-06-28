@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  firstname: {
-    type: String,
-    required: true,
-  },
-  lastname: {
+  name: {
     type: String,
     required: true,
   },
@@ -13,14 +9,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  age:{
-    type:Number,
-          required:true,
-       },
   phone: {
     type: Number,
-
+    unique: true,
     required: true,
+    dropDups: true,
 
   },
   email: {
@@ -34,11 +27,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: Object,
-  },
-  imgurl: {
+  address: {
     type: String,
+    required: true,
   },
 });
 module.exports = mongoose.model("customer", userSchema);
