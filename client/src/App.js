@@ -74,7 +74,6 @@ function App() {
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
 
-
           {/* Admin */}
           <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
