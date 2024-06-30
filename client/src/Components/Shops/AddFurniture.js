@@ -4,10 +4,49 @@ import mainimg from '../../Assets/addfurniture_first.png';
 import imgsub from '../../Assets/addfurniture_sub.png';
 import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from './Shopdropdown';
+import axiosMultipartInstance from '../Constants/FormDataUrl';
 
 function AddFurniture() {
   const [mainImage, setMainImage] = useState(mainimg);
   const [subImages, setSubImages] = useState([imgsub, imgsub, imgsub]);
+  const shopid = localStorage.getItem("shopid");
+
+  const [data, setData] = useState({
+    name: '',
+    category: '',
+    condition: '',
+    dimension: '',
+    quantity: '',
+    roomType: '',
+    description: '',
+    terms: '',
+    image1: null,
+    image2: null,
+    image3: null,
+    image4: null,
+    shopId: shopid
+  });
+
+  const [errors, setErrors] = useState({
+    name: '',
+    category: '',
+    condition: '',
+    dimension: '',
+    quantity: '',
+    roomType: '',
+    description: '',
+    terms: '',
+    image1: '',
+    image2: '',
+    image3: '',
+    image4: '',
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
+    setErrors({ ...errors, [name]: '' });
+  };
 
   const handleImageChange = (event, index) => {
     const file = event.target.files[0];
@@ -16,103 +55,116 @@ function AddFurniture() {
       reader.onloadend = () => {
         if (index === 'main') {
           setMainImage(reader.result);
+          setData({ ...data, image1: file });
         } else {
           const newSubImages = [...subImages];
           newSubImages[index] = reader.result;
           setSubImages(newSubImages);
+          setData({ ...data, [`image${index + 2}`]: file });
         }
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const [formData, setFormData] = useState({
-    name: '',
-    category: '',
-    price: '',
-    dimensions: '',
-    quantity:'',
-    roomCategory: '',
-    description: '',
-    terms: '',
-  });
-
-  const [errors, setErrors] = useState({
-    name: '',
-    category: '',
-    price: '',
-    dimensions: '',
-    quantity:'',
-    roomCategory: '',
-    description: '',
-    terms: '',
-  });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' });
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let formIsValid = true;
     let newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Furniture name is required';
-      formIsValid = false;
-    }
+    if (!data.name.trim()) {
+        newErrors.name = 'Furniture name is required';
+        formIsValid = false;
+      } else if (!/^[A-Za-z\s]+$/.test(data.name.trim())) {
+        newErrors.name = 'Furniture name should only contain letters and spaces';
+        formIsValid = false;
+      }
 
-    if (!formData.category) {
+    if (!data.category) {
       newErrors.category = 'Furniture category is required';
       formIsValid = false;
     }
 
-    if (!formData.price.trim()) {
-      newErrors.price = 'Price/Month is required';
+    if (!data.condition.trim()) {
+      newErrors.condition = 'Price/Month is required';
       formIsValid = false;
     }
 
-    if (!formData.dimensions.trim()) {
-      newErrors.dimensions = 'Dimensions is required';
+    if (!data.dimension.trim()) {
+      newErrors.dimension = 'Dimensions is required';
       formIsValid = false;
     }
 
-    if (!formData.quantity.trim()) {
+    if (!data.quantity.trim()) {
         newErrors.quantity = 'Quantity is required';
         formIsValid = false;
-      }
-
-    if (!formData.roomCategory.trim()) {
-      newErrors.roomCategory = 'Room Category is required';
-      formIsValid = false;
-    }
-
-    if (!formData.description.trim()) {
-      newErrors.description = 'Description is required';
-      formIsValid = false;
-    }
-
-    if (!formData.terms.trim()) {
-      newErrors.terms = 'Terms & Condition is required';
-      formIsValid = false;
-    }
-
-    if (!mainImage || mainImage === mainimg) {
-        newErrors.mainImage = 'Image is required';
+      } else if (!/^\d+$/.test(data.quantity.trim())) {
+        newErrors.quantity = 'Quantity should only contain numbers';
         formIsValid = false;
       }
 
+    if (!data.roomType.trim()) {
+      newErrors.roomType = 'Room Category is required';
+      formIsValid = false;
+    }
+
+    if (!data.description.trim()) {
+        newErrors.description = 'Description name is required';
+        formIsValid = false;
+      } else if (!/^[A-Za-z\s]+$/.test(data.description.trim())) {
+        newErrors.description = 'Description name should only contain letters and spaces';
+        formIsValid = false;
+      }
+
+      if (!data.terms.trim()) {
+        newErrors.terms = 'Terms & Condition name is required';
+        formIsValid = false;
+      } else if (!/^[A-Za-z\s]+$/.test(data.terms.trim())) {
+        newErrors.terms = 'Terms & Condition name should only contain letters and spaces';
+        formIsValid = false;
+      }
+
+    if (!data.image1) {
+      newErrors.image1 = 'Image is required';
+      formIsValid = false;
+    }
+
+    setErrors(newErrors);
+
     if (formIsValid) {
-      
-    } else {
-      setErrors(newErrors);
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('category', data.category);
+      formData.append('condition', data.condition);
+      formData.append('dimension', data.dimension);
+      formData.append('quantity', data.quantity);
+      formData.append('roomType', data.roomType);
+      formData.append('description', data.description);
+      formData.append('terms', data.terms);
+      formData.append('image1', data.image1);
+      formData.append('image2', data.image2);
+      formData.append('image3', data.image3);
+      formData.append('image4', data.image4);
+      formData.append('shopId', data.shopId);
+
+      try {
+        const res = await axiosMultipartInstance.post('/registerFurniture', formData);
+        if (res.data.status === 200) {
+          alert('Furniture added successfully');
+        } else {
+          alert(`Furniture not added: ${res.data.msg}`);
+        }
+      } catch (error) {
+        console.error('There was an error!', error);
+        alert('Error');
+      }
     }
   };
 
   return (
-    <div><Shopnav/><Showdropdown/>
+    <div>
+      <Shopnav />
+      <Showdropdown />
       <form onSubmit={handleSubmit}>
         <div className='row'>
           <div className='col-md-6 col-sm-12'>
@@ -128,7 +180,8 @@ function AddFurniture() {
                   onChange={(e) => handleImageChange(e, 'main')}
                 />
               </div>
-              {errors.mainImage && <div className="text-danger">{errors.mainImage}</div>}            </div>
+              {errors.image1 && <div className="text-danger">{errors.image1}</div>}
+            </div>
             <div className='row m-4'>
               {subImages.map((img, index) => (
                 <div className='col-4' key={index}>
@@ -148,10 +201,9 @@ function AddFurniture() {
               <div className='col-12'>
                 <label className="form-label">Description</label><span className="text-danger">*</span>
                 <textarea
-                  type="text"
                   className="form-control controls"
                   name="description"
-                  value={formData.description}
+                  value={data.description}
                   onChange={handleInputChange}
                   placeholder="Description"
                 />
@@ -166,7 +218,7 @@ function AddFurniture() {
                 type="text"
                 className="form-control controls"
                 name="name"
-                value={formData.name}
+                value={data.name}
                 onChange={handleInputChange}
                 placeholder="Furniture Name"
               />
@@ -178,7 +230,7 @@ function AddFurniture() {
                 id="furniture-category"
                 className="form-control controls"
                 name="category"
-                value={formData.category}
+                value={data.category}
                 onChange={handleInputChange}
               >
                 <option value="">Select Category</option>
@@ -194,8 +246,8 @@ function AddFurniture() {
               <input
                 type="text"
                 className="form-control controls"
-                name="price"
-                value={formData.price}
+                name="condition"
+                value={data.condition}
                 onChange={handleInputChange}
                 placeholder="Price/Month"
               />
@@ -208,12 +260,12 @@ function AddFurniture() {
                   <input
                     type="text"
                     className="form-control controls"
-                    name="dimensions"
-                    value={formData.dimensions}
+                    name="dimension"
+                    value={data.dimension}
                     onChange={handleInputChange}
-                    placeholder="Dimensions"
+                    placeholder="Dimension"
                   />
-                  {errors.dimensions && <div className="text-danger">{errors.dimensions}</div>}
+                  {errors.dimension && <div className="text-danger">{errors.dimension}</div>}
                 </div>
                 <div className='col-6'>
                   <label className="form-label">Quantity</label><span className="text-danger">*</span>
@@ -221,7 +273,7 @@ function AddFurniture() {
                     type="text"
                     className="form-control controls"
                     name="quantity"
-                    value={formData.quantity}
+                    value={data.quantity}
                     onChange={handleInputChange}
                     placeholder="Quantity"
                   />
@@ -234,37 +286,37 @@ function AddFurniture() {
               <select
                 id="room-category"
                 className="form-control controls"
-                name="roomCategory"
-                value={formData.roomCategory}
+                name="roomType"
+                value={data.roomType}
                 onChange={handleInputChange}
               >
-                <option value="">Select Category</option>
+                <option value="">Select Room Category</option>
                 <option value="Living Room">Living Room</option>
                 <option value="Dining Room">Dining Room</option>
-                <option value="Bed Room">Bed Room</option>
-                <option value="Study Room">Study Room</option>
+                <option value="Bedroom">Bedroom</option>
+                <option value="Studyroom">Study Room</option>
+
               </select>
-              {errors.roomCategory && <div className="text-danger">{errors.roomCategory}</div>}
+              {errors.roomType && <div className="text-danger">{errors.roomType}</div>}
             </div>
             <div className='m-4'>
-              <label className="form-label">Terms & Condition</label><span className="text-danger">*</span>
+              <label className="form-label">Terms & Conditions</label><span className="text-danger">*</span>
               <textarea
-                type="text"
                 className="form-control controls"
                 name="terms"
-                value={formData.terms}
+                value={data.terms}
                 onChange={handleInputChange}
-                placeholder="Terms & Condition"
+                placeholder="Terms & Conditions"
               />
               {errors.terms && <div className="text-danger">{errors.terms}</div>}
             </div>
           </div>
-        </div>
-        <div className="text-center mt-4">
-          <button type="submit" className="btn btn-warning">
-            &nbsp;&nbsp; Post &nbsp;&nbsp;
-          </button>
-        </div><br/><br/>
+          <div className="text-center mt-4">
+            <button type="submit" className="btn btn-warning">
+              &nbsp;&nbsp; Post &nbsp;&nbsp;
+            </button>
+          </div>
+        </div><br />
       </form>
     </div>
   );
