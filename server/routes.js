@@ -4,7 +4,7 @@ const router=express.Router()
 const Shops=require("./shopOwner/shopOwnerController")
 const DeliveryAgent=require("./deliveryAgents/deliveryAgentController")
 const Customer=require("./customer/customerController")
-const Customer=require("./customer/customerController")
+// const Customer=require("./customer/customerController")
 const Furniture=require("./Furniture/furnitureController")
 const complaint=require("./complaints/complaintController")
 

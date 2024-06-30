@@ -188,7 +188,6 @@ const handleChange = (e) => {
                                     onChange={handleImageUpload}
                                     className={errors.image ? 'is-invalid' : ''}
                                 />
-
                                 <label htmlFor='fileUpload'>
                                 <h3 className="profile-text">Add Profile Image<span className="text-danger">*</span></h3>
                                 </label>
