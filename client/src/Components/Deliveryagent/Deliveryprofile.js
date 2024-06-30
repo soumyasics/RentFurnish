@@ -46,27 +46,27 @@ function Deliveryprofile({data}) {
                   <tbody>
                     <tr>
                       <td id='td1'> Phone number</td>
-                      <td id='td2'>{del?.phone}</td>
+                      <td id='td2'>:{del?.phone}</td>
                     </tr>
                     <tr>
                       <td id='td1'>Liccence</td>
-                      <td id='td2'>{del.licenceNumber}</td>
+                      <td id='td2'>:{del.licenceNumber}</td>
                     </tr>
                     <tr>
                       <td id='td1'>Vehicle Number</td>
-                      <td id='td2'>{del?.vehicleNumber}</td>
+                      <td id='td2'>:{del?.vehicleNumber}</td>
                     </tr>
                     <tr>
                       <td id='td1'>Area name/Land mark</td>
-                      <td id='td2'>{del?.address}</td>
+                      <td id='td2'>:{del?.address}</td>
                     </tr>
                     <tr>
                       <td id='td1'>District</td>
-                      <td id='td2'>{del?.deliveryDistrict}</td>
+                      <td id='td2'>:{del?.deliveryDistrict}</td>
                     </tr>
                     <tr>
-                      <td id='td1'>Shop License</td>
-                      <td id='td2'> cjndcndc</td>
+                      <td id='td1'>Vehichel Type</td>
+                      <td id='td2'>:{del?.vehicleType}</td>
                     </tr>
                   </tbody>
                 </table>

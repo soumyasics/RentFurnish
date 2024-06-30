@@ -7,6 +7,9 @@ import adminimg from "../../Assets/3699591.jpg";
 import tick from "../../Assets/tickgreen.png";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../Constants/Baseurl";
+import datalottie from "../../Assets/nodatalottie.json"
+import Lottie from "lottie-react"
+
 
 function Viewalldeliverybyshop() {
 
@@ -34,15 +37,9 @@ function Viewalldeliverybyshop() {
       },[])
 
 
-      const deactivatefn = (id) => {
-        axiosInstance.post(`deleteDeliveryAgentById/${id}`)
-          // .then((res) => {
-          //   console.log(res);
-          //   // Optionally update the delivery state to remove the deactivated agent
-          //   // setDelivery(delivery.filter(agent => agent._id !== _id));
-          //    setIsActive(!isActive);
-
-          // })
+      const toggleActivation = (id, isActive) => {
+        const endpoint = isActive ? `deleteDeliveryAgentById/${id}` : `activateDeliveryAgentById/${id}`;
+        axiosInstance.post(endpoint)
           .then((res) => {
             console.log(res);
             setDelivery((prevDelivery) =>
@@ -54,7 +51,9 @@ function Viewalldeliverybyshop() {
           .catch((err) => {
             console.log(err);
           });
-      };    
+      };
+
+      
       const [isActive, setIsActive] = useState(true);
 
       const toggleButton = () => {
@@ -78,8 +77,8 @@ function Viewalldeliverybyshop() {
             <div className="col text-center">
               <div className="">
                 <img
-                  // src={`${url}/${a?.image?.filename}`}
-                  src={adminimg}
+                  src={`${url}/${a?.image?.filename}`}
+                  // src={adminimg}
                   alt="Profile image"
                   width="150px"
                   height="150px"
@@ -167,19 +166,20 @@ function Viewalldeliverybyshop() {
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" />
   <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
 </div> */}
- <button style={{width:"160px", height:"50px"}}
-                      className={`toggle-button ${a.isActive ? 'active' : 'inactive'}`}
-                      onClick={() => deactivatefn(a._id)}
-                    >
-                      <span className="icon">
-                        {a.isActive ? (
-                          <span className="check"><img src={tick} alt="tick" /></span>
-                        ) : (
-                          <span className="cross">&#10005;</span>
-                        )}
-                      </span>
-                      <span className="label">{a.isActive ? 'Active' : 'Inactive'}</span>
-                    </button>              </div>
+ <button
+                        style={{ width: "160px", height: "50px" }}
+                        className={`toggle-button ${a.isActive ? 'active' : 'inactive'}`}
+                        onClick={() => toggleActivation(a._id, a.isActive)}
+                      >
+                        <span className="icon">
+                          {a.isActive ? (
+                            <span className="check"><img src={tick} alt="tick" /></span>
+                          ) : (
+                            <span className="cross">&#10005;</span>
+                          )}
+                        </span>
+                        <span className="label">{a.isActive ? 'Active' : 'Inactive'}</span>
+                      </button>                         </div>
             </div>
           </div>
 
@@ -187,7 +187,9 @@ function Viewalldeliverybyshop() {
 );
 })
 ) : (
-<div style={{color:"red",fontSize:"20px"}}>No Shops Available</div>
+<div className="viewalldelbyshop-lottie">
+  <Lottie animationData={datalottie} />
+  </div>
 )}
 
 

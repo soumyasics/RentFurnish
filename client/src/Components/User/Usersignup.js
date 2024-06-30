@@ -1,90 +1,212 @@
-import React from "react";
+import React, { useState } from "react";
 import "../User/Usersignup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../Constants/Baseurl";
 
 function Usersignup() {
+  const navigate = useNavigate();
+  const [formValues, setFormValues] = useState({
+    name: "",
+    phone: "",
+    gender: "",
+    password: "",
+    confirmpassword: "",
+    email: "",
+    address: "",
+  });
+
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+
+    if (name === "password") {
+      validatePassword(value);
+    }
+  };
+
+  const validatePassword = (password) => {
+    let errors = { ...formErrors };
+
+    if (password.length < 8) {
+      errors.password = "Password must be at least 8 characters long";
+    } else if (!/[A-Z]/.test(password)) {
+      errors.password = "Password must contain at least one uppercase letter";
+    } else if (!/\d/.test(password)) {
+      errors.password = "Password must contain at least one number";
+    } else {
+      delete errors.password;
+    }
+
+    setFormErrors(errors);
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validate = () => {
+    let errors = {};
+
+    if (!formValues.name) {
+      errors.name = "Name is required";
+    }
+    if (!formValues.phone || formValues.phone.length !== 10) {
+      errors.phone = "Phone number must be 10 digits";
+    }
+    if (!formValues.gender) {
+      errors.gender = "Gender is required";
+    }
+    if (!formValues.email || !validateEmail(formValues.email)) {
+      errors.email = "Valid email is required";
+    }
+    if (!formValues.password) {
+      errors.password = "Password is required";
+    } else {
+      validatePassword(formValues.password);
+    }
+    if (formValues.password !== formValues.confirmpassword) {
+      errors.confirmpassword = "Passwords do not match";
+    }
+    if (!formValues.address) {
+      errors.address = "Address is required";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await axiosInstance.post("/userregister", formValues);
+      alert("Registration successful!");
+      navigate("/userlogin");
+    } catch (error) {
+      alert("Error registering user: " + (error.response?.data?.msg || error.msg));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="usersignin-main">
+    <div className="usersignin-mainsignup">
       <div className="container">
-      <form>
-        <div className="row">
-         
-          <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box1">
-            <h4>General Information</h4>
-            <div className="row usersignin-input">
-              <div className="col-6 pb-3">
-                <input type="text" placeholder="Firstname" />
+        <div className="usersignin-mainsignupsignup">Sign up</div>
+        <form onSubmit={handleSubmit}>
+          <div className="col-12 col-lg-12 usersignin-formmain ">
+            <div className="row">
+              <div className="col-6 pb-3 usersignin-mainsignupinputs">
+                <p>Name</p>
+                <input
+                  type="text"
+                  name="name"
+                  value={formValues.name}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.name && <p className="error">{formErrors.name}</p>}
               </div>
-              <div className="col-6 pb-3">
-                <input type="text" placeholder="Lastname" />
+              <div className="col-6 pb-3 usersignin-mainsignupinputs2nd">
+                <p>Phone Number</p>
+                <input
+                  type="number"
+                  name="phone"
+                  value={formValues.phone}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.phone && <p className="error">{formErrors.phone}</p>}
               </div>
-              <div className="col-12 pb-3">
-                <label for="gender" className="pb-3">
-                  Gender :{" "}
+              <div className="col-6 pb-3 usersignin-mainsignupinputsradio">
+                <label htmlFor="gender" className="pb-3">
+                  Gender:{" "}
                 </label>
-                <label for="male"> &nbsp;Male &nbsp;</label>
-                <input type="radio" id="male" />
-                <label for="female">&nbsp;Female&nbsp;</label>
-                <input type="radio" id="female" />
-                <label for="others">&nbsp;Others&nbsp;</label>
-                <input type="radio" id="others" />
+                <label htmlFor="male"> &nbsp;Male &nbsp;</label>
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  value="male"
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="female">&nbsp;Female&nbsp;</label>
+                <input
+                  type="radio"
+                  id="female"
+                  name="gender"
+                  value="female"
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.gender && <p className="error">{formErrors.gender}</p>}
               </div>
-              <div className="col-12 pb-3">
-              <input type="number" placeholder="Age"/>
+              <div className="col-6 pb-3 usersignin-mainsignupinputs2nd">
+                <p>Password</p>
+                <input
+                  type="password"
+                  name="password"
+                  value={formValues.password}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.password && <p className="error">{formErrors.password}</p>}
               </div>
-              <div className="col-12 pb-3">
-                <label for="image">Upload Image</label>
-              <input type="file" placeholder="" id="image"/>
+              <div className="col-6 pb-3 usersignin-mainsignupinputs">
+                <p>Email</p>
+                <input
+                  type="email"
+                  name="email"
+                  value={formValues.email}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.email && <p className="error">{formErrors.email}</p>}
               </div>
-              <div className="col-12 pb-3">
-              <Link to="/userlogin" style={{textDecoration:"none", color:"black"}}><p>Already Registered ? Login</p></Link>
+              <div className="col-6 pb-3 usersignin-mainsignupinputs2nd">
+                <p>Confirm Password</p>
+                <input
+                  type="password"
+                  name="confirmpassword"
+                  value={formValues.confirmpassword}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.confirmpassword && <p className="error">{formErrors.confirmpassword}</p>}
+              </div>
+              <div className="col-6 pb-3 usersignin-mainsignupinputs">
+                <p>Address</p>
+                <textarea
+                  name="address"
+                  value={formValues.address}
+                  onChange={handleChange}
+                  required
+                />
+                {formErrors.address && <p className="error">{formErrors.address}</p>}
+              </div>
+              <div className="col-6 pb-3 usersignin-mainsignupinputspara">
+                <p> </p>
+                <input type="checkbox" required /> &nbsp; Agree to terms and conditions.
+              </div>
+              <div className="col-12 usersignin-buttons">
+                <button type="submit" disabled={isSubmitting}>Sign Up</button>
+              </div>
+              <div className="usersignin-accounts">
+                <p>Already have an account ? <Link to="/userlogin"><span>Login</span></Link></p>
               </div>
             </div>
           </div>
-          <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box2">
-            <h4>Contact Details</h4>
-            <div className="row usersignin-inputs">
-            <div className="col-12 pb-3">
-            <input type="text" placeholder="Housename" style={{width:"400px"}}/>
-              </div>
-              <div className="col-12 pb-3">
-            <input type="text" placeholder="Street" style={{width:"400px"}}/>
-              </div>
-              <div className="col-6 pb-3" >
-            <input type="text" placeholder="City" />
-              </div> 
-              <div className="col-6 pb-3" >
-            <input type="text" placeholder="State" />
-              </div>
-              <div className='col-12 pb-3 '>
-                <select  style={{width:"190px"}}>
-                  <option>Nationality</option>
-                  <option>Indian</option>
-                  <option>America</option>
-                  <option>London</option>
-                  <option>Japan</option>
-                  <option>Uk</option>
-                  <option>Australia</option>
-                  <option>England</option>
-                </select>
-              </div>
-              <div className="col-6 pb-3" >
-            <input type="number" placeholder="Phone Number" />
-              </div> 
-              <div className="col-6 pb-3" >
-            <input type="email" placeholder="Your Email" />
-              </div> 
-              <div className="col-6 pb-3" >
-            <input type="password" placeholder="Password" />
-              </div> 
-              <div className="col-6 pb-3" >
-            <input type="password" placeholder="Confirm password" />
-              </div> 
-            </div>
-            <button type="submit" className="usersignup-regbtn">Register Now !</button>
-          </div>
-          
-        </div>
         </form>
       </div>
     </div>

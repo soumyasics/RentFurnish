@@ -47,9 +47,9 @@ function App() {
           <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>,<Footer/>]}/>
 
         {/* // User // */}
-          <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
-          <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={<Userforgetpswd/>}/>
+          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
+          <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
+          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
          
         {/* Shops */}
           <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
@@ -66,15 +66,14 @@ function App() {
 
 
           {/* Delivery Agent */}
-          <Route path='/agentsignup' element={[<Navbar/>,<Deliveryagentsignup/>]}/>
-          <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
-          <Route path='/agentrecoverpswd' element={<Deliveryforgetpswd/>}/>
-          <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/> 
+          <Route path='/agentsignup' element={[<Shopnav/>,<Deliveryagentsignup/>]}/>
+          <Route path='/agentlogin' element={[<Shopnav/>,<Deliverylogin/>]}/>
+          <Route path='/agentrecoverpswd' element={[<Shopnav/>,<Deliveryforgetpswd/>]}/>
+          {/* <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/>  */}
           <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
 
-          <Route path='/deliverysidebar' element={[<Deliverysidebar/>]}/>
 
           {/* Admin */}
           <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>

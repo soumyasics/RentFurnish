@@ -168,7 +168,7 @@ const viewshopbyid = (req, res) => {
 
 const viewallshops = (req, res) => {
   shopschema
-    .find({})
+    .find({isactive:true})
     .exec()
     .then((data) => {
       if (!data) {

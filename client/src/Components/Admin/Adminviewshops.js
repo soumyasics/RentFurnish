@@ -59,7 +59,7 @@ function Adminviewshops() {
                       </tr>
                       <tr>
                         <td id="td1">Phone</td>
-                        <td id="td2">{a?.pone}</td>
+                        <td id="td2">{a?.phone}</td>
                       </tr>
                       <tr>
                         <td id="td1">Address:</td>

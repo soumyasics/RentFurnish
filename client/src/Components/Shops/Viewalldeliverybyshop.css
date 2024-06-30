@@ -11,6 +11,7 @@
     border-radius: 12px;
     margin: 10px;
     margin-left: 3%;
+    text-transform:capitalize;
 }
 .viewdelshopbtnone button{
     display: flex;
@@ -102,4 +103,11 @@ border:#F90;
       right: 0;
     }
   }
+
+  .viewalldelbyshop-lottie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+   }
   

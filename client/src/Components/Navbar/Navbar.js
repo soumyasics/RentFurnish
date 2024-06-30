@@ -40,16 +40,15 @@ function Navbar() {
       >
 
         <Link to="/">Home</Link>
-        <Link to="#">
+        {/* <Link to="#">
             <select style={{backgroundColor:"#8e3333"}}>
                 <option>Properties</option>
                 <option>House</option>
                 <option>Car</option>
                 <option>Bike</option>
-                {/* <option>HomeApplinces</option> */}
                 <option>Home decors</option>
             </select>
-        </Link>
+        </Link> */}
         <Link to="#">About</Link>
         <Link to="#">Contact</Link>
         {/* <a href="#"> */}

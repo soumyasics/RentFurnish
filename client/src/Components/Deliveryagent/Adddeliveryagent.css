@@ -4,6 +4,14 @@
     font-weight: 500;
     text-align: center;
     color: #007bff;
+    padding-top: 10px;
+}
+
+.profile-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17.86px;
+    color: #007bff;
+    font-weight: 500;
 }
 
 .address, .controls {
@@ -53,4 +61,7 @@
 
 .span-required {
     color: red;
+}
+.delivery-profile{
+    text-align: center;
 }

@@ -1,84 +1,135 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Shops/Shopsignin.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
 import axiosInstance from "../Constants/Baseurl";
-import { shopRegSchema } from "../Constants/Schema";
 
 function Shopsignin() {
+  const navigate = useNavigate();
+  const [formValues, setFormValues] = useState({
+    shopname: "",
+    regno: "",
+    image: null,
+    buildingname: "",
+    street: "",
+    city: "",
+    state: "",
+    pincode: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+  });
 
-  const navigate=useNavigate()
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (e) => {
-    // e.preventDefault()
-    const passwordRule =
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
 
-    // if (values.contact.toString().length !== 10) {
-    //   alert("Contact number must be a 10-digit number");
-    //   return;
-    // }
-    // if (values.pincode.toString().length !== 6) {
-    //   alert("Pincode must be a 6-digit number");
-    //   return;
-    // }
+    if (name === "password") {
+      validatePassword(value);
+    }
+  };
 
-    // if (!passwordRule.test(values.password)) {
-    //   alert("Password must meet the specified criteria");
-    //   return;
-    // }
+  const handleImageChange = (e) => {
+    setFormValues({ ...formValues, image: e.target.files[0] });
+  };
 
-    axiosInstance
-      .post(`/registershop`, values, {
+  const validatePassword = (password) => {
+    let errors = { ...formErrors };
+
+    if (password.length < 8) {
+      errors.password = "Password must be at least 8 characters long";
+    } else if (!/[A-Z]/.test(password)) {
+      errors.password = "Password must contain at least one uppercase letter";
+    } else if (!/\d/.test(password)) {
+      errors.password = "Password must contain at least one number";
+    } else {
+      delete errors.password;
+    }
+
+    setFormErrors(errors);
+  };
+
+  const validate = () => {
+    let errors = {};
+
+    if (!formValues.shopname) {
+      errors.shopname = "Shop name is required";
+    }
+    if (!formValues.regno || formValues.regno.length < 6) {
+      errors.regno = "Reg no must be at least 6 characters";
+    }
+    if (!formValues.buildingname) {
+      errors.buildingname = "Building name is required";
+    }
+    if (!formValues.street) {
+      errors.street = "Street is required";
+    }
+    if (!formValues.city) {
+      errors.city = "City is required";
+    }
+    if (!formValues.state) {
+      errors.state = "State is required";
+    }
+    if (!formValues.pincode || formValues.pincode.length !== 6) {
+      errors.pincode = "Pincode must be 6 characters";
+    }
+    if (!formValues.phone) {
+      errors.phone = "Phone number is required";
+    }
+    if (!formValues.email) {
+      errors.email = "Email is required";
+    }
+    if (!formValues.password) {
+      errors.password = "Password is required";
+    } else {
+      validatePassword(formValues.password);
+    }
+    if (formValues.password !== formValues.confirmpassword) {
+      errors.confirmpassword = "Passwords do not match";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("shopname", formValues.shopname);
+    formData.append("regno", formValues.regno);
+    formData.append("image", formValues.image);
+    formData.append("buildingname", formValues.buildingname);
+    formData.append("street", formValues.street);
+    formData.append("city", formValues.city);
+    formData.append("state", formValues.state);
+    formData.append("pincode", formValues.pincode);
+    formData.append("phone", formValues.phone);
+    formData.append("email", formValues.email);
+    formData.append("password", formValues.password);
+
+    try {
+      await axiosInstance.post("/registershop", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.data.status === 200) {
-          alert("Registration Successful");
-          navigate("/shoplogin")
-          // localStorage.setItem("userid",res.data.data._id)
-          // console.log(res.data.data._id);
-        } else {
-          alert(res.response.data.msg);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err.response.data.msg);
       });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
-  const { values, errors, touched, handleBlur, setFieldValue, handleChange } =
-    useFormik({
-      initialValues: {
-        shopname: "",
-        email: "",
-        password: "",
-        confirmpassword: '',
-        buildingname: "",
-        city: "",
-        street: "",
-        state: "",
-        pincode: "",
-        phone: "",
-        regno: "",
-        district: "",
-        image: "",
-      },
-      validationSchema: shopRegSchema,
-      onSubmit: onSubmit,
-    });
-  console.log(values);
-  const handleImageChange = (event) => {
-    setFieldValue("image", event.currentTarget.files[0]);
+      alert("Registration successful!");
+      navigate("/shoplogin");
+    } catch (error) {
+      alert("Error registering shop: " + error.response?.data?.msg || error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -95,41 +146,34 @@ function Shopsignin() {
                     placeholder="Shopname"
                     style={{ width: "400px" }}
                     name="shopname"
-                    value={values.shopname}
+                    value={formValues.shopname}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.shopname && touched.shopname && (
-                    <p className="error">{errors.shopname}</p>
+                  {formErrors.shopname && (
+                    <p className="error">{formErrors.shopname}</p>
                   )}
                 </div>
-                {/* <div className="col-6 pb-3">
-              <input type="text" placeholder="Lastname" />
-            </div> */}
                 <div className="col-12 pb-3">
                   <input
                     type="text"
                     placeholder="Reg no"
                     name="regno"
-                    value={values.regno}
+                    value={formValues.regno}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.regno && touched.regno && (
-                    <p className="error">{errors.regno}</p>
+                  {formErrors.regno && (
+                    <p className="error">{formErrors.regno}</p>
                   )}
                 </div>
                 <div className="col-6 pb-3">
-                  <label for="image">Upload Image</label>
+                  <label htmlFor="image">Upload Image</label>
                   <input
                     type="file"
-                    placeholder=""
                     id="image"
                     name="image"
                     onChange={handleImageChange}
-                    onBlur={handleBlur}
                     required
                   />
                 </div>
@@ -138,19 +182,20 @@ function Shopsignin() {
                     to="/shoplogin"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <p>Already Registered ? Login</p>
+                    <p>Already Registered? Login</p>
                   </Link>
+                </div>
+                <div>
+                  <input type="checkbox" required /><span style={{color:"#0084E4"}}>Agree to terms and conditions</span>
                 </div>
                 <button
                   type="submit"
                   className="usersignup-regbtn"
                   style={{ marginLeft: "140px" }}
+                  disabled={isSubmitting}
                 >
-                  Register Now !
+                  Register Now!
                 </button>
-              </div>
-              <div>
-                <input type="checkbox" required /><span style={{color:"#0084E4"}}>Agree to terms and conditions</span>
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 usersignin-main-box2">
@@ -162,13 +207,12 @@ function Shopsignin() {
                     placeholder="Buildingname"
                     style={{ width: "400px" }}
                     name="buildingname"
-                    value={values.buildingname}
+                    value={formValues.buildingname}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.buildingname && touched.buildingname && (
-                    <p className="error">{errors.buildingname}</p>
+                  {formErrors.buildingname && (
+                    <p className="error">{formErrors.buildingname}</p>
                   )}
                 </div>
                 <div className="col-12 pb-3">
@@ -177,13 +221,12 @@ function Shopsignin() {
                     placeholder="Street"
                     style={{ width: "400px" }}
                     name="street"
-                    value={values.street}
+                    value={formValues.street}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.street && touched.street && (
-                    <p className="error">{errors.street}</p>
+                  {formErrors.street && (
+                    <p className="error">{formErrors.street}</p>
                   )}
                 </div>
                 <div className="col-6 pb-3">
@@ -191,13 +234,12 @@ function Shopsignin() {
                     type="text"
                     placeholder="City"
                     name="city"
-                    value={values.city}
+                    value={formValues.city}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.city && touched.city && (
-                    <p className="error">{errors.city}</p>
+                  {formErrors.city && (
+                    <p className="error">{formErrors.city}</p>
                   )}
                 </div>
                 <div className="col-6 pb-3">
@@ -205,13 +247,12 @@ function Shopsignin() {
                     type="text"
                     placeholder="State"
                     name="state"
-                    value={values.state}
+                    value={formValues.state}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.state && touched.state && (
-                    <p className="error">{errors.state}</p>
+                  {formErrors.state && (
+                    <p className="error">{formErrors.state}</p>
                   )}
                 </div>
                 <div className="col-6 pb-3">
@@ -219,40 +260,25 @@ function Shopsignin() {
                     type="number"
                     placeholder="Pincode"
                     name="pincode"
-                    value={values.pincode}
+                    value={formValues.pincode}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.pincode && touched.pincode && (
-                    <p className="error">{errors.pincode}</p>
+                  {formErrors.pincode && (
+                    <p className="error">{formErrors.pincode}</p>
                   )}
                 </div>
-
-                {/* <div className='col-12 pb-3 '>
-              <select  style={{width:"190px"}}>
-                <option>Nationality</option>
-                <option>Indian</option>
-                <option>America</option>
-                <option>London</option>
-                <option>Japan</option>
-                <option>Uk</option>
-                <option>Australia</option>
-                <option>England</option>
-              </select>
-            </div> */}
                 <div className="col-6 pb-3">
                   <input
                     type="number"
                     placeholder="Phone Number"
                     name="phone"
-                    value={values.phone}
+                    value={formValues.phone}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.phone && touched.phone && (
-                    <p className="error">{errors.phone}</p>
+                  {formErrors.phone && (
+                    <p className="error">{formErrors.phone}</p>
                   )}
                 </div>
                 <div className="col-6 pb-3">
@@ -260,13 +286,12 @@ function Shopsignin() {
                     type="email"
                     placeholder="Your Email"
                     name="email"
-                    value={values.email}
+                    value={formValues.email}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.email && touched.email && (
-                    <p className="error">{errors.email}</p>
+                  {formErrors.email && (
+                    <p className="error">{formErrors.email}</p>
                   )}
                 </div>
                 <div className="col-6">
@@ -274,29 +299,28 @@ function Shopsignin() {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    value={values.password}
+                    value={formValues.password}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                   />
-                  {errors.password && touched.password && (
-                    <p className="error">{errors.password}</p>
+                  {formErrors.password && (
+                    <p className="error">{formErrors.password}</p>
                   )}
                 </div>
                 <div className="col-6">
-                  <input type="password" placeholder="Confirm password" 
-                  name="confirmpassword"
-                  value={values.confirmpassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  required
-                   />
-                     {errors.confirmpassword && touched.confirmpassword && (
-                      <p className="error">{errors.confirmpassword}</p>
-                    )}
+                  <input
+                    type="password"
+                    placeholder="Confirm password"
+                    name="confirmpassword"
+                    value={formValues.confirmpassword}
+                    onChange={handleChange}
+                    required
+                  />
+                  {formErrors.confirmpassword && (
+                    <p className="error">{formErrors.confirmpassword}</p>
+                  )}
                 </div>
               </div>
-              {/* <button type="submit" className="usersignup-regbtn">Register Now !</button> */}
             </div>
           </div>
         </form>

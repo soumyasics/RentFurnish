@@ -1,6 +1,7 @@
 .viewshopsmain{
     width: 1343px;
-    height: 3369px;
+    max-height: max-content;
+    /* height: 3369px; */
     border-radius: 20px;
     background: #F2F3FF;
 }

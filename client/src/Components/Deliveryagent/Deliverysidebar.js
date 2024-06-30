@@ -69,8 +69,8 @@ useEffect(()=>{
       <div className='sidebar'>
         <div className="profile-section">
           <img
-          src={adminimg} 
-          // src={`${url}/${delivery?.image?.filename}`}
+          // src={adminimg} 
+          src={`${url}/${delivery?.image?.filename}`}
            width="200px" height="200px" alt="Profile" className="profile-image" onClick={handleProfileImageClick}/>
           <h2 className="profile-name">{delivery?.name}</h2>
           <p className="profile-email">{delivery?.email}</p>

@@ -15,22 +15,15 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage }).single("image");
 
   const userregister = (req, res) => {
-    const shops = new customerschema({
-      firstname: req.body.firstname,
-      lastname:req.body.lastname,
+    const customer = new customerschema({
+      name: req.body.name,
       gender:req.body.gender,  
-      age:req.body.age, 
       phone: req.body.phone,
       email: req.body.email,
       password: req.body.password,
-      housename: req.body.housename,
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      pincode: req.body.pincode,
-      image: req.file,
+      address:req.body.address
     });
-    shops
+    customer
       .save()
       .then((data) => {
         res.json({
@@ -62,6 +55,79 @@ const storage = multer.diskStorage({
         });
       });
   };
+
+  const logincustomer = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await customerschema.findOne({ email: email });
+
+        if (user) {
+            if (user.isActive === false) {
+                return res.json({
+                    status: 403,
+                    msg: "User is not active. Please contact administrator."
+                });
+            } else if (user.password === password) {
+                const token = jwt.sign(
+                    { email: user.email, password: user.password },
+                    "secret_key",
+                    { expiresIn: 86400 }
+                );
+                return res.json({
+                    status: 200,
+                    msg: "Login Successfully", token, id: user._id
+                })
+            }
+            //   return res
+            //     .status(200)
+            //     .json({ message: "Login successful", token, id: user._id });
+            // } 
+            else {
+                return res.status(401).json({ message: "Password is incorrect" });
+            }
+        } else {
+            return res.status(404).json({ message: "User does not exist" });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+const forgotPwdcustomer = (req, res) => {
+  customerschema
+      .findOneAndUpdate(
+          { email: req.body.email },
+          { password: req.body.password }
+      )
+      .exec()
+      .then((data) => {
+          if (data != null)
+              res.json({
+                  status: 200,
+                  msg: "Updated successfully",
+              });
+          else
+              res.json({
+                  status: 500,
+                  msg: "User Not Found",
+              });
+      })
+      .catch((err) => {
+          console.log(err);
+          res.json({
+              status: 500,
+              msg: "Data not Updated",
+              Error: err,
+          });
+      });
+};
+
   
 
-  module.exports={userregister,upload}
+  module.exports={
+    userregister,
+    logincustomer  ,
+    forgotPwdcustomer         
+
+  }
