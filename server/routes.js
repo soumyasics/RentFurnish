@@ -6,6 +6,7 @@ const DeliveryAgent=require("./deliveryAgents/deliveryAgentController")
 const Customer=require("./customer/customerController")
 const Customer=require("./customer/customerController")
 const Furniture=require("./Furniture/furnitureController")
+const complaint=require("./complaints/complaintController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -53,5 +54,12 @@ router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
 router.post("/viewFurnitureswithQuantityGtZero/:id",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
 
+
+//complaints
+router.post('/createComplaint',complaint.addcomplaint)
+router.post('/viewAllcomplaints',complaint.viewAllcomplaints)
+router.post('/viewcomplaintByUserId/:id',complaint.viewcomplaintByUserId)
+router.post('/deletecomplaintById/:id',complaint.deletecomplaintById)
+router.post('/viewcomplaintByShopId/:id',complaint.viewcomplaintByShopId)
 
 module.exports=router
