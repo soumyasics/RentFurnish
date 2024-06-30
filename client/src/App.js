@@ -50,6 +50,9 @@ function App() {
           <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
+          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
+          <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
+          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
          
         {/* Shops */}
           <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
@@ -73,7 +76,6 @@ function App() {
           <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
-
 
           {/* Admin */}
           <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>

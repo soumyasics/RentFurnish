@@ -39,7 +39,7 @@ function Shopsignin() {
   const validatePassword = (password) => {
     let errors = { ...formErrors };
 
-    if (password.length < 8) {
+    if (password.length <= 8) {
       errors.password = "Password must be at least 8 characters long";
     } else if (!/[A-Z]/.test(password)) {
       errors.password = "Password must contain at least one uppercase letter";
@@ -58,8 +58,8 @@ function Shopsignin() {
     if (!formValues.shopname) {
       errors.shopname = "Shop name is required";
     }
-    if (!formValues.regno || formValues.regno.length < 6) {
-      errors.regno = "Reg no must be at least 6 characters";
+    if (!formValues.regno || formValues.regno.length < 6 || formValues.regno < 0) {
+      errors.regno = "Reg no must be at least 6 positive number";
     }
     if (!formValues.buildingname) {
       errors.buildingname = "Building name is required";
@@ -73,17 +73,17 @@ function Shopsignin() {
     if (!formValues.state) {
       errors.state = "State is required";
     }
-    if (!formValues.pincode || formValues.pincode.length !== 6) {
-      errors.pincode = "Pincode must be 6 characters";
+    if (!formValues.pincode || formValues.pincode.length !== 6 || formValues.pincode < 0) {
+      errors.pincode = "Pincode must be 6 positive number";
     }
-    if (!formValues.phone) {
-      errors.phone = "Phone number is required";
+    if (!formValues.phone || formValues.phone.length !== 10 || formValues.phone < 0) {
+      errors.phone = "Contact must be 10 positive number";
     }
     if (!formValues.email) {
       errors.email = "Email is required";
     }
-    if (!formValues.password) {
-      errors.password = "Password is required";
+    if (!formValues.password || formValues.password.length !== 8) {
+      errors.password = "Password must be 8 character";
     } else {
       validatePassword(formValues.password);
     }
@@ -98,6 +98,8 @@ function Shopsignin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    validatePassword(formValues.password);
+    
     if (!validate()) {
       return;
     }

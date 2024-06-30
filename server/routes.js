@@ -4,6 +4,7 @@ const router=express.Router()
 const Shops=require("./shopOwner/shopOwnerController")
 const DeliveryAgent=require("./deliveryAgents/deliveryAgentController")
 const Customer=require("./customer/customerController")
+const Customer=require("./customer/customerController")
 const Furniture=require("./Furniture/furnitureController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
@@ -29,6 +30,13 @@ router.post("/forgotPwdDeliveryAgent",DeliveryAgent.forgotPwdDeliveryAgent)
 router.post("/viewallDeliveryAgentsByDistrict/:district",DeliveryAgent.viewallDeliveryAgentsByDistrict)
 router.post("/viewDeliveryAgentbyShopid/:id",DeliveryAgent.viewDeliveryAgentbyShopid)
 router.post("/activateDeliveryAgentById/:id",DeliveryAgent.activateDeliveryAgentById)
+
+
+
+router.post("/userregister",Customer.userregister)
+router.post("/logincustomer",Customer.logincustomer)
+router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
+
 
 
 
