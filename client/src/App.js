@@ -50,6 +50,9 @@ function App() {
           <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
+          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
+          <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
+          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
          
         {/* Shops */}
           <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>

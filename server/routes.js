@@ -4,6 +4,8 @@ const router=express.Router()
 const Shops=require("./shopOwner/shopOwnerController")
 const DeliveryAgent=require("./deliveryAgents/deliveryAgentController")
 const Customer=require("./customer/customerController")
+const Customer=require("./customer/customerController")
+const Furniture=require("./Furniture/furnitureController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -34,6 +36,22 @@ router.post("/activateDeliveryAgentById/:id",DeliveryAgent.activateDeliveryAgent
 router.post("/userregister",Customer.userregister)
 router.post("/logincustomer",Customer.logincustomer)
 router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
+
+
+
+
+router.post("/userregister",Customer.userregister)
+router.post("/logincustomer",Customer.logincustomer)
+router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
+
+
+//furniture Routes
+router.post("/registerFurniture",Furniture.upload,Furniture.registerFurniture)
+router.post("/editFurnitureById/:id",Furniture.upload,Furniture.editFurnitureById)
+router.post("/deleteFurnitureById/:id",Furniture.deleteFurnitureById)
+router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
+router.post("/viewFurnitureswithQuantityGtZero/:id",Furniture.viewFurnitureswithQuantityGtZero)
+router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
 
 
 module.exports=router
