@@ -1,0 +1,76 @@
+/* Add Furniture */
+
+.main_image_style{
+    height: 470px;
+    width: 670px;
+    border-radius: 20px;
+}
+
+.sub_image_style{
+    height: 160px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+/* View Furniture */
+.view_fur_rowpadding{
+    padding: 10px;
+}
+
+.view_fur_main_head{
+    font-family: 'Montserrat', sans-serif;
+    color: #0084E4;
+}
+
+.furniture-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button {
+    background-color: #FF9900; /* Primary blue color */
+    color: white;
+    border: 1px solid black;
+
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button:hover {
+    background-color: #ff99009f;
+
+}
+
+.delete-button {
+    background-color: transparent;
+    color: red;
+    border: none;
+    width: 110px;
+    border: 1px solid red;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: transparent;
+}
+
+.view_fur_last_div{
+    margin-top: 70px;
+}
+
+.view_main_image_style{
+    height: 300px;
+    width: 670px;
+    border-radius: 20px;
+}
