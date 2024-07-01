@@ -68,6 +68,7 @@ function App() {
           <Route path='/view-deliveryagentbyshop' element={[<Shopsmain data="view-deliveryagentbyshop"/>]}/>
           <Route path='/edit-deliveryagentbyshop/:id' element={[<Shopsmain data="edit-deliveryagentbyshop"/>]}/>
           <Route path='/add-furniture' element={[<Shopsmain data="add-furniture"/>]}/>
+          <Route path='/view-furniture' element={[<Shopsmain data="view-furniture"/>]}/>
 
 
 

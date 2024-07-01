@@ -9,6 +9,7 @@ import Viewalldeliverybyshop from './Viewalldeliverybyshop';
 import Deliveryagenteditpage from '../Deliveryagent/Deliveryagenteditpage';
 import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 import AddFurniture from './AddFurniture';
+import ViewFurniture from './ViewFurniture';
 
 function Shopsmain({ data }) {
   return (
@@ -24,6 +25,7 @@ function Shopsmain({ data }) {
         :data==="view-deliveryagentbyshop"?(<Viewalldeliverybyshop/>):
         data==="edit-deliveryagentbyshop"?(<Deliveryagenteditpage/>): 
         data==="add-furniture"?(<AddFurniture/>): 
+        data==="view-furniture"?(<ViewFurniture/>): 
         <Shoplogin/> }
       </div>
     </div>
