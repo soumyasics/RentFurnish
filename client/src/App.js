@@ -38,6 +38,11 @@ import Deliverysidebar from './Components/Deliveryagent/Deliverysidebar';
 import Deliverymain from './Components/Deliveryagent/Deliverymain';
 import Deliveryagenteditpage from './Components/Deliveryagent/Deliveryagenteditpage';
 import AddFurniture from './Components/Shops/AddFurniture';
+import UserNav1 from './Components/User/Home/UserNav1';
+import UserNav2 from './Components/User/Home/UserNav2';
+import User_SelectFurniture from './Components/User/Home/User_SelectFurniture';
+import User_ViewAllFur from './Components/User/Home/User_ViewAllFur';
+import Services from './Components/User/Home/Services';
 
 function App() {
   return (
@@ -54,6 +59,8 @@ function App() {
           <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
+          <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
+
          
         {/* Shops */}
           <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
