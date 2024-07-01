@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import './AddFurniture.css';
+import './Furniture.css';
 import mainimg from '../../Assets/addfurniture_first.png';
 import imgsub from '../../Assets/addfurniture_sub.png';
 import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from './Shopdropdown';
 import axiosMultipartInstance from '../Constants/FormDataUrl';
+import { toast } from 'react-toastify';
+
 
 function AddFurniture() {
   const [mainImage, setMainImage] = useState(mainimg);
@@ -150,13 +152,18 @@ function AddFurniture() {
       try {
         const res = await axiosMultipartInstance.post('/registerFurniture', formData);
         if (res.data.status === 200) {
-          alert('Furniture added successfully');
+        //   alert('Furniture added successfully');
+          toast.success("Furniture added successfully");
+
         } else {
-          alert(`Furniture not added: ${res.data.msg}`);
+            toast.error('Furniture not added')
+        //   alert(`Furniture not added: ${res.data.msg}`);
         }
       } catch (error) {
         console.error('There was an error!', error);
-        alert('Error');
+        toast.error('Error')
+
+        // alert('Error');
       }
     }
   };
