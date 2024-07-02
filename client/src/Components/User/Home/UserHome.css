@@ -1,0 +1,148 @@
+/* First Nav */
+
+.user_home_logo{
+    height: 70px;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.user_home_icon{
+    margin-right: 20px;
+    color: black;
+}
+
+.custom-button {
+    background: transparent;
+    color: #0084E4; 
+    border: 1px solid #0084E4;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    height: 40px;
+    width: 130px;
+}
+
+/* Second Nav */
+.user_home_secnav{
+    background-color: #E5F3FC;
+    padding: 10px;
+    margin-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 50px;
+}
+
+
+/* Select Furniture */
+
+.user_home_furniture_main_heading{
+    color: #0084E4;
+    padding-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.user_home_furniture_sub_heading{
+    font-family: 'Montserrat', Calibri;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 42.85px;
+    /* text-align: left; */
+
+}
+
+.userhome_fur_button{
+    border-radius: 40px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.userhome_fur_button:hover{
+    box-shadow: 40px;
+}
+
+.user_fome_selectfur_sec_div{
+    background-color: #E5F3FC;
+    border-radius: 30px;
+}
+
+.sec_div_padd{
+    padding-top: 40px;
+    height: 350px;
+}
+
+.user_home_second_div_left{
+    padding-top: 40px;
+    padding-left: 70px;
+
+}
+
+.user_home_second_div_left h1{
+    color: #0084E4;
+    font-size: 50px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.user_home_second_div_left p{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.userhome_fur_seccol_btn{
+    color: #FF9900;
+    border: 4px solid #FF9900;
+    background-color: #E5F3FC;
+    font-size: x-large;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* USer View All Furniture */
+.user_home_viewfur{
+    background-color: #E5F3FC;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.user_home_viewfur_heading{
+    color: #0084E4;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.userhome_card_price{
+    color: black;
+}
+
+.user_home_eachcard_paddd{
+    padding-bottom: 20px;
+}
+
+.userhome_viewfur_viewall_butt{
+    text-align: right;
+    padding-bottom: 20px;
+}
+
+/* Servics */
+
+.userhome_ser_mainheading{
+    color: #0084E4;
+}
+
+.userhome_ser_subheading{
+    color: #0084E4;
+}
+
+.userhome_service_eachpad{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
