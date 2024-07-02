@@ -106,7 +106,7 @@ function Admindashbboard() {
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">
-                View Delivery Details
+                View Complaints
               </button>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
