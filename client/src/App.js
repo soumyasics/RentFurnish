@@ -56,9 +56,9 @@ function App() {
           <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Navbar/>,<Userforgetpswd/>]}/>
-          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
+          {/* <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
+          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/> */}
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
 
          

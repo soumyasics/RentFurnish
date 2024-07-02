@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../User/Userlogin.css";
 import img from "../../Assets/renthome.jpg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosInstance from '../Constants/Baseurl';
 
@@ -21,6 +21,7 @@ function Userlogin() {
     }
     return errors;
   };
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ function Userlogin() {
         });
         console.log(response.data); 
         alert("Login Successfully")
+        navigate("/user-home")
       } catch (error) {
         console.error('Error logging in:', error);
         alert(error.response.data.message)
