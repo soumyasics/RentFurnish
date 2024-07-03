@@ -53,19 +53,19 @@ function App() {
           <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>,<Footer/>]}/>
 
         {/* // User // */}
-          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
+          <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
+          <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
+          <Route path='/userforgetpswd' element={[<Navbar/>,<Userforgetpswd/>]}/>
+          {/* <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
-          <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
-          <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/>
+          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/> */}
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
 
          
         {/* Shops */}
-          <Route path='/shopsignin' element={[<Shopnav/>,<Shopsignin/>,<Footer/>]}/>
-          <Route path='/shoplogin' element={[<Shopnav/>,<Shoplogin/>,<Footer/>]}/>
-          <Route path='/shopforgetpswd' element={[<Shopnav/>,<Shopforgetpswd/>,<Footer/>]}/>
+          <Route path='/shopsignin' element={[<Navbar/>,<Shopsignin/>,<Footer/>]}/>
+          <Route path='/shoplogin' element={[<Navbar/>,<Shoplogin/>,<Footer/>]}/>
+          <Route path='/shopforgetpswd' element={[<Navbar/>,<Shopforgetpswd/>,<Footer/>]}/>
           <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
 
           <Route path='/shop-dashboard' element={[<Shopsmain data="shopownerdashboard"/>]}/>
@@ -81,15 +81,15 @@ function App() {
 
           {/* Delivery Agent */}
           <Route path='/agentsignup' element={[<Shopnav/>,<Deliveryagentsignup/>]}/>
-          <Route path='/agentlogin' element={[<Shopnav/>,<Deliverylogin/>]}/>
-          <Route path='/agentrecoverpswd' element={[<Shopnav/>,<Deliveryforgetpswd/>]}/>
+          <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
+          <Route path='/agentrecoverpswd' element={[<Navbar/>,<Deliveryforgetpswd/>]}/>
           {/* <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/>  */}
           <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
 
           {/* Admin */}
-          <Route path='/adminlogin' element={[<Adminnav/>,<Adminlogin/>,<Footer/>]}/>
+          <Route path='/adminlogin' element={[<Navbar/>,<Adminlogin/>,<Footer/>]}/>
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>

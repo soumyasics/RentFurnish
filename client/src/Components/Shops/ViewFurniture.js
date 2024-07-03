@@ -15,6 +15,7 @@ function ViewFurniture() {
     useEffect(() => {
         axiosMultipartInstance.post('viewallFurniture')
             .then(response => {
+                console.log(response);
                 if (response.data.status === 200) {
                     setFurnitureList(response.data.data);
                 } else {
@@ -64,7 +65,7 @@ function ViewFurniture() {
                                             :
                                         </div>
                                         <div className='col-7'>
-                                            ₹{furniture.price} / Month
+                                            ₹{furniture.condition} / Month
                                         </div>
                                     </div>
                                     <div className='row m-2'>
