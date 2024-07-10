@@ -47,6 +47,7 @@ import ViewFurniture from './Components/Shops/ViewFurniture';
 import Viewallfurnituresuser from './Components/User/Furnitures/Viewallfurnituresuser';
 import Bookorder1 from './Components/User/Purchase/Bookorder1';
 import Deliveryorder from './Components/User/Purchase/Deliveryorder';
+import Adminexample from './Components/Admin/Adminexample';
 
 function App() {
   return (
@@ -101,6 +102,7 @@ function App() {
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
+          <Route path='/example' element={[<Adminexample/>]}/>
 
       </Routes>
     </div>
