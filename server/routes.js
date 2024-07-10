@@ -7,6 +7,7 @@ const Customer=require("./customer/customerController")
 // const Customer=require("./customer/customerController")
 const Furniture=require("./Furniture/furnitureController")
 const complaint=require("./complaints/complaintController")
+const order=require("./Orders/orderController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -62,5 +63,10 @@ router.post('/viewAllcomplaints',complaint.viewAllcomplaints)
 router.post('/viewcomplaintByUserId/:id',complaint.viewcomplaintByUserId)
 router.post('/deletecomplaintById/:id',complaint.deletecomplaintById)
 router.post('/viewcomplaintByShopId/:id',complaint.viewcomplaintByShopId)
+
+
+
+//orders
+router.post('/addOrder',order.addOrder)
 
 module.exports=router

@@ -20,6 +20,10 @@ name: {
     type: String,
     required: true,
   },
+  rent:{
+    type: Number,
+    required: true,
+  },
   condition:{
     type: String,
     required: true,
