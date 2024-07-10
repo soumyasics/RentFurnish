@@ -45,6 +45,8 @@ import User_ViewAllFur from './Components/User/Home/User_ViewAllFur';
 import Services from './Components/User/Home/Services';
 import ViewFurniture from './Components/Shops/ViewFurniture';
 import Viewallfurnituresuser from './Components/User/Furnitures/Viewallfurnituresuser';
+import Bookorder1 from './Components/User/Purchase/Bookorder1';
+import Deliveryorder from './Components/User/Purchase/Deliveryorder';
 
 function App() {
   return (
@@ -64,6 +66,8 @@ function App() {
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
           <Route path='/user-viewallfurniture' element={[<Viewallfurnituresuser/>]}/>
 
+          <Route path='/purches' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
+          <Route path='/delivery' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
 
          
         {/* Shops */}
