@@ -20,7 +20,7 @@ name: {
     type: String,
     required: true,
   },
-  condition:{
+  price:{
     type: String,
     required: true,
   },

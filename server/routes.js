@@ -52,7 +52,7 @@ router.post("/editFurnitureById/:id",Furniture.upload,Furniture.editFurnitureByI
 router.post("/deleteFurnitureById/:id",Furniture.deleteFurnitureById)
 router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
 router.post("/viewallFurniture",Furniture.viewFurnitures)
-router.post("/viewFurnitureswithQuantityGtZero/:id",Furniture.viewFurnitureswithQuantityGtZero)
+router.post("/viewFurnitureswithQuantityGtZero",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
 
 

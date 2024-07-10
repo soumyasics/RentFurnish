@@ -43,6 +43,8 @@ import UserNav2 from './Components/User/Home/UserNav2';
 import User_SelectFurniture from './Components/User/Home/User_SelectFurniture';
 import User_ViewAllFur from './Components/User/Home/User_ViewAllFur';
 import Services from './Components/User/Home/Services';
+import ViewFurniture from './Components/Shops/ViewFurniture';
+import Viewallfurnituresuser from './Components/User/Furnitures/Viewallfurnituresuser';
 
 function App() {
   return (
@@ -60,6 +62,8 @@ function App() {
           <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/> */}
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
+          <Route path='/user-viewallfurniture' element={[<Viewallfurnituresuser/>]}/>
+
 
          
         {/* Shops */}

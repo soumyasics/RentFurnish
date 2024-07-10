@@ -26,13 +26,13 @@ const registerFurniture = async (req, res) => {
   
 
     try {
-      const { name, shopId, category, description, condition, roomType, dimension, quantity } = req.body;
+      const { name, shopId, category, description, price, roomType, dimension, quantity } = req.body;
       const newFurniture = new Furnitures({
         name,
         shopId,
         category,
         description,
-        condition,
+        price,
         roomType,
         dimension,
         quantity,
@@ -156,13 +156,13 @@ const editFurnitureById = (req, res) => {
       return res.status(500).json({ msg: err.message });
     }
     try {
-      const { name, shopId, category, description, condition, roomType, dimension, quantity } = req.body;
+      const { name, shopId, category, description, price, roomType, dimension, quantity } = req.body;
       const updateData = {
         name,
         shopId,
         category,
         description,
-        condition,
+        price,
         roomType,
         dimension,
         quantity

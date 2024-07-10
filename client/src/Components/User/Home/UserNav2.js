@@ -4,7 +4,7 @@ import './UserHome.css'
 function UserNav2() {
   return (
     <div>
-        <nav class="navbar bg-body-tertiary container ">
+        <nav class="navbar  container ">
         <div class="container-fluid user_home_secnav">
             <a class="navbar-brand">Home</a>
             <a class="navbar-brand">About Us</a>

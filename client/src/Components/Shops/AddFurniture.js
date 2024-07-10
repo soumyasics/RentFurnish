@@ -16,7 +16,7 @@ function AddFurniture() {
   const [data, setData] = useState({
     name: '',
     category: '',
-    condition: '',
+    price: '',
     dimension: '',
     quantity: '',
     roomType: '',
@@ -32,7 +32,7 @@ function AddFurniture() {
   const [errors, setErrors] = useState({
     name: '',
     category: '',
-    condition: '',
+    price: '',
     dimension: '',
     quantity: '',
     roomType: '',
@@ -87,8 +87,8 @@ function AddFurniture() {
       formIsValid = false;
     }
 
-    if (!data.condition.trim()) {
-      newErrors.condition = 'Price/Month is required';
+    if (!data.price.trim()) {
+      newErrors.price = 'Price/Month is required';
       formIsValid = false;
     }
 
@@ -130,14 +130,14 @@ function AddFurniture() {
       newErrors.image1 = 'Image is required';
       formIsValid = false;
     }
-
+    console.log(data);
     setErrors(newErrors);
 
     if (formIsValid) {
       const formData = new FormData();
       formData.append('name', data.name);
       formData.append('category', data.category);
-      formData.append('condition', data.condition);
+      formData.append('price', data.price);
       formData.append('dimension', data.dimension);
       formData.append('quantity', data.quantity);
       formData.append('roomType', data.roomType);
@@ -151,6 +151,8 @@ function AddFurniture() {
 
       try {
         const res = await axiosMultipartInstance.post('/registerFurniture', formData);
+        console.log(res);
+
         if (res.data.status === 200) {
         //   alert('Furniture added successfully');
           toast.success("Furniture added successfully");
@@ -253,8 +255,8 @@ function AddFurniture() {
               <input
                 type="text"
                 className="form-control controls"
-                name="condition"
-                value={data.condition}
+                name="price"
+                value={data.price}
                 onChange={handleInputChange}
                 placeholder="Price/Month"
               />

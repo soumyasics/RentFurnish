@@ -1,6 +1,7 @@
 import React from 'react'
 import chair from '../../../Assets/userhome_viewfur.png'
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 function User_ViewAllFur() {
   return (
@@ -91,9 +92,10 @@ function User_ViewAllFur() {
                     </div>
                 </div>
             </div>
+            <Link to="/user-viewallfurniture">
             <div className='userhome_viewfur_viewall_butt'>
                 <button className='userhome_fur_seccol_btn'>View All <FaArrowRight /></button>
-            </div>
+            </div></Link>
         </div>
     </div>
   )
