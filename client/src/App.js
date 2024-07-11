@@ -49,6 +49,7 @@ import Bookorder1 from './Components/User/Purchase/Bookorder1';
 import Deliveryorder from './Components/User/Purchase/Deliveryorder';
 import Adminexample from './Components/Admin/Adminexample';
 import Changeaddress from './Components/User/Purchase/ChangeAddress/Changeaddress';
+import CustViewProfile from './Components/User/Profile/CustViewProfile';
 
 function App() {
   return (
@@ -67,7 +68,7 @@ function App() {
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
-          <Route path='/user-changeaddress' element={[<Changeaddress/>]}/>
+          <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
 
          
         {/* Shops */}
