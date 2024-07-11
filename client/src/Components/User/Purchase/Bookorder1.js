@@ -43,7 +43,7 @@ function Bookorder1() {
     },[])
 
 
-    const[count,setcount]=useState(0)
+    const[count,setcount]=useState(1)
     
     const Add = () => {
         if (count < data.quantity) {

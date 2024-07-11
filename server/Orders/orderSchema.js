@@ -50,6 +50,10 @@ const orderSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "shops",
         required: true,
+    },
+    amount:{
+        type:Number,
+        required:true 
     }
 });
 

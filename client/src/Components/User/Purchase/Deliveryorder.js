@@ -7,6 +7,7 @@ import Bead_img3 from "../../../Assets/Bead3.png";
 import Bead_img4 from "../../../Assets/Bead4.png";
 import { useLocation, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../Constants/Baseurl';
+import { toast } from 'react-toastify';
 function Deliveryorder() {
     const location = useLocation();
     const navigate=useNavigate()
@@ -15,6 +16,14 @@ function Deliveryorder() {
     const [user,setUser]=useState({})
     const url = axiosInstance.defaults.url;
     const userid = localStorage.getItem("userid");
+
+    const [order,setOrder]=useState({
+        furnitureId:id,
+        customerId:userid,
+        count:count,
+        amount:totalRent
+    })
+
 
 
     console.log(totalRent);
@@ -43,6 +52,25 @@ function Deliveryorder() {
         });
     },[id,userid])
 
+    //order function
+
+    const orderfn=((e)=>{
+        e.preventDefault()
+        axiosInstance.post(`addOrder`,order)
+        .then((result)=>{
+            console.log(result);
+            if(result.data.status==200){
+                toast.success("Order Submitted Successfully")
+            }
+            else{
+                toast.err("Cannot order at this moment")
+            }
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    })
+
     return (
         <div>
             <div className="d-flex flex-row mt-5">
@@ -50,6 +78,7 @@ function Deliveryorder() {
                 <div className="ms-2 p-2 bookorder">View details</div>
             </div>
             <div className='p-5'>
+                <form onSubmit={orderfn}>
                 <div className='row border rounded-3 p-3'>
                     <div className='col-sm-12 col-lg-6'>
                         <div className='col user-confirm-purchasemainimg'>
@@ -126,7 +155,7 @@ function Deliveryorder() {
                                                 <p>{user?.address}</p>
                                             </div>
                                             <div className=''>
-                                                <button className='change change_text'>Change</button>
+                                                <button type="button" className='change change_text'>Change</button>
                                             </div>
                                         </div>
                                     </div>
@@ -136,16 +165,17 @@ function Deliveryorder() {
                                 <p className='details_text'>Rental terms</p>
                                 <p>{data?.condition}</p>
                                 <div className='d-flex'>
-                                <input class="form-check-input  active" type="checkbox" value="" id="flexCheckDefault"/>
+                                <input class="form-check-input  active" type="checkbox" value="" id="flexCheckDefault" required/>
                                 <p className='ms-1 details_text'>Agree to terms and conditions</p>
                                 </div>
                             </div>
                         </div>
                     </div> 
                     <div className="mx-auto p-2 mb-5" style={{width: '200px'}}>
-                        <button className='book_nowbtn book_nowtext'> Book Now</button>
+                        <button type='submit' className='book_nowbtn book_nowtext'> Book Now</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     )
