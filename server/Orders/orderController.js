@@ -121,6 +121,26 @@ const viewOrdersByShopId = async (req, res) => {
     }
 };
 
+// View Orders By Shop ID
+const updateOrderPayment = async (req, res) => {
+    try {
+        const orders = await Order.findByIdAndUpdate({_id: req.params.shopId },{paymentStatus:true})
+             
+        res.status(200).json({
+            status: 200,
+            message: 'Payment Added successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving Payment',
+            error: err
+        });
+    }
+};
+
 // View Orders By Customer ID
 const viewOrdersByCustId = async (req, res) => {
     try {
@@ -179,5 +199,5 @@ module.exports={
     viewOrdersByShopId,
     viewOrdersByCustId,
     viewPendingOrdersForDelivery,
-    addAddressByOrderId
+    addAddressByOrderId,updateOrderPayment
 }
