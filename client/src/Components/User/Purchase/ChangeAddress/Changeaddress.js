@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./ChangeAddress.css"
+import axiosInstance from '../../../Constants/Baseurl';
+import { toast } from 'react-toastify';
 
 function Changeaddress({onClose,orderId}) {
     console.log(orderId);
+
+    const [address,setAddress]=useState({
+        name:"",
+        email:"",
+        address:"",
+        contact:""
+    })
+    const changefn=((e)=>{
+        setAddress({
+            ...address,[e.target.name]:e.target.value
+        })
+    })
+
+    const changeaddressfn=(()=>{
+        axiosInstance.post(`addAddressByOrderId/${orderId}`,address)
+        .then((res)=>{
+            if(res.data.status==200){
+                toast.success("Address Changed Successfully")
+            }
+            else{
+                toast.error("Something Went Wrong")
+            }
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    })
   return (
     <div className='user-orderchangeaddress'>
         <div className='user-orderchangadd-main'>
@@ -12,7 +41,7 @@ function Changeaddress({onClose,orderId}) {
                 <p>Name</p>
                 </div>
                 <div className='col-12'>
-                <input type='text' placeholder='Name'/>
+                <input type='text' placeholder='Name' name='name' value={address.name} onChange={changefn}/>
                 </div>
                 <div className='col-12'>
                 <p>Email</p>
