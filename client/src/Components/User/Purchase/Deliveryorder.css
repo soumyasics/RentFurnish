@@ -34,8 +34,8 @@
     line-height: normal;
 }
 .book_nowbtn{
-    margin-top: 20px;
-    display: flex;
+    /* margin-top: 20px; */
+    /* display: flex; */
     width: 275px;
     height: 60px;
     justify-content: center;
@@ -62,4 +62,12 @@
 .user-confirm-purchasemainimg img{
     width: 625px;
     height: 324px;
+}
+.order-button-container{
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+}
+.order-button-container button{
+    margin-top: auto;
 }

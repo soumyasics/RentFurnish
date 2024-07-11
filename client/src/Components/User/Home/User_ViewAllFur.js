@@ -37,20 +37,27 @@ function User_ViewAllFur() {
             data.slice(0, 8).map((a) => {
               return (
                 <div className="col-md-3 col-sm-6">
-                  <div class="card">
-                    <img
-                      src={`${url}/${a?.image1?.filename}`}
-                      width="290px"
-                      height="275px"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">Single seat sofa</h5>
-                      <p class="card-text">Rent</p>
-                      <p class="card-text userhome_card_price">₹ {a?.rent}/MO</p>
+                  <Link
+                    to={`/user-purchesproduct/${a._id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <div class="card">
+                      <img
+                        src={`${url}/${a?.image1?.filename}`}
+                        width="290px"
+                        height="275px"
+                        class="card-img-top"
+                        alt="..."
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Single seat sofa</h5>
+                        <p class="card-text">Rent</p>
+                        <p class="card-text userhome_card_price">
+                          ₹ {a?.rent}/MO
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               );
             })

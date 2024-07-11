@@ -48,6 +48,7 @@ import Viewallfurnituresuser from './Components/User/Furnitures/Viewallfurniture
 import Bookorder1 from './Components/User/Purchase/Bookorder1';
 import Deliveryorder from './Components/User/Purchase/Deliveryorder';
 import Adminexample from './Components/Admin/Adminexample';
+import Changeaddress from './Components/User/Purchase/ChangeAddress/Changeaddress';
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
+          <Route path='/user-changeaddress' element={[<Changeaddress/>]}/>
 
          
         {/* Shops */}
