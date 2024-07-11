@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const fSchema = mongoose.Schema({
@@ -20,7 +21,11 @@ name: {
     type: String,
     required: true,
   },
-  price:{
+  rent:{
+    type: Number,
+    required: true,
+  },
+  condition:{
     type: String,
     required: true,
   },

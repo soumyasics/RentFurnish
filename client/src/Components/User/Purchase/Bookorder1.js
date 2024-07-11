@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../User/Purchase/Bookorder1.css";
 import Vector from "../../../Assets/Vector.png";
 import Likeimg from "../../../Assets/Likeimg.png";
@@ -14,44 +14,84 @@ import star_ash from "../../../Assets/Star 10.png";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { FaChevronCircleRight } from "react-icons/fa";
+import { useNavigate, useParams } from 'react-router-dom';
+import axiosInstance from '../../Constants/Baseurl';
+import { toast } from 'react-toastify';
 
 function Bookorder1() {
+    const {id}=useParams()
+    const [data,setData]=useState({})
+    const [totalRent, setTotalRent] = useState(0);
+    const url = axiosInstance.defaults.url;
+    const navigate=useNavigate()
+
+    const naigatebckfn=(()=>{
+        navigate(-1)
+    })
+
+
+    useEffect(()=>{
+        axiosInstance.post(`viewFurnitureById/${id}`)
+        .then((result)=>{
+            console.log(result);
+            setData(result.data.data)
+            setTotalRent(result.data.data.rent);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
+
     const[count,setcount]=useState(0)
     
-    const Add=()=>{
-        setcount(count+1)
-    }
-    const Sub=()=>{
-        if (count > 0) {
-            setcount(count - 1);
+    const Add = () => {
+        if (count < data.quantity) {
+            setcount(count + 1);
+            setTotalRent((count + 1) * data.rent);
+        } else {
+            toast.info(`Only ${data.quantity} products are available`);
         }
+    };
+        const Sub=()=>{
+            if (count > 0) {
+                setcount(count - 1);
+                setTotalRent((count - 1) * data.rent);
+            }
     }
+
+    const handleBookNow = () => {
+        navigate('/user-confirmpurchase', {
+            state: { id, totalRent, count }
+        });
+    };
+
     return (
         <div>
 
             <div className="d-flex flex-row mt-5">
-                <img className='ms-5 backimg' src={Vector} />
+                <img className='ms-5 backimg' src={Vector} onClick={naigatebckfn}/>
                 <div className="ms-2 p-2 bookorder">View details</div>
             </div>
 
             <div className='row col-12  continer'>
-                <div className='col img-fluid'>
-                    <img src={Likeimg} style={{ paddingLeft: '600px' }} />
-                    <img className='img-fluid' src={Bead_img1} />
-                    <div class="row">
+                <div className='col-6 img-fluid'>
+                    {/* <img src={Likeimg} style={{ paddingLeft: '600px' }} /> */}
+                    <img className='img-fluid purchanse-mainimage' src={`${url}/${data?.image1?.filename}`} width="758px" height="390px"/>
+                    <div class="row book-imagedown">
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={Bead_img2} />
+                            <img src={`${url}/${data?.image2?.filename}`} />
                         </div>
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={Bead_img3} />
+                            <img src={`${url}/${data?.image3?.filename}`} />
                         </div>
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={Bead_img4} />
+                            <img src={`${url}/${data?.image4?.filename}`} />
                         </div>
                     </div>
                 </div>
-                <div className='col continer ps-5'>
-                    <p className='beadtext'>Double Bed Alpha 6x5</p>
+                <div className='col-6 continer ps-5'>
+                    <p className='beadtext'>{data?.name}</p>
                     <div className="d-flex flex-row mb-3">
                         <div className="p-2 Avilabel_text">Avilable</div>
                         <div className="p-2">
@@ -61,7 +101,7 @@ function Bookorder1() {
                     <div className=''>
                         <div class="d-flex mb-5">
                             <div className="">₹</div>
-                            <div className="fw-bold">499</div>
+                            <div className="fw-bold">{totalRent}</div>
                             <div className="">/Month</div>
                         </div>
                     </div>
@@ -81,18 +121,20 @@ function Bookorder1() {
                         </div>
                     </div>
                     <div className='mb-5'>
-                        <p className='quantity_text'>Dimensions<p className='quantity_text2'>15 H X 60 W X 72 D</p></p>
+                        <p className='quantity_text'>Dimensions<p className='quantity_text2'>{data?.dimension}</p></p>
 
                     </div>
                     <div className=''>
                         <p className='Description_text mt-4'>Description</p>
-                        <p className='content col-6'>This is a bed-for-two or maybe just you! It is the perfect addition to your room. It's simple, uncomplicated design.</p>
+                        <p className='content col-6'>{data?.description}</p>
                     </div>
                     <div className=''>
-                        <button className='book book_text shadow-lg btn btn-warning'>Book Now</button>
+                        <button className='book book_text shadow-lg btn btn-warning' onClick={handleBookNow}>Book Now</button>
                     </div>
                 </div>
             </div>
+
+
             <div className='row'>
                 <div className='col-6'>
                     <p className='Rating'>Ratings & Reviews</p>

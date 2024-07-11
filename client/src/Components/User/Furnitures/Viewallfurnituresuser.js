@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Viewallfurnitures.css";
 import chair from "../../../Assets/userhome_viewfur.png";
 import { FaArrowRight } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../Constants/Baseurl";
 
 function Viewallfurnituresuser() {
@@ -38,14 +38,15 @@ function Viewallfurnituresuser() {
   return (
     <div className="user_home_viewfur">
       <div className="container">
-        <h1 className="user_home_viewfur_heading ri-arrow-left-line">
+       <Link to="/user-home" style={{textDecoration:"none"}}> <h1 className="user_home_viewfur_heading ri-arrow-left-line">
           All Furnitures
-        </h1>
+        </h1></Link>
         <div className="row user_home_eachcard_paddd">
           {data && data.length ? (
             data.map((a) => {
               return (
                 <div className="col-md-3 col-sm-6">
+                    <Link to={`/user-purchesproduct/${a._id}`} style={{textDecoration:"none"}}>
                   <div class="card wishlist-cardmain">
                     <img
                       src={`${url}/${a?.image1?.filename}`}
@@ -59,9 +60,9 @@ function Viewallfurnituresuser() {
                       <h5 class="card-title">{a?.name}</h5>
                       <p class="card-text">Available Quantity : {a?.quantity}</p>
                       <p class="card-text">Rent</p>
-                      <p class="card-text userhome_card_price">₹499/MO</p>
+                      <p class="card-text userhome_card_price">₹ {a?.rent}/MO</p>
                       <button
-                        className="btn bg_icon mx-2 heart-button "
+                        className=" bg_icon mx-2 heart-button "
                         onClick={handleHeartClick}
                       >
                         <i
@@ -73,7 +74,7 @@ function Viewallfurnituresuser() {
                         ></i>
                       </button>
                     </div>
-                  </div>
+                  </div></Link>
                 </div>
               );
             })
