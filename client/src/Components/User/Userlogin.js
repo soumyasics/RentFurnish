@@ -35,11 +35,16 @@ function Userlogin() {
           email,
           password,
         });
-        console.log(response.data); 
-        alert("Login Successfully")
-        console.log(response.data.id);
-        localStorage.setItem("userid",response.data.id)
-        navigate("/user-home")
+        console.log(response);
+        if(response.data.status==200){
+          alert("Login Successfully")
+          console.log(response.data.id);
+          localStorage.setItem("userid",response.data.id)
+          navigate("/user-home")  
+        }
+        else{
+          alert(response.data.msg)
+        }
       } catch (error) {
         console.error('Error logging in:', error);
         alert(error.response.data.message)

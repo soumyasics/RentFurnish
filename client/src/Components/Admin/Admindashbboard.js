@@ -95,14 +95,15 @@ function Admindashbboard() {
         <div className="row">
           <div className="col-12 d-flex justify-content-center buttonmain">
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
+              <Link to="/admin-viewcust">
               <button type="submit" className="btn btn-primary btn-block">
                 View Customer
-              </button>
+              </button></Link>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
+             <Link to="/admin-viewdelivery"> <button type="submit" className="btn btn-primary btn-block">
                 View Delivery Agent
-              </button>
+              </button></Link>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">
