@@ -1,9 +1,12 @@
 const furnitureSchema = require('../Furniture/furnitureSchema');
+const customerSchema = require('../customer/customerSchema');
+
 const Order = require('./orderSchema');
 
 const addOrder = async(req, res) => {
 
 const shops=await furnitureSchema.findById(req.body.furnitureId)
+const cust=await customerSchema.findById(req.body.customerId)
 
     const order = new Order({
        
@@ -13,6 +16,12 @@ const shops=await furnitureSchema.findById(req.body.furnitureId)
         amount:req.body.amount,
         date:new Date(),
         shopId: shops._id,
+        name: cust.name,
+        email: cust.email,
+        contact: cust.contact,
+        address: cust.address,
+
+
     });
 
    await order.save()
