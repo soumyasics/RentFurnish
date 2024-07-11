@@ -118,6 +118,12 @@ const shopLogin = async (req, res) => {
           status: 403,
           msg: "User is not active. Please contact administrator."
         });
+      }
+      else if (user.adminApproved === false) {
+        return res.json({
+          status: 403,
+          msg: "User is not Approved ByAdmin. Please contact administrator."
+        });
       } else if (user.password === password) {
         const token = jwt.sign(
           { email: user.email, password: user.password },
@@ -250,7 +256,25 @@ const updateshopprofile=(req,res)=>{
 
 //update profile completed
 const viewallshopsforadmin = (req, res) => {
-  shopschema.find({ isactive:false})
+  shopschema.find({ adminApproved:true})
+  .exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              msg: result
+          })
+      })
+      .catch((err) => {
+          res.json({
+              status: 500,
+              msg: err
+          })
+          console.log(err);
+      })
+}
+
+const viewallshopReqsforadmin = (req, res) => {
+  shopschema.find({ adminApproved:false})
   .exec()
       .then((result) => {
           res.json({
@@ -268,7 +292,7 @@ const viewallshopsforadmin = (req, res) => {
 }
 //Admin view shop request completed
 const acceptshopById = (req, res) => {
-  shopschema.findByIdAndUpdate({ _id: req.params.id }, { isactive: true }).exec()
+  shopschema.findByIdAndUpdate({ _id: req.params.id }, { adminApproved:true,isactive: true }).exec()
       .then((result) => {
           res.json({
               status: 200,
@@ -306,6 +330,73 @@ const deleteshopById =async (req, res) => {
 
     }
 
+    
+const deActivateShopById = async (req, res) => {
+  await shopschema.findByIdAndUpdate({ _id: req.params.id }, { isActive: false }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data deleted'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
+
+}
+
+const activateShopById = async (req, res) => {
+  await shopschema.findByIdAndUpdate({ _id: req.params.id }, { isActive: true }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data deleted'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
+
+}
+
+
+const searchShopByName = async (req, res) => {
+  try {
+    const name = req.params.name;
+    const user = await shopschema.find({ name: new RegExp(name, 'i') })
+
+    if (!result) {
+      return res.json({
+        status: 404,
+        data: null,
+        msg: 'User not found'
+      });
+    }
+
+    res.json({
+      status: 200,
+      data: result,
+      msg: 'User found'
+    });
+  } catch (err) {
+    res.json({
+      status: 500,
+      data: null,
+      msg: 'An error occurred'
+    });
+  }
+}
+
 module.exports = { registershop, upload, 
                     shopLogin, verifyToken, 
                     viewshopbyid,
@@ -314,5 +405,9 @@ module.exports = { registershop, upload,
                     updateshopprofile,
                     acceptshopById,
                     deleteshopById,
-                    viewallshopsforadmin
+                    viewallshopsforadmin,
+                    viewallshopReqsforadmin,
+                    activateShopById,
+                    deActivateShopById,
+                    searchShopByName
                  };
