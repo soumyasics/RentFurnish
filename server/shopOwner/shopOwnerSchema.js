@@ -54,6 +54,10 @@ const schema=mongoose.Schema({
         type:Object,
         required: true
     },
+    adminApproved:{
+        type:Boolean,
+        default:false
+    },
     isactive:{
         type:Boolean,
         default:false
