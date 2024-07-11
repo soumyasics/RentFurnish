@@ -43,8 +43,11 @@ import UserNav2 from './Components/User/Home/UserNav2';
 import User_SelectFurniture from './Components/User/Home/User_SelectFurniture';
 import User_ViewAllFur from './Components/User/Home/User_ViewAllFur';
 import Services from './Components/User/Home/Services';
+import ViewFurniture from './Components/Shops/ViewFurniture';
+import Viewallfurnituresuser from './Components/User/Furnitures/Viewallfurnituresuser';
 import Bookorder1 from './Components/User/Purchase/Bookorder1';
 import Deliveryorder from './Components/User/Purchase/Deliveryorder';
+import Adminexample from './Components/Admin/Adminexample';
 
 function App() {
   return (
@@ -58,12 +61,11 @@ function App() {
           <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
           <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
           <Route path='/userforgetpswd' element={[<Navbar/>,<Userforgetpswd/>]}/>
-          {/* <Route path='/userlogin' element={[<Shopnav/>,<Userlogin/>]}/>
-          <Route path='/usersignin' element={[<Shopnav/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={[<Shopnav/>,<Userforgetpswd/>]}/> */}
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
-          <Route path='/purches' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
-          <Route path='/delivery' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
+          <Route path='/user-viewallfurniture' element={[<UserNav1 />,<Viewallfurnituresuser/>]}/>
+
+          <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
+          <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
 
          
         {/* Shops */}
@@ -80,6 +82,7 @@ function App() {
           <Route path='/edit-deliveryagentbyshop/:id' element={[<Shopsmain data="edit-deliveryagentbyshop"/>]}/>
           <Route path='/add-furniture' element={[<Shopsmain data="add-furniture"/>]}/>
           <Route path='/view-furniture' element={[<Shopsmain data="view-furniture"/>]}/>
+          <Route path='/view-vieworders' element={[<Shopsmain data="view-vieworders"/>]}/>
 
 
 
@@ -97,6 +100,7 @@ function App() {
           <Route path='/admindashboard' element={<Admindashbboard/>}/>
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
+          <Route path='/example' element={[<Adminexample/>]}/>
 
       </Routes>
     </div>

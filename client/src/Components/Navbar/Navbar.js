@@ -30,7 +30,7 @@ function Navbar() {
     <nav className='navmain d-flex'>
       <div className='col-3' style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
       <img src={admin} alt='imag' width="30px" height="30px"/>
-          <h5>Rental Furniture</h5>
+          <h5>Rent Furniture</h5>
           <p >Rent A Furniture Online Today</p>
 
       </div>

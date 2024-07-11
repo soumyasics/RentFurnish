@@ -16,12 +16,12 @@ function AddFurniture() {
   const [data, setData] = useState({
     name: '',
     category: '',
-    condition: '',
+    rent: '',
     dimension: '',
     quantity: '',
     roomType: '',
     description: '',
-    terms: '',
+    condition: '',
     image1: null,
     image2: null,
     image3: null,
@@ -32,12 +32,12 @@ function AddFurniture() {
   const [errors, setErrors] = useState({
     name: '',
     category: '',
-    condition: '',
+    rent: '',
     dimension: '',
     quantity: '',
     roomType: '',
     description: '',
-    terms: '',
+    condition: '',
     image1: '',
     image2: '',
     image3: '',
@@ -87,8 +87,8 @@ function AddFurniture() {
       formIsValid = false;
     }
 
-    if (!data.condition.trim()) {
-      newErrors.condition = 'Price/Month is required';
+    if (!data.rent.trim()) {
+      newErrors.rent = 'Price/Month is required';
       formIsValid = false;
     }
 
@@ -118,11 +118,11 @@ function AddFurniture() {
         formIsValid = false;
       }
 
-      if (!data.terms.trim()) {
-        newErrors.terms = 'Terms & Condition name is required';
+      if (!data.condition.trim()) {
+        newErrors.condition = 'Terms & Condition name is required';
         formIsValid = false;
-      } else if (!/^[A-Za-z\s]+$/.test(data.terms.trim())) {
-        newErrors.terms = 'Terms & Condition name should only contain letters and spaces';
+      } else if (!/^[A-Za-z\s]+$/.test(data.condition.trim())) {
+        newErrors.condition = 'Terms & Condition name should only contain letters and spaces';
         formIsValid = false;
       }
 
@@ -130,19 +130,19 @@ function AddFurniture() {
       newErrors.image1 = 'Image is required';
       formIsValid = false;
     }
-
+    console.log(data);
     setErrors(newErrors);
 
     if (formIsValid) {
       const formData = new FormData();
       formData.append('name', data.name);
       formData.append('category', data.category);
-      formData.append('condition', data.condition);
+      formData.append('rent', data.rent);
       formData.append('dimension', data.dimension);
       formData.append('quantity', data.quantity);
       formData.append('roomType', data.roomType);
       formData.append('description', data.description);
-      formData.append('terms', data.terms);
+      formData.append('condition', data.condition);
       formData.append('image1', data.image1);
       formData.append('image2', data.image2);
       formData.append('image3', data.image3);
@@ -151,6 +151,8 @@ function AddFurniture() {
 
       try {
         const res = await axiosMultipartInstance.post('/registerFurniture', formData);
+        console.log(res);
+
         if (res.data.status === 200) {
         //   alert('Furniture added successfully');
           toast.success("Furniture added successfully");
@@ -253,12 +255,12 @@ function AddFurniture() {
               <input
                 type="text"
                 className="form-control controls"
-                name="condition"
-                value={data.condition}
+                name="rent"
+                value={data.rent}
                 onChange={handleInputChange}
                 placeholder="Price/Month"
               />
-              {errors.price && <div className="text-danger">{errors.price}</div>}
+              {errors.rent && <div className="text-danger">{errors.rent}</div>}
             </div>
             <div className='m-4'>
               <div className='row'>
@@ -310,12 +312,12 @@ function AddFurniture() {
               <label className="form-label">Terms & Conditions</label><span className="text-danger">*</span>
               <textarea
                 className="form-control controls"
-                name="terms"
-                value={data.terms}
+                name="condition"
+                value={data.condition}
                 onChange={handleInputChange}
                 placeholder="Terms & Conditions"
               />
-              {errors.terms && <div className="text-danger">{errors.terms}</div>}
+              {errors.condition && <div className="text-danger">{errors.condition}</div>}
             </div>
           </div>
           <div className="text-center mt-4">

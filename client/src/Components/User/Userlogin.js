@@ -37,6 +37,8 @@ function Userlogin() {
         });
         console.log(response.data); 
         alert("Login Successfully")
+        console.log(response.data.id);
+        localStorage.setItem("userid",response.data.id)
         navigate("/user-home")
       } catch (error) {
         console.error('Error logging in:', error);

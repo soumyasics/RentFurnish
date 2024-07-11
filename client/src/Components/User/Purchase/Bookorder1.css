@@ -158,3 +158,13 @@ font-weight: 600;
 .review{
     font-weight: 700;
 }
+.book-imagedown{
+    margin: 20px;
+}
+.book-imagedown img{
+    width: 200px;
+    height: 180px;
+}
+.purchanse-mainimage{
+    margin-left: 30px;
+}

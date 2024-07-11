@@ -38,6 +38,7 @@ router.post("/activateDeliveryAgentById/:id",DeliveryAgent.activateDeliveryAgent
 router.post("/userregister",Customer.userregister)
 router.post("/logincustomer",Customer.logincustomer)
 router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
+router.post("/viewcustbyid/:id",Customer.viewcustbyid)
 
 
 
@@ -53,7 +54,7 @@ router.post("/editFurnitureById/:id",Furniture.upload,Furniture.editFurnitureByI
 router.post("/deleteFurnitureById/:id",Furniture.deleteFurnitureById)
 router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
 router.post("/viewallFurniture",Furniture.viewFurnitures)
-router.post("/viewFurnitureswithQuantityGtZero/:id",Furniture.viewFurnitureswithQuantityGtZero)
+router.post("/viewFurnitureswithQuantityGtZero",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
 
 

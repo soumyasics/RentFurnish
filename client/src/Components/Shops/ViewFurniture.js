@@ -65,7 +65,7 @@ function ViewFurniture() {
                                             :
                                         </div>
                                         <div className='col-7'>
-                                            ₹{furniture.condition} / Month
+                                            ₹{furniture?.rent} / Month
                                         </div>
                                     </div>
                                     <div className='row m-2'>

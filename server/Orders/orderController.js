@@ -11,7 +11,7 @@ const shops=await furnitureSchema.findById(req.body.furnitureId)
         customerId: req.body.customerId,
         count: req.body.count,      
         amount:req.body.amount,
-date:new Date(),
+        date:new Date(),
         shopId: shops._id,
     });
 
