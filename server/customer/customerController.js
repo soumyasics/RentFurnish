@@ -152,12 +152,41 @@ const viewcustbyid = (req, res) => {
       });
 };
 
-  
+const viewallcust = (req, res) => {
+  customerschema
+      .find(
+          {isActive:true })
+      .exec()
+      .then((data) => {
+          if (data != null)
+              res.json({
+                  status: 200,
+                  msg: "found successfully",
+                  data:data
+              });
+          else
+              res.json({
+                  status: 500,
+                  msg: "User Not Found",
+              });
+      })
+      .catch((err) => {
+          console.log(err);
+          res.json({
+              status: 500,
+              msg: "Data not Updated",
+              Error: err,
+          });
+      });
+};
+
+
 
   module.exports={
     userregister,
     logincustomer  ,
     forgotPwdcustomer  ,
-    viewcustbyid       
+    viewcustbyid  ,
+    viewallcust     
 
   }

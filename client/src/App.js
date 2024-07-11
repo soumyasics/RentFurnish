@@ -51,6 +51,8 @@ import Adminexample from './Components/Admin/Adminexample';
 import Changeaddress from './Components/User/Purchase/ChangeAddress/Changeaddress';
 import CustViewProfile from './Components/User/Profile/CustViewProfile';
 import UserPayment from './Components/User/Purchase/Payment/UserPayment';
+import AdminViewCust from './Components/Admin/Customers/AdminViewCust';
+import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDelivery';
 
 function App() {
   return (
@@ -70,7 +72,7 @@ function App() {
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
           <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
-          <Route path='/user-paymwnt' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
+          <Route path='/user-payment/:id' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
 
          
         {/* Shops */}
@@ -106,6 +108,9 @@ function App() {
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
           <Route path='/example' element={[<Adminexample/>]}/>
+          <Route path='/admin-viewcust' element={[<AdminViewCust/>]}/>
+          <Route path='/admin-viewdelivery' element={[<AdminViewDelivery/>]}/>
+
 
       </Routes>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../User/Purchase/Deliveryorder.css";
 import Vector from "../../../Assets/Vector.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../../Constants/Baseurl";
 import { toast } from "react-toastify";
 import { Modal } from "react-bootstrap";
@@ -58,8 +58,9 @@ function Deliveryorder() {
         console.log(result);
         if (result.data.status === 200) {
           toast.success("Order Submitted Successfully");
-          setOrderId(result.data.data._id); // Set the order ID
-        } else {
+          setOrderId(result.data.data._id); 
+          navigate(`/user-payment/${result.data.data._id}`); 
+                } else {
           toast.error("Cannot order at this moment");
         }
       })
@@ -166,7 +167,7 @@ function Deliveryorder() {
                   </div>
                 </div>
                 <div className="col-sm-6 col-lg-6 order-button-container">
-                  <button type="submit" className="book_nowbtn book_nowtext">
+                 <button type="submit" className="book_nowbtn book_nowtext">
                     Book Now
                   </button>
                 </div>
@@ -187,7 +188,7 @@ function Deliveryorder() {
                 </div>
               </div>
             </div>
-            <div className="col-6">
+            {/* <div className="col-6">
               <p className="text">Customer Information</p>
               <div className="row">
                 <div className="col-sm-6 col-lg-6">
@@ -230,17 +231,17 @@ function Deliveryorder() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </form>
-        <Modal show={showProfileModal} onHide={handleProfileModalClose}>
+        {/* <Modal show={showProfileModal} onHide={handleProfileModalClose}>
           <Modal.Body>
             <Changeaddress
               orderId={orderId}
               onClose={handleProfileModalClose}
             />
           </Modal.Body>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   );

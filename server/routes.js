@@ -39,13 +39,11 @@ router.post("/userregister",Customer.userregister)
 router.post("/logincustomer",Customer.logincustomer)
 router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
 router.post("/viewcustbyid/:id",Customer.viewcustbyid)
+router.post("/viewallcust",Customer.viewallcust)
 
 
 
 
-router.post("/userregister",Customer.userregister)
-router.post("/logincustomer",Customer.logincustomer)
-router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
 
 
 //furniture Routes
@@ -74,6 +72,6 @@ router.post('/viewOrderById/:id',order.viewOrderById)
 router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
 router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
 router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
-router.post('/updateOrderPayment',order.updateOrderPayment)
+router.post('/updateOrderPayment/:id',order.updateOrderPayment)
 
 module.exports=router
