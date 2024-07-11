@@ -1,0 +1,90 @@
+.back_ground {
+    width: 1066px;
+    height: 430px;
+    border-radius: 20px;
+    background: #D6E4FF;
+}
+
+.product_img {
+    width: 299.041px;
+    height: 299.041px;
+    flex-shrink: 0;
+}
+
+.Furniture_text {
+    color: #0084E4;
+    text-shadow: 0px 0.653px 0.653px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 22.326px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Customer_text {
+    color: #0084E4;
+
+    text-shadow: 0px 0.653px 0.653px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 22.326px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Furniture_details_text {
+    width: 200px;
+    color: #0084E4;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.Furniture_details_text2{
+    color: #000;
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.Accept_bg{
+    border-radius: 10px;
+background: #F90;
+display: flex;
+width: 160px;
+height: 50px;
+justify-content: center;
+align-items: center;
+gap: 2.71px;
+}
+.Accept_text{
+    color: var(--icon-color, #FFF);
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.Reject_bg{
+    border-radius: 10px;
+border: 1px solid #F00;
+background: var(--icon-color, #FFF);
+display: flex;
+width: 160px;
+height: 50px;
+justify-content: center;
+align-items: center;
+gap: 2.71px;
+}
+.Reject_text{
+    color: #F00;
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
