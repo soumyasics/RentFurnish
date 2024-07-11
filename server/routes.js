@@ -69,5 +69,10 @@ router.post('/viewcomplaintByShopId/:id',complaint.viewcomplaintByShopId)
 
 //orders
 router.post('/addOrder',order.addOrder)
+router.post('/addAddressByOrderId/:id',order.addAddressByOrderId)
+router.post('/viewOrderById/:id',order.viewOrderById)
+router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
+router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
+router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
 
 module.exports=router
