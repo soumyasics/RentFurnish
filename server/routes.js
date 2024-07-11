@@ -74,5 +74,6 @@ router.post('/viewOrderById/:id',order.viewOrderById)
 router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
 router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
 router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
+router.post('/updateOrderPayment',order.updateOrderPayment)
 
 module.exports=router
