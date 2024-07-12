@@ -8,6 +8,7 @@ const Customer=require("./customer/customerController")
 const Furniture=require("./Furniture/furnitureController")
 const complaint=require("./complaints/complaintController")
 const order=require("./Orders/orderController")
+const cart=require("./cart/cartController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -83,5 +84,14 @@ router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
 router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
 router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
 router.post('/updateOrderPayment/:id',order.updateOrderPayment)
+
+
+//cart
+
+router.post('/addCart',cart.addCart)
+router.post('/viewAllCart',cart.viewAllCart)
+router.post('/viewCartById/:id',cart.viewCartById)
+router.post('/deleteCartById/:id',cart.deleteCartById)
+router.post('/viewCartBycustId/:id',cart.viewCartBycustId)
 
 module.exports=router
