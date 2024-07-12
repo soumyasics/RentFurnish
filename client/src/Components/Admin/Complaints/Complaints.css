@@ -27,12 +27,22 @@
     font-weight: 400;
     line-height: normal;
 }
-.Complain_body_texts{
-    color: #142349;
-    font-family: Montserrat;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    min-width:5px;
+.Complain_body_btn{
+    border-radius: 10px;
+    background: #0084E4;display: flex;
+    width: 135px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 2.71px;
+    flex-shrink: 0;
+}
+.Complain_body_btn_text{
+    color: var(--icon-color, #FFF);
+text-align: center;
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
