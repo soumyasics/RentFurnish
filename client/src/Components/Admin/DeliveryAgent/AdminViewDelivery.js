@@ -10,23 +10,49 @@ function AdminViewDelivery() {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     const url = axiosInstance.defaults.url;
+    const [searchInput, setSearchInput] = useState('');
+
+    useEffect(() => {
+      fetchAllRescueMembers();
+  }, []);
   
+  const fetchAllRescueMembers = () => {
+    axiosInstance.post(`viewallDeliveryAgents`)
+        .then((res) => {
+            console.log(res);
+            setData(res.data.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+  };
+
   
     useEffect(() => {
       if (adminid === null) {
         navigate("/");
-      } else {
-        axiosInstance
-          .post(`viewallDeliveryAgents`)
-          .then((res) => {
-            console.log(res);
-            setData(res.data.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+      } 
     }, []);
+
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      setSearchInput(value);
+  
+      if (value.trim() === '') {
+        fetchAllRescueMembers();
+      } else {
+        axiosInstance.post(`searchDeliveryByName/${value}`)
+            .then((res) => {
+                console.log(res);
+                setData(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+                alert(err.response.data.message);
+            });
+      }
+    };
+  
   
   return (
     <div>
@@ -41,7 +67,11 @@ function AdminViewDelivery() {
             </Link>
           </div>
           <div className="search-box">
-            <input type="text" placeholder="Search here..." />
+            <input type="text" placeholder="Search here..."  
+                            value={searchInput}
+                            onChange={handleSearch}
+            
+            />
             <i className="ri-search-line search-icon"></i>
             </div>
 
