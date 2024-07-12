@@ -20,6 +20,11 @@ router.post("/updateprofileshop/:id",Shops.upload,Shops.updateshopprofile)
 router.post("/acceptshop/:id",Shops.acceptshopById)
 router.post("/deleteshop/:id",Shops.deleteshopById)
 router.post("/viewrequestsforadmin",Shops.viewallshopsforadmin)
+router.post("viewallshopReqsforadmin",Shops.viewallshopReqsforadmin)
+router.post("/activateShopById/:id",Shops.activateShopById)
+router.post("/deActivateShopById/:id",Shops.deActivateShopById)
+router.post("/searchShopByName/:name",Shops.searchShopByName)
+
 
 router.post("/addDeliveryAgent",DeliveryAgent.upload,DeliveryAgent.addDeliveryAgent)
 router.post("/loginDeliveryAgent",DeliveryAgent.loginDeliveryAgent)
@@ -32,6 +37,7 @@ router.post("/forgotPwdDeliveryAgent",DeliveryAgent.forgotPwdDeliveryAgent)
 router.post("/viewallDeliveryAgentsByDistrict/:district",DeliveryAgent.viewallDeliveryAgentsByDistrict)
 router.post("/viewDeliveryAgentbyShopid/:id",DeliveryAgent.viewDeliveryAgentbyShopid)
 router.post("/activateDeliveryAgentById/:id",DeliveryAgent.activateDeliveryAgentById)
+router.post("/searchDeliveryByName/:name",DeliveryAgent.searchDeliveryByName)
 
 
 
@@ -39,13 +45,15 @@ router.post("/userregister",Customer.userregister)
 router.post("/logincustomer",Customer.logincustomer)
 router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
 router.post("/viewcustbyid/:id",Customer.viewcustbyid)
+router.post("/viewallcust",Customer.viewallcust)
+router.post("/activateUserById/:id",Customer.activateUserById)
+router.post("/deActivateUserById/:id",Customer.deActivateUserById)
+router.post("/editcustbyid/:id",Customer.editcustbyid)
+router.post("/searchUserByName/:name",Customer.searchUserByName)
 
 
 
 
-router.post("/userregister",Customer.userregister)
-router.post("/logincustomer",Customer.logincustomer)
-router.post("/forgotPwdcustomer",Customer.forgotPwdcustomer)
 
 
 //furniture Routes
@@ -74,5 +82,6 @@ router.post('/viewOrderById/:id',order.viewOrderById)
 router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
 router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
 router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
+router.post('/updateOrderPayment/:id',order.updateOrderPayment)
 
 module.exports=router

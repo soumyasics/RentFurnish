@@ -15,7 +15,7 @@ const cust=await customerSchema.findById(req.body.customerId)
         count: req.body.count,      
         amount:req.body.amount,
         date:new Date(),
-        shopId: shops._id,
+        shopId: shops.shopId,
         name: cust.name,
         email: cust.email,
         contact: cust.contact,
@@ -100,7 +100,7 @@ const viewOrderById = async (req, res) => {
 // View Orders By Shop ID
 const viewOrdersByShopId = async (req, res) => {
     try {
-        const orders = await Order.find({ shopId: req.params.shopId })
+        const orders = await Order.find({ shopId: req.params.id })
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -116,6 +116,26 @@ const viewOrdersByShopId = async (req, res) => {
         res.status(500).json({
             status: 500,
             message: 'Error retrieving orders',
+            error: err
+        });
+    }
+};
+
+// View Orders By Shop ID
+const updateOrderPayment = async (req, res) => {
+    try {
+        const orders = await Order.findByIdAndUpdate({_id: req.params.id },{paymentStatus:true})
+             
+        res.status(200).json({
+            status: 200,
+            message: 'Payment Added successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving Payment',
             error: err
         });
     }
@@ -179,5 +199,5 @@ module.exports={
     viewOrdersByShopId,
     viewOrdersByCustId,
     viewPendingOrdersForDelivery,
-    addAddressByOrderId
+    addAddressByOrderId,updateOrderPayment
 }

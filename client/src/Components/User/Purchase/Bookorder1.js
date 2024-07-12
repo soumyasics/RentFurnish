@@ -80,13 +80,32 @@ function Bookorder1() {
                     <img className='img-fluid purchanse-mainimage' src={`${url}/${data?.image1?.filename}`} width="758px" height="390px"/>
                     <div class="row book-imagedown">
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={`${url}/${data?.image2?.filename}`} />
+                        {data?.image2?.filename && (
+                    <img
+                      className="img-fluid"
+                      src={`${url}/${data.image2.filename}`}
+                      alt="Sub Furniture 2"
+                    />
+                  )}
+
                         </div>
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={`${url}/${data?.image3?.filename}`} />
+                        {data?.image3?.filename && (
+                    <img
+                      className="img-fluid"
+                      src={`${url}/${data.image3.filename}`}
+                      alt="Sub Furniture 3"
+                    />
+                  )}{" "}
                         </div>
                         <div className="col-sm-6 col-lg-4 p-2">
-                            <img src={`${url}/${data?.image4?.filename}`} />
+                        {data?.image4?.filename && (
+                    <img
+                      className="img-fluid"
+                      src={`${url}/${data.image4.filename}`}
+                      alt="Sub Furniture 4"
+                    />
+                  )}{" "}
                         </div>
                     </div>
                 </div>

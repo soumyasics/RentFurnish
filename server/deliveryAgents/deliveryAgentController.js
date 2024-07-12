@@ -345,6 +345,34 @@ const activateDeliveryAgentById = async (req, res) => {
         })
 
 }
+
+
+const searchDeliveryByName = async (req, res) => {
+    try {
+      const name = req.params.name;
+      const user = await deliveryagents.find({ name: new RegExp(name, 'i') })
+  
+      if (!result) {
+        return res.json({
+          status: 404,
+          data: null,
+          msg: 'User not found'
+        });
+      }
+  
+      res.json({
+        status: 200,
+        data: result,
+        msg: 'User found'
+      });
+    } catch (err) {
+      res.json({
+        status: 500,
+        data: null,
+        msg: 'An error occurred'
+      });
+    }
+  }
 module.exports = {
     addDeliveryAgent, 
     loginDeliveryAgent,
@@ -357,5 +385,6 @@ module.exports = {
     viewallDeliveryAgentsByDistrict,
     viewDeliveryAgentbyShopid,
     activateDeliveryAgentById,
-    upload
+    upload,
+    searchDeliveryByName
 };
