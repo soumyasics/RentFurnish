@@ -9,6 +9,7 @@ const Furniture=require("./Furniture/furnitureController")
 const complaint=require("./complaints/complaintController")
 const order=require("./Orders/orderController")
 const cart=require("./cart/cartController")
+const deliveryUpdate=require("./DeliveryDatas/deliveryController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -84,6 +85,7 @@ router.post('/viewOrdersByCustId/:id',order.viewOrdersByCustId)
 router.post('/viewOrdersByShopId/:id',order.viewOrdersByShopId)
 router.post('/viewPendingOrdersForDelivery',order.viewPendingOrdersForDelivery)
 router.post('/updateOrderPayment/:id',order.updateOrderPayment)
+router.post('/assignDeliveryAgent/:id',order.assignDeliveryAgent)
 
 
 //cart
@@ -93,5 +95,15 @@ router.post('/viewAllCart',cart.viewAllCart)
 router.post('/viewCartById/:id',cart.viewCartById)
 router.post('/deleteCartById/:id',cart.deleteCartById)
 router.post('/viewCartBycustId/:id',cart.viewCartBycustId)
+
+
+
+//delivery Updates
+router.post('/addDeliveryUpdate',deliveryUpdate.addDeliveryUpdate)
+router.post('/viewDeliveryUpdateById/:id',deliveryUpdate.viewDeliveryUpdateById)
+router.post('/viewDeliveryUpdateByOrderId/:id',deliveryUpdate.viewDeliveryUpdateByOrderId)
+router.post('/viewAllDeliveryUpdates',deliveryUpdate.viewAllDeliveryUpdates)
+router.post('/deleteDeliveryUpdateById/:id',deliveryUpdate.deleteDeliveryUpdateById)
+
 
 module.exports=router
