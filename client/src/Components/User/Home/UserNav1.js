@@ -61,7 +61,11 @@ function UserNav1() {
           </div>
         </div>
       </nav>
-      {showProfileModal && <CustViewProfile show={showProfileModal} handleClose={handleCloseProfile} />}
+      {showProfileModal && (
+        <div className="modal-overlay">
+          <CustViewProfile show={showProfileModal} handleClose={handleCloseProfile} />
+        </div>
+      )}
     </div>
   )
 }

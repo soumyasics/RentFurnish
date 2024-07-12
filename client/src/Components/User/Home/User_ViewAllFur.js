@@ -41,7 +41,7 @@ function User_ViewAllFur() {
                     to={`/user-purchesproduct/${a._id}`}
                     style={{ textDecoration: "none" }}
                   >
-                    <div class="card">
+                    <div class="card" >
                       <img
                         src={`${url}/${a?.image1?.filename}`}
                         width="290px"

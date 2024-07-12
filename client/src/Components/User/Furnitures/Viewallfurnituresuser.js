@@ -45,7 +45,7 @@ function Viewallfurnituresuser() {
           {data && data.length ? (
             data.map((a) => {
               return (
-                <div className="col-md-3 col-sm-6">
+                <div className="col-md-3 col-sm-6"  style={{marginTop:"20px"}}>
                     <Link to={`/user-purchesproduct/${a._id}`} style={{textDecoration:"none"}}>
                   <div class="card wishlist-cardmain">
                     <img
