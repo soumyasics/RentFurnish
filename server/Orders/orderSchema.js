@@ -32,6 +32,10 @@ const orderSchema = new Schema({
         type: Number,
         required: true,
     },
+    noOfDays: {
+        type: Number,
+        required:true     
+    },
     deliveryStatus:{
         type: Boolean,
         default: false,
@@ -54,6 +58,14 @@ const orderSchema = new Schema({
     amount:{
         type:Number,
         required:true 
+    },
+    shopApproved:{
+        type: String,
+        default: 'Pending',
+    },
+    deliveryDate:{
+type:Date
+
     }
 });
 

@@ -7,14 +7,26 @@ const addOrder = async(req, res) => {
 
 const shops=await furnitureSchema.findById(req.body.furnitureId)
 const cust=await customerSchema.findById(req.body.customerId)
+let furn= await furnitureSchema.findById({_id:req.body.furnitureId})
+        let newQuantity=furn.quantity-req.body.count
+        if(newQuantity<0){
+            return res.json({
+                status: 405,
+                message: `Only ${furn.quantity} item  found in the shop! Please Change your count.`
+            });
+        }
+        let totalRent=req.body.count*furn.rent*req.body.noOfDays
+        console.log("amt",req.body.count,"",furn.rent,"",req.body.noOfDays);
 
+console.log("amt",req.body.count*furn.rent*req.body.noOfDays);
     const order = new Order({
        
         furnitureId: req.body.furnitureId,
         customerId: req.body.customerId,
         count: req.body.count,      
-        amount:req.body.amount,
+        amount:totalRent,
         date:new Date(),
+        noOfDays:req.body.noOfDays,
         shopId: shops.shopId,
         name: cust.name,
         email: cust.email,
@@ -40,6 +52,9 @@ const cust=await customerSchema.findById(req.body.customerId)
                 error: err,
             });
         });
+        
+        
+       let upd= await furnitureSchema.findByIdAndUpdate({_id:req.body.furnitureId},{quantity:newQuantity})
 };
 
 const addAddressByOrderId=(req,res)=>{
@@ -121,6 +136,29 @@ const viewOrdersByShopId = async (req, res) => {
     }
 };
 
+const assignDeliveryAgent=(req,res)=>{
+    Order.findByIdAndUpdate({_id:req.params.id},{
+        deliveryStatus:true,
+        deliveryId: req.body.deliveryId,
+        deliveryDate:req.body.deliveryDate,
+    }).exec()
+    .then(data => {
+        res.json({
+            status: 200,
+            message: "address added successfully",
+            data: data,
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.json({
+            status: 500,
+            message: "Error adding address",
+            error: err,
+        });
+    });
+}
+
 // View Orders By Shop ID
 const updateOrderPayment = async (req, res) => {
     try {
@@ -199,5 +237,7 @@ module.exports={
     viewOrdersByShopId,
     viewOrdersByCustId,
     viewPendingOrdersForDelivery,
-    addAddressByOrderId,updateOrderPayment
+    addAddressByOrderId,
+    updateOrderPayment,
+    assignDeliveryAgent
 }
