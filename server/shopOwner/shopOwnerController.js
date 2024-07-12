@@ -375,7 +375,7 @@ const searchShopByName = async (req, res) => {
     const name = req.params.name;
     const user = await shopschema.find({ name: new RegExp(name, 'i') })
 
-    if (!result) {
+    if (!user) {
       return res.json({
         status: 404,
         data: null,
@@ -385,7 +385,7 @@ const searchShopByName = async (req, res) => {
 
     res.json({
       status: 200,
-      data: result,
+      data: user,
       msg: 'User found'
     });
   } catch (err) {

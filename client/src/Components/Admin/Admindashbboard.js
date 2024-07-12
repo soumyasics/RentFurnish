@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Admindashboard.css";
 import { prepareDataForValidation } from "formik";
 import customer from "../../Assets/carbon_customer.png";
-import delivery from "../../Assets/deliveryicon.png";
+import deliveryicon from "../../Assets/deliveryicon.png";
 import admin from "../../Assets/admin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../Constants/Baseurl";
@@ -11,6 +11,8 @@ import Adminloginnav from "../Navbar/Adminloginnav";
 
 function Admindashbboard() {
   const [shops, setShops] = useState([]);
+  const [delivery,setDelivery]=useState([])
+  const [cust,setCust]=useState([])
   const url = axiosInstance.defaults.url;
   // console.log(url);
 
@@ -24,6 +26,25 @@ function Admindashbboard() {
       .catch((err) => {
         console.log(err);
       });
+      axiosInstance
+      .post(`viewallDeliveryAgents`)
+      .then((res) => {
+        console.log(res);
+        setDelivery(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      axiosInstance
+        .post(`viewallcust`)
+        .then((res) => {
+          console.log(res);
+          setCust(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
   }, []);
 
   const [request, setRequest] = useState([]);
@@ -145,14 +166,14 @@ function Admindashbboard() {
                 />
               </div>
               <div className="col-8 boxcontent">
-                <h5>10</h5>
+                <h5>{cust? cust.length:0}</h5>
                 <p>Total Customers</p>
               </div>
             </div>
             <div className="col-sm-4 col-md-4 col-lg-4 pb-4 d-flex boxmain3">
               <div className="col-2 boxinside1">
                 <img
-                  src={delivery}
+                  src={deliveryicon}
                   alt="customer"
                   style={{
                     borderRadius: "20px",
@@ -162,7 +183,7 @@ function Admindashbboard() {
                 />
               </div>
               <div className="col-8 boxcontent">
-                <h5>10</h5>
+                <h5>{delivery? delivery.length:0}</h5>
                 <p>Total Delivery Agents</p>
               </div>
             </div>

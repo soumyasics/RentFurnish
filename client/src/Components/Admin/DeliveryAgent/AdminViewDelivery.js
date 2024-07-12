@@ -10,34 +10,71 @@ function AdminViewDelivery() {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     const url = axiosInstance.defaults.url;
+    const [searchInput, setSearchInput] = useState('');
+
+    useEffect(() => {
+      fetchAllRescueMembers();
+  }, []);
   
+  const fetchAllRescueMembers = () => {
+    axiosInstance.post(`viewallDeliveryAgents`)
+        .then((res) => {
+            console.log(res);
+            setData(res.data.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+  };
+
   
     useEffect(() => {
       if (adminid === null) {
         navigate("/");
-      } else {
-        axiosInstance
-          .post(`viewallDeliveryAgents`)
-          .then((res) => {
-            console.log(res);
-            setData(res.data.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+      } 
     }, []);
+
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      setSearchInput(value);
+  
+      if (value.trim() === '') {
+        fetchAllRescueMembers();
+      } else {
+        axiosInstance.post(`searchDeliveryByName/${value}`)
+            .then((res) => {
+                console.log(res);
+                setData(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+                alert(err.response.data.message);
+            });
+      }
+    };
+  
   
   return (
     <div>
       <Adminnav />
       <div className="admin-view-custmain ">
         <div className="admin-view-custboxmain">
-          <div className="admin-view-custheader">
+        <div className="d-flex justify-content-between align-items-center admin-view-header">
+        <div className="admin-view-custheader">
             <Link to="/admindashboard" style={{ textDecoration: "none" }}>
               {" "}
               <h4 className="ri-arrow-left-line">View Delivery Agent</h4>
             </Link>
+          </div>
+          <div className="search-box">
+            <input type="text" placeholder="Search here..."  
+                            value={searchInput}
+                            onChange={handleSearch}
+            
+            />
+            <i className="ri-search-line search-icon"></i>
+            </div>
+
           </div>
           <div className="row">
             {data && data.length ? (
