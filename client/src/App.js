@@ -50,6 +50,7 @@ import Deliveryorder from './Components/User/Purchase/Deliveryorder';
 import Adminexample from './Components/Admin/Adminexample';
 import Changeaddress from './Components/User/Purchase/ChangeAddress/Changeaddress';
 import CustViewProfile from './Components/User/Profile/CustViewProfile';
+import Complaints from './Components/Admin/Complaints/Complaints';
 
 function App() {
   return (
@@ -104,6 +105,7 @@ function App() {
           <Route path='/shopreq' element={<Shopreq/>}/>
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
           <Route path='/example' element={[<Adminexample/>]}/>
+          <Route path='/complaints' element={[<Complaints/>]}/>
 
       </Routes>
     </div>
