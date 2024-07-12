@@ -120,7 +120,7 @@ function UserPayment() {
                 required
                 title="Please fill the form"
               >
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-4">Choose a Date</div>
                   <div className="col-md-8">
                     <input
@@ -136,7 +136,7 @@ function UserPayment() {
                       title="please fill"
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="row g-3">
                   <div className="col-md-6">

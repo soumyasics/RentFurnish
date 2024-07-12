@@ -33,11 +33,18 @@ function AdminViewDelivery() {
       <Adminnav />
       <div className="admin-view-custmain ">
         <div className="admin-view-custboxmain">
-          <div className="admin-view-custheader">
+        <div className="d-flex justify-content-between align-items-center admin-view-header">
+        <div className="admin-view-custheader">
             <Link to="/admindashboard" style={{ textDecoration: "none" }}>
               {" "}
               <h4 className="ri-arrow-left-line">View Delivery Agent</h4>
             </Link>
+          </div>
+          <div className="search-box">
+            <input type="text" placeholder="Search here..." />
+            <i className="ri-search-line search-icon"></i>
+            </div>
+
           </div>
           <div className="row">
             {data && data.length ? (

@@ -144,7 +144,7 @@ const updateOrderPayment = async (req, res) => {
 // View Orders By Customer ID
 const viewOrdersByCustId = async (req, res) => {
     try {
-        const orders = await Order.find({ customerId: req.params.customerId })
+        const orders = await Order.find({ customerId: req.params.id })
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')

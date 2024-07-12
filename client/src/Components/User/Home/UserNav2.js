@@ -1,15 +1,16 @@
 import React from 'react'
 import './UserHome.css'
+import { Link } from 'react-router-dom'
 
 function UserNav2() {
   return (
     <div>
         <nav class="navbar  container ">
         <div class="container-fluid user_home_secnav">
-            <a class="navbar-brand">Home</a>
+        <Link to="/user-home" style={{textDecoration:"none"}}> <a class="navbar-brand">Home</a></Link>
             <a class="navbar-brand">About Us</a>
-            <a class="navbar-brand">Services</a>
-            <a class="navbar-brand">My Orders</a>
+           <Link to="/user-services" style={{textDecoration:"none"}}> <a class="navbar-brand">Services</a></Link>
+           <Link to="/user-viewmyorder" style={{textDecoration:"none"}}><a class="navbar-brand">My Orders</a></Link> 
             <a class="navbar-brand">Contact</a>
             <a class="navbar-brand"></a>
             <a class="navbar-brand"></a>

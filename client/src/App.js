@@ -53,6 +53,7 @@ import CustViewProfile from './Components/User/Profile/CustViewProfile';
 import UserPayment from './Components/User/Purchase/Payment/UserPayment';
 import AdminViewCust from './Components/Admin/Customers/AdminViewCust';
 import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDelivery';
+import ViewMyOrder from './Components/User/Orders/ViewMyOrder';
 
 function App() {
   return (
@@ -68,11 +69,13 @@ function App() {
           <Route path='/userforgetpswd' element={[<Navbar/>,<Userforgetpswd/>]}/>
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
           <Route path='/user-viewallfurniture' element={[<UserNav1 />,<Viewallfurnituresuser/>]}/>
+          <Route path='/user-services' element={[<UserNav1 />,<UserNav2/>,<Services/>]}/>
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
           <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
           <Route path='/user-payment/:id' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
+          <Route path='/user-viewmyorder' element={[<UserNav1 />,<UserNav2/>,<ViewMyOrder/>]}/>
 
          
         {/* Shops */}
