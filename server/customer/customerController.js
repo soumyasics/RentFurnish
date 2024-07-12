@@ -122,6 +122,7 @@ const forgotPwdcustomer = (req, res) => {
           });
       });
 };
+
 const viewcustbyid = (req, res) => {
   customerschema
       .findById(
@@ -152,6 +153,42 @@ const viewcustbyid = (req, res) => {
       });
 };
 
+const editcustbyid = (req, res) => {
+  customerschema
+      .findByIdAndUpdate(
+          { _id: req.params.id },
+          {
+            name: req.body.name,
+      gender:req.body.gender,  
+      phone: req.body.phone,
+      email: req.body.email,
+      address:req.body.address
+          }
+        
+      )
+      .exec()
+      .then((data) => {
+          if (data != null)
+              res.json({
+                  status: 200,
+                  msg: "Updated successfully",
+                  data:data
+              });
+          else
+              res.json({
+                  status: 500,
+                  msg: "User Not Found",
+              });
+      })
+      .catch((err) => {
+          console.log(err);
+          res.json({
+              status: 500,
+              msg: "Data not Updated",
+              Error: err,
+          });
+      });
+};
 const viewallcust = (req, res) => {
   customerschema
       .find(
@@ -180,13 +217,79 @@ const viewallcust = (req, res) => {
       });
 };
 
+const deActivateUserById = async (req, res) => {
+  await customerschema.findByIdAndUpdate({ _id: req.params.id }, { isActive: false }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data deleted'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
 
+}
+
+const activateUserById = async (req, res) => {
+  await customerschema.findByIdAndUpdate({ _id: req.params.id }, { isActive: true }).exec()
+      .then((result) => {
+          res.json({
+              status: 200,
+              data: result,
+              msg: 'data deleted'
+          })
+      })
+      .catch(err => {
+          res.json({
+              status: 500,
+              msg: 'Error in API',
+              err: err
+          })
+      })
+
+}
+
+const searchUserByName = async (req, res) => {
+  try {
+    const name = req.params.name;
+    const user = await customerschema.find({ name: new RegExp(name, 'i') })
+
+    if (!result) {
+      return res.json({
+        status: 404,
+        data: null,
+        msg: 'User not found'
+      });
+    }
+
+    res.json({
+      status: 200,
+      data: result,
+      msg: 'User found'
+    });
+  } catch (err) {
+    res.json({
+      status: 500,
+      data: null,
+      msg: 'An error occurred'
+    });
+  }
+}
 
   module.exports={
     userregister,
     logincustomer  ,
     forgotPwdcustomer  ,
     viewcustbyid  ,
-    viewallcust     
-
+    viewallcust    ,
+    activateUserById,
+    deActivateUserById ,
+    editcustbyid,
+searchUserByName
   }
