@@ -66,6 +66,12 @@ const orderSchema = new Schema({
     deliveryDate:{
 type:Date
 
+    },orderDate:{
+        type:Date
+    },
+    deliveryCompletion:{
+        type: Boolean,
+        default: false,
     }
 });
 
