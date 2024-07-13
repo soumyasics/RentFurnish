@@ -62,9 +62,20 @@ function Bookorder1() {
 
     const handleBookNow = () => {
         navigate('/user-confirmpurchase', {
-            state: { id, totalRent, count }
+            state: { id, totalRent, count ,nofodays}
         });
     };
+    //No of days required functionality
+
+    const [nofodays,setNoofdays]=useState({
+        noOfDays:""
+    })
+
+    const changefn=((e)=>{
+        setNoofdays({
+            ...nofodays,[e.target.name]:e.target.value
+        })
+    })
 
     return (
         <div>
@@ -73,8 +84,9 @@ function Bookorder1() {
                 <img className='ms-5 backimg' src={Vector} onClick={naigatebckfn}/>
                 <div className="ms-2 p-2 bookorder">View details</div>
             </div>
-
+            <form onSubmit={handleBookNow}>
             <div className='row col-12  continer'>
+               
                 <div className='col-6 img-fluid'>
                     {/* <img src={Likeimg} style={{ paddingLeft: '600px' }} /> */}
                     <img className='img-fluid purchanse-mainimage' src={`${url}/${data?.image1?.filename}`} width="758px" height="390px"/>
@@ -140,6 +152,22 @@ function Bookorder1() {
                         </div>
                     </div>
                     <div className='mb-5'>
+                        <p className='Quantity_text'>No Of Days Required</p>
+                        <div class="d-flex mb-3 ">
+                            {/* <div class="p-2  quantity_btnLeft"> */}
+                            {/* <button onClick={Sub} className='btn btn-danger'><FaChevronCircleLeft /></button> */}
+                            {/* </div> */}
+                            <div class="p-2  quantity_input col-2">
+                                <input type='number' className='form-control text-center'  min='1' name='noOfDays' value={nofodays.noOfDays} onChange={changefn} required/>
+                            </div>
+                            {/* <div class="p-2 quantity_btnRight"> */}
+                            {/* <button onClick={Add} class='btn btn-success'><FaChevronCircleRight /></button> */}
+                            
+                            {/* </div> */}
+                        </div>
+                    </div>
+
+                    <div className='mb-5'>
                         <p className='quantity_text'>Dimensions<p className='quantity_text2'>{data?.dimension}</p></p>
 
                     </div>
@@ -148,11 +176,12 @@ function Bookorder1() {
                         <p className='content col-6'>{data?.description}</p>
                     </div>
                     <div className=''>
-                        <button className='book book_text shadow-lg btn btn-warning' onClick={handleBookNow}>Book Now</button>
+                        <button className='book book_text shadow-lg btn btn-warning' type='submit'>Book Now</button>
                     </div>
                 </div>
+               
             </div>
-
+            </form>
 
             <div className='row'>
                 <div className='col-6'>

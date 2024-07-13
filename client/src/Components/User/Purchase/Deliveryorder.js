@@ -10,7 +10,7 @@ import Changeaddress from "./ChangeAddress/Changeaddress";
 function Deliveryorder() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { id, totalRent, count } = location.state;
+  const { id, totalRent, count ,nofodays} = location.state;
   const [data, setData] = useState({});
   const [user, setUser] = useState({});
   const [orderId, setOrderId] = useState(null); // State to hold the order ID
@@ -23,6 +23,7 @@ function Deliveryorder() {
     count: count,
     amount: totalRent,
   });
+  console.log({nofodays}+"nooofffffffff");
 
   const navigatebck = () => {
     navigate(-1);

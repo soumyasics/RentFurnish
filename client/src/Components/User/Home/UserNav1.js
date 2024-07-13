@@ -49,11 +49,13 @@ function UserNav1() {
     <div>
       <nav className="navbar navbar-expand bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#"><img src={logo} className="img-fluid user_home_logo" alt="Logo" /></a>
+          <a className="navbar-brand" href="#">
+            <img src={logo} className="img-fluid user_home_logo" alt="Logo" />
+            </a>
           <div className="navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav p-4 d-flex flex-row">
               <Link to="/user-home"><a className="nav-link active" aria-current="page" href="#"><FaRegBell size={25} className="user_home_icon" /></a></Link>
-              <Link to="/user-home"><a className="nav-link" href="#"><FaRegHeart size={25} className="user_home_icon" /></a></Link>
+              <Link to="/user-viewcart"><a className="nav-link" href="#"><FaRegHeart size={25} className="user_home_icon" /></a></Link>
               <a className="nav-link" href="#" onClick={handleOpenProfile}><IoPersonOutline size={25} className="user_home_icon" /></a>
               <button className="custom-button" onClick={handleLogout}><FiLogOut /> Logout</button>
               <Confirmmodal show={showModal} onClose={closeModal} onConfirm={confirmLogout} />

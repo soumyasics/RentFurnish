@@ -56,6 +56,7 @@ import UserPayment from './Components/User/Purchase/Payment/UserPayment';
 import AdminViewCust from './Components/Admin/Customers/AdminViewCust';
 import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDelivery';
 import ViewMyOrder from './Components/User/Orders/ViewMyOrder';
+import ViewCart from './Components/User/Cart/ViewCart';
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
           <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
           <Route path='/user-payment/:id' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
           <Route path='/user-viewmyorder' element={[<UserNav1 />,<UserNav2/>,<ViewMyOrder/>]}/>
+          <Route path='/user-viewcart' element={[<UserNav1 />,<ViewCart/>]}/>
 
          
         {/* Shops */}
