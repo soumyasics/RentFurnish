@@ -11,6 +11,7 @@ import Adddeliveryagent from '../Deliveryagent/Adddeliveryagent';
 import AddFurniture from './AddFurniture';
 import ViewFurniture from './ViewFurniture';
 import ShopViewOrder from './Orders/ShopViewOrder';
+import EditFurniture from './EditFurniture';
 
 function Shopsmain({ data }) {
   return (
@@ -28,7 +29,7 @@ function Shopsmain({ data }) {
         data==="add-furniture"?(<AddFurniture/>): 
         data==="view-furniture"?(<ViewFurniture/>): 
         data==="view-vieworders"?(<ShopViewOrder/>): 
-
+        data==="edit-furniture"?(<EditFurniture />): 
         <Shoplogin/> }
       </div>
     </div>

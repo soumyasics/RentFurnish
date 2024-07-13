@@ -1,0 +1,134 @@
+.track-delivery {
+    padding: 20px;
+    max-width: 70%;
+    margin: auto;
+  }
+  
+  .trackdelivery-main_div {
+    padding: 25px 50px;
+    gap: 52px;
+    align-self: stretch;
+    border-radius: 32px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+  }
+  
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .icon_style_track {
+    color: #0084E4;
+  }
+  
+  .status-item {
+    text-align: center;
+  }
+  
+  .status-line {
+    flex-grow: 1;
+    height: 3px;
+    background-color: #0084E4;
+    margin: 10px;
+  }
+  
+  .status-item p {
+    margin: 5px 0;
+  }
+  
+  .trackdelivery_track_status {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .trackdelivery_date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .trackdelivery_main_row {
+    margin-top: 10px;
+  }
+  
+  .trackdelivery_itemname {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+  }
+  
+  .trackdelivery_amount {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .trackdelivery_span {
+    font-size: 10;
+  }
+  
+  .trackdelivery_color {
+    color: #0084E4;
+  }
+  
+  .trackdelivery_info {
+    color: #0084E4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22.33px;
+    font-weight: 600;
+  }
+  
+  .trackdelivery_subtext {
+    color: #0084E4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .complaint-box-container {
+    position: relative;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .complaint-box-container textarea {
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  .complaint-box-container button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .complaint-box-container button:hover {
+    color: #0056b3;
+  }
+  
+  .trackdelivery_img{
+    border-radius: 20px;
+    height: 300px;
+    width: 500px;
+  }

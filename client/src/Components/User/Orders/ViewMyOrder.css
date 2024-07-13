@@ -68,3 +68,7 @@ font-weight: 600;
 line-height: normal;
 border: none;
 }
+
+.track_delivery_link{
+    text-decoration: none;
+}
