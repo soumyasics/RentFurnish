@@ -206,7 +206,7 @@ const viewOrdersByCustId = async (req, res) => {
 // View Pending Orders for Delivery
 const viewPendingOrdersForDelivery = async (req, res) => {
     try {
-        const orders = await Order.find({ deliveryStatus: false })
+        const orders = await Order.find({shopId:req.params.id, deliveryStatus: false})
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -228,6 +228,31 @@ const viewPendingOrdersForDelivery = async (req, res) => {
 };
 
 
+const viewassignedOrdersForDelivery = async (req, res) => {
+    try {
+        const orders = await Order.find({shopId:req.params.id,deliveryStatus: true})
+            .populate('furnitureId')
+            .populate('customerId')
+            .populate('shopId')
+            .populate('deliveryId');
+        
+        res.status(200).json({
+            status: 200,
+            message: ' orders retrieved successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving pending orders',
+            error: err
+        });
+    }
+};
+
+
+
 
 
 
@@ -239,5 +264,6 @@ module.exports={
     viewPendingOrdersForDelivery,
     addAddressByOrderId,
     updateOrderPayment,
-    assignDeliveryAgent
+    assignDeliveryAgent,
+    viewassignedOrdersForDelivery
 }

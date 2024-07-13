@@ -10,15 +10,10 @@ import { toast } from 'react-toastify';
 function TrackDelivery() {
     const { id } = useParams();
     const userid = localStorage.getItem("userid");
-    const shopid = localStorage.getItem("shopid");
     const navigate = useNavigate();
     const [data, setData] = useState(null);
     const url = axiosInstance.defaults.url;
     const [complaintText, setComplaintText] = useState('');
-
-    console.log(id);
-    console.log("uid", userid);
-    console.log("sid", shopid);
 
     useEffect(() => {
         if (!id) {
@@ -40,10 +35,22 @@ function TrackDelivery() {
             alert('Please enter a complaint.');
             return;
         }
-    
-        const complaintData = {shopId: shopid, userId: userid, complaint: complaintText, date: new Date()};
+
+        if (!data || !data.shopId || !data.shopId._id) {
+            toast.error('Shop ID not found.');
+            return;
+        }
+
+        const complaintData = {
+            shopId: data.shopId._id,
+            userId: userid,
+            complaint: complaintText,
+            date: new Date(),
+        };
+
         axiosInstance.post('/createComplaint', complaintData)
             .then(res => {
+                console.log(res);
                 if (res.status === 200) {
                     toast.success('Complaint added successfully!');
                     setComplaintText('');
@@ -56,11 +63,10 @@ function TrackDelivery() {
                 toast.error('Failed to add complaint.');
             });
     };
-    
+
     if (!data) {
         return <div>Loading...</div>;
     }
-    
 
     return (
         <div className="track-delivery">
@@ -90,12 +96,11 @@ function TrackDelivery() {
 
                 <div className='row trackdelivery_main_row'>
                     <div className='col-md-7'>
-                            <img 
-                            src={`${url}/${data.furnitureId.image1.filename}`} 
-                            className='img-fluid trackdelivery_img' 
-                            alt={data.furnitureId.name} 
-                            />
-                        
+                        <img
+                            src={`${url}/${data.furnitureId.image1.filename}`}
+                            className='img-fluid trackdelivery_img'
+                            alt={data.furnitureId.name}
+                        />
                     </div>
                     <div className='col-md-5 mt-3'>
                         <p className='trackdelivery_itemname'>{data?.furnitureId?.name}</p>
@@ -144,17 +149,17 @@ function TrackDelivery() {
                         <div className='row'>
                             <div className='col-5 trackdelivery_subtext'>Name</div>
                             <div className='col-1'>:</div>
-                            <div className='col-6'>Ashok N K</div>
+                            <div className='col-6'>{data?.deliveryId?.name}</div>
                         </div>
                         <div className='row mt-3'>
                             <div className='col-5 trackdelivery_subtext'>Vehicle type</div>
                             <div className='col-1'>:</div>
-                            <div className='col-6'>Car</div>
+                            <div className='col-6'>{data?.deliveryId?.vehicleType}</div>
                         </div>
                         <div className='row mt-3'>
                             <div className='col-5 trackdelivery_subtext'>Vehicle number</div>
                             <div className='col-1'>:</div>
-                            <div className='col-6'>TN 75 B 4567</div>
+                            <div className='col-6'>{data?.deliveryId?.vehicleNumber}</div>
                         </div>
                     </div>
                     <div className="col-md-4">
