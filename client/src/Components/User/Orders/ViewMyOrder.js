@@ -51,6 +51,10 @@ function ViewMyOrder() {
                 <span>Deposit Amount :</span>{a?.amount}
               </h6>
               <h6 className="user-ordr-amnt">
+                <span>Days Required :</span>{a?.noOfDays}
+              </h6>
+
+              <h6 className="user-ordr-amnt">
                 <span>Quantity :</span>{a?.count}
               </h6>
               <h6 className="user-ordr-amnt">
