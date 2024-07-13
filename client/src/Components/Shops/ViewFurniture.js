@@ -7,6 +7,8 @@ import axiosMultipartInstance from '../Constants/FormDataUrl';
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import axiosInstance from '../Constants/Baseurl';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function ViewFurniture() {
     const [furnitureList, setFurnitureList] = useState([]);
@@ -26,6 +28,22 @@ function ViewFurniture() {
                 console.error('Error fetching furniture data:', error);
             });
     }, []);
+
+    const deleteFurniture = (id) => {
+        axiosInstance.post(`deleteFurnitureById/${id}`)
+            .then(response => {
+                console.log(response);
+                if (response.data.status === 200) {
+                    toast.success('Deleted successfully');
+                } else {
+                    toast.error('Furniture not deleted')
+                    console.log('Furniture not found');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting furniture:', error);
+            });
+    };
 
 
     return (
@@ -117,12 +135,14 @@ function ViewFurniture() {
                                     Quantity <button className='btn btn-secondary'>{furniture.quantity}</button>
                                     <div className='row m-3'>
                                         <div className='col-6'>
+                                            <Link to={`/edit-furniture/${furniture._id}`}>
                                             <button className='edit-button'> 
                                                 <FaEdit /> Edit
                                             </button>
+                                            </Link>
                                         </div>
                                         <div className='col-6'>
-                                            <button className='delete-button'> 
+                                            <button className='delete-button' onClick={() => deleteFurniture(furniture._id)}> 
                                                 <RiDeleteBin2Fill /> Delete
                                             </button>
                                         </div>
