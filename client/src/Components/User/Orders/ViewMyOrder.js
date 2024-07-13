@@ -60,7 +60,9 @@ function ViewMyOrder() {
               <h6 className="user-ordr-amnt">
                 <span>Dimention :</span>{a?.furnitureId?.dimension}
               </h6>
-              <button type="button">Track Delivery</button>
+              <Link to={`/user-trackdelivery/${a?._id}`} className="track_delivery_link">
+                <button type="button">Track Delivery</button>
+              </Link>
             </div>
           </div>
         </div>
