@@ -1,0 +1,7 @@
+.order_status_main{
+    width: 1066px;
+    min-height: 530;
+    max-height: fit-content;
+    border-radius: 20px;
+    background: #bacef5;
+}

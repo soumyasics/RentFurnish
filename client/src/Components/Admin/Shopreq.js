@@ -14,7 +14,7 @@ function Admindashbboard() {
 
   useEffect(() => {
     axiosInstance
-      .post(`viewrequestsforadmin`)
+      .post(`viewallshopReqsforadmin`)
       .then((res) => {
         console.log(res);
         setRequest(res.data.msg);
@@ -31,7 +31,7 @@ function Admindashbboard() {
         console.log(res);
         if (res.data.status === 200) {
           toast.success("Approved Successfully");
-          axiosInstance.post(`viewrequestsforadmin`)
+          axiosInstance.post(`viewallshopReqsforadmin`)
             .then((res) => {
               console.log(res);
               setRequest(res.data.msg); 
@@ -53,7 +53,7 @@ function Admindashbboard() {
         console.log(res);
         if (res.data.status === 200) {
           toast.success("Rejected Successfully");
-          axiosInstance.post(`viewrequestsforadmin`)
+          axiosInstance.post(`viewallshopReqsforadmin`)
             .then((res) => {
               console.log(res);
               setRequest(res.data.msg); 

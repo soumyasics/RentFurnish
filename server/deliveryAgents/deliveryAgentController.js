@@ -208,7 +208,7 @@ const viewallDeliveryAgents = (req, res) => {
 // view Delivery agents By Shop Id
 const viewDeliveryAgentbyShopid = (req, res) => {
     deliveryagents
-        .find({shopId: req.params.id })
+        .find({shopId: req.params.id})
         .exec()
         .then((data) => {
             if (!data) {

@@ -14,10 +14,12 @@ function User_ViewAllFur() {
   const [data, setData] = useState([]);
   const url = axiosInstance.defaults.url;
   const [wishlistStatus, setWishlistStatus] = useState({});
-  const [cart, setCart] = useState({
-    custId: userid,
-    furnitureId: ""
-  });
+  // const [cart, setCart] = useState({
+  //   custId: userid,
+  //   furnitureId: ""
+  // });
+  const [cart, setCart] = useState([]);
+
 
   useEffect(() => {
     if (userid === null) {
@@ -32,36 +34,81 @@ function User_ViewAllFur() {
         .catch((err) => {
           console.log(err);
         });
+        axiosInstance
+        .post(`/viewCartBycustId/${userid}`)
+        .then((res) => {
+          if (res.data.status === 200) {
+            const cartItems = res.data.data;
+            const initialWishlistStatus = {};
+            cartItems.forEach((item) => {
+              initialWishlistStatus[item.furnitureId._id] = true;
+            });
+            setWishlistStatus(initialWishlistStatus);
+            setCart(cartItems);
+          } else {
+            console.log("Failed to fetch cart data");
+          }
+        })
+        .catch(() => {
+          console.log("Failed to fetch cart data");
+        });
+    
+
     }
   }, [userid, navigate]);
   // Add to cart functionality
   const handleHeartClick = (furnitureId) => {
+    const updatedStatus = !wishlistStatus[furnitureId];
     setWishlistStatus((prevStatus) => ({
       ...prevStatus,
-      [furnitureId]: !prevStatus[furnitureId]
+      [furnitureId]: updatedStatus
     }));
-    addtocartfn(furnitureId);
+
+    if (updatedStatus) {
+      addtocartfn(furnitureId);
+    } else {
+      removeFromCartfn(furnitureId);
+    }
   };
 
   const addtocartfn = (furnitureId) => {
     axiosInstance
-      .post(`addCart`, {
+      .post("addCart", {
         custId: userid,
         furnitureId: furnitureId
       })
       .then((response) => {
-        console.log("Item added to cart:", response.data);
-        if(response.data.status==200){
-          toast.success(response.data.message)
-        }
-        else{
-          toast.warn(response.data.message)
-   
+        if (response.data.status === 200) {
+          toast.success(response.data.message);
+          // Add the new item to the cart state
+          setCart((prevCart) => [...prevCart, { _id: response.data.data._id, furnitureId: { _id: furnitureId } }]);
+        } else {
+          toast.warn(response.data.message);
         }
       })
       .catch((err) => {
         console.error("Error adding to cart:", err);
       });
+  };
+
+  const removeFromCartfn = (furnitureId) => {
+    const cartItem = cart.find((item) => item.furnitureId._id === furnitureId);
+    if (cartItem) {
+      axiosInstance
+        .post(`deleteCartById/${cartItem._id}`)
+        .then((response) => {
+          if (response.data.status === 200) {
+            toast.success(response.data.message);
+            // Remove the item from the cart state
+            setCart((prevCart) => prevCart.filter((item) => item._id !== cartItem._id));
+          } else {
+            toast.warn(response.data.message);
+          }
+        })
+        .catch((err) => {
+          console.error("Error removing from cart:", err);
+        });
+    }
   };
 
   return (
@@ -82,16 +129,16 @@ function User_ViewAllFur() {
                         class="card-img-top"
                         alt="..."
                       />
-                                          <button
-                      className="bg_icon mx-2 heart-button"
-                      onClick={() => handleHeartClick(a._id)}
-                    >
-                      <i
-                        className={`ri-heart-add-fill ${
-                          wishlistStatus[a._id] ? "text-danger" : "text-light"
-                        }`}
-                      ></i>
-                    </button>
+                  <button
+                    className="bg_icon mx-2 heart-button"
+                    onClick={() => handleHeartClick(a._id)}
+                  >
+                    <i
+                      className={`ri-heart-add-fill ${
+                        wishlistStatus[a._id] ? "text-danger" : "text-light"
+                      }`}
+                    ></i>
+                  </button>
 
                   <Link
                     to={`/user-purchesproduct/${a._id}`}
