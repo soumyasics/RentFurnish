@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Complaints/Complaints.css'
 import Search from '../../../Assets/search-line.png';
 function Complaints() {
+  const [complaint,setComplaint]=useState([])
   return (
     <div>
       <div className=' mt-5 px-5 col-sm-6 col-md-6 col-lg-3  d-flex float-end'>
