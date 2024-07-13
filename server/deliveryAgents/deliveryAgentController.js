@@ -224,6 +224,29 @@ const viewDeliveryAgentbyShopid = (req, res) => {
             res.status(500).json({ error: "Internal server error" });
         });
 };
+
+
+
+
+// view Delivery agents By Shop Id
+const viewActiveDeliveryAgentbyShopid = (req, res) => {
+    deliveryagents
+        .find({shopId: req.params.id,isActive:true})
+        .exec()
+        .then((data) => {
+            if (!data) {
+                return res.status(404).json({ error: "Shop not found" });
+            }
+            res.json({
+                status: 200,
+                data: data,
+            });
+        })
+        .catch((err) => {
+            console.error("Error finding shop by ID:", err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+};
 //viewDeliveryAgentbyid completed
 
 
@@ -386,5 +409,6 @@ module.exports = {
     viewDeliveryAgentbyShopid,
     activateDeliveryAgentById,
     upload,
-    searchDeliveryByName
+    searchDeliveryByName,
+    viewActiveDeliveryAgentbyShopid
 };

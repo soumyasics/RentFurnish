@@ -40,6 +40,7 @@ router.post("/viewallDeliveryAgentsByDistrict/:district",DeliveryAgent.viewallDe
 router.post("/viewDeliveryAgentbyShopid/:id",DeliveryAgent.viewDeliveryAgentbyShopid)
 router.post("/activateDeliveryAgentById/:id",DeliveryAgent.activateDeliveryAgentById)
 router.post("/searchDeliveryByName/:name",DeliveryAgent.searchDeliveryByName)
+router.post("/viewActiveDeliveryAgentbyShopid/:id",DeliveryAgent.viewActiveDeliveryAgentbyShopid) //new Api
 
 
 
@@ -87,6 +88,8 @@ router.post('/viewPendingOrdersForDelivery/:id',order.viewPendingOrdersForDelive
 router.post('/updateOrderPayment/:id',order.updateOrderPayment)
 router.post('/assignDeliveryAgent/:id',order.assignDeliveryAgent)
 router.post('/viewassignedOrdersForDelivery/:id',order.viewassignedOrdersForDelivery)
+router.post('/viewMyOrdersByDeliveryAgentId/:id',order.viewMyOrdersByDeliveryAgentId)  //new Api
+router.post('/updateCompletionOfDelivery/:id',order.updateCompletionOfDelivery)  //new Api
 
 
 //cart

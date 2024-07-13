@@ -32,7 +32,7 @@ console.log("amt",req.body.count*furn.rent*req.body.noOfDays);
         email: cust.email,
         contact: cust.contact,
         address: cust.address,
-
+        orderDate:new Date()
 
     });
 
@@ -252,9 +252,51 @@ const viewassignedOrdersForDelivery = async (req, res) => {
 };
 
 
+const viewMyOrdersByDeliveryAgentId = async (req, res) => {
+    try {
+        const orders = await Order.find({deliveryId:req.params.id,deliveryStatus: true,deliveryCompletion:false})
+            .populate('furnitureId')
+            .populate('customerId')
+            .populate('shopId')
+            .populate('deliveryId');
+        
+        res.status(200).json({
+            status: 200,
+            message: ' orders retrieved successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving pending orders',
+            error: err
+        });
+    }
+};
 
 
 
+
+// View Orders By Shop ID
+const updateCompletionOfDelivery = async (req, res) => {
+    try {
+        const orders = await Order.findByIdAndUpdate({_id: req.params.id },{deliveryCompletion:true})
+             
+        res.status(200).json({
+            status: 200,
+            message: ' Added successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving Payment',
+            error: err
+        });
+    }
+};
 
 module.exports={
     addOrder,
@@ -265,5 +307,7 @@ module.exports={
     addAddressByOrderId,
     updateOrderPayment,
     assignDeliveryAgent,
-    viewassignedOrdersForDelivery
+    viewassignedOrdersForDelivery,
+    viewMyOrdersByDeliveryAgentId,
+    updateCompletionOfDelivery
 }

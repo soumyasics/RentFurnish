@@ -21,6 +21,9 @@ update: {
     ref:'deliveryagents',
     required:true
   },
+  date:{
+    type:Date,
+  }
   
   
 },{timeStamps:true});
