@@ -121,7 +121,7 @@ function App() {
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
           <Route path='/example' element={[<Adminexample/>]}/>
 
-          <Route path='/complaints' element={[<Complaints/>]}/>
+          <Route path='/adminview-complaints' element={[<Complaints/>]}/>
           <Route path='/admin-viewcust' element={[<AdminViewCust/>]}/>
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery/>]}/>
 

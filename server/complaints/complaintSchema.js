@@ -10,7 +10,7 @@ const complaintSchema = new Schema(
             },
             userId:{
               type: mongoose.Schema.Types.ObjectId,
-              ref: "users",
+              ref: "customer",
               required: true
             
             },
