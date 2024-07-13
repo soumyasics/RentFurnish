@@ -41,13 +41,13 @@ font-size: 26px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
-padding: 20px;
+padding: 10px;
 }
 .user-vieworder-boxmain{
     margin: 10px;
 }
 .user-vieworder-data h5{
-    padding: 20px;
+    padding: 10px;
 }
 .user-vieworder-data button{
     display: flex;
@@ -67,4 +67,8 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
 border: none;
+}
+
+.track_delivery_link{
+    text-decoration: none;
 }

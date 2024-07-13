@@ -56,6 +56,8 @@ import UserPayment from './Components/User/Purchase/Payment/UserPayment';
 import AdminViewCust from './Components/Admin/Customers/AdminViewCust';
 import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDelivery';
 import ViewMyOrder from './Components/User/Orders/ViewMyOrder';
+import ViewCart from './Components/User/Cart/ViewCart';
+import TrackDelivery from './Components/User/Orders/TrackDelivery';
 
 
 function App() {
@@ -79,6 +81,8 @@ function App() {
           <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
           <Route path='/user-payment/:id' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
           <Route path='/user-viewmyorder' element={[<UserNav1 />,<UserNav2/>,<ViewMyOrder/>]}/>
+          <Route path='/user-viewcart' element={[<UserNav1 />,<ViewCart/>]}/>
+          <Route path='/user-trackdelivery/:id' element={[<UserNav1 />,<UserNav2/>,<TrackDelivery/>]}/>
 
          
         {/* Shops */}
@@ -96,6 +100,8 @@ function App() {
           <Route path='/add-furniture' element={[<Shopsmain data="add-furniture"/>]}/>
           <Route path='/view-furniture' element={[<Shopsmain data="view-furniture"/>]}/>
           <Route path='/view-vieworders' element={[<Shopsmain data="view-vieworders"/>]}/>
+          <Route path='/shop-vieworderstatus' element={[<Shopsmain data="shop-vieworderstatus"/>]}/>
+          <Route path='/edit-furniture/:id' element={[<Shopsmain data="edit-furniture"/>]}/>
 
 
 
@@ -118,7 +124,6 @@ function App() {
           <Route path='/complaints' element={[<Complaints/>]}/>
           <Route path='/admin-viewcust' element={[<AdminViewCust/>]}/>
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery/>]}/>
-
 
 
       </Routes>

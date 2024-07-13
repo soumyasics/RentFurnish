@@ -37,7 +37,7 @@ const Showdropdown = () => {
         {openDropdown === 'dropdown2' && (
           <div className="dropdown-content">
           <Link to="/view-vieworders" style={{textDecoration:"none",color:"black"}}><button className="dropdown-item">Order request</button></Link>  
-            <button className="dropdown-item">Order status</button>
+          <Link to="/shop-vieworderstatus" style={{textDecoration:"none",color:"black"}}> <button className="dropdown-item">Order status</button></Link>
           </div>
         )}
       </div>
