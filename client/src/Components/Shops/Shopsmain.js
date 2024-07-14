@@ -13,6 +13,7 @@ import ViewFurniture from './ViewFurniture';
 import ShopViewOrder from './Orders/ShopViewOrder';
 import OrderStatus from './Orders/OrderStatus';
 import EditFurniture from './EditFurniture';
+import Shopviewcomplaint from './Complaintsshop/Shopviewcomplaint';
 
 function Shopsmain({ data }) {
   return (
@@ -31,7 +32,7 @@ function Shopsmain({ data }) {
         data==="view-furniture"?(<ViewFurniture/>): 
         data==="view-vieworders"?(<ShopViewOrder/>): 
         data==="shop-vieworderstatus"?(<OrderStatus/>): 
-
+        data==="shop-viewcomplaint"?(<Shopviewcomplaint/>): 
         data==="edit-furniture"?(<EditFurniture />): 
         <Shoplogin/> }
       </div>

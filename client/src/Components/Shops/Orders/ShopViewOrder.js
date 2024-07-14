@@ -44,7 +44,7 @@ function ShopViewOrder() {
 
   useEffect(() => {
     axiosInstance
-      .post(`viewDeliveryAgentbyShopid/${shopId}`)
+      .post(`viewActiveDeliveryAgentbyShopid/${shopId}`)
       .then((result) => {
         console.log(result);
         setDelivery(result.data.data);

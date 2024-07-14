@@ -45,6 +45,7 @@ function Complaints() {
                 <th scope="col"><p className='Complain_head_text'>SI No</p></th>
                 <th scope="col"><p className='Complain_head_text'>Customer Name</p></th>
                 <th scope="col"><p className='Complain_head_text'>Shop Name</p></th>
+                <th scope="col"><p className='Complain_head_text'>Furniture Name</p></th>
                 <th scope="col"><p className='Complain_head_text'>Complaint Description</p></th>
                 <th scope="col"><p className='Complain_head_text'>Date</p></th>
                 <th scope="col"><p className='Complain_head_text'>View Details</p></th>
@@ -57,8 +58,10 @@ function Complaints() {
 
               <tr>
                 <th scope="row"><p className='Complain_body_number'>{index+1}</p></th>
-                <td><p className='Complain_body_text'>{complaint?.shopId?.shopname}</p></td>
                 <td><p className='Complain_body_text'>{complaint?.userId?.name}</p></td>
+                <td><p className='Complain_body_text'>{complaint?.shopId?.shopname}</p></td>
+   
+                <td><p className='Complain_body_text'>{complaint?.furnitureId?.name}</p></td>
                 <td><p className='Complain_body_text'>{complaint?.complaint}</p></td>
                 <td><p className='Complain_body_text'>{formatDate(complaint?.date)}</p></td>
                 <td><button className='Complain_body_btn Complain_body_btn_text'>View Details</button></td>

@@ -91,6 +91,7 @@ router.post('/viewassignedOrdersForDelivery/:id',order.viewassignedOrdersForDeli
 router.post('/viewMyOrdersByDeliveryAgentId/:id',order.viewMyOrdersByDeliveryAgentId)  //new Api
 router.post('/updateCompletionOfDelivery/:id',order.updateCompletionOfDelivery)  //new Api
 router.post('/viewDeliveryCountBtDeliveryId/:id',order.viewDeliveryCountBtDeliveryId)  //new Api
+router.post('/viewallDeliveryCountBtDeliveryId/:id',order.viewallDeliveryCountBtDeliveryId)  //new Api
 
 
 //cart

@@ -14,6 +14,8 @@ function DeliveryDashboard() {
   console.log(deliveryid);
   const navigate=useNavigate()
   const [data,setData]=useState([])
+  const [totaldel,setTotaldel]=useState([])
+  const [alldel,setAlldel]=useState([])
   const url = axiosInstance.defaults.url;
 
 
@@ -67,6 +69,26 @@ function DeliveryDashboard() {
     })
   })
 
+  useEffect(()=>{
+    axiosInstance.post(`viewDeliveryCountBtDeliveryId/${deliveryid}`)
+    .then((res)=>{
+      console.log(res);
+      setTotaldel(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+    axiosInstance.post(`viewallDeliveryCountBtDeliveryId/${deliveryid}`)
+    .then((res)=>{
+      console.log(res);
+      setAlldel(res.data.data)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
+  },[])
+
   return (
     <div>
       <Shopnav />
@@ -86,7 +108,7 @@ function DeliveryDashboard() {
               />
             </div>
             <div className="boxcontent">
-              <h5>10</h5>
+              <h5>{alldel}</h5>
               <p>Total Orders</p>
             </div>
           </div>
@@ -104,7 +126,7 @@ function DeliveryDashboard() {
               />
             </div>
             <div className="boxcontent">
-              <h5>12</h5>
+              <h5>{totaldel}</h5>
               <p>Total Deliveries</p>
             </div>
           </div>

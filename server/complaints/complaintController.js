@@ -6,6 +6,7 @@ const addcomplaint = (req, res) => {
   const complaint1 = new complaint({
     shopId: req.body.shopId,
       userId:req.body.userId,
+      furnitureId:req.body.furnitureId,
       complaint:req.body.complaint,
       date:new Date()
 
@@ -33,7 +34,7 @@ const addcomplaint = (req, res) => {
 const viewAllcomplaints = (req, res) => {
   complaint.find()
     .populate('shopId')
-   
+    .populate("furnitureId")
     .populate('userId')
   .exec().
     then((complaints) => {
@@ -96,7 +97,8 @@ const viewcomplaintById = (req, res) => {
 };
 
 const viewcomplaintByUserId = (req, res) => {
-  complaint.find({ userId: req.params.id }).populate('shopId')
+  complaint.find({ userId: req.params.id }).populate('shopId')    .populate("furnitureId")
+
     .exec().
     then((complaints) => {
       res.json({
@@ -115,7 +117,10 @@ const viewcomplaintByUserId = (req, res) => {
     });
 };
 const viewcomplaintByShopId = (req, res) => {
-  complaint.find({ userId: req.params.id }).populate('userId')
+  complaint.find({ shopId: req.params.id }).populate('userId')   
+  
+   .populate("furnitureId")
+
     .exec().
     then((complaints) => {
       res.json({
