@@ -281,7 +281,7 @@ const viewMyOrdersByDeliveryAgentId = async (req, res) => {
 // View Orders By Shop ID
 const updateCompletionOfDelivery = async (req, res) => {
     try {
-        const orders = await Order.findByIdAndUpdate({_id: req.params.id },{deliveryCompletion:true})
+        const orders = await Order.findByIdAndUpdate({_id: req.params.id },{deliveryCompletion:true,completionDate:new Date()})
              
         res.status(200).json({
             status: 200,
