@@ -23,6 +23,11 @@ function TrackDelivery() {
                 .then((res) => {
                     console.log(res);
                     setData(res.data.data);
+                    const sortedData = res.data.data.sort((a, b) => {
+                        const dateA = new Date(a.deliveryDate).setHours(0, 0, 0, 0);
+                        const dateB = new Date(b.deliveryDate).setHours(0, 0, 0, 0);
+                        return dateA - dateB;
+                    })
                 })
                 .catch((err) => {
                     console.log(err);
@@ -78,14 +83,20 @@ function TrackDelivery() {
                     <div className="status-item">
                         <FaCheckCircle size={50} className='icon_style_track' />
                         <p className='trackdelivery_track_status'>Order confirmed</p>
-                        <p className='trackdelivery_date'>30/06/2024</p>
+                        <p className='trackdelivery_date'>{new Date(data?.orderDate).toLocaleDateString()}</p>
                     </div>
+                    {data?.deliveryDate? (
+                        <>
                     <div className="status-line"></div>
                     <div className="status-item">
                         <FaCheckCircle size={50} className='icon_style_track' />
                         <p className='trackdelivery_track_status'>Order is in transit!</p>
-                        <p className='trackdelivery_date'>30/06/2024</p>
+                        <p className='trackdelivery_date'>{new Date(data?.deliveryDate).toLocaleDateString()}</p>
                     </div>
+                    </>
+                    ):(
+                            <div></div>
+                    )}
                     <div className="status-line"></div>
                     <div className="status-item">
                         <FaCheckCircle size={50} className='icon_style_track' />
@@ -111,8 +122,13 @@ function TrackDelivery() {
                         </div>
                         <div className='row mt-3'>
                             <div className='col-6 trackdelivery_color'>Quantity:</div>
-                            <div className='col-6 text-black'> {data?.furnitureId?.quantity}</div>
+                            <div className='col-6 text-black'> {data?.count}</div>
                         </div>
+                        <div className='row mt-3'>
+                            <div className='col-6 trackdelivery_color'>No of Days Required:</div>
+                            <div className='col-6 text-black'> {data?.noOfDays}</div>
+                        </div>
+
                         <div className='row mt-3'>
                             <div className='col-6 trackdelivery_color'>Dimensions:</div>
                             <div className='col-6 text-black'> {data?.furnitureId?.dimension}</div>
@@ -126,46 +142,57 @@ function TrackDelivery() {
                         <div className='row mt-3'>
                             <div className='col-3 trackdelivery_subtext'>Name</div>
                             <div className='col-1'>:</div>
-                            <div className='col-8'>{data?.customerId?.name}</div>
+                            <div className='col-8'>{data?.name ? data.name : data?.customerId?.name}</div>
                         </div>
                         <div className='row mt-3'>
                             <div className='col-3 trackdelivery_subtext'>Email</div>
                             <div className='col-1'>:</div>
-                            <div className='col-8'>{data?.customerId?.email}</div>
+                            <div className='col-8'>{data?.email ?data.email :data?.customerId?.email}</div>
                         </div>
                         <div className='row mt-3'>
                             <div className='col-3 trackdelivery_subtext'>Phone</div>
                             <div className='col-1'>:</div>
-                            <div className='col-8'>{data?.customerId?.phone}</div>
+                            <div className='col-8'>{data?.contact ?data.contact :data?.customerId?.phone}</div>
                         </div>
                         <div className='row mt-3'>
                             <div className='col-3 trackdelivery_subtext'>Address</div>
                             <div className='col-1'>:</div>
-                            <div className='col-8'>{data?.customerId?.address}</div>
+                            <div className='col-8'>{data?.address ?data.address :data?.customerId?.address}</div>
                         </div>
                     </div>
+                    {data?.deliveryId?(
+                        <>
                     <div className="col-md-4">
-                        <h4 className='trackdelivery_info mb-3'>Delivery agent</h4>
-                        <div className='row'>
-                            <div className='col-5 trackdelivery_subtext'>Name</div>
-                            <div className='col-1'>:</div>
-                            <div className='col-6'>{data?.deliveryId?.name}</div>
-                        </div>
-                        <div className='row mt-3'>
-                            <div className='col-5 trackdelivery_subtext'>Vehicle type</div>
-                            <div className='col-1'>:</div>
-                            <div className='col-6'>{data?.deliveryId?.vehicleType}</div>
-                        </div>
-                        <div className='row mt-3'>
-                            <div className='col-5 trackdelivery_subtext'>Vehicle number</div>
-                            <div className='col-1'>:</div>
-                            <div className='col-6'>{data?.deliveryId?.vehicleNumber}</div>
-                        </div>
+                    <h4 className='trackdelivery_info mb-3'>Delivery agent</h4>
+                    <div className='row'>
+                        <div className='col-5 trackdelivery_subtext'>Name</div>
+                        <div className='col-1'>:</div>
+                        <div className='col-6'>{data?.deliveryId?.name}</div>
                     </div>
-                    <div className="col-md-4">
+                    <div className='row mt-3'>
+                        <div className='col-5 trackdelivery_subtext'>Vehicle type</div>
+                        <div className='col-1'>:</div>
+                        <div className='col-6'>{data?.deliveryId?.vehicleType}</div>
+                    </div>
+                    <div className='row mt-3'>
+                        <div className='col-5 trackdelivery_subtext'>Vehicle number</div>
+                        <div className='col-1'>:</div>
+                        <div className='col-6'>{data?.deliveryId?.vehicleNumber}</div>
+                    </div>
+                    
+                </div>
+                <div className="col-md-4">
                         <h4 className='trackdelivery_info mb-3'>Delivery information</h4>
                         <p className='text-justify'>Great news! Our team will reach out to finalize details within 2 days</p>
                     </div>
+
+                        </>
+                    ):(
+                        <div></div>
+                    )}
+
+
+
                 </div>
 
                 <h4 className='trackdelivery_info mt-5'>Register a Complaint</h4>

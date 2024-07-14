@@ -1,140 +1,79 @@
 import React, { useEffect, useState } from 'react';
-import Shopnav from '../Navbar/Shopnav';
-import customer from "../../Assets/deliveryicon.png";
-import delivery from "../../Assets/orders.png";
-import { Link, useNavigate } from 'react-router-dom';
-import "./Deliverydash.css"
-import axiosInstance from '../Constants/Baseurl';
+import Shopnav from '../../Navbar/Shopnav';
+import customer from "../../../Assets/deliveryicon.png";
+import delivery from "../../../Assets/orders.png";
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../Constants/Baseurl';
+import "./PendingOrder.css"
 import { toast } from 'react-toastify';
 
-
-function DeliveryDashboard() {
-
-  const deliveryid=localStorage.getItem("deliveryid")
-  console.log(deliveryid);
-  const navigate=useNavigate()
-  const [data,setData]=useState([])
-  const url = axiosInstance.defaults.url;
-
-
-  useEffect(()=>{
-    if(deliveryid===null){
-      navigate("/agentlogin")
-    }
-
-    axiosInstance.post(`viewMyOrdersByDeliveryAgentId/${deliveryid}`)
-    .then((res)=>{
-      console.log(res);
-      setData(res.data.data)
-      const sortedData = res.data.data.sort((a, b) => {
-        const dateA = new Date(a.deliveryDate).setHours(0, 0, 0, 0);
-        const dateB = new Date(b.deliveryDate).setHours(0, 0, 0, 0);
-        return dateA - dateB;
+function PendingOrder() {
+    const deliveryid=localStorage.getItem("deliveryid")
+    console.log(deliveryid);
+    const navigate=useNavigate()
+    const [data,setData]=useState([])
+    const url = axiosInstance.defaults.url;
+  
+  
+    useEffect(()=>{
+      if(deliveryid===null){
+        navigate("/agentlogin")
+      }
+  
+      axiosInstance.post(`viewMyOrdersByDeliveryAgentId/${deliveryid}`)
+      .then((res)=>{
+        console.log(res);
+        setData(res.data.data)
+        const sortedData = res.data.data.sort((a, b) => {
+          const dateA = new Date(a.deliveryDate).setHours(0, 0, 0, 0);
+          const dateB = new Date(b.deliveryDate).setHours(0, 0, 0, 0);
+          return dateA - dateB;
+        })
       })
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-  },[])
-
-  const completdel=((id)=>{
-    axiosInstance.post(`updateCompletionOfDelivery/${id}`)
-    .then((res)=>{
-      console.log(res);
-      if(res.data.status==200){
-        toast.success("Delivery Completed Successfully")
-        axiosInstance.post(`viewMyOrdersByDeliveryAgentId/${deliveryid}`)
+      .catch((err)=>{
+        console.log(err);
+      })
+    },[])
+    const completdel=((id)=>{
+        axiosInstance.post(`updateCompletionOfDelivery/${id}`)
         .then((res)=>{
           console.log(res);
-          setData(res.data.data)
-          const sortedData = res.data.data.sort((a, b) => {
-            const dateA = new Date(a.deliveryDate).setHours(0, 0, 0, 0);
-            const dateB = new Date(b.deliveryDate).setHours(0, 0, 0, 0);
-            return dateA - dateB;
-          })
+          if(res.data.status==200){
+            toast.success("Delivery Completed Successfully")
+            axiosInstance.post(`viewMyOrdersByDeliveryAgentId/${deliveryid}`)
+            .then((res)=>{
+              console.log(res);
+              setData(res.data.data)
+              const sortedData = res.data.data.sort((a, b) => {
+                const dateA = new Date(a.deliveryDate).setHours(0, 0, 0, 0);
+                const dateB = new Date(b.deliveryDate).setHours(0, 0, 0, 0);
+                return dateA - dateB;
+              })
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+        
+          }
+          else{
+            toast.err("Cannot Completed at this Moment")
+          }
         })
         .catch((err)=>{
           console.log(err);
         })
+      })
     
-      }
-      else{
-        toast.err("Cannot Completed at this Moment")
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-  })
-
+  
   return (
     <div>
-      <Shopnav />
-      <div className="container" style={{padding:"20px"}}>
-        <div className="row">
-          <div className="col-12 col-md-4 mb-4 d-flex align-items-center boxmain3" style={{marginLeft:"30px"}}>
-            <div className="boxinside1 me-3">
-              <img
-                src={delivery}
-                alt="total orders"
-                style={{
-                  borderRadius: "20px",
-                  padding: "5px",
-                  width: "50px",
-                  height: "50px"
-                }}
-              />
-            </div>
-            <div className="boxcontent">
-              <h5>10</h5>
-              <p>Total Orders</p>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-4 mb-4 d-flex align-items-center boxmain1">
-            <div className="boxinside1 me-3">
-              <div
-                className="ri-user-line"
-                style={{
-                  padding: "5px",
-                  color: "blue",
-                  fontSize: "2rem",
-                  paddingLeft: "15px"
-                }}
-              />
-            </div>
-            <div className="boxcontent">
-              <h5>12</h5>
-              <p>Total Deliveries</p>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-4 mb-4 d-flex align-items-center boxmain2">
-            <div className="boxinside1 me-2">
-              <img
-                src={customer}
-                alt="pending deliveries"
-                style={{
-                  borderRadius: "20px",
-                  padding: "5px",
-                  width: "50px",
-                  height: "50px"
-                }}
-              />
-            </div>
-            <div className="boxcontent">
-              <h5>{data?.length}</h5>
-              <p>Pending Deliveries</p>
-            </div>
-          </div>
-        </div>
-
+        <Shopnav/>
         <div className='container'>
-          <div className='orderdetailsdel-main'>
-            <h2>Pending Orders</h2>
+        <div className='orderdetailsdel-main'>
+            {/* <h2 className='ri-arrow-left-line'>Pending Orders</h2> */}
 
             {data && data.length ? (
-        data.slice(0,2).map((order) => {
+        data.map((order) => {
           return (
 
             <div  className="back_ground ms-5 mb-2 mt-3 container">
@@ -236,7 +175,7 @@ function DeliveryDashboard() {
                               type="button"
                               onClick={() => completdel(order._id)}
                             >
-                              Complted
+                               Completed
                             </button>
                           </div>
                         </div>
@@ -248,20 +187,19 @@ function DeliveryDashboard() {
                       );
                     })
                   ) : (
-                    <div className="viewcounsellor-lottiereqq">No orders found</div>
+                    <div className="viewcounsellor-lottiereqq">No request found</div>
                   )}
             
 
-            <div className='del-view-moredtn'>
-           <Link to="/del-pending" style={{textDecoration:"none"}}> <button type='submit'>View All<span className='ri-arrow-right-line'/></button></Link>
+            {/* <div className='del-view-moredtn'>
+            <button type='submit'>View All<span className='ri-arrow-right-line'/></button>
 
-            </div>
-          </div>
-
+            </div> */}
+</div>
         </div>
-      </div>
-    </div>
-  );
+        
+        </div>
+  )
 }
 
-export default DeliveryDashboard;
+export default PendingOrder

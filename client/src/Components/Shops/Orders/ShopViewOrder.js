@@ -156,7 +156,7 @@ function ShopViewOrder() {
                             <p>Name:</p>
                           </div>
                           <div className="col Furniture_details_text2">
-                            <p>{order?.customerId?.name}</p>
+                            <p>{order?.name?order.name:order?.customerId?.name}</p>
                           </div>
                         </div>
                         <div className="row">
@@ -164,7 +164,7 @@ function ShopViewOrder() {
                             <p>Email:</p>
                           </div>
                           <div className="col Furniture_details_text2">
-                            <p>{order?.customerId?.email}</p>
+                            <p>{order?.email?order.email: order?.customerId?.email}</p>
                           </div>
                         </div>
                         <div className="row">
@@ -172,7 +172,7 @@ function ShopViewOrder() {
                             <p>Phone number :</p>
                           </div>
                           <div className="col Furniture_details_text2">
-                            <p>{order?.customerId?.phone}</p>
+                            <p>{order?.contact?order.contact: order?.customerId?.phone}</p>
                           </div>
                         </div>
                         <div className="row">
@@ -180,7 +180,7 @@ function ShopViewOrder() {
                             <p>Address :</p>
                           </div>
                           <div className="col Furniture_details_text2">
-                            <p>{order?.customerId?.address}</p>
+                            <p>{order?.address?order.address:order?.customerId?.address}</p>
                           </div>
                         </div>
                       </div>
