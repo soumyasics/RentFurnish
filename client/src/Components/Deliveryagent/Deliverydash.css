@@ -1,0 +1,49 @@
+.orderdetailsdel-main h2{
+    color: #0084E4;
+text-shadow: 0px 1.146px 1.146px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.del-delivdetails h5{
+    color: #0084E4;
+/* text-align: center; */
+text-shadow: 0px 0.653px 0.653px rgba(0, 0, 0, 0.25);
+font-family: Montserrat;
+font-size: 22.326px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.del-delivdetails p{
+    color: #142349;
+font-family: Montserrat;
+font-size: 22.326px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.del-view-moredtn{
+    display: flex;
+    justify-content: flex-end;
+}
+.del-view-moredtn button{
+    display: flex;
+width: 225px;
+height: 60px;
+justify-content: center;
+align-items: center;
+gap: 20px;
+border-radius: 25px;
+border: 3px solid #0084E4;
+box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+color: #0084E4;
+text-align: center;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}

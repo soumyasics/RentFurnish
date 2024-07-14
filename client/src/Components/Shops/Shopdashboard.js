@@ -1,24 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Shopdashboard.css"
-import customer from "../../Assets/deliveryicon.png";
-import delivery from "../../Assets/orders.png";
+import customer1 from "../../Assets/deliveryicon.png";
+import delivery1 from "../../Assets/orders.png";
 import "../Admin/Admindashboard.css"
 import Shophomenav from '../Navbar/Shophomenav';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from './Shopdropdown';
+import axiosInstance from '../Constants/Baseurl';
 
 function Shopdashboard() {
   const navigate=useNavigate()
   const shopid=localStorage.getItem("shopid")
   console.log(shopid);
+  const [cust,setCust]=useState([])
+  const [delivery,setDelivery]=useState([])
+
 
   useEffect(()=>{
     if(shopid===null){
       navigate("/shoplogin")
     }
-  
+    axiosInstance
+    .post(`viewallcust`)
+    .then((res) => {
+      console.log(res);
+      setCust(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axiosInstance
+    .post(`viewDeliveryAgentbyShopid/${shopid}`)
+    .then((res) => {
+      console.log(res);
+      setDelivery(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   
   },[])
   return (
@@ -42,27 +64,27 @@ function Shopdashboard() {
                 />
               </div>
               <div className="boxcontent">
-                <h5>12</h5>
+                <h5>{cust?.length}</h5>
                 <p>Total Customers</p>
               </div>
             </div>
             <div className="col-sm-4 col-md-4 col-lg-4 pb-4  d-flex boxmain2">
               <div className="col-2 boxinside1">
                 <img
-                  src={customer}
+                  src={customer1}
                   alt="customer"
                   style={{ borderRadius: "20px", paddingLeft: "8px" }}
                 />
               </div>
               <div className="col-8 boxcontent">
-                <h5>10</h5>
+                <h5>{delivery?.length}</h5>
                 <p>Total Delivery Agents</p>
               </div>
             </div>
             <div className="col-sm-4 col-md-4 col-lg-4 pb-4 d-flex boxmain3">
               <div className="col-2 boxinside1">
                 <img
-                  src={delivery}
+                  src={delivery1}
                   alt="customer"
                   style={{
                     borderRadius: "20px",

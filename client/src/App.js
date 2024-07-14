@@ -102,6 +102,7 @@ function App() {
           <Route path='/view-vieworders' element={[<Shopsmain data="view-vieworders"/>]}/>
           <Route path='/shop-vieworderstatus' element={[<Shopsmain data="shop-vieworderstatus"/>]}/>
           <Route path='/edit-furniture/:id' element={[<Shopsmain data="edit-furniture"/>]}/>
+          <Route path='/shop-viewcomplaint' element={[<Shopsmain data="shop-viewcomplaint"/>]}/>
 
 
 
@@ -113,6 +114,7 @@ function App() {
           <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
+          <Route path='/del-pending' element={[<Deliverymain data="del-pending"/>]}/>
 
           {/* Admin */}
           <Route path='/adminlogin' element={[<Navbar/>,<Adminlogin/>,<Footer/>]}/>
@@ -121,7 +123,7 @@ function App() {
           <Route path='/Viewshops' element={<Adminviewshops/>}/>
           <Route path='/example' element={[<Adminexample/>]}/>
 
-          <Route path='/complaints' element={[<Complaints/>]}/>
+          <Route path='/adminview-complaints' element={[<Complaints/>]}/>
           <Route path='/admin-viewcust' element={[<AdminViewCust/>]}/>
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery/>]}/>
 

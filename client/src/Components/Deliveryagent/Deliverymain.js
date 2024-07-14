@@ -4,6 +4,7 @@ import Deliverysidebar from './Deliverysidebar';
 import DeliveryDashboard from './DeliveryDashboard';
 import Deliverylogin from './Deliverylogin';
 import Deliveryagenteditpage from './Deliveryagenteditpage';
+import PendingOrder from './Orders/PendingOrder';
 
 
 function Deliverymain({data}) {
@@ -16,6 +17,8 @@ function Deliverymain({data}) {
         {
             data==="delivery-dashboard"?(<DeliveryDashboard/>):
             data==="edit-deliveryprofile"?(<Deliveryagenteditpage/>):
+            data==="del-pending"?(<PendingOrder/>):
+
             <Deliverylogin/>
         }
       {/* {data === "shopownerdashboard" ?( <Shopdashboard/>

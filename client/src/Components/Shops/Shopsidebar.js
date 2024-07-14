@@ -99,7 +99,7 @@ const closeModal = () => {
               Review and Feedback
             </button>
           </Link>
-          <Link className='menu-item' to="/shop-complaints">
+          <Link className='menu-item' to="/shop-viewcomplaint">
             <button
               className={` button-style ${activeButton === 'shop-complaints' ? 'active' : ''}`}
             >

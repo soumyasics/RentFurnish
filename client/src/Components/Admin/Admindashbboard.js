@@ -127,9 +127,9 @@ function Admindashbboard() {
               </button></Link>
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
+           <Link to="/adminview-complaints">  <button type="submit" className="btn btn-primary btn-block">
                 View Complaints
-              </button>
+              </button></Link> 
             </div>
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
               <button type="submit" className="btn btn-primary btn-block">

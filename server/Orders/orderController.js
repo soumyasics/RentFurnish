@@ -295,6 +295,28 @@ const viewDeliveryCountBtDeliveryId= async (req, res) => {
     }
 };
 
+const viewallDeliveryCountBtDeliveryId= async (req, res) => {
+    try {
+        const count = await Order.countDocuments({deliveryId:req.params.id})           
+         .populate('furnitureId')
+         
+        
+        res.status(200).json({
+            status: 200,
+            message: 'retrieved successfully',
+            data: count
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving pending orders',
+            error: err
+        });
+    }
+};
+
+
 
 
 // View Orders By Shop ID
@@ -329,5 +351,6 @@ module.exports={
     viewassignedOrdersForDelivery,
     viewMyOrdersByDeliveryAgentId,
     updateCompletionOfDelivery,
-    viewDeliveryCountBtDeliveryId
+    viewDeliveryCountBtDeliveryId,
+    viewallDeliveryCountBtDeliveryId
 }

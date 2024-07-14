@@ -83,14 +83,14 @@ useEffect(()=>{
               Dashboard
             </button>
           </Link>
-          <Link className='menu-item' to="">
+          {/* <Link className='menu-item' to="">
             <button
               className={` button-style ${activeButton === 'shop-returnrequest' ? 'active' : ''}`}
             >
               New Orders
             </button>
-          </Link>
-          <Link className='menu-item' to="">
+          </Link> */}
+          <Link className='menu-item' to="/del-pending">
             <button
               className={`button-style ${activeButton === 'shop-inspections' ? 'active' : ''}`}
             >

@@ -8,6 +8,8 @@ function Deliveryprofile({data}) {
   const deliveryid=localStorage.getItem("deliveryid")
   console.log(deliveryid);
   const[del,setDel]=useState({})
+  const url = axiosInstance.defaults.url;
+
 
   useEffect(()=>{
     axiosInstance.post(`viewDeliveryAgentbyid/${deliveryid}`)
@@ -35,7 +37,7 @@ function Deliveryprofile({data}) {
               <div className='userprofileimg'>
                 <img 
                 //  src={`${url}/${shop?.image?.filename}`} 
-                 src={adminimg}
+                 src={`${url}/${del?.image?.filename}`}
                 alt='Profile image' width="250px" height="250px" style={{borderRadius:"50%"}}/>
                 <h4>{del?.name}</h4>
               </div>

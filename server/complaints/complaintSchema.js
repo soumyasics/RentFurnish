@@ -14,6 +14,13 @@ const complaintSchema = new Schema(
               required: true
             
             },
+            furnitureId:{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "furnitures",
+                // required: true
+              
+              },
+  
           date:{
               type: Date,
               required: true,
