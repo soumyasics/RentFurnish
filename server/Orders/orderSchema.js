@@ -72,6 +72,8 @@ type:Date
     deliveryCompletion:{
         type: Boolean,
         default: false,
+    },completionDate:{
+        type:Date
     }
 });
 
