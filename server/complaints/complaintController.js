@@ -78,6 +78,9 @@ const deletecomplaintById = (req, res) => {
 
 const viewcomplaintById = (req, res) => {
   complaint.findById({ _id: req.params.id })
+    .populate('shopId')
+    .populate("furnitureId")
+    .populate('userId')
     .exec().
     then((complaints) => {
       res.json({
@@ -116,6 +119,8 @@ const viewcomplaintByUserId = (req, res) => {
       });
     });
 };
+
+
 const viewcomplaintByShopId = (req, res) => {
   complaint.find({ shopId: req.params.id }).populate('userId')   
   
