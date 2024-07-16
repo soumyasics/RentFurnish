@@ -4,6 +4,7 @@ import img from "../../Assets/renthome.jpg";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosInstance from '../Constants/Baseurl';
+import { toast } from 'react-toastify';
 
 function Userlogin() {
   const [email, setEmail] = useState('');
@@ -37,13 +38,13 @@ function Userlogin() {
         });
         console.log(response);
         if(response.data.status==200){
-          alert("Login Successfully")
+          toast.success("Login Successfully")
           console.log(response.data.id);
           localStorage.setItem("userid",response.data.id)
           navigate("/user-home")  
         }
         else{
-          alert(response.data.msg)
+          toast.error(response.data.msg)
         }
       } catch (error) {
         console.error('Error logging in:', error);

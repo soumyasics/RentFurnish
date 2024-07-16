@@ -150,12 +150,7 @@ const viewFurnitureById = (req, res) => {
 
 // Update Furniture by ID
 const editFurnitureById = (req, res) => {
-  upload(req, res, async function (err) {
-    if (err instanceof multer.MulterError) {
-      return res.status(500).json({ msg: err.message });
-    } else if (err) {
-      return res.status(500).json({ msg: err.message });
-    }
+
     try {
       const { name, shopId,rent, category, description, condition, roomType, dimension, quantity } = req.body;
       const updateData = {
@@ -192,6 +187,7 @@ const editFurnitureById = (req, res) => {
           }
         })
         .catch(err => {
+          console.log(err);
           res.status(500).json({
             status: 500,
             msg: "Data not updated",
@@ -201,7 +197,7 @@ const editFurnitureById = (req, res) => {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
-  });
+  
 };
 
 // Delete Furniture by ID

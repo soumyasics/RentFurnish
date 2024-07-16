@@ -146,3 +146,15 @@
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+/* Contact Us */
+
+.contactus_main_heading{
+    z-index: 1;
+}
+.contactus_img_style{
+    z-index: 2;
+}
+.contact_icon_style{
+    color: #0084E4;
+}

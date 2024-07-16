@@ -13,9 +13,11 @@ import { toast } from 'react-toastify';
 function ViewFurniture() {
     const [furnitureList, setFurnitureList] = useState([]);
     const url = axiosInstance.defaults.url;
+    const shopId = localStorage.getItem("shopid")
+
 
     useEffect(() => {
-        axiosMultipartInstance.post('viewallFurniture')
+        axiosMultipartInstance.post(`/viewFurnituresByShopId/${shopId}`)
             .then(response => {
                 console.log(response);
                 if (response.data.status === 200) {

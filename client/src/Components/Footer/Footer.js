@@ -5,7 +5,7 @@ import admin from "../../Assets/logowhite.png";
 
 function Footer() {
   return (
-    <div className='footermain row '>
+    <div className='footermain'>
         <div className='row d-flex'>
         <div className='col-4 sm-4 md-4 footerhead1'>
         <img src={admin} alt='logo' width="40px" height="40px"/>

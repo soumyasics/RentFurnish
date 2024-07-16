@@ -58,6 +58,7 @@ import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDeliver
 import ViewMyOrder from './Components/User/Orders/ViewMyOrder';
 import ViewCart from './Components/User/Cart/ViewCart';
 import TrackDelivery from './Components/User/Orders/TrackDelivery';
+import ContactUs from './Components/User/Home/ContactUs';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
           <Route path='/user-viewallfurniture' element={[<UserNav1 />,<Viewallfurnituresuser/>]}/>
           <Route path='/user-services' element={[<UserNav1 />,<UserNav2/>,<Services/>]}/>
+          <Route path='/user-contactus' element={[<UserNav1 />,<ContactUs/>]}/>
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
