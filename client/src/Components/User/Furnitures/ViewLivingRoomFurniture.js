@@ -6,10 +6,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import axiosInstance from '../../Constants/Baseurl';
 import axiosMultipartInstance from '../../Constants/FormDataUrl';
+import { toast } from 'react-toastify';
 
 function ViewLivingRoomFurniture() {
+    const userid = localStorage.getItem("userid");
     const [furnitureData, setFurnitureData] = useState([]);
     const url = axiosInstance.defaults.url;
+    const [wishlistStatus, setWishlistStatus] = useState({});
+    const [cart, setCart] = useState([]);
+
     const room = 'Living Room';
 
     useEffect(() => {
@@ -20,7 +25,83 @@ function ViewLivingRoomFurniture() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+                  // Fetch user's cart data
+      axiosInstance
+      .post(`/viewCartBycustId/${userid}`)
+      .then((res) => {
+        if (res.data.status === 200) {
+          const cartItems = res.data.data;
+          const initialWishlistStatus = {};
+          cartItems.forEach((item) => {
+            initialWishlistStatus[item.furnitureId._id] = true;
+          });
+          setWishlistStatus(initialWishlistStatus);
+          setCart(cartItems);
+        } else {
+          console.log("Failed to fetch cart data");
+        }
+      })
+      .catch(() => {
+        console.log("Failed to fetch cart data");
+      });
+
+    }, [userid]);
+
+      // Add to cart functionality
+  const handleHeartClick = (furnitureId) => {
+    const updatedStatus = !wishlistStatus[furnitureId];
+    setWishlistStatus((prevStatus) => ({
+      ...prevStatus,
+      [furnitureId]: updatedStatus
+    }));
+
+    if (updatedStatus) {
+      addtocartfn(furnitureId);
+    } else {
+      removeFromCartfn(furnitureId);
+    }
+  };
+
+  const addtocartfn = (furnitureId) => {
+    axiosInstance
+      .post("addCart", {
+        custId: userid,
+        furnitureId: furnitureId
+      })
+      .then((response) => {
+        if (response.data.status === 200) {
+          toast.success(response.data.message);
+          // Add the new item to the cart state
+          setCart((prevCart) => [...prevCart, { _id: response.data.data._id, furnitureId: { _id: furnitureId } }]);
+        } else {
+          toast.warn(response.data.message);
+        }
+      })
+      .catch((err) => {
+        console.error("Error adding to cart:", err);
+      });
+  };
+
+  const removeFromCartfn = (furnitureId) => {
+    const cartItem = cart.find((item) => item.furnitureId._id === furnitureId);
+    if (cartItem) {
+      axiosInstance
+        .post(`deleteCartById/${cartItem._id}`)
+        .then((response) => {
+          if (response.data.status === 200) {
+            toast.success(response.data.message);
+            // Remove the item from the cart state
+            setCart((prevCart) => prevCart.filter((item) => item._id !== cartItem._id));
+          } else {
+            toast.warn(response.data.message);
+          }
+        })
+        .catch((err) => {
+          console.error("Error removing from cart:", err);
+        });
+    }
+  };
+
     return (
         <div>
             <h1 className='container pb-3 pt-3 room_type_heading'>
@@ -33,6 +114,17 @@ function ViewLivingRoomFurniture() {
                 {furnitureData.map((item) => (
                     <div key={item._id} className="furniture-item">
                         <img src={`${url}/${item?.image1?.filename}`} alt={item.name} className="furniture-image img-fluid" />
+                        <button
+                    className="bg_icon mx-2 heart-button"
+                    onClick={() => handleHeartClick(item._id)}
+                  >
+                    <i
+                      className={`ri-heart-add-fill ${
+                        wishlistStatus[item._id] ? "text-danger" : "text-light"
+                      }`}
+                    ></i>
+                  </button>
+
                         <Link to={`/user-purchesproduct/${item._id}`} style={{ textDecoration: "none" }}>
                             <div className="furniture-details">
                                 <h3 className='viewfur_main_name'>{item.name}</h3>
@@ -40,7 +132,7 @@ function ViewLivingRoomFurniture() {
                                 <p className='viewfur_text_color_change'>Rent</p>
                                 <p className='viewfur_amount_rent'> ₹{item.rent}/MO</p>
                             </div>
-                            <button className="wishlist-button"><FaRegHeart /></button>
+                            {/* <button className="wishlist-button"><FaRegHeart /></button> */}
                         </Link>
                     </div>
                 ))}
