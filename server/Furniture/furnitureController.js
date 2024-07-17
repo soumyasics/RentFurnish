@@ -255,6 +255,36 @@ const viewFurnituresByShopId = (req, res) => {
       });
   };
   
+// View all Furnitures with Roomtype
+const viewFurnitureswithRoomType = (req, res) => {
+  const roomType = req.params.roomtype; 
+  Furnitures.find({ roomType: roomType, quantity: { $gt: 0 } })
+    .exec()
+    .then(data => {
+      if (data.length > 0) {
+        res.json({
+          status: 200,
+          msg: "Data obtained successfully",
+          data: data
+        });
+      } else {
+        res.json({
+          status: 200,
+          msg: "No Data obtained"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not obtained",
+        Error: err
+      });
+    });
+};
+
+
+  
 module.exports = {
   registerFurniture,
   viewFurnitures,
@@ -263,5 +293,6 @@ module.exports = {
   deleteFurnitureById,
   upload,
   viewFurnituresByShopId,
-  viewFurnitureswithQuantityGtZero
+  viewFurnitureswithQuantityGtZero,
+  viewFurnitureswithRoomType
 };

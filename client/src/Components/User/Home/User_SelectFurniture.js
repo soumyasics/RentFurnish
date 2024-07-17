@@ -4,6 +4,7 @@ import bedroom from '../../../Assets/userhome_bedroom.png'
 import dining from '../../../Assets/userhome_dining.png'
 import study from '../../../Assets/userhome_study.png'
 import bed from '../../../Assets/bed_image_forrent.png'
+import { Link } from 'react-router-dom'
 function User_SelectFurniture() {
   return (
     <div>
@@ -14,16 +15,16 @@ function User_SelectFurniture() {
         </div>
         <div className='row container-fluid'>
           <div className='col-md-3'>
-          <img src={living}className='img-fluid userhome_fur_button'/>
+          <Link to='/user-viewlivingroom'><img src={living}className='img-fluid userhome_fur_button'/></Link>
           </div>
           <div className='col-md-3'>
-            <img src={bedroom}className='img-fluid userhome_fur_button'/>
+            <Link to='/user-viewbedroom'><img src={bedroom}className='img-fluid userhome_fur_button'/></Link>
           </div>
           <div className='col-md-3'>
-          <img src={dining}className='img-fluid userhome_fur_button'/>
+          <Link to='/user-viewdiningroom'><img src={dining}className='img-fluid userhome_fur_button'/></Link>
           </div>
           <div className='col-md-3'>
-          <img src={study}className='img-fluid userhome_fur_button'/>
+          <Link to='/user-viewstudyroom'><img src={study}className='img-fluid userhome_fur_button'/></Link>
           </div>
         </div>
       </div>

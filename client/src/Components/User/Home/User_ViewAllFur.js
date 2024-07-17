@@ -146,7 +146,7 @@ function User_ViewAllFur() {
                   >
 
                       <div class="card-body">
-                        <h5 class="card-title">Single seat sofa</h5>
+                        <h5 class="card-title">{a?.category}</h5>
                         <p class="card-text">Rent</p>
                         <p class="card-text userhome_card_price">
                           ₹ {a?.rent}/MO

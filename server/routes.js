@@ -67,6 +67,8 @@ router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
 router.post("/viewallFurniture",Furniture.viewFurnitures)
 router.post("/viewFurnitureswithQuantityGtZero",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
+router.post("/viewFurnitureswithRoomType/:roomtype",Furniture.viewFurnitureswithRoomType);
+
 
 
 //complaints
