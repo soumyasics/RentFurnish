@@ -58,6 +58,11 @@ import AdminViewDelivery from './Components/Admin/DeliveryAgent/AdminViewDeliver
 import ViewMyOrder from './Components/User/Orders/ViewMyOrder';
 import ViewCart from './Components/User/Cart/ViewCart';
 import TrackDelivery from './Components/User/Orders/TrackDelivery';
+import ContactUs from './Components/User/Home/ContactUs';
+import ViewBedroomFurniture from './Components/User/Furnitures/ViewBedroomFurniture';
+import ViewLivingRoomFurniture from './Components/User/Furnitures/ViewLivingRoomFurniture';
+import ViewDiningRoom from './Components/User/Furnitures/ViewDiningRoom';
+import ViewStudyRoom from './Components/User/Furnitures/ViewStudyRoom';
 
 
 function App() {
@@ -75,6 +80,7 @@ function App() {
           <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
           <Route path='/user-viewallfurniture' element={[<UserNav1 />,<Viewallfurnituresuser/>]}/>
           <Route path='/user-services' element={[<UserNav1 />,<UserNav2/>,<Services/>]}/>
+          <Route path='/user-contactus' element={[<UserNav1 />,<ContactUs/>]}/>
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
           <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
@@ -83,6 +89,11 @@ function App() {
           <Route path='/user-viewmyorder' element={[<UserNav1 />,<UserNav2/>,<ViewMyOrder/>]}/>
           <Route path='/user-viewcart' element={[<UserNav1 />,<ViewCart/>]}/>
           <Route path='/user-trackdelivery/:id' element={[<UserNav1 />,<UserNav2/>,<TrackDelivery/>]}/>
+          <Route path='/user-viewbedroom' element={[<UserNav1 />,<UserNav2/>,<ViewBedroomFurniture/>]}/>
+          <Route path='/user-viewlivingroom' element={[<UserNav1 />,<UserNav2/>,<ViewLivingRoomFurniture/>]}/>
+          <Route path='/user-viewdiningroom' element={[<UserNav1 />,<UserNav2/>,<ViewDiningRoom/>]}/>
+          <Route path='/user-viewstudyroom' element={[<UserNav1 />,<UserNav2/>,<ViewStudyRoom/>]}/>
+
 
          
         {/* Shops */}

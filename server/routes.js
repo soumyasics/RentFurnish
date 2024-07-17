@@ -67,6 +67,8 @@ router.post("/viewFurnitureById/:id",Furniture.viewFurnitureById)
 router.post("/viewallFurniture",Furniture.viewFurnitures)
 router.post("/viewFurnitureswithQuantityGtZero",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
+router.post("/viewFurnitureswithRoomType/:roomtype",Furniture.viewFurnitureswithRoomType);
+
 
 
 //complaints
@@ -75,6 +77,7 @@ router.post('/viewAllcomplaints',complaint.viewAllcomplaints)
 router.post('/viewcomplaintByUserId/:id',complaint.viewcomplaintByUserId)
 router.post('/deletecomplaintById/:id',complaint.deletecomplaintById)
 router.post('/viewcomplaintByShopId/:id',complaint.viewcomplaintByShopId)
+router.post('/viewcomplaintById/:id',complaint.viewcomplaintById)
 
 
 

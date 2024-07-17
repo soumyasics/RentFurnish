@@ -11,7 +11,7 @@ function UserNav2() {
             <a class="navbar-brand">About Us</a>
            <Link to="/user-services" style={{textDecoration:"none"}}> <a class="navbar-brand">Services</a></Link>
            <Link to="/user-viewmyorder" style={{textDecoration:"none"}}><a class="navbar-brand">My Orders</a></Link> 
-            <a class="navbar-brand">Contact</a>
+           <Link to="/user-contactus" style={{textDecoration:"none"}}><a class="navbar-brand">Contact</a></Link>
             <a class="navbar-brand"></a>
             <a class="navbar-brand"></a>
             <form class="d-flex" role="search">

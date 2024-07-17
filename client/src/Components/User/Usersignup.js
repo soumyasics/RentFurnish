@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../User/Usersignup.css";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../Constants/Baseurl";
+import { toast } from "react-toastify";
 
 function Usersignup() {
   const navigate = useNavigate();
@@ -90,10 +91,10 @@ function Usersignup() {
 
     try {
       await axiosInstance.post("/userregister", formValues);
-      alert("Registration successful!");
+      toast.success("Registration successful!");
       navigate("/userlogin");
     } catch (error) {
-      alert("Error registering user: " + (error.response?.data?.msg || error.msg));
+      toast.error("Error registering user: " + (error.response?.data?.msg || error.msg));
     } finally {
       setIsSubmitting(false);
     }

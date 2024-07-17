@@ -146,3 +146,69 @@
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+/* Contact Us */
+.contact_main_div_img{
+    background-image: url(../../../Assets/contactimg.png);
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 500px;
+}
+
+ .contactus_sub_text{
+    padding-top: 10px;
+    color: white;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: left;
+
+ }
+ .contact_arrow{
+    padding-right: 10px;
+ }
+ .contactus_div1{
+    padding-left: 150px;
+    font-family: 'Montserrat',sans-serif;
+ }
+.contactus_h1{
+    color: white;
+    padding-top: 50px;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+.contactus_col_div{
+    /* width: 50%; */
+    padding: 20px;
+    padding-left: 50px;
+}
+.contactus_items_style{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+.contactus_icon_style{
+    margin-right: 10px;
+    color: #0d6efd;
+    /* size: 30px; */
+}
+.contactus_row_container {
+    margin: 70px;
+    border-color: #0084E44D;
+    border-width: 2px;
+    border-style: solid; 
+    border-radius: 20px;
+    background-color: #E5F3FC;
+}
+.contactus_details{
+    font-family: 'Montserrat',sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10px;
+}
+.contactus_link{
+    text-decoration: none;
+    color: white;
+}
