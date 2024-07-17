@@ -27,9 +27,11 @@
     font-weight: 400;
     line-height: normal;
 }
-.Complain_body_btn{
+
+.Complain_body_btn {
     border-radius: 10px;
-    background: #0084E4;display: flex;
+    background: #0084E4;
+    display: flex;
     width: 135px;
     height: 40px;
     justify-content: center;
@@ -37,22 +39,81 @@
     gap: 2.71px;
     flex-shrink: 0;
 }
-.Complain_body_btn_text{
+
+.Complain_body_btn_text {
     color: var(--icon-color, #FFF);
-text-align: center;
-font-family: Montserrat;
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
-.viewcomplaints-head h1{
-padding-left: 30px;
-color: #0084E4;
-text-shadow: 0px 0.866px 0.866px rgba(0, 0, 0, 0.25);
-font-family: Montserrat;
-font-size: 28px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+
+.viewcomplaints-head h1 {
+    padding-left: 30px;
+    color: #0084E4;
+    text-shadow: 0px 0.866px 0.866px rgba(0, 0, 0, 0.25);
+    font-family: Montserrat;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* Modal */
+.complaint_modal_main {
+    border-radius: 20px;
+    width: 1200px;
+    background-color: #D6E4FF;
+    border-radius: 10px;
+    margin-left: 150px;
+}
+
+.complaint_modal_size {
+    max-width: 2000px;
+}
+
+
+.model_close_btn {
+    background-color: #D80000;
+    border-radius: 20%;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    color: white;
+}
+
+.complaint-details img {
+    max-width: 300px;
+    border-radius: 20px;
+    height: 250px;
+    width: 300px;
+}
+
+.registered-complaints {
+    margin-top: 20px;
+}
+
+.modal_second_mainheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22.33px;
+    font-weight: 600;
+    line-height: 27.22px;
+    color: #0084E4;
+    padding-bottom: 5px;
+}
+
+.modal_subheading {
+    color: #0084E4;
+    text-align: left;
+}
+
+.modal_subheading1 {
+    text-align: left;
+}
+
+.modal_textarea {
+    resize: none;
+    border-radius: 20px;
 }

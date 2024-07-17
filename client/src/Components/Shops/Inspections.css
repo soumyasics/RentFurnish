@@ -1,0 +1,20 @@
+.inspection_back_ground {
+    width: 1066px;
+    height: 100%;
+    border-radius: 20px;
+    background: #D6E4FF;
+    margin-bottom: 50px;
+}
+
+.inspection_sub_img {
+    height: 100px;
+    width: 100px;
+}
+
+.inspection_fine_text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17.86px;
+    font-weight: 500;
+    text-align: left;
+    color: #0084E4;
+}

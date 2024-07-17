@@ -15,7 +15,7 @@ function Viewallfurnituresuser() {
   useEffect(() => {
     if (userid === null) {
       navigate("/");
-    } else {
+    } else {  
       // Fetch all furnitures with quantity > 0
       axiosInstance
         .post("viewFurnitureswithQuantityGtZero")
