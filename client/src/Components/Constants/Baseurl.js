@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
     // baseURL: 'http://hybrid.srishticampus.in:4027/rentfurnish_api', 
 
     // baseURL: '', 
-  
+    
   //local api 
   
     baseURL: 'http://localhost:4027/rentfurnish_api', 
