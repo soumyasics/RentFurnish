@@ -63,6 +63,11 @@ import ViewBedroomFurniture from './Components/User/Furnitures/ViewBedroomFurnit
 import ViewLivingRoomFurniture from './Components/User/Furnitures/ViewLivingRoomFurniture';
 import ViewDiningRoom from './Components/User/Furnitures/ViewDiningRoom';
 import ViewStudyRoom from './Components/User/Furnitures/ViewStudyRoom';
+import ReturnDetails from './Components/User/Orders/Return/ReturnDetails';
+import TrackReturnStatus from './Components/User/Orders/Return/TrackReturnStatus';
+import TrackReturnConformed from './Components/User/Orders/Return/TrackReturnConformed';
+import TrackInspectionStatus from './Components/User/Orders/Return/TrackInspectionStatus';
+import TrackReturnPayment from './Components/User/Orders/Return/TrackReturnPayment';
 
 
 function App() {
@@ -93,7 +98,11 @@ function App() {
           <Route path='/user-viewlivingroom' element={[<UserNav1 />,<UserNav2/>,<ViewLivingRoomFurniture/>]}/>
           <Route path='/user-viewdiningroom' element={[<UserNav1 />,<UserNav2/>,<ViewDiningRoom/>]}/>
           <Route path='/user-viewstudyroom' element={[<UserNav1 />,<UserNav2/>,<ViewStudyRoom/>]}/>
-
+          <Route path='/user-return/:id' element={[<UserNav1 />,<UserNav2/>,<ReturnDetails/>]}/>
+          <Route path='/user-trackreturnstatus/:id' element={[<UserNav1 />,<UserNav2/>,<TrackReturnStatus/>]}/>
+          {/* <Route path='/user-conformedreturn' element={[<UserNav1 />,<UserNav2/>,<TrackReturnConformed/>]}/>
+          <Route path='/user-inspectionstatus' element={[<UserNav1 />,<UserNav2/>,<TrackInspectionStatus/>]}/>
+          <Route path='/user-returnpayment' element={[<UserNav1 />,<UserNav2/>,<TrackReturnPayment/>]}/> */}
 
          
         {/* Shops */}

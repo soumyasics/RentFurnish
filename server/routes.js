@@ -10,6 +10,7 @@ const complaint=require("./complaints/complaintController")
 const order=require("./Orders/orderController")
 const cart=require("./cart/cartController")
 const deliveryUpdate=require("./DeliveryDatas/deliveryController")
+const  Return = require("./Return/returnController")
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -95,6 +96,7 @@ router.post('/viewMyOrdersByDeliveryAgentId/:id',order.viewMyOrdersByDeliveryAge
 router.post('/updateCompletionOfDelivery/:id',order.updateCompletionOfDelivery)  //new Api
 router.post('/viewDeliveryCountBtDeliveryId/:id',order.viewDeliveryCountBtDeliveryId)  //new Api
 router.post('/viewallDeliveryCountBtDeliveryId/:id',order.viewallDeliveryCountBtDeliveryId)  //new Api
+router.post('/updateReturnStatus/:id',order.updateReturnStatus)
 
 
 //cart
@@ -113,6 +115,13 @@ router.post('/viewDeliveryUpdateById/:id',deliveryUpdate.viewDeliveryUpdateById)
 router.post('/viewDeliveryUpdateByOrderId/:id',deliveryUpdate.viewDeliveryUpdateByOrderId)
 router.post('/viewAllDeliveryUpdates',deliveryUpdate.viewAllDeliveryUpdates)
 router.post('/deleteDeliveryUpdateById/:id',deliveryUpdate.deleteDeliveryUpdateById)
+
+//return 
+router.post('/addreturn',Return.addReturn)
+router.post('/viewReturnById/:id',Return.viewReturnById)
+router.post('/viewReturnByShopId/:id',Return.viewReturnByShopId)
+router.post('/viewReturnByCustomerId/:id',Return.viewReturnByCustId)
+router.post('/viewPendingReturnById/:id',Return.viewPendingReturnById)
 
 
 module.exports=router

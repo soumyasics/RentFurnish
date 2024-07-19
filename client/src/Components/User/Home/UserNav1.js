@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './UserHome.css'
-import logo from '../../../Assets/RFlogo.png'
+import logo from '../../../Assets/RentalLogo.png'
 import { FaRegBell } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
