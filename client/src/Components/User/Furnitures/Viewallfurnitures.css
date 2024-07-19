@@ -94,3 +94,39 @@
   font-size: 18px;
   font-weight: 500;
 }
+
+/* Search Box */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #0f0f0f3f;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #fff;
+  width: 300px;
+  position: relative; 
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.search-box .search-icon {
+  color: #ccc;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  right: 10px; 
+}
+.search-box-div{
+  margin-left: 1000px;
+}
+
+.search-box-div1{
+  margin-left: 1100px;
+}

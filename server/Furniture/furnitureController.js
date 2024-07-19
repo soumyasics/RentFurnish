@@ -23,45 +23,45 @@ const upload = multer({ storage: storage }).fields([
 
 // Register a new Furniture
 const registerFurniture = async (req, res) => {
-  
 
-    try {
-      const { name, shopId, category, description, rent,condition, roomType, dimension, quantity } = req.body;
-      const newFurniture = new Furnitures({
-        name,
-        shopId,
-        category,
-        description,
-        condition,
-        roomType,
-        dimension,
-        rent,
-        quantity,
-        image1: req.files['image1'] ? req.files['image1'][0] : null,
-        image2: req.files['image2'] ? req.files['image2'][0] : null,
-        image3: req.files['image3'] ? req.files['image3'][0] : null,
-        image4: req.files['image4'] ? req.files['image4'][0] : null
-      });
 
-      await newFurniture.save()
-        .then(data => {
-          return res.json({
-            status: 200,
-            msg: "Inserted successfully",
-            data: data
-          });
-        })
-        .catch(err => {
-          return res.json({
-            status: 500,
-            msg: "Data not Inserted",
-            data: err
-          });
+  try {
+    const { name, shopId, category, description, rent, condition, roomType, dimension, quantity } = req.body;
+    const newFurniture = new Furnitures({
+      name,
+      shopId,
+      category,
+      description,
+      condition,
+      roomType,
+      dimension,
+      rent,
+      quantity,
+      image1: req.files['image1'] ? req.files['image1'][0] : null,
+      image2: req.files['image2'] ? req.files['image2'][0] : null,
+      image3: req.files['image3'] ? req.files['image3'][0] : null,
+      image4: req.files['image4'] ? req.files['image4'][0] : null
+    });
+
+    await newFurniture.save()
+      .then(data => {
+        return res.json({
+          status: 200,
+          msg: "Inserted successfully",
+          data: data
         });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  
+      })
+      .catch(err => {
+        return res.json({
+          status: 500,
+          msg: "Data not Inserted",
+          data: err
+        });
+      });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 };
 
 // View all Furnitures
@@ -94,31 +94,31 @@ const viewFurnitures = (req, res) => {
 
 // View all Furnitures with quantity > 0
 const viewFurnitureswithQuantityGtZero = (req, res) => {
-    Furnitures.find({ quantity: { $gt: 0 } })
-      .exec()
-      .then(data => {
-        if (data.length > 0) {
-          res.json({
-            status: 200,
-            msg: "Data obtained successfully",
-            data: data
-          });
-        } else {
-          res.json({
-            status: 200,
-            msg: "No Data obtained"
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).json({
-          status: 500,
-          msg: "Data not obtained",
-          Error: err
+  Furnitures.find({ quantity: { $gt: 0 } })
+    .exec()
+    .then(data => {
+      if (data.length > 0) {
+        res.json({
+          status: 200,
+          msg: "Data obtained successfully",
+          data: data
         });
+      } else {
+        res.json({
+          status: 200,
+          msg: "No Data obtained"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not obtained",
+        Error: err
       });
-  };
-  
+    });
+};
+
 
 
 // View Furniture by ID
@@ -151,53 +151,53 @@ const viewFurnitureById = (req, res) => {
 // Update Furniture by ID
 const editFurnitureById = (req, res) => {
 
-    try {
-      const { name, shopId,rent, category, description, condition, roomType, dimension, quantity } = req.body;
-      const updateData = {
-        name,
-        shopId,
-        category,
-        rent,
-        description,
-        condition,
-        roomType,
-        dimension,
-        quantity
-      };
+  try {
+    const { name, shopId, rent, category, description, condition, roomType, dimension, quantity } = req.body;
+    const updateData = {
+      name,
+      shopId,
+      category,
+      rent,
+      description,
+      condition,
+      roomType,
+      dimension,
+      quantity
+    };
 
-      if (req.files['image1']) updateData.image1 = req.files['image1'][0];
-      if (req.files['image2']) updateData.image2 = req.files['image2'][0];
-      if (req.files['image3']) updateData.image3 = req.files['image3'][0];
-      if (req.files['image4']) updateData.image4 = req.files['image4'][0];
+    if (req.files['image1']) updateData.image1 = req.files['image1'][0];
+    if (req.files['image2']) updateData.image2 = req.files['image2'][0];
+    if (req.files['image3']) updateData.image3 = req.files['image3'][0];
+    if (req.files['image4']) updateData.image4 = req.files['image4'][0];
 
-      Furnitures.findByIdAndUpdate(req.params.id, updateData, { new: true })
-        .exec()
-        .then(data => {
-          if (data) {
-            res.json({
-              status: 200,
-              msg: "Updated successfully",
-              data: data
-            });
-          } else {
-            res.json({
-              status: 404,
-              msg: "Furniture not found"
-            });
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          res.status(500).json({
-            status: 500,
-            msg: "Data not updated",
-            Error: err
+    Furnitures.findByIdAndUpdate(req.params.id, updateData, { new: true })
+      .exec()
+      .then(data => {
+        if (data) {
+          res.json({
+            status: 200,
+            msg: "Updated successfully",
+            data: data
           });
+        } else {
+          res.json({
+            status: 404,
+            msg: "Furniture not found"
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          status: 500,
+          msg: "Data not updated",
+          Error: err
         });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  
+      });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 };
 
 // Delete Furniture by ID
@@ -230,34 +230,34 @@ const deleteFurnitureById = (req, res) => {
 
 // View all Furnitures with quantity > 0
 const viewFurnituresByShopId = (req, res) => {
-    Furnitures.find({shopId:req.params.id})
-      .exec()
-      .then(data => {
-        if (data.length > 0) {
-          res.json({
-            status: 200,
-            msg: "Data obtained successfully",
-            data: data
-          });
-        } else {
-          res.json({
-            status: 200,
-            msg: "No Data obtained"
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).json({
-          status: 500,
-          msg: "Data not obtained",
-          Error: err
+  Furnitures.find({ shopId: req.params.id })
+    .exec()
+    .then(data => {
+      if (data.length > 0) {
+        res.json({
+          status: 200,
+          msg: "Data obtained successfully",
+          data: data
         });
+      } else {
+        res.json({
+          status: 200,
+          msg: "No Data obtained"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not obtained",
+        Error: err
       });
-  };
-  
+    });
+};
+
 // View all Furnitures with Roomtype
 const viewFurnitureswithRoomType = (req, res) => {
-  const roomType = req.params.roomtype; 
+  const roomType = req.params.roomtype;
   Furnitures.find({ roomType: roomType, quantity: { $gt: 0 } })
     .exec()
     .then(data => {
@@ -284,7 +284,60 @@ const viewFurnitureswithRoomType = (req, res) => {
 };
 
 
-  
+const searchFurnitureByRoomType = async (req, res) => {
+  try {
+    const name = req.params.name;
+    const user = await Furnitures.find({roomType:req.body.roomType, name: new RegExp(name, 'i') })
+    if (!user) {
+      return res.json({
+        status: 404,
+        data: null,
+        msg: 'Furnitures not found'
+      });
+    }
+
+    res.json({
+      status: 200,
+      data: user,
+      msg: 'Furnitures found'
+    });
+  } catch (err) {
+    res.json({
+      status: 500,
+      data: null,
+      msg: 'An error occurred'
+    });
+  }
+}
+
+
+
+const searchFurnitureByName = async (req, res) => {
+  try {
+    const name = req.params.name;
+    const user = await Furnitures.find({ name: new RegExp(name, 'i') })
+
+    if (!user) {
+      return res.json({
+        status: 404,
+        data: null,
+        msg: 'Furnitures not found'
+      });
+    }
+
+    res.json({
+      status: 200,
+      data: user,
+      msg: 'Furnitures found'
+    });
+  } catch (err) {
+    res.json({
+      status: 500,
+      data: null,
+      msg: 'An error occurred'
+    });
+  }
+}
 module.exports = {
   registerFurniture,
   viewFurnitures,
@@ -294,5 +347,7 @@ module.exports = {
   upload,
   viewFurnituresByShopId,
   viewFurnitureswithQuantityGtZero,
-  viewFurnitureswithRoomType
+  viewFurnitureswithRoomType,
+  searchFurnitureByRoomType,
+  searchFurnitureByName
 };
