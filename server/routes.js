@@ -69,6 +69,8 @@ router.post("/viewallFurniture",Furniture.viewFurnitures)
 router.post("/viewFurnitureswithQuantityGtZero",Furniture.viewFurnitureswithQuantityGtZero)
 router.post("/viewFurnituresByShopId/:id",Furniture.viewFurnituresByShopId)
 router.post("/viewFurnitureswithRoomType/:roomtype",Furniture.viewFurnitureswithRoomType);
+router.post("/searchFurnitureByName/:name",Furniture.searchFurnitureByName);
+router.post("/searchFurnitureByRoomType/:name",Furniture.searchFurnitureByRoomType);
 
 
 
@@ -121,6 +123,7 @@ router.post('/addreturn',Return.addReturn)
 router.post('/viewReturnById/:id',Return.viewReturnById)
 router.post('/viewReturnByShopId/:id',Return.viewReturnByShopId)
 router.post('/viewReturnByCustomerId/:id',Return.viewReturnByCustId)
+router.post('/viewReturnByFurniturerId/:id',Return.viewReturnByFurnitureId)
 router.post('/viewPendingReturnById/:id',Return.viewPendingReturnById)
 
 

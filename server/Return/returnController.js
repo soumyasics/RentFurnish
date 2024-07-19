@@ -87,6 +87,32 @@ const viewReturnByShopId = async (req, res) => {
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
+            .populate('orderId')
+
+        res.status(200).json({
+            status: 200,
+            message: 'Return retrieved successfully',
+            data: returnOrder
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving orders',
+            error: err
+        });
+    }
+};
+
+//View Return By FurnitureId
+const viewReturnByFurnitureId = async (req, res) => {
+    try {
+        const returnOrder = await Return.find({ furnitureId: req.params.id })
+            .populate('customerId')
+            .populate('shopId')
+            .populate('furnitureId')
+            .populate('orderId')
+
 
         res.status(200).json({
             status: 200,
@@ -111,7 +137,7 @@ const viewReturnByCustId = async (req, res) => {
             .populate('customerId')
             .populate('shopId')
             .populate('orderId')
-        
+
         res.status(200).json({
             status: 200,
             message: 'Orders retrieved successfully',
@@ -164,5 +190,6 @@ module.exports = {
     viewReturnById,
     viewReturnByShopId,
     viewReturnByCustId,
-    viewPendingReturnById
+    viewPendingReturnById,
+    viewReturnByFurnitureId
 };

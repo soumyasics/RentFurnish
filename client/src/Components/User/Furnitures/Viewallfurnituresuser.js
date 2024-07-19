@@ -11,11 +11,13 @@ function Viewallfurnituresuser() {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
   const url = axiosInstance.defaults.url;
+  const [searchInput, setSearchInput] = useState('');
+
 
   useEffect(() => {
     if (userid === null) {
       navigate("/");
-    } else {  
+    } else {
       // Fetch all furnitures with quantity > 0
       axiosInstance
         .post("viewFurnitureswithQuantityGtZero")
@@ -103,6 +105,20 @@ function Viewallfurnituresuser() {
     }
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    axiosInstance.post(`searchFurnitureByName/${value}`)
+      .then((res) => {
+        console.log(res);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert(err.response.data.message);
+      });
+  };
+
   return (
     <div className="user_home_viewfur">
       <div className="container">
@@ -111,6 +127,16 @@ function Viewallfurnituresuser() {
             All Furnitures
           </h1>
         </Link>
+        <div className="search-box-div">
+        <div className="search-box">
+          <input type="text" placeholder="Search here..."
+            value={searchInput}
+            onChange={handleSearch}
+
+          />
+          <i className="ri-search-line search-icon"></i>
+        </div>
+        </div>
         <div className="row user_home_eachcard_paddd">
           {data && data.length ? (
             data.map((a) => (
@@ -132,9 +158,8 @@ function Viewallfurnituresuser() {
                     onClick={() => handleHeartClick(a._id)}
                   >
                     <i
-                      className={`ri-heart-add-fill ${
-                        wishlistStatus[a._id] ? "text-danger" : "text-light"
-                      }`}
+                      className={`ri-heart-add-fill ${wishlistStatus[a._id] ? "text-danger" : "text-light"
+                        }`}
                     ></i>
                   </button>
 
