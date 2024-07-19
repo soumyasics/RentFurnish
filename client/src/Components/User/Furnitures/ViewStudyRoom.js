@@ -9,24 +9,55 @@ import axiosMultipartInstance from '../../Constants/FormDataUrl';
 import { toast } from 'react-toastify';
 
 function ViewStudyRoom() {
-    const userid = localStorage.getItem("userid");
-    const [furnitureData, setFurnitureData] = useState([]);
-    const url = axiosInstance.defaults.url;
-    const room = 'Studyroom';
-    const [wishlistStatus, setWishlistStatus] = useState({});
-    const [cart, setCart] = useState([]);
+  const userid = localStorage.getItem("userid");
+  const [furnitureData, setFurnitureData] = useState([]);
+  const url = axiosInstance.defaults.url;
+  const room = 'Studyroom';
+  const [wishlistStatus, setWishlistStatus] = useState({});
+  const [cart, setCart] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
-    useEffect(() => {
-        axiosMultipartInstance.post(`/viewFurnitureswithRoomType/${room}`)
-            .then(response => {
-                setFurnitureData(response.data.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
 
-                  // Fetch user's cart data
-      axiosInstance
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
+  
+    if (value.trim() === '') {
+      axiosMultipartInstance.post(`/viewFurnitureswithRoomType/${room}`)
+        .then(response => {
+          setFurnitureData(response.data.data || []);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          toast.error('An error occurred while fetching data.');
+        });
+    } else {
+      axiosInstance.post(`searchFurnitureByRoomType/${value}`, { roomType: room })
+        .then((res) => {
+          if (res.data.status === 200) {
+            console.log(res);
+            setFurnitureData(res.data.data);
+          } else {
+            setFurnitureData([]);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
+
+  useEffect(() => {
+    axiosMultipartInstance.post(`/viewFurnitureswithRoomType/${room}`)
+      .then(response => {
+        setFurnitureData(response.data.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+    // Fetch user's cart data
+    axiosInstance
       .post(`/viewCartBycustId/${userid}`)
       .then((res) => {
         if (res.data.status === 200) {
@@ -45,9 +76,9 @@ function ViewStudyRoom() {
         console.log("Failed to fetch cart data");
       });
 
-    }, []);
+  }, []);
 
-      // Add to cart functionality
+  // Add to cart functionality
   const handleHeartClick = (furnitureId) => {
     const updatedStatus = !wishlistStatus[furnitureId];
     setWishlistStatus((prevStatus) => ({
@@ -102,43 +133,53 @@ function ViewStudyRoom() {
     }
   };
 
-    return (
-        <div>
-            <h1 className='container pb-3 pt-3 room_type_heading'>
-                <Link to="/user-home">
-                    <FaArrowLeft className='contact_arrow' />
-                </Link>
-                Study Room
-            </h1>
-            <div className="furniture-grid container">
-                {furnitureData.map((item) => (
-                    <div key={item._id} className="furniture-item">
-                        <img src={`${url}/${item?.image1?.filename}`} alt={item.name} className="furniture-image img-fluid" />
-                        <button
-                    className="bg_icon mx-2 heart-button"
-                    onClick={() => handleHeartClick(item._id)}
-                  >
-                    <i
-                      className={`ri-heart-add-fill ${
-                        wishlistStatus[item._id] ? "text-danger" : "text-light"
-                      }`}
-                    ></i>
-                  </button>
-
-                        <Link to={`/user-purchesproduct/${item._id}`} style={{ textDecoration: "none" }}>
-                        <div className="furniture-details">
-                            <h3 className='viewfur_main_name'>{item.name}</h3>
-                            <p className='viewfur_text_color_change'>Available Quantity: {item.quantity}</p>
-                            <p className='viewfur_text_color_change'>Rent</p>
-                            <p className='viewfur_amount_rent'> ₹{item.rent}/MO</p>
-                        </div>
-                        </Link>
-                        {/* <button className="wishlist-button"><FaRegHeart /></button> */}
-                    </div>
-                ))}
-            </div>
+  return (
+    <div>
+      <h1 className='container pb-3 pt-3 room_type_heading'>
+        <Link to="/user-home">
+          <FaArrowLeft className='contact_arrow' />
+        </Link>
+        Study Room
+      </h1>
+      <div className='search-box-div1 pb-4'>
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Search here..."
+            value={searchInput}
+            onChange={handleSearch}
+          />
+          <i className="ri-search-line search-icon"></i>
         </div>
-    )
+      </div>
+      <div className="furniture-grid container">
+        {furnitureData.map((item) => (
+          <div key={item._id} className="furniture-item">
+            <img src={`${url}/${item?.image1?.filename}`} alt={item.name} className="furniture-image img-fluid" />
+            <button
+              className="bg_icon mx-2 heart-button"
+              onClick={() => handleHeartClick(item._id)}
+            >
+              <i
+                className={`ri-heart-add-fill ${wishlistStatus[item._id] ? "text-danger" : "text-light"
+                  }`}
+              ></i>
+            </button>
+
+            <Link to={`/user-purchesproduct/${item._id}`} style={{ textDecoration: "none" }}>
+              <div className="furniture-details">
+                <h3 className='viewfur_main_name'>{item.name}</h3>
+                <p className='viewfur_text_color_change'>Available Quantity: {item.quantity}</p>
+                <p className='viewfur_text_color_change'>Rent</p>
+                <p className='viewfur_amount_rent'> ₹{item.rent}/MO</p>
+              </div>
+            </Link>
+            {/* <button className="wishlist-button"><FaRegHeart /></button> */}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default ViewStudyRoom

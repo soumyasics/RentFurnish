@@ -339,6 +339,25 @@ const updateCompletionOfDelivery = async (req, res) => {
     }
 };
 
+const updateReturnStatus = async (req, res) => {
+    try {
+        const orders = await Order.findByIdAndUpdate({_id: req.params.id },{returnRequest:true})
+             
+        res.status(200).json({
+            status: 200,
+            message: ' Updated successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error',
+            error: err
+        });
+    }
+};
+
 module.exports={
     addOrder,
     viewOrderById,
@@ -352,5 +371,6 @@ module.exports={
     viewMyOrdersByDeliveryAgentId,
     updateCompletionOfDelivery,
     viewDeliveryCountBtDeliveryId,
-    viewallDeliveryCountBtDeliveryId
+    viewallDeliveryCountBtDeliveryId,
+    updateReturnStatus
 }
