@@ -38,8 +38,8 @@ const returnSchema = new Schema({
         default: false,
     },
     completionDate: {
-        type: String,
-        default:"Not Returned",
+        type: Date
+
     }
 });
 

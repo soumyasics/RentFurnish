@@ -47,6 +47,19 @@ function ReturnDetails() {
                 console.error(error);
                 alert('Server error');
             });
+
+            axiosInstance.post(`/updateReturnStatus/${id}`)
+            .then((res) => {
+                if (res.data.status === 200) {
+                    console.log(res)
+                } else {
+                    console.error(res.data.error);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('Server error');
+            });
     };
 
     return (

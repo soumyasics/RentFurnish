@@ -60,7 +60,11 @@ function ViewMyOrder() {
                     <h6 className="user-ordr-amnt">
                       <span>Dimention :</span>{a?.furnitureId?.dimension}
                     </h6>
-                    {a?.completionDate ? (
+                    {a?.returnRequest === true && a?.deliveryCompletion ? (
+                      <Link to={`/user-trackreturnstatus/${a?._id}`} className="track_delivery_link">
+                        <button type="button">Return Status</button>
+                      </Link>
+                    ) : a?.deliveryCompletion ? (
                       <Link to={`/user-return/${a?._id}`} className="track_delivery_link">
                         <button type="button">Return</button>
                       </Link>
@@ -69,6 +73,7 @@ function ViewMyOrder() {
                         <button type="button">Track Delivery</button>
                       </Link>
                     )}
+
                   </div>
                 </div>
               </div>

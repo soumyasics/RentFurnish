@@ -74,6 +74,10 @@ type:Date
         default: false,
     },completionDate:{
         type:Date
+    },
+    returnRequest:{
+        type:Boolean,
+        default:false
     }
 });
 

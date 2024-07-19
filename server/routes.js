@@ -96,6 +96,7 @@ router.post('/viewMyOrdersByDeliveryAgentId/:id',order.viewMyOrdersByDeliveryAge
 router.post('/updateCompletionOfDelivery/:id',order.updateCompletionOfDelivery)  //new Api
 router.post('/viewDeliveryCountBtDeliveryId/:id',order.viewDeliveryCountBtDeliveryId)  //new Api
 router.post('/viewallDeliveryCountBtDeliveryId/:id',order.viewallDeliveryCountBtDeliveryId)  //new Api
+router.post('/updateReturnStatus/:id',order.updateReturnStatus)
 
 
 //cart

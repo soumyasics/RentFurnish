@@ -19,7 +19,6 @@ const addReturn = async (req, res) => {
             shopId: req.body.shopId,
             returnDate: new Date(),
             returnAmount: req.body.returnAmount,
-            // completionDate: new Date()
         });
 
         await returnOrder.save()
