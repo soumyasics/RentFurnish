@@ -124,7 +124,10 @@ router.post('/viewReturnById/:id',Return.viewReturnById)
 router.post('/viewReturnByShopId/:id',Return.viewReturnByShopId)
 router.post('/viewReturnByCustomerId/:id',Return.viewReturnByCustId)
 router.post('/viewReturnByFurniturerId/:id',Return.viewReturnByFurnitureId)
-router.post('/viewPendingReturnById/:id',Return.viewPendingReturnById)
+router.post('/viewPendingReturnByShopId/:id',Return.viewPendingReturnByShopId)
+router.post('/assignreturnDeliveryAgent/:id',Return.assignDeliveryAgent)
+router.post('/updateCompletionofreturndelivery/:id',Return.updateCompletionOfDelivery)
+router.post('/viewMyReturnsByDeliveryAgentId/:id',Return.viewMyReturnsByDeliveryAgentId)  //new Api
 
 
 module.exports=router
