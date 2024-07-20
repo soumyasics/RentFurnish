@@ -42,13 +42,13 @@ function TrackDelivery() {
       return;
     }
 
-    if (!data || !data.shopId || !data.shopId._id) {
-      toast.error("Shop ID not found.");
-      return;
-    }
+    // if (!data || !data.shopId || !data.shopId._id) {
+    //   toast.error("Shop ID not found.");
+    //   return;
+    // }
 
     const complaintData = {
-      shopId: data.shopId._id,
+      shopId: data.furnitureId.shopId,
       userId: userid,
       complaint: complaintText,
       furnitureId:data.furnitureId._id,

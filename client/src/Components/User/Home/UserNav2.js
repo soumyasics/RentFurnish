@@ -14,10 +14,10 @@ function UserNav2() {
            <Link to="/user-contactus" style={{textDecoration:"none"}}><a class="navbar-brand">Contact</a></Link>
             <a class="navbar-brand"></a>
             <a class="navbar-brand"></a>
-            <form class="d-flex" role="search">
+            {/* <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> */}
         </div>
         </nav>
     </div>
