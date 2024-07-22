@@ -70,3 +70,10 @@
 .radio-container.damaged input:checked ~ .checkmark {
     background-color: red;
 }
+
+.inspection_img_style_{
+    height: 130px;
+    width: 200px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
