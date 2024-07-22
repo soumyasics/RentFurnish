@@ -11,6 +11,7 @@ const order=require("./Orders/orderController")
 const cart=require("./cart/cartController")
 const deliveryUpdate=require("./DeliveryDatas/deliveryController")
 const  Return = require("./Return/returnController")
+const Inspection = require ('./Inspections/inspectionController')
 
 router.post("/registershop",Shops.upload,Shops.registershop)
 router.post("/shoplogin",Shops.shopLogin)
@@ -128,6 +129,14 @@ router.post('/viewPendingReturnByShopId/:id',Return.viewPendingReturnByShopId)
 router.post('/assignreturnDeliveryAgent/:id',Return.assignDeliveryAgent)
 router.post('/updateCompletionofreturndelivery/:id',Return.updateCompletionOfDelivery)
 router.post('/viewMyReturnsByDeliveryAgentId/:id',Return.viewMyReturnsByDeliveryAgentId)  //new Api
+router.post('/updateInspectionStatus/:id',Return.updateInspection)  //new Api
+
+
+
+// Inspection
+router.post('/addInspection',Inspection.upload,Inspection.regInspection)
+router.post('/viewInspectionByShopId/:id',Inspection.viewInspectionByShopId)
+router.post('/viewInspections',Inspection.viewInspections)
 
 
 module.exports=router

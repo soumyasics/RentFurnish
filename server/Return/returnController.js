@@ -257,6 +257,25 @@ const updateCompletionOfDelivery = async (req, res) => {
 };
 
 
+const updateInspection = async (req, res) => {
+    try {
+        const orders = await Return.findByIdAndUpdate({_id: req.params.id },{inspectionStatus:true})
+             
+        res.status(200).json({
+            status: 200,
+            message: ' Added successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving Payment',
+            error: err
+        });
+    }
+};
+
 
 module.exports = {
     addReturn,
@@ -267,5 +286,6 @@ module.exports = {
     viewReturnByFurnitureId,
     assignDeliveryAgent,
     viewMyReturnsByDeliveryAgentId,
-    updateCompletionOfDelivery
+    updateCompletionOfDelivery,
+    updateInspection
 };
