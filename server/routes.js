@@ -137,6 +137,8 @@ router.post('/updateInspectionStatus/:id',Return.updateInspection)  //new Api
 router.post('/addInspection',Inspection.upload,Inspection.regInspection)
 router.post('/viewInspectionByShopId/:id',Inspection.viewInspectionByShopId)
 router.post('/viewInspections',Inspection.viewInspections)
+router.post('/editInspectionById/:id',Inspection.editInspectionById)
+router.post('/viewInspectionByFurnitureId/:id',Inspection.viewInspectionByFurnitureId)
 
 
 module.exports=router

@@ -48,7 +48,7 @@ const returnSchema = new Schema({
         type:Date,
     },
     inspectionStatus:{
-        type:Boolean,
+        type:String,
     },
     completionDate: {
         type: Date

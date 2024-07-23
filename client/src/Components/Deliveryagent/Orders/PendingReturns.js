@@ -85,18 +85,19 @@ function PendingReturns() {
                 toast.error('Error.');
             });
 
-        axiosMultipartInstance.post(`/updateReturnStatus/${order?._id}`)
-        .then((res) => {
-            console.log(res);
-            if (res.data.status === 200) {
-                console.log('Updated successfully!');
-            } else {
-                console.log('Failed to submit inspection.');
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        // axiosMultipartInstance.post(`/updateReturnStatus/${order?._id}`)
+        // .then((res) => {
+        //     console.log("bid",order?._id);
+        //     console.log("res",res)
+        //     if (res.data.status === 200) {
+        //         console.log('Updated successfully!');
+        //     } else {
+        //         console.log('Failed to submit inspection.');
+        //     }
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // });
     };
 
     return (

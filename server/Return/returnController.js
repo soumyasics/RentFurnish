@@ -216,7 +216,7 @@ const assignDeliveryAgent=(req,res)=>{
 
 const viewMyReturnsByDeliveryAgentId = async (req, res) => {
     try {
-        const orders = await Return.find({deliveryId:req.params.id,returnStatus: "Confirmed",completionStatus:false})
+        const orders = await Return.find({deliveryId:req.params.id,returnStatus: "Confirmed", completionStatus:false})
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -259,7 +259,7 @@ const updateCompletionOfDelivery = async (req, res) => {
 
 const updateInspection = async (req, res) => {
     try {
-        const orders = await Return.findByIdAndUpdate({_id: req.params.id },{inspectionStatus:true})
+        const orders = await Return.findByIdAndUpdate({_id: req.params.id },{inspectionStatus:"submitted"})
              
         res.status(200).json({
             status: 200,

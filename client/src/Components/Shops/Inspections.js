@@ -8,12 +8,18 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import axiosMultipartInstance from '../Constants/FormDataUrl';
 import axiosInstance from '../Constants/Baseurl';
+import { toast } from 'react-toastify';
 
 function Inspections() {
   const [inspections, setInspections] = useState([]);
   const shopId = localStorage.getItem("shopid")
   console.log("sid" + shopId)
   const url = axiosInstance.defaults.url;
+  const [rentAmount, setRentAmount] = useState('');
+  const [fineAmount, setFineAmount] = useState('');
+  const [depositeAmount, setDepositeAmount] = useState('');
+  const [selectedInspectionId, setSelectedInspectionId] = useState(null);
+
 
 
   useEffect(() => {
@@ -26,6 +32,33 @@ function Inspections() {
         console.log(err);
       });
   }, [shopId]);
+
+  const handleUpdate = (id) => {
+    setSelectedInspectionId(id);
+    axiosInstance.post(`/editInspectionById/${id}`, {
+      rentAmount,
+      fineAmount,
+      depositeAmount
+    })
+    .then((response) => {
+      if (response.data.status === 200) {
+        toast.success("Updated successfully");
+        axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
+          .then((result) => {
+            setInspections(result.data.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        toast.error (" failed");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
 
   return (
     <div>
@@ -147,24 +180,37 @@ function Inspections() {
                   <div className='row'>
                     <div className='col-6'>
                       <p className="inspection_fine_text">Rent Amount </p>
-                      <input type='text' className='form-control form-control-lg' />
+                      <input 
+                      type='text' 
+                      className='form-control form-control-lg' 
+                      value={rentAmount} 
+                      onChange={(e) => setRentAmount(e.target.value)}/>
                     </div>
                     <div className='col-6'>
                       <p className="inspection_fine_text">Fine Amount </p>
-                      <input type='text' className='form-control form-control-lg' />
+                      <input 
+                      type='text' 
+                      className='form-control form-control-lg' 
+                      value={fineAmount}
+                        onChange={(e) => setFineAmount(e.target.value)} />
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-6'>
                       <p className="inspection_fine_text">Deposit Amount </p>
-                      <input type='text' className='form-control form-control-lg' />
+                      <input 
+                      type='text' 
+                      className='form-control form-control-lg' 
+                      value={depositeAmount}
+                      onChange={(e) => setDepositeAmount(e.target.value)}/>
                     </div>
                     <div className='col-6'></div>
                   </div>
                 </div>
               </div>
               <div className="text-center m-4">
-                <button type="submit" className="btn btn-warning">
+                <button type="submit" className="btn btn-warning"  onClick={() => handleUpdate(order._id)}
+                >
                   &nbsp;&nbsp; Confirm &nbsp;&nbsp;
                 </button>
               </div>

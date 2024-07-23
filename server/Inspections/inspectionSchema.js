@@ -24,7 +24,6 @@ const inspectionSchema = mongoose.Schema({
     
     image1: {
         type: Object,
-        // required: true
     },
 
     image2: {
@@ -52,7 +51,21 @@ const inspectionSchema = mongoose.Schema({
     prodCondition: {
         type: String,
         required: true
-    }
+    },
+    inspectionStatus:{
+        type:String,
+        default:"pending",
+        required:true
+    },
+    rentAmount:{
+        type:Number,
+    },
+    fineAmount:{
+        type:Number,
+    },
+    depositeAmount:{
+        type:Number
+    },
 
 })
 

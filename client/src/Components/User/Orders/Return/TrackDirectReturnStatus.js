@@ -3,11 +3,12 @@ import { FaCheckCircle } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import "./Return.css";
 import axiosInstance from '../../../Constants/Baseurl';
-import img from '../../../../Assets/bed_image_forrent.png';
+import img from '../../../../Assets/bed_image_forrent.png'; 
 
 function TrackDirectReturnStatus() {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const [inspectionData, setInspectionData] = useState(null);
     const url = axiosInstance.defaults.url;
 
     useEffect(() => {
@@ -19,6 +20,15 @@ function TrackDirectReturnStatus() {
             .catch((err) => {
                 console.error(err);
             });
+
+            // axiosInstance.post(`/viewInspectionByFurnitureId/${id}`)
+            // .then((res) => {
+            //     console.log("Inspection Data:", res);
+            //     setInspectionData(res.data.data);
+            // })
+            // .catch((err) => {
+            //     console.error(err);
+            // });
     }, [id]);
 
     return (

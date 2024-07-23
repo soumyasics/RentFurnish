@@ -26,13 +26,14 @@ const upload = multer({ storage: storage }).fields([
 
 const regInspection = async (req, res) => {
     try {
-        const { returnId, customerId, furnitureId, shopId, prodCondition } = req.body;
+        const { returnId, customerId, furnitureId, shopId,prodCondition,inspectionStatus } = req.body;
         const newInspection = new Inspection({
             returnId,
             customerId,
             furnitureId,
             shopId,
             prodCondition,
+            inspectionStatus,
             image1: req.files['image1'] ? req.files['image1'][0] : null,
             image2: req.files['image2'] ? req.files['image2'][0] : null,
             image3: req.files['image3'] ? req.files['image3'][0] : null,
@@ -64,7 +65,7 @@ const regInspection = async (req, res) => {
 //View Inspection By ShopId
 const viewInspectionByShopId = async (req, res) => {
     try {
-        const returnOrder = await Inspection.find({ shopId: req.params.id })
+        const returnOrder = await Inspection.find({ shopId: req.params.id ,inspectionStatus:"pending"})
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -82,6 +83,30 @@ const viewInspectionByShopId = async (req, res) => {
             error: err
         });
     }
+};
+
+const viewInspectionByFurnitureId = async (req, res) => {
+  try {
+      const returnOrder = await Inspection.findOne({ furnitureId: req.params.id ,inspectionStatus:"Completed"})
+          .populate('furnitureId')
+          .populate('customerId')
+          .populate('shopId')
+          .populate('returnId')
+          .populate('')
+
+      res.status(200).json({
+          status: 200,
+          message: 'Return retrieved successfully',
+          data: returnOrder
+      });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({
+          status: 500,
+          message: 'Error retrieving orders',
+          error: err
+      });
+  }
 };
 
 // View all Furnitures
@@ -111,9 +136,54 @@ const viewInspections = (req, res) => {
       });
   };
 
+
+  //Edit Inspection By Id
+const editInspectionById = (req, res) => {
+
+  try {
+    const { rentAmount, fineAmount, depositeAmount} = req.body;
+    const updateData = {
+      rentAmount,
+      fineAmount,
+      depositeAmount,
+      inspectionStatus:"Completed"
+    };
+
+    Inspection.findByIdAndUpdate(req.params.id, updateData, { new: true })
+      .exec()
+      .then(data => {
+        if (data) {
+          res.json({
+            status: 200,
+            msg: "Updated successfully",
+            data: data
+          });
+        } else {
+          res.json({
+            status: 404,
+            msg: " not found"
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          status: 500,
+          msg: "Data not updated",
+          Error: err
+        });
+      });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+};
+
 module.exports={
     regInspection,
     upload,
     viewInspectionByShopId,
-    viewInspections
+    viewInspections,
+    editInspectionById,
+    viewInspectionByFurnitureId
 }
