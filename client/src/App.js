@@ -138,6 +138,7 @@ function App() {
           <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
           <Route path='/del-pending' element={[<Deliverymain data="del-pending"/>]}/>
+          <Route path='/pending-returns' element={[<Deliverymain data="pending-returns"/>]}/>
 
           {/* Admin */}
           <Route path='/adminlogin' element={[<Navbar/>,<Adminlogin/>,<Footer/>]}/>

@@ -97,6 +97,13 @@ useEffect(()=>{
               Pending Orders
             </button>
           </Link>
+          <Link className='menu-item' to="/pending-returns">
+            <button
+              className={`button-style ${activeButton === 'shop-inspections' ? 'active' : ''}`}
+            >
+              Inspections
+            </button>
+          </Link>
           <Link className='menu-item' to="">
             <button
               className={`button-style ${activeButton === 'shop-reviewfeedback' ? 'active' : ''}`}

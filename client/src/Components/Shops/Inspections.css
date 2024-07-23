@@ -4,6 +4,7 @@
     border-radius: 20px;
     background: #D6E4FF;
     margin-bottom: 50px;
+    padding-bottom: 10px;
 }
 
 .inspection_sub_img {
@@ -17,4 +18,14 @@
     font-weight: 500;
     text-align: left;
     color: #0084E4;
+}
+
+.product_img{
+    border-radius: 20px;
+}
+
+.inspection_radius_img{
+    border-radius: 20px;
+    height: 130px;
+    width: 150px;
 }
