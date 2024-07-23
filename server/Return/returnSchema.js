@@ -22,6 +22,10 @@ const returnSchema = new Schema({
         ref: "shops",
         required: true,
     },
+    deliveryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "deliveryagents",
+    },
     returnDate: {
         type: Date,
     },
@@ -37,9 +41,20 @@ const returnSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    deliveryDate: {
+        type: Date,
+    },
+    confirmedDate:{
+        type:Date,
+    },
+    inspectionStatus:{
+        type:Boolean,
+    },
     completionDate: {
         type: Date
-
+    },
+    completionStatus:{
+        type: Boolean
     }
 });
 
