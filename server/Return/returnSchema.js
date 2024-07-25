@@ -33,7 +33,7 @@ const returnSchema = new Schema({
         type: String,
         default: "Pending",
     },
-    returnAmount: {
+    fineAmount: {
         type: Number,
         // required: true,
     },
@@ -41,19 +41,25 @@ const returnSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    paymentDate: {
+        type: Date
+    },
     deliveryDate: {
         type: Date,
     },
-    confirmedDate:{
-        type:Date,
+    confirmedDate: {
+        type: Date,
     },
-    inspectionStatus:{
-        type:Boolean,
+    inspectionStatus: {
+        type: String,
+    },
+    inspectionDate: {
+        type: Date,
     },
     completionDate: {
         type: Date
     },
-    completionStatus:{
+    completionStatus: {
         type: Boolean
     }
 });
