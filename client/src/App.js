@@ -69,6 +69,7 @@ import TrackReturnConformed from './Components/User/Orders/Return/TrackReturnCon
 import TrackInspectionStatus from './Components/User/Orders/Return/TrackInspectionStatus';
 import TrackReturnPayment from './Components/User/Orders/Return/TrackReturnPayment';
 import TrackDirectReturnStatus from './Components/User/Orders/Return/TrackDirectReturnStatus';
+import Viewreviews from './Components/User/Furnitures/Viewreviews';
 
 
 function App() {
@@ -86,7 +87,7 @@ function App() {
           <Route path='/user-home' element={[<UserNav1 />, <UserNav2 />, <Usercarousel />, <User_SelectFurniture />, <Hometop />, <User_ViewAllFur />, <Services />, <Footer />]} />
           <Route path='/user-viewallfurniture' element={[<UserNav1 />, <Viewallfurnituresuser />]} />
           <Route path='/user-services' element={[<UserNav1 />, <UserNav2 />, <Services />]} />
-          <Route path='/user-contactus' element={[<UserNav1 />, <ContactUs />]} />
+          <Route path='/user-contactus' element={[ <ContactUs />]} />
 
           <Route path='/user-purchesproduct/:id' element={[<UserNav1 />, <Bookorder1 />, <Footer />]} />
           <Route path='/user-confirmpurchase' element={[<UserNav1 />, <Deliveryorder />, <Footer />]} />
@@ -106,7 +107,8 @@ function App() {
           {/* <Route path='/user-conformedreturn' element={[<UserNav1 />,<UserNav2/>,<TrackReturnConformed/>]}/>
           <Route path='/user-inspectionstatus' element={[<UserNav1 />,<UserNav2/>,<TrackInspectionStatus/>]}/> */}
           <Route path='/user-returnpayment/:id' element={[<UserNav1 />, <UserNav2 />, <TrackReturnPayment />]} />
-
+          <Route path='/view-reviews' element={[<Viewreviews/>]} />
+          <Route path='/about' element={<Hometop/>}/>
 
           {/* Shops */}
           <Route path='/shopsignin' element={[<Navbar />, <Shopsignin />, <Footer />]} />

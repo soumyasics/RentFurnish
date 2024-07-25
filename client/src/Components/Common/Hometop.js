@@ -3,8 +3,10 @@ import "./Hometop.css";
 import img from "../../Assets/livingroom.jpg";
 import img2 from "../../Assets/Rectangle 24.png";
 import img3 from "../../Assets/Rectangle.png";
+import { Link } from "react-router-dom";
 
 function Hometop() {
+  const userId=localStorage.getItem("userid")
   return (
     <div className="hometop-main">
       <div className="container">
@@ -96,12 +98,21 @@ function Hometop() {
               </div>
             </div>
             <div className="row rowhomeleft">
-                <div className="col-sm-12 col-md-6 col-lg-6 ">
-                    <button type="submit">Know More About Us !</button>
+              {
+                userId?(
+                  <></>
+                ):(
+                  <>
+                                  <div className="col-sm-12 col-md-6 col-lg-6 ">
+                   <Link to="/userlogin"> <button type="submit">Know More About Us !</button></Link>
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-6 ">
-                <button type="submit">Get Started Now <span className="ri-arrow-right-line"></span> </button>
+                <Link to="/userlogin"><button type="submit">Get Started Now <span className="ri-arrow-right-line"></span> </button></Link>
                 </div>
+
+                  </>
+                )
+              }
                 
             </div>
           </div>
