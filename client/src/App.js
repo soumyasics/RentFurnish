@@ -2,7 +2,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import 'remixicon/fonts/remixicon.css'
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Userlogin from './Components/User/Userlogin';
 import Usersignup from './Components/User/Usersignup';
 import Userforgetpswd from './Components/User/Userforgetpswd';
@@ -73,87 +73,87 @@ import TrackDirectReturnStatus from './Components/User/Orders/Return/TrackDirect
 
 function App() {
   return (
-    <BrowserRouter   basename="/rentfurnish">
-    <div>
-      <Routes 
-          >
-          <Route path='/' element={[<Navbar/>,<Usercarousel/>,<Hometop/>,<Homesec/>,<Homethird/>,<Footer/>]}/>
+    <BrowserRouter basename="/rentfurnish">
+      <div>
+        <Routes
+        >
+          <Route path='/' element={[<Navbar />, <Usercarousel />, <Hometop />, <Homesec />, <Homethird />, <Footer />]} />
 
-        {/* // User // */}
-          <Route path='/userlogin' element={[<Navbar/>,<Userlogin/>]}/>
-          <Route path='/usersignin' element={[<Navbar/>,<Usersignup/>]}/>
-          <Route path='/userforgetpswd' element={[<Navbar/>,<Userforgetpswd/>]}/>
-          <Route path='/user-home' element={[<UserNav1 />,<UserNav2/>,<Usercarousel/>,<User_SelectFurniture/>,<Hometop/>,<User_ViewAllFur/>,<Services/>,<Footer/>]}/>
-          <Route path='/user-viewallfurniture' element={[<UserNav1 />,<Viewallfurnituresuser/>]}/>
-          <Route path='/user-services' element={[<UserNav1 />,<UserNav2/>,<Services/>]}/>
-          <Route path='/user-contactus' element={[<UserNav1 />,<ContactUs/>]}/>
+          {/* // User // */}
+          <Route path='/userlogin' element={[<Navbar />, <Userlogin />]} />
+          <Route path='/usersignin' element={[<Navbar />, <Usersignup />]} />
+          <Route path='/userforgetpswd' element={[<Navbar />, <Userforgetpswd />]} />
+          <Route path='/user-home' element={[<UserNav1 />, <UserNav2 />, <Usercarousel />, <User_SelectFurniture />, <Hometop />, <User_ViewAllFur />, <Services />, <Footer />]} />
+          <Route path='/user-viewallfurniture' element={[<UserNav1 />, <Viewallfurnituresuser />]} />
+          <Route path='/user-services' element={[<UserNav1 />, <UserNav2 />, <Services />]} />
+          <Route path='/user-contactus' element={[<UserNav1 />, <ContactUs />]} />
 
-          <Route path='/user-purchesproduct/:id' element={[<UserNav1/>,<Bookorder1/>,<Footer/>]}/>
-          <Route path='/user-confirmpurchase' element={[<UserNav1/>,<Deliveryorder/>,<Footer/>]}/>
-          <Route path='/user-viewprofile' element={[<CustViewProfile/>]}/>
-          <Route path='/user-payment/:id' element={[<UserNav1/>,<UserPayment/>,<Footer/>]}/>
-          <Route path='/user-viewmyorder' element={[<UserNav1 />,<UserNav2/>,<ViewMyOrder/>]}/>
-          <Route path='/user-viewcart' element={[<UserNav1 />,<ViewCart/>]}/>
-          <Route path='/user-trackdelivery/:id' element={[<UserNav1 />,<UserNav2/>,<TrackDelivery/>]}/>
-          <Route path='/user-viewbedroom' element={[<UserNav1 />,<UserNav2/>,<ViewBedroomFurniture/>]}/>
-          <Route path='/user-viewlivingroom' element={[<UserNav1 />,<UserNav2/>,<ViewLivingRoomFurniture/>]}/>
-          <Route path='/user-viewdiningroom' element={[<UserNav1 />,<UserNav2/>,<ViewDiningRoom/>]}/>
-          <Route path='/user-viewstudyroom' element={[<UserNav1 />,<UserNav2/>,<ViewStudyRoom/>]}/>
-          <Route path='/user-return/:id' element={[<UserNav1 />,<UserNav2/>,<ReturnDetails/>]}/>
-          <Route path='/user-trackreturnstatus/:id' element={[<UserNav1 />,<UserNav2/>,<TrackReturnStatus/>]}/>
-          <Route path='/user-trackdirectreturnstatus/:id' element={[<UserNav1 />,<UserNav2/>,<TrackDirectReturnStatus/>]}/>
+          <Route path='/user-purchesproduct/:id' element={[<UserNav1 />, <Bookorder1 />, <Footer />]} />
+          <Route path='/user-confirmpurchase' element={[<UserNav1 />, <Deliveryorder />, <Footer />]} />
+          <Route path='/user-viewprofile' element={[<CustViewProfile />]} />
+          <Route path='/user-payment/:id' element={[<UserNav1 />, <UserPayment />, <Footer />]} />
+          <Route path='/user-viewmyorder' element={[<UserNav1 />, <UserNav2 />, <ViewMyOrder />]} />
+          <Route path='/user-viewcart' element={[<UserNav1 />, <ViewCart />]} />
+          <Route path='/user-trackdelivery/:id' element={[<UserNav1 />, <UserNav2 />, <TrackDelivery />]} />
+          <Route path='/user-viewbedroom' element={[<UserNav1 />, <UserNav2 />, <ViewBedroomFurniture />]} />
+          <Route path='/user-viewlivingroom' element={[<UserNav1 />, <UserNav2 />, <ViewLivingRoomFurniture />]} />
+          <Route path='/user-viewdiningroom' element={[<UserNav1 />, <UserNav2 />, <ViewDiningRoom />]} />
+          <Route path='/user-viewstudyroom' element={[<UserNav1 />, <UserNav2 />, <ViewStudyRoom />]} />
+          <Route path='/user-return/:id' element={[<UserNav1 />, <UserNav2 />, <ReturnDetails />]} />
+          <Route path='/user-trackreturnstatus/:id' element={[<UserNav1 />, <UserNav2 />, <TrackReturnStatus />]} />
+          <Route path='/user-trackdirectreturnstatus/:id' element={[<UserNav1 />, <UserNav2 />, <TrackDirectReturnStatus />]} />
 
           {/* <Route path='/user-conformedreturn' element={[<UserNav1 />,<UserNav2/>,<TrackReturnConformed/>]}/>
-          <Route path='/user-inspectionstatus' element={[<UserNav1 />,<UserNav2/>,<TrackInspectionStatus/>]}/>
-          <Route path='/user-returnpayment' element={[<UserNav1 />,<UserNav2/>,<TrackReturnPayment/>]}/> */}
+          <Route path='/user-inspectionstatus' element={[<UserNav1 />,<UserNav2/>,<TrackInspectionStatus/>]}/> */}
+          <Route path='/user-returnpayment/:id' element={[<UserNav1 />, <UserNav2 />, <TrackReturnPayment />]} />
 
-         
-        {/* Shops */}
-          <Route path='/shopsignin' element={[<Navbar/>,<Shopsignin/>,<Footer/>]}/>
-          <Route path='/shoplogin' element={[<Navbar/>,<Shoplogin/>,<Footer/>]}/>
-          <Route path='/shopforgetpswd' element={[<Navbar/>,<Shopforgetpswd/>,<Footer/>]}/>
-          <Route path='/editprofileshop' element={<Shopeditprofile/>}/>
 
-          <Route path='/shop-dashboard' element={[<Shopsmain data="shopownerdashboard"/>]}/>
-          <Route path='/shop-returnrequest' element={[<Shopsmain data="returnrequest"/>]}/>
-          <Route path='/shop-inspection' element={[<Shopsmain data="shop-inspections"/>]}/>
-          <Route path='/add-deliveryagent' element={[<Shopsmain data="add-deliveryagent"/>]}/>
-          <Route path='/view-deliveryagentbyshop' element={[<Shopsmain data="view-deliveryagentbyshop"/>]}/>
-          <Route path='/edit-deliveryagentbyshop/:id' element={[<Shopsmain data="edit-deliveryagentbyshop"/>]}/>
-          <Route path='/add-furniture' element={[<Shopsmain data="add-furniture"/>]}/>
-          <Route path='/view-furniture' element={[<Shopsmain data="view-furniture"/>]}/>
-          <Route path='/view-vieworders' element={[<Shopsmain data="view-vieworders"/>]}/>
-          <Route path='/shop-vieworderstatus' element={[<Shopsmain data="shop-vieworderstatus"/>]}/>
-          <Route path='/edit-furniture/:id' element={[<Shopsmain data="edit-furniture"/>]}/>
-          <Route path='/shop-viewcomplaint' element={[<Shopsmain data="shop-viewcomplaint"/>]}/>
+          {/* Shops */}
+          <Route path='/shopsignin' element={[<Navbar />, <Shopsignin />, <Footer />]} />
+          <Route path='/shoplogin' element={[<Navbar />, <Shoplogin />, <Footer />]} />
+          <Route path='/shopforgetpswd' element={[<Navbar />, <Shopforgetpswd />, <Footer />]} />
+          <Route path='/editprofileshop' element={<Shopeditprofile />} />
+
+          <Route path='/shop-dashboard' element={[<Shopsmain data="shopownerdashboard" />]} />
+          <Route path='/shop-returnrequest' element={[<Shopsmain data="returnrequest" />]} />
+          <Route path='/shop-inspection' element={[<Shopsmain data="shop-inspections" />]} />
+          <Route path='/add-deliveryagent' element={[<Shopsmain data="add-deliveryagent" />]} />
+          <Route path='/view-deliveryagentbyshop' element={[<Shopsmain data="view-deliveryagentbyshop" />]} />
+          <Route path='/edit-deliveryagentbyshop/:id' element={[<Shopsmain data="edit-deliveryagentbyshop" />]} />
+          <Route path='/add-furniture' element={[<Shopsmain data="add-furniture" />]} />
+          <Route path='/view-furniture' element={[<Shopsmain data="view-furniture" />]} />
+          <Route path='/view-vieworders' element={[<Shopsmain data="view-vieworders" />]} />
+          <Route path='/shop-vieworderstatus' element={[<Shopsmain data="shop-vieworderstatus" />]} />
+          <Route path='/edit-furniture/:id' element={[<Shopsmain data="edit-furniture" />]} />
+          <Route path='/shop-viewcomplaint' element={[<Shopsmain data="shop-viewcomplaint" />]} />
 
 
 
           {/* Delivery Agent */}
-          <Route path='/agentsignup' element={[<Shopnav/>,<Deliveryagentsignup/>]}/>
-          <Route path='/agentlogin' element={[<Navbar/>,<Deliverylogin/>]}/>
-          <Route path='/agentrecoverpswd' element={[<Navbar/>,<Deliveryforgetpswd/>]}/>
+          <Route path='/agentsignup' element={[<Shopnav />, <Deliveryagentsignup />]} />
+          <Route path='/agentlogin' element={[<Navbar />, <Deliverylogin />]} />
+          <Route path='/agentrecoverpswd' element={[<Navbar />, <Deliveryforgetpswd />]} />
           {/* <Route path='/adddeliveryagent' element={[<Adddeliveryagent/>]}/>  */}
-          <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage/>]}/>         
-          <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard"/>]}/>
-          <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile"/>]}/>
-          <Route path='/del-pending' element={[<Deliverymain data="del-pending"/>]}/>
-          <Route path='/pending-returns' element={[<Deliverymain data="pending-returns"/>]}/>
+          <Route path='/deliveryagenteditpage' element={[<Deliveryagenteditpage />]} />
+          <Route path='/delivery-dashboard' element={[<Deliverymain data="delivery-dashboard" />]} />
+          <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile" />]} />
+          <Route path='/del-pending' element={[<Deliverymain data="del-pending" />]} />
+          <Route path='/pending-returns' element={[<Deliverymain data="pending-returns" />]} />
 
           {/* Admin */}
-          <Route path='/adminlogin' element={[<Navbar/>,<Adminlogin/>,<Footer/>]}/>
-          <Route path='/admindashboard' element={<Admindashbboard/>}/>
-          <Route path='/shopreq' element={<Shopreq/>}/>
-          <Route path='/Viewshops' element={<Adminviewshops/>}/>
-          <Route path='/example' element={[<Adminexample/>]}/>
+          <Route path='/adminlogin' element={[<Navbar />, <Adminlogin />, <Footer />]} />
+          <Route path='/admindashboard' element={<Admindashbboard />} />
+          <Route path='/shopreq' element={<Shopreq />} />
+          <Route path='/Viewshops' element={<Adminviewshops />} />
+          <Route path='/example' element={[<Adminexample />]} />
 
-          <Route path='/adminview-complaints' element={[<Complaints/>]}/>
-          <Route path='/admin-viewcust' element={[<AdminViewCust/>]}/>
-          <Route path='/admin-viewdelivery' element={[<AdminViewDelivery/>]}/>
+          <Route path='/adminview-complaints' element={[<Complaints />]} />
+          <Route path='/admin-viewcust' element={[<AdminViewCust />]} />
+          <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
 
 
-      </Routes>
-    </div>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

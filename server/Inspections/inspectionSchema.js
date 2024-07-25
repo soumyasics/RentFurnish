@@ -21,7 +21,16 @@ const inspectionSchema = mongoose.Schema({
         ref: "shops",
         required: true,
     },
-    
+    deliveryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "deliveryagents",
+        required: true
+    },
+    orderId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "orders",
+        required: true,
+    },
     image1: {
         type: Object,
     },
@@ -52,19 +61,19 @@ const inspectionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    inspectionStatus:{
-        type:String,
-        default:"pending",
-        required:true
+    inspectionStatus: {
+        type: String,
+        default: "pending",
+        required: true
     },
-    rentAmount:{
-        type:Number,
+    rentAmount: {
+        type: Number,
     },
-    fineAmount:{
-        type:Number,
+    fineAmount: {
+        type: Number,
     },
-    depositeAmount:{
-        type:Number
+    depositeAmount: {
+        type: Number
     },
 
 })

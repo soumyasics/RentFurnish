@@ -19,6 +19,7 @@ const addReturn = async (req, res) => {
             shopId: req.body.shopId,
             returnDate: new Date(),
             returnAmount: req.body.returnAmount,
+            inspectionStatus: "Pending"
         });
 
         await returnOrder.save()
@@ -188,40 +189,43 @@ const viewPendingReturnByShopId = async (req, res) => {
 };
 
 
-
-const assignDeliveryAgent=(req,res)=>{
-    Return.findByIdAndUpdate({_id:req.params.id},{
-        returnStatus:"Confirmed",
+//Assign Delivery Agent
+const assignDeliveryAgent = (req, res) => {
+    Return.findByIdAndUpdate({ _id: req.params.id }, {
+        returnStatus: "Confirmed",
         deliveryId: req.body.deliveryId,
-        deliveryDate:req.body.deliveryDate,
-        confirmedDate:new Date(),
-        completionStatus:false
+        deliveryDate: req.body.deliveryDate,
+        confirmedDate: new Date(),
+        completionStatus: false,
     }).exec()
-    .then(data => {
-        res.json({
-            status: 200,
-            message: "Order assigned successfully",
-            data: data,
+        .then(data => {
+            res.json({
+                status: 200,
+                message: "Order assigned successfully",
+                data: data,
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            res.json({
+                status: 500,
+                message: "Error assign delivery",
+                error: err,
+            });
         });
-    })
-    .catch(err => {
-        console.error(err);
-        res.json({
-            status: 500,
-            message: "Error assign delivery",
-            error: err,
-        });
-    });
 }
 
+
+//View Return By DeliveryAgent Id
 const viewMyReturnsByDeliveryAgentId = async (req, res) => {
     try {
-        const orders = await Return.find({deliveryId:req.params.id,returnStatus: "Confirmed", completionStatus:false})
+        const orders = await Return.find({ deliveryId: req.params.id, returnStatus: "Confirmed", completionStatus: false, inspectionStatus: "Pending" })
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
-            .populate('deliveryId');
-        
+            .populate('deliveryId')
+            .populate('orderId');
+
         res.status(200).json({
             status: 200,
             message: ' Return retrieved successfully',
@@ -237,10 +241,11 @@ const viewMyReturnsByDeliveryAgentId = async (req, res) => {
     }
 };
 
+//Update Completion Status
 const updateCompletionOfDelivery = async (req, res) => {
     try {
-        const orders = await Return.findByIdAndUpdate({_id: req.params.id },{completionDate:new Date(),completionStatus:true})
-             
+        const orders = await Return.findByIdAndUpdate({ _id: req.params.id }, { completionDate: new Date(), completionStatus: true })
+
         res.status(200).json({
             status: 200,
             message: ' Added successfully',
@@ -256,25 +261,97 @@ const updateCompletionOfDelivery = async (req, res) => {
     }
 };
 
-
-const updateInspection = async (req, res) => {
+//Update Inspecton Status
+const updateInspectionStatus = async (req, res) => {
     try {
-        const orders = await Return.findByIdAndUpdate({_id: req.params.id },{inspectionStatus:"submitted"})
-             
+        const { fineAmount } = req.body;
+        const orders = await Return.findByIdAndUpdate(req.params.id, {
+            inspectionStatus: "Confirmed",
+            inspectionDate: new Date(),
+            fineAmount
+        });
+
         res.status(200).json({
             status: 200,
-            message: ' Added successfully',
+            message: 'Added successfully',
             data: orders
         });
     } catch (err) {
         console.error(err);
         res.status(500).json({
             status: 500,
-            message: 'Error retrieving Payment',
+            message: 'Error updating inspection status',
             error: err
         });
     }
 };
+
+
+//Update Payment Status
+const updatePaymentStatus = async (req, res) => {
+    try {
+        const { furnitureId } = req.params;
+        const orders = await Return.findOneAndUpdate(
+            { furnitureId },
+            { paymentStatus: true, paymentDate: new Date(), completionDate: new Date() },
+            { new: true }
+        );
+
+        if (!orders) {
+            return res.status(404).json({
+                status: 404,
+                message: 'Return not found for the given furnitureId',
+            });
+        }
+
+        res.status(200).json({
+            status: 200,
+            message: 'Payment status updated successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error updating payment status',
+            error: err
+        });
+    }
+};
+
+
+//UpdateInspection Status ByFurniture Id
+const updateInspectionStatusByFurnitureId = async (req, res) => {
+    try {
+        const orders = await Return.findOneAndUpdate(
+            { furnitureId: req.params.id },
+            { inspectionStatus: "Submitted" },
+            { new: true }
+        );
+
+        if (!orders) {
+            return res.status(404).json({
+                status: 404,
+                message: 'Order not found',
+            });
+        }
+
+        res.status(200).json({
+            status: 200,
+            message: 'Added successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error updating inspection status',
+            error: err
+        });
+    }
+};
+
+
 
 
 module.exports = {
@@ -287,5 +364,7 @@ module.exports = {
     assignDeliveryAgent,
     viewMyReturnsByDeliveryAgentId,
     updateCompletionOfDelivery,
-    updateInspection
+    updateInspectionStatus,
+    updatePaymentStatus,
+    updateInspectionStatusByFurnitureId
 };

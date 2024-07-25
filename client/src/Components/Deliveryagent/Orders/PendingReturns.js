@@ -14,6 +14,7 @@ function PendingReturns() {
     const [subImages, setSubImages] = useState([]);
     const [productConditions, setProductConditions] = useState([]);
     const url = axiosInstance.defaults.url;
+    console.log("did"+deliveryid)
 
     useEffect(() => {
         if (deliveryid === null) {
@@ -62,6 +63,8 @@ function PendingReturns() {
         formData.append('customerId', order?.customerId?._id);
         formData.append('furnitureId', order?.furnitureId?._id);
         formData.append('shopId', order?.shopId?._id);
+        formData.append('deliveryId', deliveryid); 
+        formData.append('orderId', order?.orderId?._id);
         formData.append('prodCondition', productConditions[orderIndex]);
 
         const inputElements = document.querySelectorAll(`#form-${orderIndex} input[type="file"]`);
@@ -76,6 +79,7 @@ function PendingReturns() {
                 console.log(res);
                 if (res.data.status === 200) {
                     toast.success('Inspection submitted successfully!');
+                    window.location.reload();
                 } else {
                     toast.error('Failed to submit inspection.');
                 }
@@ -85,19 +89,19 @@ function PendingReturns() {
                 toast.error('Error.');
             });
 
-        // axiosMultipartInstance.post(`/updateReturnStatus/${order?._id}`)
-        // .then((res) => {
-        //     console.log("bid",order?._id);
-        //     console.log("res",res)
-        //     if (res.data.status === 200) {
-        //         console.log('Updated successfully!');
-        //     } else {
-        //         console.log('Failed to submit inspection.');
-        //     }
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // });
+        axiosMultipartInstance.post(`/updateInspectionStatusByFurnitureId/${order?.furnitureId?._id}`)
+        .then((res) => {
+            // console.log("bid",order?._id);
+            console.log("res",res)
+            if (res.data.status === 200) {
+                console.log('Updated successfully!');
+            } else {
+                console.log('Failed to submit inspection.');
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     };
 
     return (
@@ -251,7 +255,7 @@ function PendingReturns() {
                             </div>
                         ))
                     ) : (
-                        <div>No returns available</div>
+                        <h1 className='ps-4 pt-5'>No Inspections available</h1>
                     )}
                 </div>
             </div>
