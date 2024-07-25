@@ -9,10 +9,23 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { GoDotFill } from "react-icons/go";
 import { Link } from 'react-router-dom';
+import UserNav1 from './UserNav1';
+import Navbar from '../../Navbar/Navbar';
 
 function ContactUs() {
+  const userId=localStorage.getItem("userid")
   return (
-    <div >
+    <div >{
+      userId?(
+        <>
+              <UserNav1/>
+        </>
+      ):(
+        <>
+        <Navbar/>
+        </>
+      )
+      }
       <div className='contact_main_div_img'>
         <div className='contactus_div1'>
           <h1 className='contactus_h1'><Link to="/user-home" className='contactus_link'><FaArrowLeft className='contact_arrow' /></Link>Contact Us</h1>

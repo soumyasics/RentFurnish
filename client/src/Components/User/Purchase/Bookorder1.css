@@ -222,4 +222,14 @@ font-weight: 600;
 .submit-btn:hover {
     background-color: #ff8c00;
 }
-
+.button-viewbookedorder{
+    width: 130px;
+    height: 40px;
+    background-color: #56B60B;
+    text-align: center;
+    border-radius: 20px;
+    padding-top: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}

@@ -51,6 +51,7 @@ const viewAllreviewsByShopId = (req, res) => {
 
 const viewAllreviewsByFurnitureId = (req, res) => {
     reviewSchema.find({ furnitureId: req.params.id })
+    .populate("customerId")
         .exec().
         then((data) => {
             res.status(200).json({
