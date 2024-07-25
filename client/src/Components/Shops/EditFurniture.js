@@ -277,6 +277,7 @@ function EditFurniture() {
                 <option value="Living Room">Living Room</option>
                 <option value="Dining Room">Dining Room</option>
                 <option value="Bed Room">Bed Room</option>
+                <option value="Studyroom">Study Room</option>
               </select>
             </div>
             <div className='m-4'>

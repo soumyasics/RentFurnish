@@ -34,7 +34,7 @@ function User_ViewAllFur() {
         .catch((err) => {
           console.log(err);
         });
-        axiosInstance
+      axiosInstance
         .post(`/viewCartBycustId/${userid}`)
         .then((res) => {
           if (res.data.status === 200) {
@@ -52,7 +52,7 @@ function User_ViewAllFur() {
         .catch(() => {
           console.log("Failed to fetch cart data");
         });
-    
+
 
     }
   }, [userid, navigate]);
@@ -119,42 +119,41 @@ function User_ViewAllFur() {
           {data && data.length ? (
             data.slice(0, 8).map((a) => {
               return (
-                <div className="col-md-3 col-sm-6"                   style={{ marginTop: "20px" }}
->
-                    <div class="card" >
-                      <img
-                        src={`${url}/${a?.image1?.filename}`}
-                        width="290px"
-                        height="275px"
-                        class="card-img-top"
-                        alt="..."
-                      />
-                  <button
-                    className="bg_icon mx-2 heart-button"
-                    onClick={() => handleHeartClick(a._id)}
-                  >
-                    <i
-                      className={`ri-heart-add-fill ${
-                        wishlistStatus[a._id] ? "text-danger" : "text-light"
-                      }`}
-                    ></i>
-                  </button>
+                <div className="col-md-3 col-sm-6" style={{ marginTop: "20px" }}
+                >
+                  <div class="card" >
+                    <img
+                      src={`${url}/${a?.image1?.filename}`}
+                      width="290px"
+                      height="275px"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <button
+                      className="bg_icon mx-2 heart-button"
+                      onClick={() => handleHeartClick(a._id)}
+                    >
+                      <i
+                        className={`ri-heart-add-fill ${wishlistStatus[a._id] ? "text-danger" : "text-light"
+                          }`}
+                      ></i>
+                    </button>
 
-                  <Link
-                    to={`/user-purchesproduct/${a._id}`}
-                    style={{ textDecoration: "none" }}
-                  >
+                    <Link
+                      to={`/user-purchesproduct/${a._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
 
                       <div class="card-body">
-                        <h5 class="card-title">{a?.category}</h5>
+                        <h5 class="card-title">{a?.name}</h5>
                         <p class="card-text">Rent</p>
                         <p class="card-text userhome_card_price">
                           ₹ {a?.rent}/MO
                         </p>
                       </div>
-                      </Link>
+                    </Link>
 
-                    </div>
+                  </div>
                 </div>
               );
             })

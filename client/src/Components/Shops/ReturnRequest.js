@@ -15,6 +15,7 @@ function ReturnRequest() {
   const [returnStatus, setReturnStatus] = useState({});
   const [delivery, setDelivery] = useState([]);
 
+
   useEffect(() => {
     axiosInstance.post(`/viewPendingReturnByShopId/${shopId}`)
       .then(response => {
@@ -110,7 +111,8 @@ function ReturnRequest() {
                   {console.log(furniture.returnStatus)}
                   <img
                     className="mt-5 ms-3 img-fluid product_img"
-                    src={img}
+                    src={`${url}/${furniture?.furnitureId?.image1?.filename}`}
+
                     alt="Product"
                   />
                 </div>
