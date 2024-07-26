@@ -106,6 +106,13 @@ const closeModal = () => {
               Complaints
             </button>
           </Link>
+          <Link className='menu-item' to="/shop-paymentstatus">
+            <button
+              className={` button-style ${activeButton === 'shop-complaints' ? 'active' : ''}`}
+            >
+              Payment Status
+            </button>
+          </Link>
           <br /><br />
           <div className="logout-section">
             <button className="logout-button" onClick={handleLogout}>Logout</button>

@@ -127,13 +127,13 @@ router.post('/addreturn', Return.addReturn)
 router.post('/viewReturnById/:id', Return.viewReturnById)
 router.post('/viewReturnByShopId/:id', Return.viewReturnByShopId)
 router.post('/viewReturnByCustomerId/:id', Return.viewReturnByCustId)
-router.post('/viewReturnByFurniturerId/:id', Return.viewReturnByFurnitureId)
+router.post('/viewReturnByOrderId/:id', Return.viewReturnByOrderId)
 router.post('/viewPendingReturnByShopId/:id', Return.viewPendingReturnByShopId)
 router.post('/assignreturnDeliveryAgent/:id', Return.assignDeliveryAgent)
 router.post('/updateCompletionofreturndelivery/:id', Return.updateCompletionOfDelivery)
 router.post('/viewMyReturnsByDeliveryAgentId/:id', Return.viewMyReturnsByDeliveryAgentId)
 router.post('/updateInspectionStatus/:id', Return.updateInspectionStatus)
-router.post('/updatePaymentStatus/:furnitureId', Return.updatePaymentStatus) 
+router.post('/updatePaymentStatus/:orderId', Return.updatePaymentStatus) 
 router.post('/updateInspectionStatusByFurnitureId/:id', Return.updateInspectionStatusByFurnitureId)
 
 
@@ -150,7 +150,7 @@ router.post('/viewInspectionByFurnitureId/:id', Inspection.viewInspectionByFurni
 router.post('/addReview',Review.addReview)
 router.post('/viewAllreviewsByShopId/:id',Review.viewAllreviewsByShopId)
 router.post('/viewAllreviewsByFurnitureId/:id',Review.viewAllreviewsByFurnitureId)
-
+router.post('/viewReviewById/:id',Review.viewReviewById)
 
 
 module.exports = router

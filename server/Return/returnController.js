@@ -132,6 +132,31 @@ const viewReturnByFurnitureId = async (req, res) => {
     }
 };
 
+//View Return By orderId
+const viewReturnByOrderId = async (req, res) => {
+    try {
+        const returnOrder = await Return.find({ orderId: req.params.id })
+            .populate('customerId')
+            .populate('shopId')
+            .populate('furnitureId')
+            .populate('orderId')
+            .populate('deliveryId');
+
+        res.status(200).json({
+            status: 200,
+            message: 'Return retrieved successfully',
+            data: returnOrder
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving orders',
+            error: err
+        });
+    }
+};
+
 // View Return By Customer ID
 const viewReturnByCustId = async (req, res) => {
     try {
@@ -290,9 +315,9 @@ const updateInspectionStatus = async (req, res) => {
 //Update Payment Status
 const updatePaymentStatus = async (req, res) => {
     try {
-        const { furnitureId } = req.params;
+        const { orderId } = req.params;
         const orders = await Return.findOneAndUpdate(
-            { furnitureId },
+            { orderId },
             { paymentStatus: true, paymentDate: new Date(), completionDate: new Date() },
             { new: true }
         );
@@ -366,5 +391,6 @@ module.exports = {
     updateCompletionOfDelivery,
     updateInspectionStatus,
     updatePaymentStatus,
-    updateInspectionStatusByFurnitureId
+    updateInspectionStatusByFurnitureId,
+    viewReturnByOrderId
 };

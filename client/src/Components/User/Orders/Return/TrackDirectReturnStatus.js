@@ -10,9 +10,9 @@ function TrackDirectReturnStatus() {
     const [data, setData] = useState(null);
     const [inspectionData, setInspectionData] = useState(null);
     const url = axiosInstance.defaults.url;
-
+    console.log("id"+id)
     useEffect(() => {
-        axiosInstance.post(`/viewReturnByFurniturerId/${id}`)
+        axiosInstance.post(`/viewReturnByOrderId/${id}`)
             .then((res) => {
                 console.log("Data:", res)
                 setData(res.data.data[0]);
@@ -470,7 +470,7 @@ function TrackDirectReturnStatus() {
                                         </div>
                                     </div>
                                     <div className="text-center mt-4 mb-4">
-                                        <Link to={`/user-returnpayment/${data?.furnitureId?._id}`}>
+                                        <Link to={`/user-returnpayment/${data?.orderId?._id}`}>
                                             <button type="button" className="btn btn-warning">
                                                 &nbsp;&nbsp; Pay Now &nbsp;&nbsp;
                                             </button>

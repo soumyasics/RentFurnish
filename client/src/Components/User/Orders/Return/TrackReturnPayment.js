@@ -24,7 +24,7 @@ function TrackReturnPayment() {
     });
 
     useEffect(() => {
-        axiosInstance.post(`/viewReturnByFurniturerId/${id}`)
+        axiosInstance.post(`/viewReturnByOrderId/${id}`)
             .then((res) => {
                 console.log("Data:", res);
                 setData(res.data.data[0]);
