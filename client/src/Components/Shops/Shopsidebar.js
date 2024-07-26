@@ -92,13 +92,13 @@ const closeModal = () => {
               Inspections
             </button>
           </Link>
-          <Link className='menu-item' to="/shop-reviewfeedback">
+          {/* <Link className='menu-item' to="/shop-reviewfeedback">
             <button
               className={`button-style ${activeButton === 'shop-reviewfeedback' ? 'active' : ''}`}
             >
               Review and Feedback
             </button>
-          </Link>
+          </Link> */}
           <Link className='menu-item' to="/shop-viewcomplaint">
             <button
               className={` button-style ${activeButton === 'shop-complaints' ? 'active' : ''}`}
