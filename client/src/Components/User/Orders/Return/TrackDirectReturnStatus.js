@@ -117,7 +117,7 @@ function TrackDirectReturnStatus() {
                                         Returned
                                     </p>
                                     <p className="trackdelivery_date">
-                                        {/* {new Date(data?.completionDate).toLocaleDateString()} */}
+                                        {new Date(data?.inspectionDate).toLocaleDateString()}
                                     </p>
                                 </div>
                             </div>

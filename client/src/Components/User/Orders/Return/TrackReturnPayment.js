@@ -58,6 +58,10 @@ function TrackReturnPayment() {
         return valid;
     };
 
+    const goback=()=>{
+        navigate(-1)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -84,7 +88,7 @@ function TrackReturnPayment() {
     return (
         <div>
             <div className="track-delivery">
-                <Link to="" style={{ textDecoration: "none" }}>
+                <Link style={{ textDecoration: "none" }} onClick={goback}>
                     <h1 className="ri-arrow-left-line">Track Return Status</h1>
                 </Link>
                 <div className="trackdelivery-main_div">

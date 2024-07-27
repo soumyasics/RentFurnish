@@ -9,7 +9,7 @@ function Footer() {
         <div className='row d-flex'>
         <div className='col-4 sm-4 md-4 footerhead1'>
         <img src={admin} alt='logo' width="40px" height="40px"/>
-        <p>Rent Furniture</p>
+        <p>Rent Furnish</p>
         <h6>Rent a furniture online today!</h6>
         </div>
         <div className='col-4 sm-4 md-4 footerhead12'>
