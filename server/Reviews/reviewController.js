@@ -31,8 +31,12 @@ const addReview = (req, res) => {
 
 const viewAllreviewsByShopId = (req, res) => {
     reviewSchema.find({ shopId: req.params.id })
-        .exec().
-        then((data) => {
+        .populate('customerId')
+        .populate('furnitureId')
+        .populate('shopId')
+        .exec()
+
+        .then((data) => {
             res.status(200).json({
                 status: 200,
                 message: "reviews retrieved successfully",
@@ -51,7 +55,7 @@ const viewAllreviewsByShopId = (req, res) => {
 
 const viewAllreviewsByFurnitureId = (req, res) => {
     reviewSchema.find({ furnitureId: req.params.id })
-    .populate("customerId")
+        .populate("customerId")
         .exec().
         then((data) => {
             res.status(200).json({
@@ -70,11 +74,42 @@ const viewAllreviewsByFurnitureId = (req, res) => {
         });
 };
 
+const viewReviewById = (req, res) => {
+    reviewSchema.findById(req.params.id)
+        .populate("customerId")
+        .populate("furnitureId")
+        .populate("shopId")
+        .exec()
+        .then((data) => {
+            if (!data) {
+                return res.status(404).json({
+                    status: 404,
+                    message: "Review not found",
+                });
+            }
+            res.status(200).json({
+                status: 200,
+                message: "Review retrieved successfully",
+                data: data,
+            });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json({
+                status: 500,
+                message: "Error retrieving review",
+                error: err,
+            });
+        });
+};
+
+
 
 
 
 module.exports = {
     addReview,
     viewAllreviewsByShopId,
-    viewAllreviewsByFurnitureId
+    viewAllreviewsByFurnitureId,
+    viewReviewById
 }

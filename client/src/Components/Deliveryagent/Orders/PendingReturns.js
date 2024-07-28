@@ -14,7 +14,7 @@ function PendingReturns() {
     const [subImages, setSubImages] = useState([]);
     const [productConditions, setProductConditions] = useState([]);
     const url = axiosInstance.defaults.url;
-    console.log("did"+deliveryid)
+    console.log("did" + deliveryid)
 
     useEffect(() => {
         if (deliveryid === null) {
@@ -63,7 +63,7 @@ function PendingReturns() {
         formData.append('customerId', order?.customerId?._id);
         formData.append('furnitureId', order?.furnitureId?._id);
         formData.append('shopId', order?.shopId?._id);
-        formData.append('deliveryId', deliveryid); 
+        formData.append('deliveryId', deliveryid);
         formData.append('orderId', order?.orderId?._id);
         formData.append('prodCondition', productConditions[orderIndex]);
 
@@ -79,7 +79,7 @@ function PendingReturns() {
                 console.log(res);
                 if (res.data.status === 200) {
                     toast.success('Inspection submitted successfully!');
-                    window.location.reload();
+                    // window.location.reload();
                 } else {
                     toast.error('Failed to submit inspection.');
                 }
@@ -90,18 +90,19 @@ function PendingReturns() {
             });
 
         axiosMultipartInstance.post(`/updateInspectionStatusByFurnitureId/${order?.furnitureId?._id}`)
-        .then((res) => {
-            // console.log("bid",order?._id);
-            console.log("res",res)
-            if (res.data.status === 200) {
-                console.log('Updated successfully!');
-            } else {
-                console.log('Failed to submit inspection.');
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+            .then((res) => {
+                // console.log("bid",order?._id);
+                console.log("res", res)
+                if (res.data.status === 200) {
+                    console.log('Updated successfully!');
+                    window.location.reload()
+                } else {
+                    console.log('Failed to submit inspection.');
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (

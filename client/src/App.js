@@ -128,6 +128,8 @@ function App() {
           <Route path='/shop-vieworderstatus' element={[<Shopsmain data="shop-vieworderstatus" />]} />
           <Route path='/edit-furniture/:id' element={[<Shopsmain data="edit-furniture" />]} />
           <Route path='/shop-viewcomplaint' element={[<Shopsmain data="shop-viewcomplaint" />]} />
+          <Route path='/shop-reviewfeedback' element={[<Shopsmain data="shop-reviewfeedback" />]} />
+          <Route path='/shop-paymentstatus' element={[<Shopsmain data="shop-paymentstatus" />]} />
 
 
 

@@ -46,6 +46,7 @@ function Inspections() {
             .then((response) => {
               if (response.data.status === 200) {
                 toast.success("Submitted successfully");
+                window.location.reload()
                 axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
                   .then((result) => {
                     setInspections(result.data.data);

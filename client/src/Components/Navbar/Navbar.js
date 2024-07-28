@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./Navbar.css"
 import { Link, useNavigate} from "react-router-dom"
-import admin from "../../Assets/logo1.png";
+import admin from "../../Assets/rentlogo1.png";
 
 
 function Navbar() {
@@ -29,9 +29,9 @@ function Navbar() {
         
     <nav className='navmain d-flex'>
       <div className='col-3' style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-      <img src={admin} alt='imag' width="30px" height="30px"/>
-          <h5>Rent Furniture</h5>
-          <p >Rent A Furniture Online Today</p>
+      <img src={admin} alt='imag' height="100px"/>
+          {/* <h5>Rent Furnish</h5>
+          <p >Rent A Furniture Online Today</p> */}
 
       </div>
       <div

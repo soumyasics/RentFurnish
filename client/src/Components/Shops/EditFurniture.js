@@ -6,7 +6,7 @@ import Shopnav from '../Navbar/Shopnav';
 import Showdropdown from './Shopdropdown';
 // import axiosMultipartInstance from '../Constants/FormDataUrl';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axiosInstance from '../Constants/Baseurl';
 import axiosMultipartInstance from '../Constants/FormDataUrl';
 
@@ -16,6 +16,7 @@ function EditFurniture() {
   const shopid = localStorage.getItem("shopid");
   const { id } = useParams();
   const url = axiosInstance.defaults.url;
+  const navigate = useNavigate();
 
   const [data, setData] = useState({
     name: '',
@@ -131,6 +132,7 @@ function EditFurniture() {
   
       if (res.data.status === 200) {
         toast.success("Furniture Updated successfully");
+        navigate(-1)
       } else {
         toast.error(`Furniture not Updated: ${res.data.msg}`);
       }

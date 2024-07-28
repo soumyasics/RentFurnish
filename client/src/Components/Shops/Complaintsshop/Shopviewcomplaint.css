@@ -1,0 +1,7 @@
+.review_feedback_div{
+    height: 200px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: left;
+    padding: 30px;
+}
