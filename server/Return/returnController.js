@@ -10,7 +10,28 @@ const addReturn = async (req, res) => {
         const order = await orderSchema.findById(req.body.orderId);
         const customer = await customerSchema.findById(req.body.customerId);
         const furniture = await furnitureSchema.findById(req.body.furnitureId);
+        let finalRentAmount=0
         // let newQuantity = furniture.quantity + order.count;
+let orderdate=new Date(order.completionDate)
+let returnDate = new Date();
+
+let depAmount=order.amount
+let deviatedAmt=0
+// Extract only the date part (year, month, and day) by setting the time to 00:00:00
+let startDate = new Date(orderdate.getFullYear(), orderdate.getMonth(), orderdate.getDate());
+let endDate = new Date(returnDate.getFullYear(), returnDate.getMonth(), returnDate.getDate());
+
+const differenceInMilliseconds = endDate - startDate;
+
+const millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
+
+const fullDaysDifference = Math.floor(differenceInDays);
+console.log("Difference in Days:", fullDaysDifference);
+finalRentAmount=fullDaysDifference*(furniture.rent/30)
+console.log("finalRentAmount:", finalRentAmount);
+deviatedAmt=finalRentAmount-depAmount
+
 
         const returnOrder = new Return({
             orderId: req.body.orderId,
@@ -19,7 +40,10 @@ const addReturn = async (req, res) => {
             shopId: req.body.shopId,
             returnDate: new Date(),
             returnAmount: req.body.returnAmount,
-            inspectionStatus: "Pending"
+            inspectionStatus: "Pending",
+            totalRentAmount:finalRentAmount,
+            totalRentDays:differenceInDays,
+            deviatedAmt:deviatedAmt
         });
 
         await returnOrder.save()
@@ -29,6 +53,7 @@ const addReturn = async (req, res) => {
                     status: 200,
                     message: 'Return added successfully',
                     data: data,
+                    
                 });
             })
             .catch(err => {
