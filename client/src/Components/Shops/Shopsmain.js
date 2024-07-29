@@ -14,6 +14,8 @@ import ShopViewOrder from './Orders/ShopViewOrder';
 import OrderStatus from './Orders/OrderStatus';
 import EditFurniture from './EditFurniture';
 import Shopviewcomplaint from './Complaintsshop/Shopviewcomplaint';
+import ShopViewReview from './ShopViewReview';
+import PaymentStatus from './PaymentStatus';
 
 function Shopsmain({ data }) {
   return (
@@ -34,6 +36,8 @@ function Shopsmain({ data }) {
         data==="shop-vieworderstatus"?(<OrderStatus/>): 
         data==="shop-viewcomplaint"?(<Shopviewcomplaint/>): 
         data==="edit-furniture"?(<EditFurniture />): 
+        data==="shop-reviewfeedback"?(<ShopViewReview />): 
+        data==="shop-paymentstatus"?(<PaymentStatus />): 
         <Shoplogin/> }
       </div>
     </div>

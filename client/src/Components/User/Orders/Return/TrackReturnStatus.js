@@ -53,12 +53,12 @@ function TrackReturnStatus() {
                                         {data ? new Date(data?.returnDate).toLocaleDateString() : ""}
                                     </p>
                                 </div>
-                                <div className="status-line"></div>
-                                <div className="status-item">
+                                {/* <div className="status-line"></div> */}
+                                {/* <div className="status-item">
                                     <FaCheckCircle size={50} className="icon_style_track" />
                                     <p className="trackdelivery_track_status">Inspection</p>
                                     <p className="trackdelivery_date">
-                                        {/* {new Date(data.inspectionDate).toLocaleDateString()} */}
+                                        {new Date(data.inspectionDate).toLocaleDateString()}
                                     </p>
                                 </div>
                                 <div className="status-line"></div>
@@ -66,7 +66,7 @@ function TrackReturnStatus() {
                                     <FaCheckCircle size={50} className="icon_style_track" />
                                     <p className="trackdelivery_track_status">Payment</p>
                                     <p className="trackdelivery_date">
-                                        {/* {new Date(data.paymentDate).toLocaleDateString()} */}
+                                        {new Date(data.paymentDate).toLocaleDateString()}
                                     </p>
                                 </div>
                                 <div className="status-line"></div>
@@ -74,9 +74,9 @@ function TrackReturnStatus() {
                                     <FaCheckCircle size={50} className="icon_style_track" />
                                     <p className="trackdelivery_track_status">Returned</p>
                                     <p className="trackdelivery_date">
-                                        {/* {new Date(data.returnDate).toLocaleDateString()} */}
+                                        {new Date(data.returnDate).toLocaleDateString()}
                                     </p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     )}

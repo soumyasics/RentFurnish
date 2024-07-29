@@ -14,22 +14,25 @@
    */
 
    /* Shopmain.css */
-.shopsmain-container {
-  display: flex;
-  min-height: 100vh;
+   .shopsmain-container {
+    display: flex;
+    min-height: 100vh;
+  }
   
-}
-
-.shopsmain-sidebar {
-  flex: 0 0 auto; /* Sidebar takes its natural width */
-  background-color: #1d2c61;
-}
-
-.shopsmain-content {
-  flex: 1 1 auto; /* Content takes remaining space */
-  overflow: hidden;
-}
-
+  .shopsmain-sidebar {
+    flex: 0 0 300px; 
+    background-color: #1d2c61;
+    position: fixed; 
+    height: 100vh; 
+    overflow: auto;
+  }
+  
+  .shopsmain-content {
+    margin-left: 300px;
+    flex: 1;
+    overflow: auto; 
+  }
+  
 /* Shopsidebar.css */
 .sidebar {
   display: flex;
