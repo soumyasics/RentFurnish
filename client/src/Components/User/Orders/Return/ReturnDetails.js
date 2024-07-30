@@ -38,6 +38,8 @@ function ReturnDetails() {
             .then((res) => {
                 if (res.data.status === 200) {
                     console.log(res)
+                    localStorage.setItem("returnId",res.data.id);
+                    console.log(res.data.id);
                     navigate(`/user-trackreturnstatus/${userid}`);
                 } else {
                     console.error(res.data.error);

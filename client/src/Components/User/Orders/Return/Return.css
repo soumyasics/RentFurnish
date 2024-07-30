@@ -26,6 +26,18 @@
     color: #0084E4;
 }
 
+.track_return_status_alert{
+    color: #0472c0;
+}
+
+.alert_msg_box{
+    border-color: rgba(0, 0, 0, 0.27);
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: solid;
+    padding: 10px;
+    text-align: justify;
+}
 /* Payment */
 .pay_text_color{
     color: #0084E4;
