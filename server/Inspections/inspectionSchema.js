@@ -66,15 +66,14 @@ const inspectionSchema = mongoose.Schema({
         default: "pending",
         required: true
     },
-    rentAmount: {
-        type: Number,
-    },
+    
     fineAmount: {
         type: Number,
     },
-    depositeAmount: {
-        type: Number
-    },
+   
+    deviatedAmt:{
+        type:Number
+    }
 
 })
 
