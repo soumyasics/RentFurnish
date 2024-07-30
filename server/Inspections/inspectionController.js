@@ -146,11 +146,11 @@ const viewInspections = (req, res) => {
 const editInspectionById = async(req, res) => {
 
   try {
-    const { rentAmount, fineAmount, depositeAmount } = req.body;
+    const { payableAmt, fineAmount, finalAmt } = req.body;
     const updateData = {
-      rentAmount,
+      finalAmt,
       fineAmount,
-      depositeAmount,
+      payableAmt,
       inspectionStatus: "Completed"
     };
 
@@ -181,7 +181,7 @@ const editInspectionById = async(req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-await returnSchema.findByIdAndUpdate({})
+
 };
 
 module.exports = {
