@@ -61,7 +61,18 @@ const returnSchema = new Schema({
     },
     completionStatus: {
         type: Boolean
+    },
+    totalRentDays:{
+        type:Number
+
+    },
+    totalRentAmount:{
+        type:Number
+    },
+    deviatedAmt:{
+        type:Number
     }
+
 });
 
 const Return = mongoose.model("returns", returnSchema);

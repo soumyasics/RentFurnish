@@ -224,7 +224,11 @@ function PendingReturns() {
                                                     <p className="Customer_text">Product Details</p>
                                                     <p>
                                                         <label className="col mt-4 Furniture_details_text size_pending_return">Rent Date: </label>
-                                                        {new Date(order?.orderId?.orderDate).toLocaleDateString()} - {new Date(order?.returnDate).toLocaleDateString()}
+                                                        {/* {order?.orderId?.completionDate} */}
+                                                        {order ? new Date(order?.orderId?.completionDate).toLocaleDateString() : ""} - {order ? new Date(order?.returnDate).toLocaleDateString() : ""}
+ 
+                                                        {/* <p>{order?.customerId?.email}</p> */}
+
                                                     </p>
                                                     <p className="col Furniture_details_text size_pending_return">Product Condition: </p>
                                                     <div className="radio-buttons">

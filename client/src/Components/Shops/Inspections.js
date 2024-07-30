@@ -112,7 +112,7 @@ function Inspections() {
                           <p>Quantity:</p>
                         </div>
                         <div className="col Furniture_details_text2">
-                          <p>{order.orderId.count}</p>
+                          <p>{order?.orderId?.count}</p>
                         </div>
                       </div>
                       <div className="row">
@@ -206,11 +206,11 @@ function Inspections() {
                     </div>
 
                     <div className='col-6'>
-                      <p className="inspection_fine_text">Rent Amount </p>
+                      <p className="inspection_fine_text">Total Rent Amount </p>
                       <input
                         type='text'
                         className='form-control form-control-lg'
-                        value={order?.furnitureId?.rent}
+                        value={order?.returnId?.totalRentAmount}
                       // onChange={(e) => setRentAmount(e.target.value)} 
                       />
                     </div>
@@ -230,7 +230,15 @@ function Inspections() {
                         type='text'
                         className='form-control form-control-lg'
                         value={order?.orderId?.amount}
-                        onChange={(e) => setDepositeAmount(e.target.value)} />
+                      />
+                    </div>
+                    <div className='col-6'>
+                      <p className="inspection_fine_text">Deviated Amount </p>
+                      <input
+                        type='text'
+                        className='form-control form-control-lg'
+                        value={order?.returnId?.deviatedAmt}
+                      />
                     </div>
                     <div className='col-6'></div>
                   </div>

@@ -72,7 +72,7 @@ const viewInspectionByShopId = async (req, res) => {
       .populate('customerId')
       .populate('shopId')
       .populate('orderId')
-      .populate("returnId")
+      .populate('returnId')
 
     res.status(200).json({
       status: 200,
