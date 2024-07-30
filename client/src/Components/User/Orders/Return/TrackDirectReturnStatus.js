@@ -73,8 +73,24 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Rent Date:</div>
                                         <div className="col-6 text-black">
-                                            {data ? new Date(data?.orderId?.orderDate).toLocaleDateString() : ""} - {data ? new Date(data?.orderId?.completionDate).toLocaleDateString() : ""}
+                                            {data ? new Date(data?.orderId?.completionDate).toLocaleDateString() : ""} - {data ? new Date(data?.returnDate).toLocaleDateString() : ""}
                                         </div>
+                                    </div>
+                                    <div className="row mt-3">
+                                        <div className="col-6 trackdelivery_color">Total Rent Amount:</div>
+                                        <div className="col-6 text-black">
+                                            {data?.totalRentAmount}
+                                        </div>
+                                    </div>
+                                    <div className="row mt-5 alert_msg_box">
+                                        {/* <div className="col-6 trackdelivery_color">Deviated Amount:</div>
+                                        <div className="col-6 text-black">
+                                            {data?.deviatedAmt}
+                                        </div> */}
+                                        <div className="track_return_status_alert">
+                                        <h5>Your return request has been submitted successfully. The final amount will be confirmed after the inspection is completed.</h5>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -601,6 +617,12 @@ function TrackDirectReturnStatus() {
                                         </div>
                                         <div className="col-6 text-black">
                                             {data ? new Date(data?.orderId?.orderDate).toLocaleDateString() : ""} - {data ? new Date(data?.orderId?.completionDate).toLocaleDateString() : ""}
+                                        </div>
+                                    </div>
+                                    <div className="row mt-3">
+                                        <div className="col-6 trackdelivery_color">Total Rent Amount:</div>
+                                        <div className="col-6 text-black">
+                                            {data?.totalRentAmount}
                                         </div>
                                     </div>
 
