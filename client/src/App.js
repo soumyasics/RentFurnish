@@ -70,6 +70,7 @@ import TrackInspectionStatus from './Components/User/Orders/Return/TrackInspecti
 import TrackReturnPayment from './Components/User/Orders/Return/TrackReturnPayment';
 import TrackDirectReturnStatus from './Components/User/Orders/Return/TrackDirectReturnStatus';
 import Viewreviews from './Components/User/Furnitures/Viewreviews';
+import Aboutus from './Components/Common/Aboutus';
 
 
 function App() {
@@ -154,7 +155,9 @@ function App() {
           <Route path='/adminview-complaints' element={[<Complaints />]} />
           <Route path='/admin-viewcust' element={[<AdminViewCust />]} />
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
-
+          
+          {/* common */}
+          <Route path='/about-us' element={<Aboutus/>}/>
 
         </Routes>
       </div>

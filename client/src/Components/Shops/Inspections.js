@@ -30,6 +30,7 @@ function Inspections() {
       });
   }, [shopId]);
 
+
   const handleUpdate = (id, returnId) => {
     setSelectedInspectionId(id);
 
@@ -71,7 +72,13 @@ function Inspections() {
       });
   };
 
-
+  const calculateRentDays = (deliveryDate, returnDate) => {
+    const start = new Date(deliveryDate);
+    const end = new Date(returnDate);
+    const diffTime = Math.abs(end - start);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  };
   return (
     <div>
       <Shopnav />
@@ -105,7 +112,7 @@ function Inspections() {
                           <p>Quantity:</p>
                         </div>
                         <div className="col Furniture_details_text2">
-                          {/* <p>{order.count}</p> */}
+                          <p>{order.orderId.count}</p>
                         </div>
                       </div>
                       <div className="row">
@@ -189,6 +196,15 @@ function Inspections() {
                 <div className='col-6'>
                   <p className="Customer_text pb-3">Add Fine</p>
                   <div className='row'>
+                  <div className='col-6'>
+                      <p className="inspection_fine_text">Rent Date </p>
+                      <p>{new Date(order?.orderId?.deliveryDate).toLocaleDateString()} - {new Date(order?.returnId?.returnDate).toLocaleDateString()}</p>
+                    </div>
+                    <div className='col-6'>
+                      <p className="inspection_fine_text">Total Days of Rent </p>
+                      <p>{calculateRentDays(order?.orderId?.deliveryDate, order?.returnId?.returnDate)}</p>
+                    </div>
+
                     <div className='col-6'>
                       <p className="inspection_fine_text">Rent Amount </p>
                       <input
@@ -221,7 +237,7 @@ function Inspections() {
                 </div>
               </div>
               <div className="text-center m-4">
-                <button type="submit" className="btn btn-warning" onClick={() => handleUpdate(order._id, order.returnId)}>
+                <button type="submit" className="btn btn-warning" onClick={() => handleUpdate(order._id, order.returnId._id)}>
                   &nbsp;&nbsp; Confirm &nbsp;&nbsp;
                 </button>
               </div>

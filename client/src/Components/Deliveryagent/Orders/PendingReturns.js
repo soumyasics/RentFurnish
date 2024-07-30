@@ -23,6 +23,7 @@ function PendingReturns() {
 
         axiosInstance.post(`viewMyReturnsByDeliveryAgentId/${deliveryid}`)
             .then((res) => {
+                console.log(res,"view return");
                 const fetchedData = res.data.data;
                 setData(fetchedData);
                 const initialSubImages = fetchedData.map(() => [placeholderimg, placeholderimg, placeholderimg, placeholderimg, placeholderimg, placeholderimg]);
@@ -140,7 +141,7 @@ function PendingReturns() {
                                                                 <p>Quantity:</p>
                                                             </div>
                                                             <div className="col Furniture_details_text2">
-                                                                <p>{order?.furnitureId?.quantity}</p>
+                                                                <p>{order?.orderId?.count}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row">
@@ -223,7 +224,7 @@ function PendingReturns() {
                                                     <p className="Customer_text">Product Details</p>
                                                     <p>
                                                         <label className="col mt-4 Furniture_details_text size_pending_return">Rent Date: </label>
-                                                        12/01/2024 - 01/06/2024
+                                                        {new Date(order?.orderId?.orderDate).toLocaleDateString()} - {new Date(order?.returnDate).toLocaleDateString()}
                                                     </p>
                                                     <p className="col Furniture_details_text size_pending_return">Product Condition: </p>
                                                     <div className="radio-buttons">
