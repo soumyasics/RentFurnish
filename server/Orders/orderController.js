@@ -15,7 +15,7 @@ let furn= await furnitureSchema.findById({_id:req.body.furnitureId})
                 message: `Only ${furn.quantity} item  found in the shop! Please Change your count.`
             });
         }
-        let totalRent=req.body.count*furn.rent*req.body.noOfDays
+        let totalRent=req.body.count*((furn.rent/30))*req.body.noOfDays
         console.log("amt",req.body.count,"",furn.rent,"",req.body.noOfDays);
 
 console.log("amt",req.body.count*furn.rent*req.body.noOfDays);
