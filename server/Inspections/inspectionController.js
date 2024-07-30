@@ -1,5 +1,5 @@
 const Inspection = require('./inspectionSchema')
-
+const returnSchema=require('../Return/returnSchema')
 const multer = require('multer');
 
 // Setup multer for file uploads
@@ -143,7 +143,7 @@ const viewInspections = (req, res) => {
 
 
 //Edit Inspection By Id
-const editInspectionById = (req, res) => {
+const editInspectionById = async(req, res) => {
 
   try {
     const { rentAmount, fineAmount, depositeAmount } = req.body;
@@ -154,7 +154,7 @@ const editInspectionById = (req, res) => {
       inspectionStatus: "Completed"
     };
 
-    Inspection.findByIdAndUpdate(req.params.id, updateData, { new: true })
+  await  Inspection.findByIdAndUpdate(req.params.id, updateData, { new: true })
       .exec()
       .then(data => {
         if (data) {
@@ -181,7 +181,7 @@ const editInspectionById = (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-
+await returnSchema.findByIdAndUpdate({})
 };
 
 module.exports = {

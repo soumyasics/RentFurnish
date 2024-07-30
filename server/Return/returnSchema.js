@@ -66,6 +66,7 @@ const returnSchema = new Schema({
         type:Number
 
     },
+    
     totalRentAmount:{
         type:Number
     },
