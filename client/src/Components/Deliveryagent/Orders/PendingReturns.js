@@ -89,7 +89,7 @@ function PendingReturns() {
                 toast.error('Error.');
             });
 
-        axiosMultipartInstance.post(`/updateInspectionStatusByFurnitureId/${order?.furnitureId?._id}`)
+        axiosMultipartInstance.post(`/updateInspectionStatusByOrderId/${order?.orderId?._id}`)
             .then((res) => {
                 // console.log("bid",order?._id);
                 console.log("res", res)

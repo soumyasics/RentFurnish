@@ -370,11 +370,11 @@ const updatePaymentStatus = async (req, res) => {
 };
 
 
-//UpdateInspection Status ByFurniture Id
-const updateInspectionStatusByFurnitureId = async (req, res) => {
+//UpdateInspection Status By Order Id
+const updateInspectionStatusByOrderId = async (req, res) => {
     try {
         const orders = await Return.findOneAndUpdate(
-            { furnitureId: req.params.id },
+            { orderId: req.params.id },
             { inspectionStatus: "Submitted" },
             { new: true }
         );
@@ -416,6 +416,6 @@ module.exports = {
     updateCompletionOfDelivery,
     updateInspectionStatus,
     updatePaymentStatus,
-    updateInspectionStatusByFurnitureId,
+    updateInspectionStatusByOrderId,
     viewReturnByOrderId
 };

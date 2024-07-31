@@ -4,25 +4,18 @@ import Showdropdown from './Shopdropdown';
 import img from '../../Assets/comp.png';
 import placeholderimg from '../../Assets/addfurniture_sub.png';
 import './Inspections.css';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import axiosInstance from '../Constants/Baseurl';
 import { toast } from 'react-toastify';
 
 function Inspections() {
   const [inspections, setInspections] = useState([]);
   const shopId = localStorage.getItem("shopid");
-  console.log("sid" + shopId);
-
-  const [rentAmount, setRentAmount] = useState('');
   const [fineAmount, setFineAmount] = useState('');
-  const [depositeAmount, setDepositeAmount] = useState('');
   const [selectedInspectionId, setSelectedInspectionId] = useState(null);
 
   useEffect(() => {
     axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
       .then((result) => {
-        console.log("result", result);
         setInspections(result.data.data);
       })
       .catch((err) => {
@@ -30,46 +23,50 @@ function Inspections() {
       });
   }, [shopId]);
 
-  const handleUpdate = (id, returnId) => {
+  const handleUpdate = (id, returnId, totalRentAmount) => {
     setSelectedInspectionId(id);
 
+    const fineAmountNum = parseFloat(fineAmount) || 0;
+    const totalRentAmountNum = parseFloat(totalRentAmount) || 0;
+    const totalAmount = fineAmountNum + totalRentAmountNum;
+
     axiosInstance.post(`/editInspectionById/${id}`, {
-      fineAmount,
-      returnId
+        fineAmount: totalAmount,
     })
-      .then((res) => {
+    .then((res) => {
         if (res.data.status === 200) {
-          axiosInstance.post(`/updateInspectionStatus/${returnId}`, {
-            inspectionStatus: "Confirmed",
-            fineAmount
-          })
+            axiosInstance.post(`/updateInspectionStatus/${returnId}`, {
+                inspectionStatus: "Confirmed",
+                fineAmount: totalAmount
+            })
             .then((response) => {
-              if (response.data.status === 200) {
-                toast.success("Submitted successfully");
-                window.location.reload()
-                axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
-                  .then((result) => {
-                    setInspections(result.data.data);
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                  });
-              } else {
-                console.log("Failed to update inspection status");
-              }
+                if (response.data.status === 200) {
+                    toast.success("Submitted successfully");
+                    window.location.reload();
+                    axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
+                        .then((result) => {
+                            setInspections(result.data.data);
+                        })
+                        .catch((err) => {
+                            console.log('Error fetching inspections:', err);
+                        });
+                } else {
+                  console.log("Failed to update inspection status");
+                }
             })
             .catch((err) => {
-              console.log(err);
+                console.log(err);
+                // toast.error("Error updating inspection status");
             });
         } else {
-          toast.error("Failed to update inspection");
+          console.log("Failed to update inspection");
         }
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Error updating inspection");
-      });
-  };
+    })
+    .catch((err) => {
+        console.log('Error updating inspection:', err);
+        // toast.error("Error updating inspection");
+    });
+};
 
 
   return (
@@ -195,7 +192,7 @@ function Inspections() {
                         type='text'
                         className='form-control form-control-lg'
                         value={order?.returnId?.totalRentAmount}
-                      // onChange={(e) => setRentAmount(e.target.value)} 
+                        readOnly
                       />
                     </div>
                     <div className='col-6'>
@@ -204,7 +201,8 @@ function Inspections() {
                         type='text'
                         className='form-control form-control-lg'
                         value={fineAmount}
-                        onChange={(e) => setFineAmount(e.target.value)} />
+                        onChange={(e) => setFineAmount(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -214,6 +212,7 @@ function Inspections() {
                         type='text'
                         className='form-control form-control-lg'
                         value={order?.orderId?.amount}
+                        readOnly
                       />
                     </div>
                     <div className='col-6'>
@@ -222,6 +221,7 @@ function Inspections() {
                         type='text'
                         className='form-control form-control-lg'
                         value={order?.returnId?.deviatedAmt}
+                        readOnly
                       />
                     </div>
                     <div className='col-6'></div>
@@ -229,7 +229,7 @@ function Inspections() {
                 </div>
               </div>
               <div className="text-center m-4">
-                <button type="submit" className="btn btn-warning" onClick={() => handleUpdate(order._id, order.returnId)}>
+                <button type="submit" className="btn btn-warning" onClick={() => handleUpdate(order._id, order.returnId, order.returnId?.totalRentAmount)}>
                   &nbsp;&nbsp; Confirm &nbsp;&nbsp;
                 </button>
               </div>
