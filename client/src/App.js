@@ -133,8 +133,7 @@ function App() {
           <Route path='/shop-paymentstatus' element={[<Shopsmain data="shop-paymentstatus" />]} />
 
 
-
-          {/* Delivery Agent */}
+          {/* Delivery Agents */}
           <Route path='/agentsignup' element={[<Shopnav />, <Deliveryagentsignup />]} />
           <Route path='/agentlogin' element={[<Navbar />, <Deliverylogin />]} />
           <Route path='/agentrecoverpswd' element={[<Navbar />, <Deliveryforgetpswd />]} />
