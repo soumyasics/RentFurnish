@@ -115,11 +115,11 @@ function ReturnDetails() {
                                 <div className='col-2'>:</div>
                                 <div className='col-5'>{data?.customerId?.phone}</div>
                             </div>
-                            <div className='row pt-2'>
+                            {/* <div className='row pt-2'>
                                 <div className='col-5 return_subtext_color'>Address</div>
                                 <div className='col-2'>:</div>
                                 <div className='col-5'>{data.address}</div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="text-center m-4">

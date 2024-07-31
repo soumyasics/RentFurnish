@@ -49,7 +49,7 @@ function Navbar() {
                 <option>Home decors</option>
             </select>
         </Link> */}
-        <Link to="/about">About</Link>
+        <Link to="/about-us">About</Link>
         <Link to="/user-contactus">Contact</Link>
         {/* <a href="#"> */}
             <select style={{width:"70px",backgroundColor:"#8e3333"}}  value={selectedOption} onChange={handleOptionChange}>
