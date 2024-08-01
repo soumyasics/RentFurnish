@@ -71,6 +71,7 @@ import TrackReturnPayment from './Components/User/Orders/Return/TrackReturnPayme
 import TrackDirectReturnStatus from './Components/User/Orders/Return/TrackDirectReturnStatus';
 import Viewreviews from './Components/User/Furnitures/Viewreviews';
 import Aboutus from './Components/Common/Aboutus';
+import Adminviewtransaction from './Components/Admin/Transactions/Adminviewtransaction';
 
 
 function App() {
@@ -155,7 +156,8 @@ function App() {
           <Route path='/adminview-complaints' element={[<Complaints />]} />
           <Route path='/admin-viewcust' element={[<AdminViewCust />]} />
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
-          
+          <Route path='/admin-viewtransactions' element={[<Adminviewtransaction />]} />
+
           {/* common */}
           <Route path='/about-us' element={<Aboutus/>}/>
 

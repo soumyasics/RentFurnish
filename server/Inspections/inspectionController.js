@@ -166,6 +166,33 @@ const viewInspections = (req, res) => {
     });
 };
 
+const viewInspectionsforAdmin = (req, res) => {
+  Inspection.find({inspectionStatus:"Completed"})
+  .populate('shopId customerId')
+    .exec()
+    .then(data => {
+      if (data.length > 0) {
+        res.json({
+          status: 200,
+          msg: "Data obtained successfully",
+          data: data
+        });
+      } else {
+        res.json({
+          status: 200,
+          msg: "No Data obtained"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not obtained",
+        Error: err
+      });
+    });
+};
+
 
 //Edit Inspection By Id
 const editInspectionById = async(req, res) => {
@@ -219,5 +246,6 @@ module.exports = {
   viewInspections,
   editInspectionById,
   viewInspectionByFurnitureId,
-  viewAllInspectionByShopId
+  viewAllInspectionByShopId,
+  viewInspectionsforAdmin
 }

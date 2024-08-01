@@ -83,7 +83,7 @@ function ViewMyOrder() {
         })
       ) : (
         <div style={{ color: "red", fontSize: "20px" }}>
-          No Requests Available
+          No Orders Available
         </div>
       )}
 
