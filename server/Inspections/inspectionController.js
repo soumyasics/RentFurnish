@@ -171,12 +171,14 @@ const viewInspections = (req, res) => {
 const editInspectionById = async(req, res) => {
 
   try {
-    const { payableAmt,finalAmount, fineAmount, finalAmt } = req.body;
+    const { payableAmt,finalAmount, fineAmount } = req.body;
+    const adminProfit = finalAmount * 0.01;
     const updateData = {
-      finalAmt,
+     
       fineAmount,
       payableAmt,
       finalAmount,
+      adminProfit:adminProfit,
       inspectionStatus: "Completed"
     };
 

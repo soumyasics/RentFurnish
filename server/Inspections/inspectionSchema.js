@@ -66,7 +66,7 @@ const inspectionSchema = mongoose.Schema({
         default: "pending",
         required: true
     },
-    
+
     fineAmount: {
         type: Number,
     },
@@ -74,17 +74,17 @@ const inspectionSchema = mongoose.Schema({
     deviatedAmt:{
         type:Number
     },
-    finalAmt:{
-        type:Number
-    },
+   
     payableAmt:{
             type:Number
         
     },
     finalAmount:{
         type:Number
-    }
-
+    },
+adminProfit:{
+    type:Number
+}
 })
 
 const Inspection = mongoose.model("inspection", inspectionSchema)
