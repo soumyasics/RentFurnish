@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axiosInstance from '../Constants/Baseurl';
+import { toast } from 'react-toastify';
 import { FaCheckCircle } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
-import "./Return.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../../Constants/Baseurl";
-import { toast } from "react-toastify";
+import { FaQuestionCircle } from "react-icons/fa";
+import Shopnav from '../Navbar/Shopnav';
+import Showdropdown from './Shopdropdown';
 
-function TrackReturnPayment() {
+function ShopReturnPayment() {
     const { id } = useParams();
     console.log("id" + id);
     const navigate = useNavigate();
@@ -58,7 +59,7 @@ function TrackReturnPayment() {
         return valid;
     };
 
-    const goback=()=>{
+    const goback = () => {
         navigate(-1)
     }
 
@@ -84,35 +85,13 @@ function TrackReturnPayment() {
             alert('Payment Failed');
         }
     };
-
     return (
         <div>
+            <Shopnav />
+            <Showdropdown />
             <div className="track-delivery">
-                <Link style={{ textDecoration: "none" }} onClick={goback}>
-                    <h1 className="ri-arrow-left-line">Track Return Status</h1>
-                </Link>
+               
                 <div className="trackdelivery-main_div">
-                    <div className="status-bar">
-                        <div className="status-item">
-                            <FaCheckCircle size={50} className="icon_style_track" />
-                            <p className="trackdelivery_track_status">Return Confirmed</p>
-                            <p className="trackdelivery_date">
-                                {data && new Date(data.confirmedDate).toLocaleDateString()}
-                            </p>
-                        </div>
-                        <>
-                            <div className="status-line"></div>
-                            <div className="status-item">
-                                <FaCheckCircle size={50} className="icon_style_track" />
-                                <p className="trackdelivery_track_status">
-                                    Inspection
-                                </p>
-                                <p className="trackdelivery_date">
-                                    {data && new Date(data.inspectionDate).toLocaleDateString()}
-                                </p>
-                            </div>
-                        </>
-                    </div>
                     <div>
                         <form onSubmit={handleSubmit}>
                             <h1 className="text-center mt-4">
@@ -182,7 +161,7 @@ function TrackReturnPayment() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default TrackReturnPayment;
+export default ShopReturnPayment

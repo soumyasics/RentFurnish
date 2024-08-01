@@ -25,13 +25,15 @@ function Inspections() {
   const handleUpdate = (id, returnId) => {
     axiosInstance.post(`/editInspectionById/${id}`, {
       fineAmount,
+      finalAmount,
       returnId
     })
       .then((res) => {
         if (res.data.status === 200) {
           axiosInstance.post(`/updateInspectionStatus/${returnId}`, {
             inspectionStatus: "Confirmed",
-            fineAmount
+            fineAmount,
+            finalAmount
           })
             .then((response) => {
               if (response.data.status === 200) {
@@ -232,6 +234,7 @@ function Inspections() {
                           className='form-control form-control-lg'
                           value={fineAmount}
                           onChange={handleFineAmountChange}
+                          required
                         />
                       </div>
                     </div>

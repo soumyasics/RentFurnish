@@ -72,6 +72,9 @@ const returnSchema = new Schema({
     },
     deviatedAmt:{
         type:Number
+    },
+    finalAmount:{
+        type:Number
     }
 
 });
