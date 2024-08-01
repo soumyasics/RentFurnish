@@ -23,6 +23,7 @@ function PendingReturns() {
 
         axiosInstance.post(`viewMyReturnsByDeliveryAgentId/${deliveryid}`)
             .then((res) => {
+                console.log(res,"view return");
                 const fetchedData = res.data.data;
                 setData(fetchedData);
                 const initialSubImages = fetchedData.map(() => [placeholderimg, placeholderimg, placeholderimg, placeholderimg, placeholderimg, placeholderimg]);
@@ -140,7 +141,7 @@ function PendingReturns() {
                                                                 <p>Quantity:</p>
                                                             </div>
                                                             <div className="col Furniture_details_text2">
-                                                                <p>{order?.furnitureId?.quantity}</p>
+                                                                <p>{order?.orderId?.count}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row">

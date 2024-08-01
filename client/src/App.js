@@ -70,6 +70,7 @@ import TrackInspectionStatus from './Components/User/Orders/Return/TrackInspecti
 import TrackReturnPayment from './Components/User/Orders/Return/TrackReturnPayment';
 import TrackDirectReturnStatus from './Components/User/Orders/Return/TrackDirectReturnStatus';
 import Viewreviews from './Components/User/Furnitures/Viewreviews';
+import Aboutus from './Components/Common/Aboutus';
 
 
 function App() {
@@ -132,8 +133,7 @@ function App() {
           <Route path='/shop-paymentstatus' element={[<Shopsmain data="shop-paymentstatus" />]} />
 
 
-
-          {/* Delivery Agent */}
+          {/* Delivery Agents */}
           <Route path='/agentsignup' element={[<Shopnav />, <Deliveryagentsignup />]} />
           <Route path='/agentlogin' element={[<Navbar />, <Deliverylogin />]} />
           <Route path='/agentrecoverpswd' element={[<Navbar />, <Deliveryforgetpswd />]} />
@@ -154,7 +154,9 @@ function App() {
           <Route path='/adminview-complaints' element={[<Complaints />]} />
           <Route path='/admin-viewcust' element={[<AdminViewCust />]} />
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
-
+          
+          {/* common */}
+          <Route path='/about-us' element={<Aboutus/>}/>
 
         </Routes>
       </div>
