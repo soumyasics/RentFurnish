@@ -72,7 +72,7 @@ const returnSchema = new Schema({
     },
     deviatedAmt:{
         type:Number
-    }
+    },
 
 });
 
