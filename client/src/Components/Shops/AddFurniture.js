@@ -156,6 +156,7 @@ function AddFurniture() {
         if (res.data.status === 200) {
         //   alert('Furniture added successfully');
           toast.success("Furniture added successfully");
+          window.location.reload()
 
         } else {
             toast.error('Furniture not added')

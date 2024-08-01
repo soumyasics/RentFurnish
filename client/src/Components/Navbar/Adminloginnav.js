@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./Adminloginnav.css"
-import admin from "../../Assets/logo1.png";
+import admin from "../../Assets/rentlogo1.png";
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'bootstrap';
 import Modals from './Confirmmodal';
@@ -43,9 +43,9 @@ function Adminloginnav() {
     <div class="container-fluid">
       <div class="row justify-content-center w-100">
         <div class="col-auto adminloginnavtext">
-            <img src={admin} alt='imag' width="30px" height="30px" style={{marginLeft:"100px"}}/>
-          <h5>Rental Furniture</h5>
-          <p >Rent A Furniture Online Today</p>
+            <img src={admin} alt='imag' height="100px" style={{marginLeft:"100px"}}/>
+          {/* <h5>Rental Furniture</h5> */}
+          {/* <p >Rent A Furniture Online Today</p> */}
         </div>
       </div>
       <div class="adminloginnavlogout row justify-content-end  w-100 ">

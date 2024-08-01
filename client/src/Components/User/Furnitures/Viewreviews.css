@@ -1,0 +1,44 @@
+.viewreview-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewreview-userbox{
+    width: 450px;
+    height: 450px;
+    background-color: rgb(37, 216, 195);
+    border-radius: 12px;
+}
+.viewreview-userbox-scroll{
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+    padding-right: 15px; 
+  }
+  .viewreview-userbox-scroll::-webkit-scrollbar{
+    scrollbar-width: none;
+
+  }
+  .reviews-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .reviews-main-box{
+    width: 400px;
+    min-height: 100px;
+    max-height: fit-content;
+    background-color: beige;
+    margin: 20px;
+    word-break: break-word; /* This will break long words */
+  overflow-wrap: break-word;
+  border-radius: 12px; 
+  }
+  .reviews-main-box h6{
+    text-align: end;
+    font-size: 15px;
+  }
+  .reviews-main-box p{
+    text-transform: capitalize;
+    padding: 10px;
+  }

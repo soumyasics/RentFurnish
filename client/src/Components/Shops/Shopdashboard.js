@@ -16,6 +16,7 @@ function Shopdashboard() {
   console.log(shopid);
   const [cust,setCust]=useState([])
   const [delivery,setDelivery]=useState([])
+  const [order,setOrder]=useState([])
 
 
   useEffect(()=>{
@@ -36,6 +37,15 @@ function Shopdashboard() {
     .then((res) => {
       console.log(res);
       setDelivery(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    axiosInstance
+    .post(`viewOrdersByShopId/${shopid}`)
+    .then((res) => {
+      console.log(res);
+      setOrder(res.data.data);
     })
     .catch((err) => {
       console.log(err);
@@ -94,7 +104,7 @@ function Shopdashboard() {
                 />
               </div>
               <div className="col-8 boxcontent">
-                <h5>10</h5>
+                <h5>{order?.length}</h5>
                 <p>Total Orders</p>
               </div>
             </div>

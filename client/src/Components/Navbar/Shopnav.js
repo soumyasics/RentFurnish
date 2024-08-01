@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Adminloginnav.css"
-import admin from "../../Assets/logo1.png";
+import admin from "../../Assets/rentlogo1.png";
 
 
 function Shopnav() {
@@ -9,9 +9,9 @@ function Shopnav() {
     <div class="container-fluid">
       <div class="row justify-content-center w-100">
         <div class="col-auto adminloginnavtext">
-            <img src={admin} alt='imag' width="30px" height="30px" style={{marginLeft:"100px"}}/>
-          <h5>Rent Furniture</h5>
-          <p >Rent A Furniture Online Today</p>
+            <img src={admin} alt='imag'  height="100px" style={{marginLeft:"100px"}}/>
+          {/* <h5>Rent Furniture</h5> */}
+          {/* <p >Rent A Furniture Online Today</p> */}
         </div>
       </div>
     </div>

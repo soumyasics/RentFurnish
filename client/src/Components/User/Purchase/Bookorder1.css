@@ -124,7 +124,7 @@ line-height: normal;
 .Rating{
     color: #0084E4;
 text-shadow: 0px 0.866px 0.866px rgba(0, 0, 0, 0.25);
-font-family: Montserrat;
+/* font-family: Montserrat; */
 font-size: 40px;
 font-style: normal;
 font-weight: 600;
@@ -167,4 +167,69 @@ font-weight: 600;
 }
 .purchanse-mainimage{
     margin-left: 30px;
+}
+.rate_product_heading{
+    color: #0084E4;
+    margin-top: 10px;
+}
+.rate_product_button{
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.253);
+    margin-bottom: 20px;
+    margin-top: 5px;
+    width: 200px;
+    font-size: x-large;
+    font-weight: bolder;
+}
+.modal_content_main {
+    padding: 30px;
+    border-radius: 20px;
+}
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.modal_font_color{
+    color: #0084E4;
+}
+.rating-stars i {
+    font-size: 40px;
+    padding-left: 10px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal_text_area{
+    resize: none;
+    height: 100px;
+    border-radius: 20px;
+    border-color: rgba(0, 0, 0, 0.299);
+    margin-top: 10px;
+}
+.rating-stars i.selected {
+    color: #ffc107;
+}
+.submit-btn {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #ff8c00;
+}
+.button-viewbookedorder{
+    width: 130px;
+    height: 40px;
+    background-color: #56B60B;
+    text-align: center;
+    border-radius: 20px;
+    padding-top: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
 }

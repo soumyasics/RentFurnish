@@ -22,6 +22,10 @@ const returnSchema = new Schema({
         ref: "shops",
         required: true,
     },
+    deliveryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "deliveryagents",
+    },
     returnDate: {
         type: Date,
     },
@@ -29,7 +33,7 @@ const returnSchema = new Schema({
         type: String,
         default: "Pending",
     },
-    returnAmount: {
+    fineAmount: {
         type: Number,
         // required: true,
     },
@@ -37,10 +41,42 @@ const returnSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    paymentDate: {
+        type: Date
+    },
+    deliveryDate: {
+        type: Date,
+    },
+    confirmedDate: {
+        type: Date,
+    },
+    inspectionStatus: {
+        type: String,
+    },
+    inspectionDate: {
+        type: Date,
+    },
     completionDate: {
         type: Date
+    },
+    completionStatus: {
+        type: Boolean
+    },
+    totalRentDays:{
+        type:Number
 
+    },
+    
+    totalRentAmount:{
+        type:Number
+    },
+    deviatedAmt:{
+        type:Number
+    },
+    finalAmount:{
+        type:Number
     }
+
 });
 
 const Return = mongoose.model("returns", returnSchema);

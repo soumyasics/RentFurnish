@@ -31,14 +31,16 @@ function ReturnDetails() {
             customerId: data.customerId._id,
             furnitureId: data.furnitureId._id,
             shopId: data.shopId, 
-            returnAmount: data.totalAmount, 
+            returnAmount: data.totalAmount,
         };
 
         axiosInstance.post('/addreturn', returnData)
             .then((res) => {
                 if (res.data.status === 200) {
                     console.log(res)
-                    navigate(`/user-trackreturnstatus/${userid}`);
+                    // localStorage.setItem("returnId",res.data.id);
+                    // console.log(res.data.id);
+                    navigate(`/user-trackdirectreturnstatus/${id}`);
                 } else {
                     console.error(res.data.error);
                 }
@@ -113,11 +115,11 @@ function ReturnDetails() {
                                 <div className='col-2'>:</div>
                                 <div className='col-5'>{data?.customerId?.phone}</div>
                             </div>
-                            <div className='row pt-2'>
+                            {/* <div className='row pt-2'>
                                 <div className='col-5 return_subtext_color'>Address</div>
                                 <div className='col-2'>:</div>
                                 <div className='col-5'>{data.address}</div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="text-center m-4">

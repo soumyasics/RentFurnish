@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import icon from "../../../../Assets/payment.jpg";
 import axiosInstance from "../../../Constants/Baseurl";
 import { toast } from "react-toastify";
@@ -76,7 +76,7 @@ function UserPayment() {
         console.log(res);
         if (res.data.status === 200) {
           toast.success("Payment successfully processed");
-          // navigate("/viewservices")
+          navigate("/user-home")
         } else {
           alert("Error in booking");
         }
@@ -108,10 +108,15 @@ function UserPayment() {
     })
   },[])
 
+ const navbckfn=(()=>{
+  navigate(-1)
+  })
+
   return (
     <div>
       <div className="container-xxl py-5">
-        <div className="container">
+        <div className="container ">
+        <Link onClick={navbckfn} style={{textDecoration:"none"}}>  <div className="ri-arrow-left-line payment-backbtn"/></Link>
           <div className="row g-5 ">
             <div className="col-lg-6" style={{ marginTop: "7rem" }}>
               <form

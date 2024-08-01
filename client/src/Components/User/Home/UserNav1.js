@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './UserHome.css'
-import logo from '../../../Assets/RentalLogo.png'
+import logo from '../../../Assets/rentfurnishlogo.png'
 import { FaRegBell } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
@@ -54,7 +54,7 @@ function UserNav1() {
             </a>
           <div className="navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav p-4 d-flex flex-row">
-              <Link to="/user-home"><a className="nav-link active" aria-current="page" href="#"><FaRegBell size={25} className="user_home_icon" /></a></Link>
+              {/* <Link to="/user-home"><a className="nav-link active" aria-current="page" href="#"><FaRegBell size={25} className="user_home_icon" /></a></Link> */}
               <Link to="/user-viewcart"><a className="nav-link" href="#"><FaRegHeart size={25} className="user_home_icon" /></a></Link>
               <a className="nav-link" href="#" onClick={handleOpenProfile}><IoPersonOutline size={25} className="user_home_icon" /></a>
               <button className="custom-button" onClick={handleLogout}><FiLogOut /> Logout</button>
