@@ -134,7 +134,7 @@ router.post('/updateCompletionofreturndelivery/:id', Return.updateCompletionOfDe
 router.post('/viewMyReturnsByDeliveryAgentId/:id', Return.viewMyReturnsByDeliveryAgentId)
 router.post('/updateInspectionStatus/:id', Return.updateInspectionStatus)
 router.post('/updatePaymentStatus/:orderId', Return.updatePaymentStatus) 
-router.post('/updateInspectionStatusByFurnitureId/:id', Return.updateInspectionStatusByFurnitureId)
+router.post('/updateInspectionStatusByOrderId/:id', Return.updateInspectionStatusByOrderId)
 
 
 
@@ -144,6 +144,7 @@ router.post('/viewInspectionByShopId/:id', Inspection.viewInspectionByShopId)
 router.post('/viewInspections', Inspection.viewInspections)
 router.post('/editInspectionById/:id', Inspection.editInspectionById)
 router.post('/viewInspectionByFurnitureId/:id', Inspection.viewInspectionByFurnitureId)
+router.post('/viewAllInspectionByShopId/:id', Inspection.viewAllInspectionByShopId)
 
 
 //reviews

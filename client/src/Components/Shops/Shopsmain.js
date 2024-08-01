@@ -16,6 +16,7 @@ import EditFurniture from './EditFurniture';
 import Shopviewcomplaint from './Complaintsshop/Shopviewcomplaint';
 import ShopViewReview from './ShopViewReview';
 import PaymentStatus from './PaymentStatus';
+import ShopReturnPayment from './ShopReturnPayment';
 
 function Shopsmain({ data }) {
   return (
@@ -38,6 +39,7 @@ function Shopsmain({ data }) {
         data==="edit-furniture"?(<EditFurniture />): 
         data==="shop-reviewfeedback"?(<ShopViewReview />): 
         data==="shop-paymentstatus"?(<PaymentStatus />): 
+        data==="shop-returnpayment"?(<ShopReturnPayment />): 
         <Shoplogin/> }
       </div>
     </div>
