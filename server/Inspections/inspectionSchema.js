@@ -80,6 +80,9 @@ const inspectionSchema = mongoose.Schema({
     payableAmt:{
             type:Number
         
+    },
+    finalAmount:{
+        type:Number
     }
 
 })

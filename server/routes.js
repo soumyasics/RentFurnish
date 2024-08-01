@@ -144,6 +144,7 @@ router.post('/viewInspectionByShopId/:id', Inspection.viewInspectionByShopId)
 router.post('/viewInspections', Inspection.viewInspections)
 router.post('/editInspectionById/:id', Inspection.editInspectionById)
 router.post('/viewInspectionByFurnitureId/:id', Inspection.viewInspectionByFurnitureId)
+router.post('/viewAllInspectionByShopId/:id', Inspection.viewAllInspectionByShopId)
 
 
 //reviews

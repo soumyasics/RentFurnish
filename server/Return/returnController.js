@@ -314,11 +314,12 @@ const updateCompletionOfDelivery = async (req, res) => {
 //Update Inspecton Status
 const updateInspectionStatus = async (req, res) => {
     try {
-        const { fineAmount } = req.body;
+        const { fineAmount, finalAmount } = req.body;
         const orders = await Return.findByIdAndUpdate(req.params.id, {
             inspectionStatus: "Confirmed",
             inspectionDate: new Date(),
-            fineAmount
+            fineAmount,
+            finalAmount
         });
 
         res.status(200).json({
