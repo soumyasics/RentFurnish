@@ -170,11 +170,11 @@ function TrackDirectReturnStatus() {
                                             Rent Date
                                         </div>
                                         <div className="col-6 text-black">
-                                            {data ? new Date(data?.orderId?.orderDate).toLocaleDateString() : ""} - {data ? new Date(data?.orderId?.completionDate).toLocaleDateString() : ""}
+                                            {data ? new Date(data?.orderId?.orderDate).toLocaleDateString() : ""} - {data ? new Date(data?.returnDate).toLocaleDateString() : ""}
                                         </div>
                                     </div>
                                     <div className="row mt-3">
-                                        <div className="col-6 trackdelivery_color">Total Amount:</div>
+                                        <div className="col-6 trackdelivery_color">Fine Amount:</div>
                                         <div className="col-6 text-black">
                                             ₹ {data?.fineAmount}/-
                                         </div>
@@ -207,13 +207,13 @@ function TrackDirectReturnStatus() {
                                             {data?.customerId?.phone}
                                         </div>
                                     </div>
-                                    <div className="row mt-3">
+                                    {/* <div className="row mt-3">
                                         <div className="col-3 trackdelivery_subtext">Address</div>
                                         <div className="col-1">:</div>
                                         <div className="col-8">
                                             {data?.customerId?.address}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 {data?.deliveryId ? (
                                     <>
@@ -357,13 +357,13 @@ function TrackDirectReturnStatus() {
                                             {data?.customerId?.phone}
                                         </div>
                                     </div>
-                                    <div className="row mt-3">
+                                    {/* <div className="row mt-3">
                                         <div className="col-3 trackdelivery_subtext">Address</div>
                                         <div className="col-1">:</div>
                                         <div className="col-8">
                                             {data?.customerId?.address}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 {data?.deliveryId ? (
                                     <>
@@ -471,6 +471,7 @@ function TrackDirectReturnStatus() {
                                         <div className="col-6 text-black">
                                             ₹ {data?.finalAmount}/-
                                         </div>
+                                        <p style={{color:"red"}}>The Balance Amount will be credited shortly</p>
                                     </div>
                                     {/* <div className="text-center mt-4 mb-4">
                                         <Link to={`/user-returnpayment/${data?.orderId?._id}`}>
@@ -507,13 +508,13 @@ function TrackDirectReturnStatus() {
                                             {data?.customerId?.phone}
                                         </div>
                                     </div>
-                                    <div className="row mt-3">
+                                    {/* <div className="row mt-3">
                                         <div className="col-3 trackdelivery_subtext">Address</div>
                                         <div className="col-1">:</div>
                                         <div className="col-8">
                                             {data?.customerId?.address}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 {data?.deliveryId ? (
                                     <>
@@ -633,13 +634,13 @@ function TrackDirectReturnStatus() {
                                             {data?.customerId?.phone}
                                         </div>
                                     </div>
-                                    <div className="row mt-3">
+                                    {/* <div className="row mt-3">
                                         <div className="col-3 trackdelivery_subtext">Address</div>
                                         <div className="col-1">:</div>
                                         <div className="col-8">
                                             {data?.customerId?.address}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 {data?.deliveryId ? (
                                     <>

@@ -78,11 +78,12 @@ function Inspections() {
       const deviatedAmt = parseFloat(order?.returnId?.deviatedAmt) || 0;
       const totalRentAmount = parseFloat(order?.returnId?.totalRentAmount) || 0;
       const calculatedAmount = Math.abs(deviatedAmt + fineAmt);
+      const depositAmnt = parseFloat(order?.orderId?.amount) || 0;
 
       if (deviatedAmt < 0) {
         setFinalAmount(totalRentAmount + fineAmt);
       } else {
-        setFinalAmount(totalRentAmount + fineAmt + calculatedAmount);
+        setFinalAmount(totalRentAmount + fineAmt - depositAmnt);
       }
     });
   };
