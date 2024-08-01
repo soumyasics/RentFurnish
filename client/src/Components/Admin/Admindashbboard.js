@@ -14,6 +14,7 @@ function Admindashbboard() {
   const [delivery,setDelivery]=useState([])
   const [cust,setCust]=useState([])
   const url = axiosInstance.defaults.url;
+  const navigate=useNavigate()
   // console.log(url);
 
   useEffect(() => {
@@ -106,6 +107,9 @@ function Admindashbboard() {
         });
     });
   
+    const transactions=(()=>{
+      navigate("/admin-viewtransactions")
+    })
   
 
 
@@ -131,11 +135,13 @@ function Admindashbboard() {
                 View Complaints
               </button></Link> 
             </div>
+            {/* <Link to="/admin-viewtransactions">  */}
             <div className="col-sm-3 col-md-3 col-lg-3 pb-3">
-              <button type="submit" className="btn btn-primary btn-block">
+              <button type="submit" className="btn btn-primary btn-block" onClick={transactions}>
                 View Transaction
               </button>
             </div>
+            {/* </Link> */}
           </div>
           <div className="col-12 d-flex boxmain">
         <Link to="/Viewshops" style={{textDecoration:"none"}}>
