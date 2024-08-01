@@ -73,6 +73,16 @@ const inspectionSchema = mongoose.Schema({
    
     deviatedAmt:{
         type:Number
+    },
+    finalAmt:{
+        type:Number
+    },
+    payableAmt:{
+            type:Number
+        
+    },
+    finalAmount:{
+        type:Number
     }
 
 })

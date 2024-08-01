@@ -132,6 +132,7 @@ function App() {
           <Route path='/shop-viewcomplaint' element={[<Shopsmain data="shop-viewcomplaint" />]} />
           <Route path='/shop-reviewfeedback' element={[<Shopsmain data="shop-reviewfeedback" />]} />
           <Route path='/shop-paymentstatus' element={[<Shopsmain data="shop-paymentstatus" />]} />
+          <Route path='/shop-returnpayment/:id' element={[<Shopsmain data="shop-returnpayment" />]} />
 
 
           {/* Delivery Agents */}

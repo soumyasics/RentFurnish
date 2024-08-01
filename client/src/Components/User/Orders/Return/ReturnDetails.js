@@ -31,16 +31,16 @@ function ReturnDetails() {
             customerId: data.customerId._id,
             furnitureId: data.furnitureId._id,
             shopId: data.shopId, 
-            returnAmount: data.totalAmount, 
+            returnAmount: data.totalAmount,
         };
 
         axiosInstance.post('/addreturn', returnData)
             .then((res) => {
                 if (res.data.status === 200) {
                     console.log(res)
-                    localStorage.setItem("returnId",res.data.id);
-                    console.log(res.data.id);
-                    navigate(`/user-trackreturnstatus/${userid}`);
+                    // localStorage.setItem("returnId",res.data.id);
+                    // console.log(res.data.id);
+                    navigate(`/user-trackdirectreturnstatus/${id}`);
                 } else {
                     console.error(res.data.error);
                 }

@@ -89,6 +89,31 @@ const viewInspectionByShopId = async (req, res) => {
   }
 };
 
+//View All Inspection By ShopId
+const viewAllInspectionByShopId = async (req, res) => {
+  try {
+    const returnOrder = await Inspection.find({ shopId: req.params.id, fineAmount: { $exists: true }})
+      .populate('furnitureId')
+      .populate('customerId')
+      .populate('shopId')
+      .populate('orderId')
+      .populate('returnId')
+
+    res.status(200).json({
+      status: 200,
+      message: 'Return retrieved successfully',
+      data: returnOrder
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      status: 500,
+      message: 'Error retrieving orders',
+      error: err
+    });
+  }
+};
+
 const viewInspectionByFurnitureId = async (req, res) => {
   try {
     const returnOrder = await Inspection.find({ furnitureId: req.params.id, inspectionStatus: "Completed" })
@@ -146,11 +171,12 @@ const viewInspections = (req, res) => {
 const editInspectionById = async(req, res) => {
 
   try {
-    const { rentAmount, fineAmount, depositeAmount } = req.body;
+    const { payableAmt,finalAmount, fineAmount, finalAmt } = req.body;
     const updateData = {
-      rentAmount,
+      finalAmt,
       fineAmount,
-      depositeAmount,
+      payableAmt,
+      finalAmount,
       inspectionStatus: "Completed"
     };
 
@@ -181,7 +207,7 @@ const editInspectionById = async(req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-await returnSchema.findByIdAndUpdate({})
+
 };
 
 module.exports = {
@@ -190,5 +216,6 @@ module.exports = {
   viewInspectionByShopId,
   viewInspections,
   editInspectionById,
-  viewInspectionByFurnitureId
+  viewInspectionByFurnitureId,
+  viewAllInspectionByShopId
 }

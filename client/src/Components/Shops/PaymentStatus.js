@@ -4,6 +4,7 @@ import Showdropdown from './Shopdropdown'
 import axiosInstance from '../Constants/Baseurl';
 import { FaCheckCircle } from "react-icons/fa";
 import { FaQuestionCircle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function PaymentStatus() {
     const shopId = localStorage.getItem("shopid");
@@ -13,7 +14,7 @@ function PaymentStatus() {
     const url = axiosInstance.defaults.url;
 
     useEffect(() => {
-        axiosInstance.post(`viewReturnByShopId/${shopId}`)
+        axiosInstance.post(`viewAllInspectionByShopId/${shopId}`)
             .then((res) => {
                 console.log(res)
                 setTransation(res.data.data);
@@ -27,6 +28,7 @@ function PaymentStatus() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
+
     return (
         <div>
             <Shopnav />
@@ -48,10 +50,10 @@ function PaymentStatus() {
                                                 <th scope="col"><p className='Complain_head_text'>SI No</p></th>
                                                 <th scope="col"><p className='Complain_head_text'>Furniture Name</p></th>
                                                 <th scope="col"><p className='Complain_head_text'>Customer Name</p></th>
-                                                <th scope="col"><p className='Complain_head_text'>Rent Date</p></th>
+                                                {/* <th scope="col"><p className='Complain_head_text'>Rent Date</p></th> */}
                                                 <th scope="col"><p className='Complain_head_text'>Total Price</p></th>
                                                 <th scope="col"><p className='Complain_head_text'>Fine Amount</p></th>
-                                                <th scope="col"><p className='Complain_head_text'>Payment Status</p></th>
+                                                {/* <th scope="col"><p className='Complain_head_text'>Payment Status</p></th> */}
                                                 <th scope="col"><p className='Complain_head_text'>Deposit Status</p></th>
                                             </tr>
                                         </thead>
@@ -66,29 +68,25 @@ function PaymentStatus() {
                                                         <th scope="row"><p className='Complain_body_text'>{index + 1}</p></th>
                                                         <td><p className='Complain_body_text'>{item?.furnitureId?.name}</p></td>
                                                         <td><p className='Complain_body_text'>{item?.customerId?.name}</p></td>
-                                                        <td><p className='Complain_body_text'>{formatDate(item?.orderId?.deliveryDate)} - {formatDate(item?.returnDate)}</p></td>
+                                                        {/* <td><p className='Complain_body_text'>{formatDate(item?.orderId?.deliveryDate)} - {formatDate(item?.returnDate)}</p></td> */}
                                                         <td><p className='Complain_body_text'>{item?.orderId?.amount}</p></td>
-                                                        <td><p className='Complain_body_text'>{item?.fineAmount === null ? (
+                                                        <td><p className='Complain_body_text'>{item?.finalAmount === null ? (
                                                             <p>-</p>
                                                         ) : (
-                                                            <p>{item?.fineAmount}</p>
+                                                            <p>{item?.finalAmount}</p>
                                                         )}</p></td>
                                                         <td><p className='Complain_body_text'>
-                                                            {item?.paymentStatus === true ? (
-                                                                <p className='text-success'>Received  <FaCheckCircle /></p>
-                                                            ) : (
-                                                                <p className='text-danger'>Pending  <FaQuestionCircle /></p>
-                                                            )}
-                                                        </p></td>
-                                                        <td><p className='Complain_body_text'>
-                                                            {item?.fineAmount === null && item?.paymentStatus === false ? (
-                                                                <button type="button" class="btn btn-info">Return</button>
-
-                                                            ) : item?.completionDate ? (
+                                                            {item?.returnId?.completionDate ? (
                                                                 <p className='text-success'>Returned  <FaCheckCircle /></p>
-                                                            ) : (
-                                                                <p className='text-danger'>Pending  <FaQuestionCircle /></p>
-                                                            )}
+                                                            ) : item?.returnId?.deviatedAmt < 0
+                                                                ? (
+                                                                    <Link to={`/shop-returnpayment/${item?.orderId?._id}`}>
+                                                                        <button type="button" class="btn btn-info">Return</button>
+                                                                    </Link>
+
+                                                                ) : (
+                                                                    <p className='text-danger'>Pending  <FaQuestionCircle /></p>
+                                                                )}
                                                         </p></td>
                                                     </tr>
                                                 </tbody>
