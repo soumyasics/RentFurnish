@@ -26,7 +26,7 @@ const differenceInMilliseconds = endDate - startDate;
 const millisecondsPerDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
 const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
 
-const fullDaysDifference = Math.floor(differenceInDays);
+let fullDaysDifference = Math.floor(differenceInDays);
 console.log("Difference in Days:", fullDaysDifference);
 finalRentAmount=(++fullDaysDifference)*(furniture.rent/30)
 console.log("finalRentAmount:", finalRentAmount);

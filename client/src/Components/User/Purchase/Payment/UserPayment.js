@@ -270,7 +270,7 @@ function UserPayment() {
 
               <h1 className="mb-4">
                 Total Amount -{" "}
-                <span style={{ color: "#00b074" }}>₹{price?.amount}</span>
+                <span style={{ color: "#00b074" }}>₹{price?.amount?.toFixed(2)}</span>
               </h1>
             </div>
           </div>

@@ -10,6 +10,7 @@ function AdminViewCust() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
+  const url = axiosInstance.defaults.url;
 
   useEffect(() => {
       fetchAllRescueMembers();
