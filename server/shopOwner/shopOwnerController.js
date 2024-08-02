@@ -172,6 +172,25 @@ const viewshopbyid = (req, res) => {
 
 const viewallshops = (req, res) => {
   shopschema
+    .find({  })
+    .exec()
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: "Shop not found" });
+      }
+      res.json({
+        status: 200,
+        data: data,
+      });
+    })
+    .catch((err) => {
+      console.error("Error finding shop by ID:", err);
+      res.status(500).json({ error: "Internal server error" });
+    });
+};
+
+const viewallactiveshops = (req, res) => {
+  shopschema
     .find({ isactive: true })
     .exec()
     .then((data) => {
@@ -188,6 +207,7 @@ const viewallshops = (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     });
 };
+
 //view all shops completed
 
 const forgotPwdshop = (req, res) => {
@@ -341,7 +361,7 @@ const deleteshopById = async (req, res) => {
 
 const deActivateShopById = async (req, res) => {
   await shopschema
-    .findByIdAndUpdate({ _id: req.params.id }, { isActive: false })
+    .findByIdAndUpdate({ _id: req.params.id }, { isactive: false })
     .exec()
     .then((result) => {
       res.json({
@@ -361,7 +381,7 @@ const deActivateShopById = async (req, res) => {
 
 const activateShopById = async (req, res) => {
   await shopschema
-    .findByIdAndUpdate({ _id: req.params.id }, { isActive: true })
+    .findByIdAndUpdate({ _id: req.params.id }, { isactive: true })
     .exec()
     .then((result) => {
       res.json({
@@ -422,4 +442,5 @@ module.exports = {
   activateShopById,
   deActivateShopById,
   searchShopByName,
+  viewallactiveshops
 };
