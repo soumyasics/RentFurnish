@@ -148,7 +148,8 @@ function ViewBedroomFurniture() {
         </div>
       </div>
       <div className="furniture-grid container">
-        {furnitureData.map((item) => (
+        {furnitureData&&furnitureData.length?(
+        furnitureData.map((item) => (
           <div key={item._id} className="furniture-item">
             <img src={`${url}/${item?.image1?.filename}`} alt={item.name} className="furniture-image img-fluid" />
             <button
@@ -169,7 +170,10 @@ function ViewBedroomFurniture() {
               </div>
             </Link>
           </div>
-        ))}
+        ))
+      ):(
+        <h5>No Furnitures Available</h5>
+      )}
       </div>
     </div>
   );
