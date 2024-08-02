@@ -28,7 +28,7 @@ const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
 
 const fullDaysDifference = Math.floor(differenceInDays);
 console.log("Difference in Days:", fullDaysDifference);
-finalRentAmount=fullDaysDifference*(furniture.rent/30)
+finalRentAmount=(++fullDaysDifference)*(furniture.rent/30)
 console.log("finalRentAmount:", finalRentAmount);
 deviatedAmt=finalRentAmount-depAmount
 
@@ -42,7 +42,7 @@ deviatedAmt=finalRentAmount-depAmount
             returnAmount: req.body.returnAmount,
             inspectionStatus: "Pending",
             totalRentAmount:finalRentAmount,
-            totalRentDays:differenceInDays,
+            totalRentDays:(fullDaysDifference),
             deviatedAmt:deviatedAmt
         });
 
