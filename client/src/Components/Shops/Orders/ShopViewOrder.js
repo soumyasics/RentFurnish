@@ -145,7 +145,7 @@ function ShopViewOrder() {
                             <p>price :</p>
                           </div>
                           <div className="col Furniture_details_text2">
-                            <p>{order?.amount}</p>
+                            <p>{order?.amount?.toFixed(2)}</p>
                           </div>
                         </div>
                       </div>

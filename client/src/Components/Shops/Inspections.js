@@ -224,7 +224,7 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={order?.returnId?.totalRentAmount}
+                          value={order?.returnId?.totalRentAmount?.toFixed(2)}
                           readOnly
                         />
                       </div>
@@ -245,7 +245,7 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={order?.orderId?.amount}
+                          value={order?.orderId?.amount?.toFixed(2)}
                           readOnly
                         />
                       </div>
@@ -258,7 +258,7 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={calculatedAmount}
+                          value={calculatedAmount?.toFixed(2)}
                           readOnly
                         />
                       </div>
