@@ -42,7 +42,7 @@ deviatedAmt=finalRentAmount-depAmount
             returnAmount: req.body.returnAmount,
             inspectionStatus: "Pending",
             totalRentAmount:finalRentAmount,
-            totalRentDays:differenceInDays,
+            totalRentDays:(++differenceInDays),
             deviatedAmt:deviatedAmt
         });
 
