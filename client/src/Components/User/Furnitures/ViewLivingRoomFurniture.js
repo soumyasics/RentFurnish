@@ -152,7 +152,8 @@ function ViewLivingRoomFurniture() {
       </div>
       </div>
       <div className="furniture-grid container">
-        {furnitureData.map((item) => (
+        {furnitureData&&furnitureData.length?(
+        furnitureData.map((item) => (
           <div key={item._id} className="furniture-item">
             <img src={`${url}/${item?.image1?.filename}`} alt={item.name} className="furniture-image img-fluid" />
             <button
@@ -175,7 +176,9 @@ function ViewLivingRoomFurniture() {
               {/* <button className="wishlist-button"><FaRegHeart /></button> */}
             </Link>
           </div>
-        ))}
+        ))):(
+          <h5>No Furniture Available</h5>
+        )}
       </div>
     </div>
   )
