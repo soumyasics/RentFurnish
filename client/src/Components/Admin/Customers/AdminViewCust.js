@@ -4,6 +4,7 @@ import Adminnav from "../../Navbar/Adminnav";
 import img from "../../../Assets/user.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../Constants/Baseurl";
+import { toast } from "react-toastify";
 
 function AdminViewCust() {
   const adminid = localStorage.getItem("adminid");
@@ -52,6 +53,45 @@ function AdminViewCust() {
     }
   };
 
+  const deactivatefn = (id) => {
+    axiosInstance
+      .post(`deActivateUserById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === 200) {
+          toast.success("Deactivated");
+          setData((prevShops) =>
+            prevShops.map((data) =>
+              data._id === id ? { ...data, isActive: false } : data
+            )
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const activatefn = (id) => {
+    axiosInstance
+      .post(`activateUserById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === 200) {
+          toast.success("Activated");
+          setData((prevShops) =>
+            prevShops.map((data) =>
+              data._id === id ? { ...data, isActive: true } : data
+            )
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   return (
     <div>
       <Adminnav />
@@ -97,7 +137,30 @@ function AdminViewCust() {
                         {a?.address}
                       </div>
                     </div>
+                    <div className="admin-viewallshop-active">
+                      {a?.isActive === true ? (
+                        <button
+                          type="button"
+                          className="admin-viewallshop-btndeact"
+                          onClick={() => deactivatefn(a?._id)}
+                        >
+                          Deactivate
+                          <span className="ri-close-circle-line" />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="admin-viewallshop-activate"
+                          onClick={() => activatefn(a?._id)}
+                        >
+                          Activate
+                          <span className="ri-check-double-line" />
+                        </button>
+                      )}
+                    </div>
                   </div>
+                  
+
                 </div>
               ))
             ) : (
