@@ -15,6 +15,7 @@ function Inspections() {
   useEffect(() => {
     axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
       .then((result) => {
+        console.log(result);
         setInspections(result.data.data);
       })
       .catch((err) => {
@@ -267,7 +268,7 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={finalAmount}
+                          value={finalAmount?.toFixed(2)}
                           readOnly
                         />
                       </div>
