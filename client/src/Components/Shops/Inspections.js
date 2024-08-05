@@ -81,11 +81,22 @@ function Inspections() {
       const calculatedAmount = Math.abs(deviatedAmt + fineAmt);
       const depositAmnt = parseFloat(order?.orderId?.amount) || 0;
 
+      
+      // if(deviatedAmt===0){
+      //   setFinalAmount(totalRentAmount + fineAmt - depositAmnt);
+      // }
+      // if (deviatedAmt < 0) {
+      //   setFinalAmount(depositAmnt-(totalRentAmount + fineAmt));
+      // } 
+      // else {
+      //   setFinalAmount(totalRentAmount + fineAmt - depositAmnt);
+      // }
       if (deviatedAmt < 0) {
-        setFinalAmount(totalRentAmount + fineAmt);
+        setFinalAmount(parseFloat((depositAmnt - (totalRentAmount + fineAmt)).toFixed(2)));
       } else {
-        setFinalAmount(totalRentAmount + fineAmt - depositAmnt);
+        setFinalAmount(parseFloat((totalRentAmount + fineAmt - depositAmnt).toFixed(2)));
       }
+      
     });
   };
 
@@ -268,8 +279,8 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={finalAmount?.toFixed(2)}
-                          readOnly
+                          value={Math.abs(finalAmount)}
+                            readOnly
                         />
                       </div>
                     </div>
