@@ -79,7 +79,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Rent Amount:</div>
                                         <div className="col-6 text-black">
-                                            {data?.totalRentAmount}
+                                            {data?.totalRentAmount.toFixed(2)}
                                         </div>
                                     </div>
                                     <div className="row mt-5 alert_msg_box">
@@ -603,7 +603,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Rent Amount:</div>
                                         <div className="col-6 text-black">
-                                            {data?.totalRentAmount}
+                                            {data?.totalRentAmount.toFixed(2)}
                                         </div>
                                     </div>
 
