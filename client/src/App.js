@@ -160,7 +160,7 @@ function App() {
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
           <Route path='/admin-viewtransactions' element={[<Adminviewtransaction />]} />
 
-          {/* common */}
+          {/* Common */}
           <Route path='/about-us' element={<Aboutus/>}/>
 
         </Routes>
