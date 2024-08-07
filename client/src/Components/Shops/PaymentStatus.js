@@ -54,7 +54,7 @@ function PaymentStatus() {
                                                 <th scope="col"><p className='Complain_head_text'>Total Price</p></th>
                                                 <th scope="col"><p className='Complain_head_text'>Fine Amount</p></th>
                                                 {/* <th scope="col"><p className='Complain_head_text'>Payment Status</p></th> */}
-                                                <th scope="col"><p className='Complain_head_text'>Deposit Status</p></th>
+                                                {/* <th scope="col"><p className='Complain_head_text'>Deposit Status</p></th> */}
                                             </tr>
                                         </thead>
 
@@ -69,13 +69,13 @@ function PaymentStatus() {
                                                         <td><p className='Complain_body_text'>{item?.furnitureId?.name}</p></td>
                                                         <td><p className='Complain_body_text'>{item?.customerId?.name}</p></td>
                                                         {/* <td><p className='Complain_body_text'>{formatDate(item?.orderId?.deliveryDate)} - {formatDate(item?.returnDate)}</p></td> */}
-                                                        <td><p className='Complain_body_text'>{item?.orderId?.amount}</p></td>
+                                                        <td><p className='Complain_body_text'>{Math.abs(item?.orderId?.amount?.toFixed(2))}</p></td>
                                                         <td><p className='Complain_body_text'>{item?.finalAmount === null ? (
                                                             <p>-</p>
                                                         ) : (
-                                                            <p>{item?.finalAmount}</p>
+                                                            <p>{Math.abs(item?.finalAmount)?.toFixed(2)}</p>
                                                         )}</p></td>
-                                                        <td><p className='Complain_body_text'>
+                                                        {/* <td><p className='Complain_body_text'>
                                                             {item?.returnId?.completionDate ? (
                                                                 <p className='text-success'>Returned  <FaCheckCircle /></p>
                                                             ) : item?.returnId?.deviatedAmt < 0
@@ -87,7 +87,7 @@ function PaymentStatus() {
                                                                 ) : (
                                                                     <p className='text-danger'>Pending  <FaQuestionCircle /></p>
                                                                 )}
-                                                        </p></td>
+                                                        </p></td> */}
                                                     </tr>
                                                 </tbody>
                                             ))

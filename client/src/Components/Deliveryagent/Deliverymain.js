@@ -6,6 +6,7 @@ import Deliverylogin from './Deliverylogin';
 import Deliveryagenteditpage from './Deliveryagenteditpage';
 import PendingOrder from './Orders/PendingOrder';
 import PendingReturns from './Orders/PendingReturns';
+import Totaldelivery from './Totaldeliveries/Totaldelivery';
 
 
 function Deliverymain({data}) {
@@ -20,6 +21,8 @@ function Deliverymain({data}) {
             data==="edit-deliveryprofile"?(<Deliveryagenteditpage/>):
             data==="del-pending"?(<PendingOrder/>):
             data==="pending-returns"?(<PendingReturns/>):
+            data==="delivery-totaldelivery"?(<Totaldelivery/>):
+
             <Deliverylogin/>
         }
       {/* {data === "shopownerdashboard" ?( <Shopdashboard/>

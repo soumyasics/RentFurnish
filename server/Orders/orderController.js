@@ -275,6 +275,31 @@ const viewMyOrdersByDeliveryAgentId = async (req, res) => {
     }
 };
 
+
+const viewTotalOrderByDeliberyId = async (req, res) => {
+    try {
+        const orders = await Order.find({deliveryId:req.params.id,deliveryStatus: true,deliveryCompletion:true})
+            .populate('furnitureId')
+            .populate('customerId')
+            .populate('shopId')
+            .populate('deliveryId');
+        
+        res.status(200).json({
+            status: 200,
+            message: ' orders retrieved successfully',
+            data: orders
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving pending orders',
+            error: err
+        });
+    }
+};
+
+
 const viewDeliveryCountBtDeliveryId= async (req, res) => {
     try {
         const count = await Order.countDocuments({deliveryId:req.params.id,deliveryStatus:true})            .populate('furnitureId')
@@ -372,5 +397,6 @@ module.exports={
     updateCompletionOfDelivery,
     viewDeliveryCountBtDeliveryId,
     viewallDeliveryCountBtDeliveryId,
-    updateReturnStatus
+    updateReturnStatus,
+    viewTotalOrderByDeliberyId
 }

@@ -259,7 +259,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.deviatedAmt > 0 ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount<data?.finalAmount ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">
@@ -299,7 +299,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount}/-
+                                            ₹{data?.orderId?.amount.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
@@ -319,7 +319,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹ {data?.finalAmount}/-
+                                            ₹ {Math.abs(data?.finalAmount)}/-
                                         </div>
                                     </div>
                                     <div className="text-center mt-4 mb-4">
@@ -409,7 +409,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.deviatedAmt < 0 ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount>data?.finalAmount  ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">
@@ -449,7 +449,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount}/-
+                                            ₹{data?.orderId?.amount?.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
@@ -469,7 +469,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹ {data?.finalAmount}/-
+                                            ₹ {Math.abs(data?.finalAmount)}/-
                                         </div>
                                         <p style={{color:"red"}}>The Balance Amount will be credited shortly</p>
                                     </div>
