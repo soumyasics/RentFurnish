@@ -82,7 +82,7 @@ function App() {
         >
           <Route path='/' element={[<Navbar />, <Usercarousel />, <Hometop />, <Homesec />, <Homethird />, <Footer />]} />
 
-          {/* // User // */}
+          {/* // Users // */}
           <Route path='/userlogin' element={[<Navbar />, <Userlogin />]} />
           <Route path='/usersignin' element={[<Navbar />, <Usersignup />]} />
           <Route path='/userforgetpswd' element={[<Navbar />, <Userforgetpswd />]} />
