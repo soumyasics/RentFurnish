@@ -108,7 +108,7 @@ function Inspections() {
         inspections.map((order) => {
           const deviatedAmt = parseFloat(order?.returnId?.deviatedAmt) || 0;
           const fineAmt = parseFloat(fineAmount) || 0;
-          const calculatedAmount = Math.abs(deviatedAmt + fineAmt);
+          const calculatedAmount = (deviatedAmt + fineAmt);
 
           return (
             <div key={order._id} className="inspection_back_ground ms-5 mb-2 mt-3 container">
@@ -262,7 +262,7 @@ function Inspections() {
                         />
                       </div>
                       <div className='col-6'>
-                        {order?.returnId?.deviatedAmt < 0 ? (
+                        {calculatedAmount< 0 ? (
                           <p className="inspection_fine_text">Shop Payable Amount</p>
                         ) : (
                           <p className="inspection_fine_text">Customer Payable Amount</p>
@@ -270,9 +270,15 @@ function Inspections() {
                         <input
                           type='text'
                           className='form-control form-control-lg'
-                          value={calculatedAmount?.toFixed(2)}
+                          value={Math.abs(calculatedAmount?.toFixed(2))}
                           readOnly
                         />
+                          {/* <input
+                          type='text'
+                          className='form-control form-control-lg'
+                          value={deviatedAmt}
+                          readOnly
+                        /> */}
                       </div>
                       <div className='col-6'>
                         <p className="inspection_fine_text">Final Amount </p>
