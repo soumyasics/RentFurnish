@@ -104,6 +104,7 @@ router.post('/updateCompletionOfDelivery/:id', order.updateCompletionOfDelivery)
 router.post('/viewDeliveryCountBtDeliveryId/:id', order.viewDeliveryCountBtDeliveryId)  //new Api
 router.post('/viewallDeliveryCountBtDeliveryId/:id', order.viewallDeliveryCountBtDeliveryId)  //new Api
 router.post('/updateReturnStatus/:id', order.updateReturnStatus)
+router.post('/viewTotalOrderByDeliberyId/:id', order.viewTotalOrderByDeliberyId)  //new Api
 
 
 //cart

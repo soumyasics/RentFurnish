@@ -82,7 +82,7 @@ function App() {
         >
           <Route path='/' element={[<Navbar />, <Usercarousel />, <Hometop />, <Homesec />, <Homethird />, <Footer />]} />
 
-          {/* // User // */}
+          {/* // Users // */}
           <Route path='/userlogin' element={[<Navbar />, <Userlogin />]} />
           <Route path='/usersignin' element={[<Navbar />, <Usersignup />]} />
           <Route path='/userforgetpswd' element={[<Navbar />, <Userforgetpswd />]} />
@@ -145,6 +145,8 @@ function App() {
           <Route path='/edit-deliveryprofile/:id' element={[<Deliverymain data="edit-deliveryprofile" />]} />
           <Route path='/del-pending' element={[<Deliverymain data="del-pending" />]} />
           <Route path='/pending-returns' element={[<Deliverymain data="pending-returns" />]} />
+          <Route path='/delivery-totaldelivery' element={[<Deliverymain data="delivery-totaldelivery" />]} />
+
 
           {/* Admin */}
           <Route path='/adminlogin' element={[<Navbar />, <Adminlogin />, <Footer />]} />
@@ -158,7 +160,7 @@ function App() {
           <Route path='/admin-viewdelivery' element={[<AdminViewDelivery />]} />
           <Route path='/admin-viewtransactions' element={[<Adminviewtransaction />]} />
 
-          {/* common */}
+          {/* Common */}
           <Route path='/about-us' element={<Aboutus/>}/>
 
         </Routes>
