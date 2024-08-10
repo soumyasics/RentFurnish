@@ -112,7 +112,7 @@ function App() {
           <Route path='/view-reviews' element={[<Viewreviews/>]} />
           <Route path='/about' element={<Hometop/>}/>
 
-          {/* Shops */}
+          {/* Shop */}
           <Route path='/shopsignin' element={[<Navbar />, <Shopsignin />, <Footer />]} />
           <Route path='/shoplogin' element={[<Navbar />, <Shoplogin />, <Footer />]} />
           <Route path='/shopforgetpswd' element={[<Navbar />, <Shopforgetpswd />, <Footer />]} />

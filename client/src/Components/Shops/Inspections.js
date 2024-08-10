@@ -99,6 +99,8 @@ function Inspections() {
       
     });
   };
+  console.log(finalAmount);
+  
 
   return (
     <div>

@@ -34,7 +34,7 @@ function User_SelectFurniture() {
                 <div className='user_home_second_div_left'>
                   <h1>Double bed with <br/>wooden frame</h1>
                   <p>Finalize your order through our secure <br/>checkout process.</p>
-                  <button className='userhome_fur_seccol_btn'>Rent Now</button>
+                <Link to="/user-viewallfurniture">  <button className='userhome_fur_seccol_btn'>Rent Now</button></Link>
                 </div>
               </div>
               <div className='col-md-6 text-center'>
