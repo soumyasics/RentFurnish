@@ -35,7 +35,10 @@ function ViewMyOrder() {
         <Link to="/user-home" style={{ textDecoration: "none" }}><h1 className="ri-arrow-left-line">My Orders</h1></Link>
       </div>
       {data && data.length ? (
-        data.map((a) => {
+        data
+        .slice()
+        .reverse()
+        .map((a) => {
           return (
 
             <div className="col-12 pb-6">
@@ -48,7 +51,7 @@ function ViewMyOrder() {
                     <p className="user-order-p">{a?.furnitureId?.name} </p>
                     <h5>₹{a?.furnitureId?.rent}/Month</h5>
                     <h6 className="user-ordr-amnt">
-                      <span>Deposit Amount :</span>{a?.amount}
+                      <span>Deposit Amount :</span>{a?.amount?.toFixed(2)}
                     </h6>
                     <h6 className="user-ordr-amnt">
                       <span>Days Required :</span>{a?.noOfDays}

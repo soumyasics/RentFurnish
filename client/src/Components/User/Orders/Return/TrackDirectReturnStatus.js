@@ -259,7 +259,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount<data?.finalAmount ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount>data?.finalAmount ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">
@@ -409,7 +409,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount>data?.finalAmount  ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount<data?.finalAmount  ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">

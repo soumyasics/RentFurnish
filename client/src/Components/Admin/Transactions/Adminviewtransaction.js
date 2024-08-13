@@ -45,7 +45,10 @@ function Adminviewtransaction() {
         </div>
 
         {profit&&profit?.length ? (
-        profit.map((a,index) => {
+        profit
+        .slice()
+        .reverse()
+        .map((a,index) => {
             return(
         <div className='row view-trans-head'>
             <div className='col-2'>
@@ -64,7 +67,7 @@ function Adminviewtransaction() {
             <p>{a?.finalAmount}/-</p>
             </div>
             <div className='col-2'>
-            <h5>{a?.adminProfit}/-</h5>
+            <h5>{a?.adminProfit?.toFixed(2)}/-</h5>
             </div>
         </div>
           );

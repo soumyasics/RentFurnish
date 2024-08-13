@@ -199,12 +199,12 @@ const editInspectionById = async(req, res) => {
 
   try {
     const { payableAmt,finalAmount, fineAmount } = req.body;
-    const adminProfit = finalAmount * 0.01;
+    const adminProfit = Math.abs(finalAmount) * 0.01;
     const updateData = {
      
       fineAmount,
       payableAmt,
-      finalAmount,
+      finalAmount:Math.abs(finalAmount),
       adminProfit:adminProfit,
       inspectionStatus: "Completed"
     };
