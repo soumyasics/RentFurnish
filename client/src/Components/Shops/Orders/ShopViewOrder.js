@@ -263,7 +263,7 @@ function ShopViewOrder() {
           );
         })
       ) : (
-        <div className="viewcounsellor-lottiereqq">No request found</div>
+        <div className="viewcounsellor-lottiereqq" style={{textAlign:"center"}}>No request found</div>
       )}
     </div>
   );
