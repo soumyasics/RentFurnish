@@ -28,6 +28,7 @@ function Deliveryagenteditpage() {
         vehicleNumber: '',
         deliveryArea: '',
         deliveryDistrict: '',
+        image:'',
         shopId: shopid
     });
 
@@ -66,6 +67,16 @@ function Deliveryagenteditpage() {
         }));
     };
 
+    const handleInputChange = (e) => {
+        if (e.target.type === 'file') {
+            const file = e.target.files[0];
+            setData({ ...Data, [e.target.name]: file });
+        } else {
+            setData({ ...Data, [e.target.name]: e.target.value });
+        }
+    };
+    
+
     const validateForm = () => {
         let formErrors = {};
 
@@ -97,6 +108,9 @@ function Deliveryagenteditpage() {
             formErrors.deliveryArea = 'Area name/Landmark required';
         if (!Data.deliveryDistrict)
             formErrors.deliveryDistrict = 'District required';
+        // if (!Data.image)
+        //     formErrors.image = 'Image is required';
+
 
         return formErrors;
     };
@@ -238,8 +252,15 @@ function Deliveryagenteditpage() {
                                         onChange={handleChange}
                                         placeholder={Data.vehicleNumber} />
                                     {errors.vehicleNumber && <span className='span-required'>{errors.vehicleNumber}</span>}
-                                </div><br /><br /><br />
-                                <h3 className="section-title mt-4">Delivery area section</h3><br />
+                                </div>
+                                {/* <h3 className="section-title mt-4">Delivery area section</h3><br /> */}
+                                <div className="mb-3">
+                                    <label className="form-label">Profile Image</label><span className="text-danger">*</span>
+                                    <input type="file"
+                                        className="form-control controls"
+                                         />
+                                    {/* {errors.image && <span className='span-required'>{errors.image}</span>} */}
+                                </div>
                                 <div className="mb-3">
                                     <label className="form-label">Area name / Landmark</label><span className="text-danger">*</span>
                                     <input type="text"

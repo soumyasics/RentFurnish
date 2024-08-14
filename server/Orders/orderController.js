@@ -141,6 +141,7 @@ const assignDeliveryAgent=(req,res)=>{
         deliveryStatus:true,
         deliveryId: req.body.deliveryId,
         deliveryDate:req.body.deliveryDate,
+        shopApproved:true
     }).exec()
     .then(data => {
         res.json({
@@ -182,7 +183,7 @@ const updateOrderPayment = async (req, res) => {
 // View Orders By Customer ID
 const viewOrdersByCustId = async (req, res) => {
     try {
-        const orders = await Order.find({ customerId: req.params.id })
+        const orders = await Order.find({customerId: req.params.id })
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -206,7 +207,7 @@ const viewOrdersByCustId = async (req, res) => {
 // View Pending Orders for Delivery
 const viewPendingOrdersForDelivery = async (req, res) => {
     try {
-        const orders = await Order.find({shopId:req.params.id, deliveryStatus: false})
+        const orders = await Order.find({shopId:req.params.id, deliveryStatus: false,shopApproved:true})
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -382,7 +383,28 @@ const updateReturnStatus = async (req, res) => {
         });
     }
 };
+// View Orders By Customer ID
+const rejectOrdersId = async (req, res) => {
 
+  await Order.findByIdAndUpdate({ _id: req.params.id },{
+        shopApproved:true
+       }).then(data=>{
+        res.status(200).json({
+            status: 200,
+            message: 'Rejected orders',
+            data: data
+        });
+       })
+         
+    .catch (err=> {
+        console.error(err);
+        res.status(500).json({
+            status: 500,
+            message: 'Error retrieving orders',
+            error: err
+        });
+    })
+}
 module.exports={
     addOrder,
     viewOrderById,
@@ -398,5 +420,6 @@ module.exports={
     viewDeliveryCountBtDeliveryId,
     viewallDeliveryCountBtDeliveryId,
     updateReturnStatus,
-    viewTotalOrderByDeliberyId
+    viewTotalOrderByDeliberyId,
+    rejectOrdersId
 }
