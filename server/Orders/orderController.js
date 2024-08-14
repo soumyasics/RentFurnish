@@ -141,7 +141,7 @@ const assignDeliveryAgent=(req,res)=>{
         deliveryStatus:true,
         deliveryId: req.body.deliveryId,
         deliveryDate:req.body.deliveryDate,
-        shopApproved:true
+        shopApproved:'Accepted'
     }).exec()
     .then(data => {
         res.json({
@@ -207,7 +207,7 @@ const viewOrdersByCustId = async (req, res) => {
 // View Pending Orders for Delivery
 const viewPendingOrdersForDelivery = async (req, res) => {
     try {
-        const orders = await Order.find({shopId:req.params.id, deliveryStatus: false,shopApproved:true})
+        const orders = await Order.find({shopId:req.params.id, deliveryStatus: false,shopApproved:'Pending'})
             .populate('furnitureId')
             .populate('customerId')
             .populate('shopId')
@@ -387,7 +387,7 @@ const updateReturnStatus = async (req, res) => {
 const rejectOrdersId = async (req, res) => {
 
   await Order.findByIdAndUpdate({ _id: req.params.id },{
-        shopApproved:true
+        shopApproved:'rejected'
        }).then(data=>{
         res.status(200).json({
             status: 200,
