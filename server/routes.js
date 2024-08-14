@@ -37,7 +37,7 @@ router.post("/loginDeliveryAgent", DeliveryAgent.loginDeliveryAgent)
 router.post("/verifyToken", DeliveryAgent.verifyToken)
 router.post("/viewDeliveryAgentbyid/:id", DeliveryAgent.viewDeliveryAgentbyid)// to be used in view del agent by id
 router.post("/viewallDeliveryAgents", DeliveryAgent.viewallDeliveryAgents)
-router.post("/updateDeliveryAgentprofile/:id", DeliveryAgent.updateDeliveryAgentprofile)
+router.post("/updateDeliveryAgentprofile/:id",DeliveryAgent.upload, DeliveryAgent.updateDeliveryAgentprofile)
 router.post("/deleteDeliveryAgentById/:id", DeliveryAgent.deleteDeliveryAgentById)
 router.post("/forgotPwdDeliveryAgent", DeliveryAgent.forgotPwdDeliveryAgent)
 router.post("/viewallDeliveryAgentsByDistrict/:district", DeliveryAgent.viewallDeliveryAgentsByDistrict)
