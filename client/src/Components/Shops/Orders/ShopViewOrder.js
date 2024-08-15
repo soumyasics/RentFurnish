@@ -38,8 +38,19 @@ function ShopViewOrder() {
     }));
   };
 
-  const handleReject = (orderId) => {
-    // Handle reject logic here
+  const handleReject = (id) => {
+    axiosInstance.post(`rejectOrdersId/${id}`)
+    .then((res)=>{
+      console.log(res);
+      if(res.data.status==200){
+        toast.info("Order Rejected")
+      }
+      
+    })
+    .catch((err)=>{
+      console.log(err);
+      
+    })
   };
 
   useEffect(() => {
@@ -263,7 +274,7 @@ function ShopViewOrder() {
           );
         })
       ) : (
-        <div className="viewcounsellor-lottiereqq">No request found</div>
+        <div className="viewcounsellor-lottiereqq" style={{textAlign:"center"}}>No request found</div>
       )}
     </div>
   );

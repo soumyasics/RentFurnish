@@ -67,7 +67,7 @@ function Deliveryagenteditpage() {
         }));
     };
 
-    const handleInputChange = (e) => {
+    const handleFileChange = (e) => {
         if (e.target.type === 'file') {
             const file = e.target.files[0];
             setData({ ...Data, [e.target.name]: file });
@@ -125,12 +125,16 @@ function Deliveryagenteditpage() {
                 toast.info("No changes committed.");
             } else {
                 try {
-                    const res = await axiosInstance.post(`/updateDeliveryAgentprofile/${id}`, Data);
+                    const res = await axiosInstance.post(`/updateDeliveryAgentprofile/${id}`, Data, {
+                        headers: {
+                          "Content-Type": "multipart/form-data",
+                        },});
                     console.log('working', res);
                     if (res.data.status === 200) {
                         console.log('Profile updated successfully', res);
                         toast.success("Updated Successfully")
                         navigate(-1)
+                        window.location.reload()
                     }
                 } catch (error) {
                     console.log('Error updating profile', error);
@@ -258,6 +262,9 @@ function Deliveryagenteditpage() {
                                     <label className="form-label">Profile Image</label><span className="text-danger">*</span>
                                     <input type="file"
                                         className="form-control controls"
+                                        name='image'
+                                        // value={Data.image}
+                                        onChange={handleFileChange}
                                          />
                                     {/* {errors.image && <span className='span-required'>{errors.image}</span>} */}
                                 </div>

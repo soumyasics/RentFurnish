@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import "./TrackDelivery.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -90,6 +90,16 @@ function TrackDelivery() {
               {new Date(data?.orderDate).toLocaleDateString()}
             </p>
           </div>
+          {
+            data?.shopApproved==="rejected"?(
+              <div className="status-item">
+              <FaTimesCircle size={50} className="icon_style_rejected" />
+              <p className="trackdelivery_track_status">
+                  Shop Reject Your Request!
+                </p>
+              </div>
+            ):(<></>)
+          }
           {data?.deliveryDate ? (
             <>
               <div className="status-line"></div>
@@ -138,7 +148,7 @@ function TrackDelivery() {
             </p>
             <div className="row mt-3">
               <div className="col-6 trackdelivery_color">Deposit Amount:</div>
-              <div className="col-6 text-black"> ₹{data.amount}/-</div>
+              <div className="col-6 text-black"> ₹{data?.amount?.toFixed(2)}/-</div>
             </div>
             <div className="row mt-3">
               <div className="col-6 trackdelivery_color">Quantity:</div>

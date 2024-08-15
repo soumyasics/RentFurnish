@@ -23,6 +23,33 @@ function TrackDirectReturnStatus() {
 
     }, [id]);
 
+    // const paybycust =data?.orderId?.amount;
+    // const totlamnt =data?.finalAmount;
+    
+    const orderAmount = parseFloat(data?.orderId?.amount);
+    const finalAmount = parseFloat(data?.finalAmount);
+    
+    const isPayNowVisible = orderAmount > finalAmount;
+    const isBalanceAmountVisible = orderAmount < finalAmount;
+    
+    if(isPayNowVisible){
+        console.log("please pay to shop");
+        
+    }
+    else if(isBalanceAmountVisible){
+        console.log("shop will pay to you");
+        
+    }
+    // const epsilon = 0.01; // Small threshold for floating-point comparison
+    
+    // if (paybycust < totlamnt - epsilon) {
+    //     console.log("please pay");
+    // } else if (paybycust > totlamnt + epsilon) {
+    //     console.log("remaining amnt will be credited");
+    // } else {
+    //     console.log("Amounts are nearly equal");
+    // }    
+
     return (
         <div>
             <div className="track-delivery">
@@ -259,7 +286,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount>data?.finalAmount ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" &&  isPayNowVisible   ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">
@@ -409,7 +436,7 @@ function TrackDirectReturnStatus() {
                                 )}
                             </div>
                         </div>
-                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" && data?.orderId?.amount<data?.finalAmount  ? (
+                    ) : data?.returnStatus === "Confirmed" && data?.inspectionStatus === "Confirmed" &&    isBalanceAmountVisible   ? (
                         <div>
                             <div className="status-bar">
                                 <div className="status-item">
