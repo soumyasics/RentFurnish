@@ -38,8 +38,19 @@ function ShopViewOrder() {
     }));
   };
 
-  const handleReject = (orderId) => {
-    // Handle reject logic here
+  const handleReject = (id) => {
+    axiosInstance.post(`rejectOrdersId/${id}`)
+    .then((res)=>{
+      console.log(res);
+      if(res.data.status==200){
+        toast.info("Order Rejected")
+      }
+      
+    })
+    .catch((err)=>{
+      console.log(err);
+      
+    })
   };
 
   useEffect(() => {

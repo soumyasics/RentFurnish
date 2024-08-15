@@ -273,11 +273,15 @@ function DeliveryDashboard() {
                     <div className="viewcounsellor-lottiereqq">No orders found</div>
                   )}
             
-
+                  {
+                    data.length>=1?(
+                   
             <div className='del-view-moredtn'>
            <Link to="/del-pending" style={{textDecoration:"none"}}> <button type='submit'>View All<span className='ri-arrow-right-line'/></button></Link>
-
             </div>
+   
+  ):(<></>)
+}
           </div>
 
         </div>
