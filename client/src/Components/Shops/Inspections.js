@@ -11,6 +11,7 @@ function Inspections() {
   const shopId = localStorage.getItem("shopid");
   const [fineAmount, setFineAmount] = useState('');
   const [finalAmount, setFinalAmount] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     axiosInstance.post(`/viewInspectionByShopId/${shopId}`)
@@ -24,6 +25,12 @@ function Inspections() {
   }, [shopId]);
 
   const handleUpdate = (id, returnId) => {
+    if (!fineAmount) {
+      setErrorMsg('Please fill the Fine Amount');
+      return;
+    }
+
+    setErrorMsg('');
     axiosInstance.post(`/editInspectionById/${id}`, {
       fineAmount,
       finalAmount,
@@ -253,6 +260,11 @@ function Inspections() {
                         />
                       </div>
                     </div>
+                    {errorMsg && (
+                      <div className="alert alert-danger mt-2">
+                        {errorMsg}
+                      </div>
+                    )}
                     <div className='row mt-3'>
                       <div className='col-6'>
                         <p className="inspection_fine_text">Deposit Amount </p>

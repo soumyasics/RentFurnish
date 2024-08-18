@@ -82,14 +82,18 @@ function Shopsignin() {
     if (!formValues.email) {
       errors.email = "Email is required";
     }
-    // if (!formValues.password || formValues.password.length !== 8) {
-    //   errors.password = "Password must be 8 character";
-    // } else {
-    //   validatePassword(formValues.password);
-    // }
-    // if (formValues.password !== formValues.confirmpassword) {
-    //   errors.confirmpassword = "Passwords do not match";
-    // }
+    if (!formValues.password ) {
+      errors.password = "Password is Required";
+    } 
+    else if(formValues.password<8){
+      errors.password= "Password must neeed 8 character"
+    }
+    else {
+      validatePassword(formValues.password);
+    }
+    if (formValues.password !== formValues.confirmpassword) {
+      errors.confirmpassword = "Passwords do not match";
+    }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;

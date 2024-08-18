@@ -26,11 +26,14 @@ function TrackDirectReturnStatus() {
     // const paybycust =data?.orderId?.amount;
     // const totlamnt =data?.finalAmount;
     
-    const orderAmount = parseFloat(data?.orderId?.amount);
-    const finalAmount = parseFloat(data?.finalAmount);
+    const depositAmount = Math.abs(parseInt(data?.orderId?.amount)); 
+    const finalAmount = Math.abs(parseInt(data?.finalAmount)); 
     
-    const isPayNowVisible = orderAmount > finalAmount;
-    const isBalanceAmountVisible = orderAmount < finalAmount;
+    const isPayNowVisible = depositAmount < finalAmount;
+    const isBalanceAmountVisible = depositAmount > finalAmount;
+    console.log(data?.orderId?.amount,"deposit amt");
+    console.log(data?.finalAmount,"final amnt");
+    
     
     if(isPayNowVisible){
         console.log("please pay to shop");
@@ -203,7 +206,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Fine Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹ {data?.fineAmount}/-
+                                            ₹ {data?.fineAmount || 0}/-
                                         </div>
                                     </div>
 
@@ -343,6 +346,12 @@ function TrackDirectReturnStatus() {
                                             {data ? new Date(data?.orderId?.orderDate).toLocaleDateString() : ""} - {data ? new Date(data?.orderId?.completionDate).toLocaleDateString() : ""}
                                         </div>
                                     </div>
+                                    <div className="row mt-3">
+                                    <div className="col-6 trackdelivery_color">Fine Amount:</div>
+                                        <div className="col-6 text-black">
+                                            ₹ {data?.fineAmount}/-
+                                        </div>
+                                        </div>
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Amount:</div>
                                         <div className="col-6 text-black">
@@ -494,9 +503,15 @@ function TrackDirectReturnStatus() {
                                         </div>
                                     </div>
                                     <div className="row mt-3">
+                                    <div className="col-6 trackdelivery_color">Fine Amount:</div>
+                                        <div className="col-6 text-black">
+                                            ₹ {data?.fineAmount || 0}/-
+                                        </div>
+                                        </div>
+                                    <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Total Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹ {Math.abs(data?.finalAmount)}/-
+                                            ₹ {Math.abs(data?.finalAmount?.toFixed(2))}/-
                                         </div>
                                         <p style={{color:"red"}}>The Balance Amount will be credited shortly</p>
                                     </div>

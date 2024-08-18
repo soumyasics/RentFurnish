@@ -49,7 +49,7 @@ function TrackReturnPayment() {
             valid = false;
         }
 
-        if (form.ccv.length < 3) {
+        if (form.ccv.length !== 3) {
             errors.ccvError = "CCV must be at least 3 digits.";
             valid = false;
         }
@@ -161,8 +161,9 @@ function TrackReturnPayment() {
                                         <div className="col-6">
                                             <p>Expiry Date</p>
                                             <input
-                                                type="date"
+                                                type="month"
                                                 name="expiryDate"
+                                                min={new Date().toISOString().slice(0, 7)}
                                                 value={form.expiryDate}
                                                 onChange={handleChange}
                                                 className="form-control controls mb-4"

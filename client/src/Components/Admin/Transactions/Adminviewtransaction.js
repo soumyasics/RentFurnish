@@ -64,7 +64,7 @@ function Adminviewtransaction() {
             <p>{a?.shopId?.phone}</p>
             </div>
             <div className='col-2'>
-            <p>{a?.finalAmount}/-</p>
+            <p>{a?.finalAmount?.toFixed(2)}/-</p>
             </div>
             <div className='col-2'>
             <h5>{a?.adminProfit?.toFixed(2)}/-</h5>
