@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Adminloginnav.css"
-import logo from '../../Assets/logoimg.png'
+import logo from '../../Assets/rentlogo1.png'
 import { useNavigate } from 'react-router-dom';
 
 

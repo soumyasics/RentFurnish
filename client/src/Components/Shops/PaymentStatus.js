@@ -36,7 +36,7 @@ function PaymentStatus() {
             <div className='container'>
                 <div className='viewcomplaints-head'>
                     {transation.length === 0 ? (
-                        <h1> No Transations available </h1>
+                        <h1> No Transactions  available </h1>
                     ) : (
                         <div className='col-sm-11 d-flex justify-content-end ms-5'>
 
@@ -59,7 +59,7 @@ function PaymentStatus() {
                                         </thead>
 
                                         {transation.length === 0 ? (
-                                            <h1> No Transations available </h1>
+                                            <h1> No Transactions  available </h1>
                                         ) : (
 
                                             transation.map((item, index) => (
