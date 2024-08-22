@@ -233,7 +233,7 @@ function Inspections() {
                     <div className='row'>
                       <div className='col-6'>
                         <p className="inspection_fine_text">Rent Date </p>
-                        <p>{new Date(order?.orderId?.deliveryDate).toLocaleDateString()} - {new Date(order?.returnId?.returnDate).toLocaleDateString()}</p>
+                        <p>{new Date(order?.orderId?.completionDate).toLocaleDateString()} - {new Date(order?.returnId?.returnDate).toLocaleDateString()}</p>
                       </div>
                       <div className='col-6'>
                         <p className="inspection_fine_text">Total Days of Rent </p>
