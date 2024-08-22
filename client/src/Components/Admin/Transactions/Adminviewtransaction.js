@@ -73,7 +73,7 @@ function Adminviewtransaction() {
           );
         })
       ) : (
-        <h1 className='ps-5 pt-5'>No inspections available</h1>
+        <h1 className='ps-5 pt-5'>No Transactions available</h1>
       )}
 
 
