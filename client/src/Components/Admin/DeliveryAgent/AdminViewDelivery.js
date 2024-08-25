@@ -78,7 +78,7 @@ function AdminViewDelivery() {
           </div>
           <div className="row">
             {data && data.length ? (
-              data.map((a) => {
+              data.slice().reverse().map((a) => {
                 return (
                   <div className="col-4 sm-2 lg-4 ">
                     <div className="admin-view-insidebox">

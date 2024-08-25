@@ -74,7 +74,7 @@ function Shopviewcomplaint() {
                   <tbody>
 
                     {complaint && complaint.length ? (
-                      complaint.map((complaint, index) => (
+                      complaint.slice().reverse().map((complaint, index) => (
 
                         <tr>
                           <th scope="row"><p className='Complain_body_number'>{index + 1}</p></th>

@@ -156,7 +156,7 @@ function DeliveryDashboard() {
             <h2>Pending Orders</h2>
 
             {data && data.length ? (
-        data.slice(0,2).map((order) => {
+        data.slice(0,2).reverse().map((order) => {
           return (
 
             <div  className="back_ground ms-5 mb-2 mt-3 container">

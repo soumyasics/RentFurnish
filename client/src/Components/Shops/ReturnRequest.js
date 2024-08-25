@@ -102,7 +102,7 @@ function ReturnRequest() {
       <Showdropdown />
       {console.log(data.length)}
       {data.length > 0 ? (
-        data.map((furniture) => (
+        data.slice().reverse().map((furniture) => (
           
           <div key={furniture._id} className="back_ground ms-5 mb-2 mt-3 container">
             <div className="col">

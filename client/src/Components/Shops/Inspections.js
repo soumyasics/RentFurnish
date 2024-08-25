@@ -114,7 +114,7 @@ function Inspections() {
       <Shopnav />
       <Showdropdown />
       {inspections?.length ? (
-        inspections.map((order) => {
+        inspections.slice().reverse().map((order) => {
           const deviatedAmt = parseFloat(order?.returnId?.deviatedAmt) || 0;
           const fineAmt = parseFloat(fineAmount) || 0;
           const calculatedAmount = (deviatedAmt + fineAmt);
