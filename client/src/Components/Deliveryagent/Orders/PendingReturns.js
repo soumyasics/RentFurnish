@@ -112,7 +112,7 @@ function PendingReturns() {
             <div className='container'>
                 <div className='orderdetailsdel-main'>
                     {data && data.length ? (
-                        data.map((order, orderIndex) => (
+                        data.slice().reverse().map((order, orderIndex) => (
                             <div key={orderIndex} className="back_ground ms-5 mb-2 mt-3 container pending_return_">
                                 <form id={`form-${orderIndex}`} onSubmit={(e) => handleSubmit(e, orderIndex)}>
                                     <div className="col">

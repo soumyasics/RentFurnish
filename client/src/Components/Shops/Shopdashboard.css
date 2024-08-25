@@ -1,0 +1,12 @@
+.shop_dash_viewmorebtn{
+    display: flex;
+    justify-content: flex-end; /* Aligns the button at the end */
+}
+.shop_dash_viewmorebtn button{
+    width: 150px;
+    background-color: rgb(142, 191, 191);
+    height: 40px;
+    border-radius: 20px;
+    color: rgb(21, 12, 12);
+    font-weight: 900;
+}

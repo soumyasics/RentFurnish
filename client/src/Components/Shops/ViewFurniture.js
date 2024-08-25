@@ -54,7 +54,7 @@ function ViewFurniture() {
             <Showdropdown />
             <div className='container viewfur_main_box'>
                 {furnitureList && furnitureList.length ? (
-                    furnitureList.map(furniture => (
+                    furnitureList.slice().reverse().map(furniture => (
                         <div className='furniture-box' key={furniture._id}>
                             <div className='row'>
                                 <div className='col-md-4 col-sm-12'>

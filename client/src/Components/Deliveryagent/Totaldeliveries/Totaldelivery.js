@@ -47,7 +47,7 @@ function Totaldelivery() {
                     </tr>
                   </thead>
                   {delivery && delivery?.length ? (
-                    delivery.map((order,index) => {
+                    delivery.slice().reverse().map((order,index) => {
                       return (
                         <tbody>
                           <tr>

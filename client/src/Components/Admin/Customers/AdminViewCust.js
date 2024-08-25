@@ -115,7 +115,7 @@ function AdminViewCust() {
           </div>
           <div className="row">
             {data && data.length ? (
-              data.map((a) => (
+              data.slice().reverse().map((a) => (
                 <div className="col-4 sm-2 lg-4 " key={a._id}>
                   <div className="admin-view-insidebox">
                     <div className="admin-view-imageprofile">

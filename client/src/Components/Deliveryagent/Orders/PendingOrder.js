@@ -73,7 +73,7 @@ function PendingOrder() {
             {/* <h2 className='ri-arrow-left-line'>Pending Orders</h2> */}
 
             {data && data.length ? (
-        data.map((order) => {
+        data.slice().reverse().map((order) => {
           return (
 
             <div  className="back_ground ms-5 mb-2 mt-3 container">

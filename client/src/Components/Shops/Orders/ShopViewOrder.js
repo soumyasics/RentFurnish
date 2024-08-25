@@ -111,7 +111,7 @@ function ShopViewOrder() {
       <Shopnav />
       <Showdropdown />
       {data && data.length ? (
-        data.map((order) => {
+        data.slice().reverse().map((order) => {
           return (
             <div key={order._id} className="back_ground ms-5 mb-2 mt-3 container">
               <div className="col">

@@ -72,7 +72,7 @@ function Adminviewshops() {
         <div className="col-sm-12 col-lg-12 col-md-12 container">
           <div className="row">
             {shops && shops.length ? (
-              shops.map((a) => {
+              shops.slice().reverse().map((a) => {
                 return (
                   <div className="col-sm-6 pb-3 viewshopsboxone" key={a._id}>
                     <div className="viewshopsimg">
