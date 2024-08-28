@@ -52,7 +52,7 @@ function Navbar() {
         <Link to="/about-us">About</Link>
         <Link to="/user-contactus">Contact</Link>
         {/* <a href="#"> */}
-            <select style={{width:"70px",backgroundColor:"#8e3333"}}  value={selectedOption} onChange={handleOptionChange}>
+            <select style={{width:"140px",backgroundColor:"#8e3333"}}  value={selectedOption} onChange={handleOptionChange}>
               <option hidden>Login</option>
             <option value="adminlogin"  >Admin</option>
             <option value="shoplogin">Shops</option>     
