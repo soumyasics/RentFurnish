@@ -28,7 +28,7 @@ const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
 
 let fullDaysDifference = Math.floor(differenceInDays);
 console.log("Difference in Days:", fullDaysDifference);
-finalRentAmount=(++fullDaysDifference)*(furniture.rent/30)
+finalRentAmount=(++fullDaysDifference)*(furniture.rent/30)*(order.count)
 console.log("finalRentAmount:", finalRentAmount);
 deviatedAmt=finalRentAmount-depAmount
 

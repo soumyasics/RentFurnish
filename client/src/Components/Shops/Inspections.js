@@ -99,9 +99,9 @@ function Inspections() {
       //   setFinalAmount(totalRentAmount + fineAmt - depositAmnt);
       // }
       if (deviatedAmt < 0) {
-        setFinalAmount(parseFloat((depositAmnt - (totalRentAmount + fineAmt)).toFixed(2)));
+        setFinalAmount(parseFloat(( (totalRentAmount + fineAmt)).toFixed(2)));
       } else {
-        setFinalAmount(parseFloat((totalRentAmount + fineAmt - depositAmnt).toFixed(2)));
+        setFinalAmount(parseFloat((totalRentAmount + fineAmt).toFixed(2)));
       }
       
     });
@@ -237,7 +237,7 @@ function Inspections() {
                       </div>
                       <div className='col-6'>
                         <p className="inspection_fine_text">Total Days of Rent </p>
-                        <p>{calculateRentDays(order?.orderId?.deliveryDate, order?.returnId?.returnDate)}</p>
+                        <p>{calculateRentDays(order?.orderId?.completionDate, order?.returnId?.returnDate)}</p>
                       </div>
 
                       <div className='col-6'>

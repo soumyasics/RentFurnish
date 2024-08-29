@@ -258,7 +258,7 @@ function DeliveryDashboard() {
                               type="button"
                               onClick={() => completdel(order._id)}
                             >
-                              Complted
+                              Completed
                             </button>
                           </div>
                         </div>
