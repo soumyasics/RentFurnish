@@ -91,7 +91,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount}/-
+                                            ₹{data?.orderId?.amount?.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
@@ -186,7 +186,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount}/-
+                                            ₹{data?.orderId?.amount?.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
@@ -329,7 +329,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount.toFixed(2)}/-
+                                            ₹{data?.orderId?.amount?.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
@@ -625,7 +625,7 @@ function TrackDirectReturnStatus() {
                                     <div className="row mt-3">
                                         <div className="col-6 trackdelivery_color">Deposit Amount:</div>
                                         <div className="col-6 text-black">
-                                            ₹{data?.orderId?.amount}/-
+                                            ₹{data?.orderId?.amount?.toFixed(2)}/-
                                         </div>
                                     </div>
                                     <div className="row mt-3">
