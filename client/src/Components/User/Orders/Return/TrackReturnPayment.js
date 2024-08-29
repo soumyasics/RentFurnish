@@ -117,7 +117,7 @@ function TrackReturnPayment() {
                         <form onSubmit={handleSubmit}>
                             <h1 className="text-center mt-4">
                                 <span className="pay_text_color">Total Amount : </span>
-                                <span>{Math.abs(data?.finalAmount)} /-</span>
+                                <span>{Math.abs(data?.finalAmount-data?.orderId?.amount).toFixed(2)} /-</span>
                             </h1>
                             <div className="d-flex justify-content-center mt-4">
                                 <div className="payment_main_div">
